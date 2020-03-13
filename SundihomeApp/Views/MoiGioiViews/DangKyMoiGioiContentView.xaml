@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:controls="clr-namespace:SundihomeApp.Controls"
+             xmlns:lang="clr-namespace:SundihomeApp.Resources"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives"
+             x:Class="SundihomeApp.Views.MoiGioiViews.DangKyMoiGioiContentView">
+    <ContentView.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <ScrollView Grid.Row="0">
+                <StackLayout Margin="10">
+                    <StackLayout x:Name="Intro"
+                                 IsVisible="false">
+                        <Label 
+                               FontSize="15" >
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Static lang:Language.gioi_thieu}"/>
+                                    <Span Text=": "/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <telerikPrimitives:RadBorder CornerRadius="5"
+                                                     BorderThickness="1"
+                                                     BorderColor="LightGray">
+                            <Editor x:Name="editIntro"
+                                    HeightRequest="60"
+                                    Text="{Binding MoiGioiModel.Introduction}" />
+                        </telerikPrimitives:RadBorder>
+                    </StackLayout>
+
+                    <controls:FormLabelRequired Text="{Static lang:Language.kinh_nghiem}"
+                                                Margin="0,10,0,0" />
+                    <Picker x:Name="ExpPicker"
+                            Title="{Static lang:Language.kinh_nghiem}"
+                            ItemsSource="{Binding Years}"
+                            SelectedItem="{Binding MoiGioiModel.StartYear}" />
+
+                    <controls:FormLabelRequired Text="{Static lang:Language.loai_hinh_moi_gioi}"
+                                                Margin="0,10,0,0" />
+                    <controls:LookUpControl x:Name="lookupType"
+                                            SelectedItem="{Binding MoiGioiModel.Type}"
+                                            ItemsSource="{Binding TypeList}"
+                                            NameDisplay="Name"
+                                            Placeholder="{Static lang:Language.loai_hinh_moi_gioi}"
+                                            SelectedItemChange="Type_Change" />
+
+                    <Label 
+                           Margin="0,10,0,0"
+                           FontSize="16"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource MainDarkColor}" >
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{Static lang:Language.khu_vuc_hoat_dong}"/>
+                                <Span Text=":"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                    <controls:FormLabelRequired Text="{Static lang:Language.tinh_thanh}" />
+                    <controls:LookUpControl x:Name="lookupProvince"
+                                            SelectedItem="{Binding MoiGioiModel.Province}"
+                                            ItemsSource="{Binding ProvinceList}"
+                                            Placeholder="{Static lang:Language.tinh_thanh}"
+                                            NameDisplay="Name"
+                                            SelectedItemChange="Province_Change" />
+
+                    <controls:FormLabelRequired Text="{Static lang:Language.quan_huyen}" />
+                    <controls:LookUpControl x:Name="lookupDistrict"
+                                            SelectedItem="{Binding MoiGioiModel.District}"
+                                            ItemsSource="{Binding DistrictList}"
+                                            Placeholder="{Static lang:Language.quan_huyen}"
+                                            NameDisplay="Name"
+                                            SelectedItemChange="District_Change" />
+
+                    <!--<StackLayout x:Name="Certificate" Margin="0,10,0,0" IsVisible="False">
+                            <Label Text="Chứng chỉ:" FontSize="15"/>
+                            <Grid x:Name="CertificateDetail">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <telerikPrimitives:RadBorder Grid.Column="0"
+                                                             CornerRadius="5"
+                                                             BorderThickness="1"
+                                                             BorderColor="#eee">
+                                    <Image  x:Name="image"
+                                            HeightRequest="50"
+                                            WidthRequest="50"
+                                            BackgroundColor="#eee"/>
+                                </telerikPrimitives:RadBorder>
+                                <telerikPrimitives:RadBorder Grid.Column="1"
+                                                             BorderColor="LightGray"
+                                                             BorderThickness="1"
+                                                             CornerRadius="5">
+                                    <Editor Placeholder="Tên chứng chỉ"/>
+                                </telerikPrimitives:RadBorder>
+                            </Grid>
+                            <Label FontSize="15" x:Name="lblAddCertificate">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text=" + Thêm chứng chỉ môi giới BĐS" TextDecorations="Underline" TextColor="{StaticResource MainDarkColor}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </StackLayout>-->
+                </StackLayout>
+            </ScrollView>
+            <Grid Margin="5"
+                  Grid.Row="1"
+                  ColumnSpacing="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="35" />
+                </Grid.RowDefinitions>
+                <Button x:Name="btnCancel"
+                        Text="{Static lang:Language.huy}"
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        BackgroundColor="White"
+                        CornerRadius="5"
+                        BorderWidth="1"
+                        BorderColor="{StaticResource MainDarkColor}"
+                        TextColor="{StaticResource MainDarkColor}"
+                        Clicked="Cancel_Clicked" />
+                <Button x:Name="btnRegister"
+                        Text="{Static lang:Language.dang_ky}"
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        BackgroundColor="{StaticResource MainDarkColor}"
+                        TextColor="White"
+                        CornerRadius="5" />
+            </Grid>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

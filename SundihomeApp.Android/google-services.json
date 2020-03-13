@@ -1,0 +1,119 @@
+{
+  "project_info": {
+    "project_number": "451234335042",
+    "firebase_url": "https://pushnotification1-4b52f.firebaseio.com",
+    "project_id": "pushnotification1-4b52f",
+    "storage_bucket": "pushnotification1-4b52f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:451234335042:android:6313c4792f9da918",
+        "android_client_info": {
+          "package_name": "bsdvn.pushnotification"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "451234335042-9liaee9vqvsjeq7d34olr2kq328cfsjs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMSix7f5OrN8Z-HGYwD8fHNUoFZ4xo4mY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "451234335042-9liaee9vqvsjeq7d34olr2kq328cfsjs.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "451234335042-eu36s2qsetc87raopkcqtj9c0l0ls8ip.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.bsdsolutions.sundihomeapp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:451234335042:android:9e9810f05a492ebf46e0db",
+        "android_client_info": {
+          "package_name": "com.bsdsolutions.sundihomeapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "451234335042-9liaee9vqvsjeq7d34olr2kq328cfsjs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMSix7f5OrN8Z-HGYwD8fHNUoFZ4xo4mY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "451234335042-9liaee9vqvsjeq7d34olr2kq328cfsjs.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "451234335042-eu36s2qsetc87raopkcqtj9c0l0ls8ip.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.bsdsolutions.sundihomeapp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:451234335042:android:b13a2769adec8e7a",
+        "android_client_info": {
+          "package_name": "com.trungle"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "451234335042-9liaee9vqvsjeq7d34olr2kq328cfsjs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMSix7f5OrN8Z-HGYwD8fHNUoFZ4xo4mY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "451234335042-9liaee9vqvsjeq7d34olr2kq328cfsjs.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "451234335042-eu36s2qsetc87raopkcqtj9c0l0ls8ip.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.bsdsolutions.sundihomeapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

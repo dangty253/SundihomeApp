@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:control="clr-namespace:SundihomeApp.Controls" x:Class="SundihomeApp.Views.SocialLinkedPage" xmlns:lang="clr-namespace:SundihomeApp.Resources" Title="{x:Static lang:Language.lien_ket_mxh}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!-- TITLE LABEL STYLE -->
+            <Style x:Key="TitleLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="Margin" Value="10,0" />
+            </Style>
+
+            <!-- Social icon style -->
+            <Style x:Key="SocialIcon" TargetType="Image">
+                <Setter Property="HeightRequest" Value="30" />
+                <Setter Property="WidthRequest" Value="30" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <AbsoluteLayout x:Name="grid">
+            <Grid AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Margin="20" RowSpacing="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <!-- FACEBOOK -->
+                <StackLayout Grid.Row="0" Orientation="Horizontal" HorizontalOptions="Start">
+                    <Image Source="ic_fb.png" Style="{StaticResource SocialIcon}" />
+                    <Label Style="{StaticResource TitleLabel}" Text="Facebook" />
+                </StackLayout>
+                <Switch Grid.Row="0" x:Name="facebookLinked" HorizontalOptions="End" OnColor="{StaticResource MainDarkColor}" IsToggled="{Binding IsFacebookLinked}" Toggled="OnFacebookToggled" />
+                <!-- GOOGLE -->
+                <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="Start">
+                    <Image Source="ic_google.png" Style="{StaticResource SocialIcon}" />
+                    <Label Style="{StaticResource TitleLabel}" Text="Google" />
+                </StackLayout>
+                <Switch Grid.Row="1" x:Name="googleLinked" HorizontalOptions="End" OnColor="{StaticResource MainDarkColor}" IsToggled="{Binding IsGoogleLinked}" Toggled="OnGoogleToggled" />
+                <!-- ZALO -->
+                <StackLayout Grid.Row="2" Orientation="Horizontal" HorizontalOptions="Start">
+                    <Image Source="ic_zalo.png" Style="{StaticResource SocialIcon}" />
+                    <Label Style="{StaticResource TitleLabel}" Text="Zalo" />
+                </StackLayout>
+                <Switch Grid.Row="2" x:Name="zaloLinked" HorizontalOptions="End" OnColor="{StaticResource MainDarkColor}" IsToggled="{Binding IsZaloLinked}" Toggled="OnZaloToggled" />
+            </Grid>
+            <control:LoadingPopup x:Name="loadingPopup" IsVisible="{Binding IsLoading}" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" />
+            <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" IsVisible="{Binding IsZaloLoginVisible}">
+                <RelativeLayout>
+                    <WebView x:Name="webView" HeightRequest="{Binding Height,Source={x:Reference grid}}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width, Factor=1, Constant=0}" />
+                    <Label Text="{StaticResource TimesCircle}" FontFamily="{StaticResource FontAwesomeRegular}" TextColor="Black" FontAttributes="Bold" Margin="20" FontSize="20" HorizontalTextAlignment="End" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width, Factor=1, Constant=0}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnClosePopup" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </RelativeLayout>
+            </StackLayout>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

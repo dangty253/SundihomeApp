@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:lang="clr-namespace:SundihomeApp.Resources"
+             xmlns:lng="clr-namespace:SundihomeApp.Resources"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:SundihomeApp.Controls"
+             xmlns:cv="clr-namespace:SundihomeApp.Converters"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives"
+             x:Class="SundihomeApp.Views.LiquidationViews.MyToDayListPage"
+             Title="{Static lang:Language.san_pham_trong_ngay}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!--RadBorder Categories Style-->
+            <Style x:Key="RadBorderCategories"
+                   TargetType="telerikPrimitives:RadBorder">
+                <Setter Property="Margin"
+                        Value="0,0,0,0" />
+                <Setter Property="Padding"
+                        Value="10,7" />
+                <Setter Property="BorderColor"
+                        Value="#eeeeee" />
+                <Setter Property="BorderThickness"
+                        Value="1" />
+                <Setter Property="CornerRadius"
+                        Value="5" />
+                <Setter Property="BackgroundColor"
+                        Value="White" />
+            </Style>
+            <!--Category style-->
+            <Style x:Key="Category"
+                   TargetType="Label">
+                <Setter Property="TextColor"
+                        Value="Black" />
+                <Setter Property="FontAttributes"
+                        Value="None" />
+                <Setter Property="FontSize"
+                        Value="14" />
+                <Setter Property="VerticalTextAlignment"
+                        Value="Center" />
+            </Style>
+
+            <Style x:Key="FilterButtonStyle"
+                   TargetType="Button">
+                <Setter Property="Text"
+                        Value="{StaticResource Filter}" />
+                <Setter Property="TextColor"
+                        Value="White" />
+                <Setter Property="CornerRadius"
+                        Value="10" />
+                <Setter Property="BackgroundColor"
+                        Value="{StaticResource MainDarkColor}" />
+                <Setter Property="HeightRequest"
+                        Value="35" />
+                <Setter Property="WidthRequest"
+                        Value="35" />
+                <Setter Property="HorizontalOptions"
+                        Value="Center" />
+                <Setter Property="VerticalOptions"
+                        Value="Center" />
+            </Style>
+
+            <!--Converter-->
+            <cv:IsLiquidationToDayConverter x:Key="isToDay" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <AbsoluteLayout BackgroundColor="White">
+            <Grid AbsoluteLayout.LayoutBounds="0,0,1,1"
+                  AbsoluteLayout.LayoutFlags="All">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <controls:BsdListView x:Name="ListViewThanhLy"
+                                      Grid.Row="0"
+                                      BackgroundColor="#eeeeee">
+                    <ListView.Header>
+                        <StackLayout Padding="10,5"
+                                     BackgroundColor="White">
+                            <ScrollView x:Name="ScrollViewFilter"
+                                        Orientation="Horizontal"
+                                        BackgroundColor="White"
+                                        HorizontalScrollBarVisibility="Never">
+                                <StackLayout x:Name="StackLayoutFilter"
+                                             Orientation="Horizontal"
+                                             Spacing="5">
+                                    <telerikPrimitives:RadBorder x:Name="FilterAllRadborder"
+                                                                 Style="{StaticResource RadBorderCategories}"
+                                                                 BorderColor="#aaaaaa"
+                                                                 BackgroundColor="#eeeeee">
+                                        <telerikPrimitives:RadBorder.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="FilterByStatus_Clicked" />
+                                        </telerikPrimitives:RadBorder.GestureRecognizers>
+                                        <Label Text="{Static lang:Language.see_all}"
+                                               Style="{StaticResource Category}" />
+                                    </telerikPrimitives:RadBorder>
+                                    <telerikPrimitives:RadBorder x:Name="FilterToDayRadborder"
+                                                                 Style="{StaticResource RadBorderCategories}">
+                                        <telerikPrimitives:RadBorder.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="FilterByStatus_Clicked"
+                                                                  CommandParameter="0" />
+                                        </telerikPrimitives:RadBorder.GestureRecognizers>
+                                        <Label Text="{Static lang:Language.dang_ban}"
+                                               Style="{StaticResource Category}" />
+                                    </telerikPrimitives:RadBorder>
+                                    <telerikPrimitives:RadBorder x:Name="FilterSoldRadborder"
+                                                                 Style="{StaticResource RadBorderCategories}">
+                                        <telerikPrimitives:RadBorder.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="FilterByStatus_Clicked"
+                                                                  CommandParameter="1" />
+                                        </telerikPrimitives:RadBorder.GestureRecognizers>
+                                        <Label Text="{Static lang:Language.da_ban}"
+                                               Style="{StaticResource Category}" />
+                                    </telerikPrimitives:RadBorder>
+                                    <telerikPrimitives:RadBorder x:Name="FilterOrderRadborder"
+                                                                 Style="{StaticResource RadBorderCategories}">
+                                        <telerikPrimitives:RadBorder.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="FilterByStatus_Clicked"
+                                                                  CommandParameter="2" />
+                                        </telerikPrimitives:RadBorder.GestureRecognizers>
+                                        <Label Text="{Static lang:Language.da_dat_hang}"
+                                               Style="{StaticResource Category}" />
+                                    </telerikPrimitives:RadBorder>
+                                    <telerikPrimitives:RadBorder x:Name="FilterOutOfDateRadborder"
+                                                                 Style="{StaticResource RadBorderCategories}">
+                                        <telerikPrimitives:RadBorder.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="FilterByStatus_Clicked"
+                                                                  CommandParameter="3" />
+                                        </telerikPrimitives:RadBorder.GestureRecognizers>
+                                        <Label Text="{Static lang:Language.het_han}"
+                                               Style="{StaticResource Category}" />
+                                    </telerikPrimitives:RadBorder>
+                                </StackLayout>
+                            </ScrollView>
+                            <controls:SearchBarFrame Margin="0">
+                                <controls:SearchBar x:Name="MySearchBarToDayListPage"
+                                                    SearchButtonPressed="Clicked_BtnSearch"
+                                                    TextChanged="Search_TextChaned" />
+                            </controls:SearchBarFrame>
+                        </StackLayout>
+                    </ListView.Header>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid BackgroundColor="White"
+                                      Margin="0,0,0,1"
+                                      ColumnSpacing="10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="100" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="100" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <telerikPrimitives:RadBorder Grid.Column="0"
+                                                                 Grid.Row="0"
+                                                                 CornerRadius="10"
+                                                                 IsClippedToBounds="True"
+                                                                 Margin="10,10,0,0">
+                                        <Grid>
+                                            <ffimageloading:CachedImage BackgroundColor="#eeeeee"
+                                                                        HeightRequest="100"
+                                                                        WidthRequest="100"
+                                                                        DownsampleToViewSize="True"
+                                                                        Source="{Binding AvatarFullUrl}"
+                                                                        Aspect="AspectFill" />
+                                            <StackLayout BackgroundColor="#999"
+                                                         Opacity="0.7"
+                                                         HeightRequest="100"
+                                                         WidthRequest="100"
+                                                         IsVisible="{Binding Status, Converter={StaticResource isToDay}}">
+                                                <Label HorizontalOptions="CenterAndExpand"
+                                                       VerticalOptions="CenterAndExpand"
+                                                       Text="{Binding StatusFormat}"
+                                                       TextColor="#fff" />
+                                            </StackLayout>
+                                        </Grid>
+                                    </telerikPrimitives:RadBorder>
+                                    <StackLayout Grid.Column="1"
+                                                 Grid.RowSpan="2"
+                                                 Spacing="3"
+                                                 Margin="0,10,10,10">
+                                        <Label FontSize="15"
+                                               TextColor="Black"
+                                               MaxLines="2"
+                                               LineBreakMode="TailTruncation"
+                                               Text="{Binding Name}" />
+                                        <Label FontSize="13"
+                                               TextColor="#444444"
+                                               Text="{Binding CreatedDateTimeAgo}" />
+                                        <Label Text="{Binding Address}"
+                                               FontSize="13"
+                                               MaxLines="1"
+                                               VerticalTextAlignment="Center"
+                                               LineBreakMode="TailTruncation"
+                                               TextColor="{StaticResource MainDarkColor}" />
+                                        <Label Text="{Binding PriceToDay, StringFormat='{0:0,0} đ'}"
+                                               FontSize="15"
+                                               FontAttributes="Bold"
+                                               MaxLines="1"
+                                               LineBreakMode="TailTruncation"
+                                               TextColor="Black" />
+                                    </StackLayout>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </controls:BsdListView>
+            </Grid>
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="End"
+                         Spacing="0"
+                         AbsoluteLayout.LayoutBounds="0,1,1,64"
+                         AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional"
+                         Margin="5">
+                <Frame Margin="5"
+                       Padding="0"
+                       CornerRadius="22">
+                    <Button Text="&#xf067;"
+                            Style="{StaticResource FLoatButtonStyle}"
+                            FontFamily="{StaticResource FontAwesomeSolid}"
+                            Clicked="AddLiquidation_Clicked" />
+                </Frame>
+            </StackLayout>
+            <controls:LoadingPopup x:Name="loadingPopup" />
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

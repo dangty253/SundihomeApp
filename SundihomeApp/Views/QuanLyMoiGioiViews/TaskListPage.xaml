@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="SundihomeApp.Views.QuanLyMoiGioiViews.TaskListPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SundihomeApp.Controls"
+    xmlns:cv="clr-namespace:SundihomeApp.Converters"
+    xmlns:lang="clr-namespace:SundihomeApp.Resources"
+    xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives"
+    Title="{Static lang:Language.cong_viec}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <cv:StatusColorConverter x:Key="statusColorConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <Grid AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <controls:Segment
+                    x:Name="segment"
+                    Grid.Row="0"
+                    OnSelectedIndexChanged="SegmentSelected_Tapped" />
+                <controls:BsdListView x:Name="lvCongViec" Grid.Row="1">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout
+                                    Margin="0,2,0,0"
+                                    Padding="10"
+                                    BackgroundColor="White">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="15"
+                                        LineBreakMode="TailTruncation"
+                                        MaxLines="1"
+                                        Text="{Binding Title}"
+                                        TextColor="{StaticResource MainDarkColor}" />
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label
+                                            FontSize="14"
+                                            HorizontalOptions="Start"
+                                            Text="{Binding Date, StringFormat='{0:dd/MM/yyyy - HH:mm}'}"
+                                            TextColor="#444444" />
+                                        <Label
+                                            FontSize="14"
+                                            HorizontalOptions="EndAndExpand"
+                                            Text="{Binding StatusFormat}"
+                                            TextColor="{Binding Status, Converter={StaticResource statusColorConverter}}" />
+                                    </StackLayout>
+                                    <Label
+                                        FontSize="14"
+                                        LineBreakMode="TailTruncation"
+                                        MaxLines="2"
+                                        Text="{Binding Description}"
+                                        TextColor="#444444" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </controls:BsdListView>
+            </Grid>
+            <StackLayout
+                Margin="5"
+                AbsoluteLayout.LayoutBounds="0,1,1,64"
+                AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional"
+                HorizontalOptions="End"
+                Orientation="Horizontal"
+                Spacing="0">
+                <Frame
+                    Margin="5"
+                    Padding="0"
+                    BorderColor="Gray"
+                    CornerRadius="22">
+                    <Button
+                        Clicked="AddWork_Clicked"
+                        FontFamily="{StaticResource FontAwesomeSolid}"
+                        Style="{StaticResource FLoatButtonStyle}"
+                        Text="&#xf067;" />
+                </Frame>
+            </StackLayout>
+            <controls:LoadingPopup x:Name="loadingPopup" />
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

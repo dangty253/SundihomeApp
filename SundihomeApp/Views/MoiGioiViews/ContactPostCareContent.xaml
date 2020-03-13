@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="SundihomeApp.Views.MoiGioiViews.ContactPostCareContent"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SundihomeApp.Controls"
+    xmlns:converters="clr-namespace:SundihomeApp.Converters"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:lang="clr-namespace:SundihomeApp.Resources"
+    xmlns:telerikInput="clr-namespace:Telerik.XamarinForms.Input;assembly=Telerik.XamarinForms.Input"
+    xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives"
+    xmlns:templateSelectors="clr-namespace:SundihomeApp.TemplateSelectors">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <converters:BoolToBoolConverter x:Key="BoolToBoolConverter" />
+            <templateSelectors:PostTemplateSeletor x:Key="PostTemplateSeletor" />
+            <converters:NullToHideConverter x:Key="NullToHideConverter" />
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <AbsoluteLayout>
+
+            <Grid AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <controls:BsdListView
+                    x:Name="DataListView"
+                    Grid.Row="0"
+                    ItemTemplate="{StaticResource PostTemplateSeletor}" />
+            </Grid>
+
+            <!--  Add Button  -->
+            <StackLayout
+                Margin="5"
+                AbsoluteLayout.LayoutBounds="0,1,1,64"
+                AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional"
+                HorizontalOptions="End"
+                Orientation="Horizontal"
+                Spacing="0">
+                <Frame
+                    Margin="5"
+                    Padding="0"
+                    CornerRadius="22">
+                    <Button
+                        Clicked="PickerPost_Clicked"
+                        FontFamily="{StaticResource FontAwesomeSolid}"
+                        Style="{StaticResource FLoatButtonStyle}"
+                        Text="&#xf067;" />
+                </Frame>
+            </StackLayout>
+
+            <controls:BottomModal x:Name="ModalPickPost" Title="{x:Static lang:Language.chon_bat_dong_san}">
+                <controls:BottomModal.ModalContent>
+                    <Grid RowSpacing="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <telerikInput:RadSegmentedControl
+                            x:Name="radSegmentedControl"
+                            Grid.Row="0"
+                            Margin="5,5,5,0"
+                            SegmentBackgroundColor="White"
+                            SegmentTextColor="{StaticResource MainDarkColor}"
+                            SelectedIndex="0"
+                            SelectedSegmentBackgroundColor="{StaticResource MainDarkColor}"
+                            SelectedSegmentTextColor="White"
+                            SelectionChanged="LoaiHinh_Change" />
+                        <StackLayout
+                            Grid.Row="1"
+                            Padding="5,0"
+                            BackgroundColor="White">
+                            <Frame
+                                Margin="0"
+                                Padding="0"
+                                BorderColor="Gray"
+                                CornerRadius="8"
+                                HasShadow="False"
+                                HeightRequest="35">
+                                <SearchBar
+                                    x:Name="ModalPopupSearchBar"
+                                    BackgroundColor="#ffffff"
+                                    FontSize="14"
+                                    Placeholder="{x:Static lang:Language.nhap_tu_khoa_tim_kiem}"
+                                    SearchButtonPressed="Search_Clicked"
+                                    TextChanged="SearchBar_TextChanged" />
+                            </Frame>
+                        </StackLayout>
+                        <controls:BsdListView
+                            x:Name="ListView0"
+                            Grid.Row="2"
+                            ItemTemplate="{StaticResource PostTemplateSeletor}" />
+                    </Grid>
+                </controls:BottomModal.ModalContent>
+            </controls:BottomModal>
+            <controls:LoadingPopup x:Name="loadingPopup" />
+        </AbsoluteLayout>
+    </ContentView.Content>
+</ContentView>

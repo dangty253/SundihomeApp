@@ -1,0 +1,263 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage x:Name="this"
+             xmlns:lang="clr-namespace:SundihomeApp.Resources"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives"
+             xmlns:controls="clr-namespace:SundihomeApp.Controls"
+             xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView"
+             x:Class="SundihomeApp.Views.LiquidationViews.ToDayDetailPage"
+             Title="{Binding LiquidationToDay.Name}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="RadBorder"
+                   TargetType="telerikPrimitives:RadBorder">
+                <Setter Property="Margin"
+                        Value="5,5,5,0" />
+                <Setter Property="BorderThickness"
+                        Value="1" />
+                <Setter Property="BorderColor"
+                        Value="#e0dbdb" />
+                <Setter Property="BackgroundColor"
+                        Value="White" />
+                <Setter Property="CornerRadius"
+                        Value="3" />
+            </Style>
+            <Style x:Key="Title"
+                   TargetType="Label">
+                <Setter Property="FontSize"
+                        Value="15" />
+                <Setter Property="TextColor"
+                        Value="{StaticResource MainDarkColor}" />
+                <Setter Property="FontAttributes"
+                        Value="Bold" />
+                <Setter Property="Margin"
+                        Value="10,0" />
+            </Style>
+            <Style x:Key="ProductPrice"
+                   TargetType="Label">
+                <Setter Property="FontSize"
+                        Value="15" />
+                <Setter Property="TextColor"
+                        Value="Red" />
+                <Setter Property="Margin"
+                        Value="10,0" />
+            </Style>
+            <Style x:Key="ProductProperty"
+                   TargetType="Label">
+                <Setter Property="TextColor"
+                        Value="#444" />
+                <Setter Property="FontSize"
+                        Value="13" />
+                <Setter Property="Margin"
+                        Value="10,0" />
+            </Style>
+            <Style x:Key="ProductDetail"
+                   TargetType="Label">
+                <Setter Property="TextColor"
+                        Value="#000" />
+                <Setter Property="FontSize"
+                        Value="13" />
+                <Setter Property="Margin"
+                        Value="10,0" />
+            </Style>
+            <Style x:Key="RadBorderImageList"
+                   TargetType="telerikPrimitives:RadBorder">
+                <Setter Property="Padding"
+                        Value="5" />
+                <Setter Property="BorderThickness"
+                        Value="1" />
+                <Setter Property="CornerRadius"
+                        Value="3" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <Grid AbsoluteLayout.LayoutBounds="0,0,1,1"
+                  AbsoluteLayout.LayoutFlags="All">
+                <ScrollView Padding="0,0,0,64">
+                    <StackLayout Spacing="0">
+                        <telerikPrimitives:RadBorder Style="{StaticResource RadBorder}">
+                            <StackLayout Margin="0,0,0,10">
+                                <StackLayout x:Name="ImageListStackLayout">
+                                    <cards:CarouselView x:Name="ImageListCarouselView"
+                                                        SelectedIndex="{Binding Position}"
+                                                        HeightRequest="210"
+                                                        ItemsSource="{Binding ImageList}">
+                                        <cards:CarouselView.ItemTemplate>
+                                            <DataTemplate>
+                                                <Image Source="{Binding}"
+                                                       Aspect="AspectFill">
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer NumberOfTapsRequired="1"
+                                                                              Tapped="OnClickedShowGallery"
+                                                                              CommandParameter="{Binding}" />
+                                                    </Image.GestureRecognizers>
+                                                </Image>
+                                            </DataTemplate>
+                                        </cards:CarouselView.ItemTemplate>
+                                    </cards:CarouselView>
+                                </StackLayout>
+                                <ScrollView Orientation="Horizontal"
+                                            HorizontalScrollBarVisibility="Never"
+                                            x:Name="ImageListScroll"
+                                            IsVisible="false">
+                                    <StackLayout x:Name="ImageList"
+                                                 HorizontalOptions="Center"
+                                                 BindableLayout.ItemsSource="{Binding ImageList}"
+                                                 Orientation="Horizontal">
+                                        <BindableLayout.ItemTemplate>
+                                            <DataTemplate>
+                                                <telerikPrimitives:RadBorder Style="{StaticResource RadBorderImageList}">
+                                                    <telerikPrimitives:RadBorder.GestureRecognizers>
+                                                        <TapGestureRecognizer NumberOfTapsRequired="1"
+                                                                              Tapped="OnImageTapped"
+                                                                              CommandParameter="{Binding}" />
+                                                    </telerikPrimitives:RadBorder.GestureRecognizers>
+                                                    <Image HeightRequest="60"
+                                                           WidthRequest="60"
+                                                           Aspect="AspectFill"
+                                                           Source="{Binding}" />
+                                                </telerikPrimitives:RadBorder>
+                                            </DataTemplate>
+                                        </BindableLayout.ItemTemplate>
+                                    </StackLayout>
+                                </ScrollView>
+                                <Label Style="{StaticResource Title}"
+                                       Text="{Binding LiquidationToDay.Name}" />
+                                <Label MaxLines="1"
+                                       LineBreakMode="TailTruncation"
+                                       Padding="10,0">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding LiquidationToDay.Price, StringFormat='{0:0,0} đ'}"
+                                                  TextDecorations="Strikethrough"
+                                                  FontSize="13"
+                                                  TextColor="Gray" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label Style="{StaticResource ProductPrice}"
+                                       Text="{Binding LiquidationToDay.PriceToDay, StringFormat='{0:0,0} đ'}" />
+                            </StackLayout>
+                        </telerikPrimitives:RadBorder>
+                        <telerikPrimitives:RadBorder  Style="{StaticResource RadBorder}">
+                            <StackLayout Margin="0,10">
+                                <Label Style="{StaticResource Title}"
+                                       Text="{Static lang:Language.chi_tiet_san_pham}" />
+                                <Grid RowSpacing="10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="2*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <!--model-->
+                                    <Label Grid.Column="0"
+                                           Grid.Row="0"
+                                           Style="{StaticResource ProductProperty}"
+                                           Text="{Static lang:Language.ma_san_pham}" />
+                                    <Label Grid.Column="1"
+                                           Grid.Row="0"
+                                           Style="{StaticResource ProductDetail}"
+                                           Text="{Binding LiquidationToDay.Code}" />
+                                    <!--category-->
+                                    <Label Grid.Column="0"
+                                           Grid.Row="1"
+                                           Style="{StaticResource ProductProperty}"
+                                           Text="{Static lang:Language.nhom_san_pham}" />
+                                    <Label Grid.Column="1"
+                                           Grid.Row="1"
+                                           Style="{StaticResource ProductDetail}"
+                                           Text="{Binding CategoryName}" />
+                                    <!--status-->
+                                    <Label Grid.Column="0"
+                                           Grid.Row="2"
+                                           Style="{StaticResource ProductProperty}"
+                                           Text="{Static lang:Language.trang_thai}" />
+                                    <Label Grid.Column="1"
+                                           Grid.Row="2"
+                                           Style="{StaticResource ProductDetail}"
+                                           Text="{Binding LiquidationToDay.StatusFormat}" />
+                                    <!--address-->
+                                    <Label Grid.Column="0"
+                                           Grid.Row="3"
+                                           Style="{StaticResource ProductProperty}"
+                                           Text="{Static lang:Language.dia_chi}" />
+                                    <Label Grid.Column="1"
+                                           Grid.Row="3"
+                                           Style="{StaticResource ProductDetail}"
+                                           Text="{Binding LiquidationToDay.Address}" />
+                                    <!--created by-->
+                                    <Label Grid.Column="0"
+                                           Grid.Row="4"
+                                           Style="{StaticResource ProductProperty}"
+                                           Text="{Static lang:Language.nguoi_dang_ban}" />
+                                    <Label Grid.Column="1"
+                                           Grid.Row="4"
+                                           Style="{StaticResource ProductDetail}"
+                                           Text="{Binding LiquidationToDay.CreatedBy.FullName}" />
+                                    <!--created date-->
+                                    <Label Grid.Column="0"
+                                           Grid.Row="5"
+                                           Style="{StaticResource ProductProperty}"
+                                           Text="{Static lang:Language.ngay_dang}" />
+                                    <Label Grid.Column="1"
+                                           Grid.Row="5"
+                                           Style="{StaticResource ProductDetail}"
+                                           Text="{Binding LiquidationToDay.CreatedDate, StringFormat='{0:dd/MM/yyyy - hh:mm}'}" />
+                                </Grid>
+                            </StackLayout>
+                        </telerikPrimitives:RadBorder>
+                        <telerikPrimitives:RadBorder Style="{StaticResource RadBorder}">
+                            <StackLayout Margin="0,10">
+                                <Label Style="{StaticResource Title}"
+                                       Text="{Static lang:Language.mo_ta_san_pham}" />
+                                <Label Style="{StaticResource ProductDetail}"
+                                       Text="{Binding LiquidationToDay.Description}" />
+                            </StackLayout>
+                        </telerikPrimitives:RadBorder>
+                    </StackLayout>
+                </ScrollView>
+            </Grid>
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="End"
+                         Spacing="0"
+                         AbsoluteLayout.LayoutBounds="0,1,1,64"
+                         AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional"
+                         Margin="5,5,64,5">
+                <Frame Margin="5"
+                       Padding="0"
+                       CornerRadius="22"
+                       x:Name="btnOrder"
+                       IsVisible="False">
+                    <Button Text="{StaticResource CartPlus}"
+                            BackgroundColor="Green"
+                            Style="{StaticResource FLoatButtonStyle}"
+                            FontFamily="{StaticResource FontAwesomeSolid}"
+                            Clicked="OnOrder_Clicked" />
+                </Frame>
+                <Frame Margin="5"
+                       Padding="0"
+                       CornerRadius="22"
+                       x:Name="btnReUpload"
+                       IsVisible="False">
+                    <Button Text="{StaticResource FileUpload}"
+                            BackgroundColor="Green"
+                            Style="{StaticResource FLoatButtonStyle}"
+                            FontFamily="{StaticResource FontAwesomeSolid}"
+                            Clicked="OnReUpload_Clicked" />
+                </Frame>
+            </StackLayout>
+            <controls:FloatingButtonGroup ItemsSource="{Binding BindingContext.ButtonCommandList,Source={x:Reference this}}" />
+            <controls:LoadingPopup x:Name="loadingPopup" />
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

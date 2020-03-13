@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" Title="{Static lang:Language.chon_tin_thanh_ly}" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives" xmlns:controls="clr-namespace:SundihomeApp.Controls" xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" ios:Page.UseSafeArea="true" xmlns:lang="clr-namespace:SundihomeApp.Resources" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SundihomeApp.Views.LiquidationViews.PickerLiquidationPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <!--Product name style-->
+            <Style x:Key="ProductName" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource MainDarkColor}" />
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="MaxLines" Value="2" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="LineBreakMode" Value="TailTruncation" />
+            </Style>
+            <!--Product price style-->
+            <Style x:Key="ProductPrice" TargetType="Label">
+                <Setter Property="TextColor" Value="Red" />
+                <Setter Property="FontAttributes" Value="None" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="MaxLines" Value="1" />
+                <Setter Property="LineBreakMode" Value="TailTruncation" />
+            </Style>
+
+            <Style x:Key="FilterButtonStyle" TargetType="Button">
+                <Setter Property="Text" Value="{StaticResource Filter}" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="CornerRadius" Value="10" />
+                <Setter Property="BackgroundColor" Value="{StaticResource MainDarkColor}" />
+                <Setter Property="HeightRequest" Value="35" />
+                <Setter Property="WidthRequest" Value="35" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <Grid AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <controls:BsdListView x:Name="ListViewThanhLy" Grid.Row="1">
+                    <!--<ListView.Header>
+                        <SearchBar Placeholder="{Static lang:Language.tim_kiem}" />
+                    </ListView.Header>-->
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <telerikPrimitives:RadBorder Margin="5,5,5,0" BorderThickness="1" BorderColor="#e0dbdb" CornerRadius="3" BackgroundColor="White">
+                                    <Grid Padding="10" ColumnSpacing="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid Grid.Column="0" Grid.Row="0" x:Name="thumbnail" HeightRequest="80" WidthRequest="100" Padding="0,0,10,0">
+                                            <ffimageloading:CachedImage DownsampleToViewSize="true" Aspect="AspectFill" Source="{Binding AvatarFullUrl}" />
+                                        </Grid>
+                                        <StackLayout Grid.Column="1" Grid.Row="0">
+                                            <Label Style="{StaticResource ProductName}" Text="{Binding Name}" />
+                                            <Label Style="{StaticResource ProductPrice}" Text="{Binding Price, StringFormat='{0:0,0} đ'}" />
+                                            <Label FontSize="14" TextColor="#444444" MaxLines="2" LineBreakMode="TailTruncation" Text="{Binding Address}" />
+                                            <Label Text="{Binding CreatedDateTimeAgo}" FontSize="14" TextColor="#444444" />
+                                        </StackLayout>
+                                    </Grid>
+                                </telerikPrimitives:RadBorder>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </controls:BsdListView>
+            </Grid>
+            <ContentView x:Name="ModalPrice" IsVisible="false" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" BackgroundColor="#eeeeee">
+                <telerikPrimitives:RadBorder CornerRadius="10" Margin="20" VerticalOptions="Center" BackgroundColor="White">
+                    <StackLayout Margin="10">
+                        <controls:FormLabelRequired Text="{Static lang:Language.nhap_gia_thanh_ly}" />
+                        <controls:CurrencyEntry x:Name="EntryPrice" Placeholder="{Static lang:Language.nhap_gia_thanh_ly_san_pham}" MaxValue="9000000000" />
+
+                        <Grid Margin="0,10,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Column="0" Text="{Static lang:Language.huy}" BorderColor="{StaticResource MainDarkColor}" BackgroundColor="White" BorderWidth="1" FontSize="15" Clicked="Cancel_Clicked" />
+                            <Button Grid.Column="1" Text="{Static lang:Language.luu}" BackgroundColor="{StaticResource MainDarkColor}" TextColor="White" FontSize="15" Clicked="Save_Clicked" />
+                        </Grid>
+                    </StackLayout>
+                </telerikPrimitives:RadBorder>
+            </ContentView>
+            <controls:LoadingPopup x:Name="loadingPopup" />
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

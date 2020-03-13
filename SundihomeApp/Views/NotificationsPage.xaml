@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:lang="clr-namespace:SundihomeApp.Resources" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:converters="clr-namespace:SundihomeApp.Converters" Title="{x:Static lang:Language.thong_bao}" x:Class="SundihomeApp.Views.NotificationsPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:NotificationIsReadColorConverter x:Key="NotificationIsReadColorConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="{x:Static lang:Language.xoa}" Clicked="DeleteNotification_Clicked" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ListView x:Name="ListViewNotification" IsPullToRefreshEnabled="True" RefreshCommand="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}" ItemsSource="{Binding Data}" BackgroundColor="#999999" SeparatorVisibility="None" CachingStrategy="RecycleElement" HasUnevenRows="True" SelectionMode="None">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="5,10" Grid.Row="0" BackgroundColor="{Binding IsRead,Converter={StaticResource NotificationIsReadColorConverter}}" Margin="0,1,0,0">
+                            <Label Text="{Binding Title}" FontSize="15" TextColor="#444444" />
+                            <Label FontSize="Small" Text="{Binding CreatedDate,StringFormat='{0:dd/MM/yyy HH:mm}'}" TextColor="#333333" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage.Content>
+</ContentPage>

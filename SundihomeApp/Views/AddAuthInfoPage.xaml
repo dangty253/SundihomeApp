@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:control="clr-namespace:SundihomeApp.Controls"
+    xmlns:cv="clr-namespace:SundihomeApp.Converters"
+    xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives"
+    x:Class="SundihomeApp.Views.AddAuthInfoPage"
+    Shell.TabBarIsVisible="False"
+    Title="Cập nhật thông tin" >
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!-- Time count down -->
+            <cv:CountDownConverter x:Key="countDownTime"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <Grid AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <ScrollView>
+                    <Grid RowSpacing="20"
+                          Margin="20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <!-- LOGO -->
+                        <Image Grid.Row="0"
+                               Source="logo.png"
+                               HeightRequest="80"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"/>
+                        <!-- EMAIL -->
+                        <Frame Grid.Row="1"
+                               Style="{StaticResource EntryFrame}"/>
+                        <control:BlankEntry Grid.Row="1"
+                                            Placeholder="Email (*)"
+                                            Text="{Binding User.Email}"
+                                            IsVisible="{Binding IsEmailHasValue}"/>
+                        <!-- PHONE -->
+                        <Frame Grid.Row="2"
+                               Style="{StaticResource EntryFrame}"/>
+                        <control:BlankEntry Grid.Row="2"
+                                            Placeholder="Số điện thoại (*)"
+                                            Text="{Binding User.Phone}"
+                                            IsVisible="{Binding IsPhoneHasValue}"/>
+                        <!-- LABEL -->
+                        <Label Grid.Row="3"
+                               FontSize="13"
+                               Text="Cập nhật thông tin để hoàn tất đăng ký tài khoản!"
+                               TextColor="Red"
+                               Margin="15,0"/>
+                        <!-- SUBMIT BUTTON-->
+                        <Button Grid.Row="4"
+                                Text="GỬI"
+                                Style="{StaticResource LightBlueButton}"
+                                Command="{Binding SubmitCommand}"/>
+                    </Grid>
+                </ScrollView>
+
+                <!-- OTP Popup -->
+                <Grid Padding="30"
+                      VerticalOptions="FillAndExpand"
+                      HorizontalOptions="FillAndExpand"
+                      x:Name="OtpPopup"
+                      IsVisible="False">
+                    <telerikPrimitives:RadBorder VerticalOptions="Center"
+                                                 BackgroundColor="#FFF"
+                                                 CornerRadius="10"
+                                                 BorderThickness="0">
+                        <StackLayout>
+                            <StackLayout HeightRequest="50"
+                                         BackgroundColor="{StaticResource MainDarkColor}"
+                                         Orientation="Horizontal">
+                                <Label Text="Xác thực tài khoản"
+                                       FontAttributes="Bold"
+                                        TextColor="#FFF"
+                                        FontSize="18"
+                                        Margin="20,0"
+                                        VerticalTextAlignment="Center"/>
+                                <Label Text="{StaticResource TimesCircle}"
+                                       FontFamily="{StaticResource FontAwesomeRegular}"
+                                       TextColor="#FFF"
+                                       FontAttributes="Bold"
+                                       Margin="20,0"
+                                       FontSize="18"
+                                       HorizontalOptions="EndAndExpand"
+                                       VerticalTextAlignment="Center">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnClosePopup"/>
+                                    </Label.GestureRecognizers>
+                                </Label>
+                            </StackLayout>
+                            <ScrollView>
+                                <StackLayout Margin="20">
+                                    <!-- BODY -->
+                                    <Label FontSize="14"
+                                           HorizontalTextAlignment="Center"
+                                           Text="Vui lòng nhập OTP được gửi về SĐT đăng ký để hoàn tất đăng ký tài khoản!"
+                                           TextColor="#444" />
+                                    <StackLayout Margin=" 0,10">
+                                        <Grid RowSpacing="10">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*" />
+                                                <RowDefinition Height="*" />
+                                                <RowDefinition Height="auto" />
+                                            </Grid.RowDefinitions>
+                                            <Frame Grid.Column="0" Grid.Row="0"
+                                                   Style="{StaticResource EntryFrame}"/>
+                                            <control:BlankEntry Grid.Column="0" Grid.Row="0"
+                                                   Keyboard="Numeric"
+                                                   x:Name="entryOTP1" 
+                                                   HorizontalTextAlignment="Center" 
+                                                   MaxLength="1"
+                                                   Text="{Binding RegisterOtp.Otp1}"
+                                                   TextChanged="EntryOTP1_TextChanged" />
+                                            <Frame Grid.Column="1" Grid.Row="0"
+                                                   Style="{StaticResource EntryFrame}"/>
+                                            <control:BlankEntry Grid.Column="1" Grid.Row="0" 
+                                                   x:Name="entryOTP2"
+                                                   Keyboard="Numeric"
+                                                   HorizontalTextAlignment="Center" 
+                                                   MaxLength="1"
+                                                   Text="{Binding RegisterOtp.Otp2}"
+                                                   TextChanged="EntryOTP2_TextChanged"/>
+                                            <Frame Grid.Column="2" Grid.Row="0"
+                                                   Style="{StaticResource EntryFrame}"/>
+                                            <control:BlankEntry Grid.Column="2" Grid.Row="0" 
+                                                   x:Name="entryOTP3"
+                                                   Keyboard="Numeric"
+                                                   HorizontalTextAlignment="Center" 
+                                                   MaxLength="1"
+                                                   Text="{Binding RegisterOtp.Otp3}"
+                                                   TextChanged="EntryOTP3_TextChanged"/>
+                                            <Frame Grid.Column="3" Grid.Row="0"
+                                                   Style="{StaticResource EntryFrame}"/>
+                                            <control:BlankEntry Grid.Column="3" Grid.Row="0" 
+                                                   x:Name="entryOTP4"
+                                                   Keyboard="Numeric"
+                                                   HorizontalTextAlignment="Center" 
+                                                   MaxLength="1"
+                                                   TextChanged="EntryOTP4_TextChanged"
+                                                   Text="{Binding RegisterOtp.Otp4}"/>
+                                            <Button Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"
+                                                    Text="Nhập lại"
+                                                    Style="{ StaticResource LightBlueOutlineButton }"
+                                                    Clicked="OnCleanOTPButtonClicked"/>
+                                            <Button Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2"
+                                                    Text="Xác nhận"
+                                                    Style="{ StaticResource LightBlueButton }"
+                                                    Command="{Binding OnConfirmOtpCommand}"/>
+                                            <ProgressBar x:Name="progressBar"
+                                                         Grid.Column="0" Grid.ColumnSpan="4"
+                                                         Grid.Row="2"
+                                                IsVisible="true"
+                                                Progress="1"
+                                                WidthRequest="300"
+                                                HorizontalOptions="Center">
+                                            </ProgressBar>
+                                        </Grid>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal"
+                                                 HorizontalOptions="Center">
+                                        <Label x:Name="lblResetOtp" IsEnabled="False"
+                                               FontSize="14">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Chưa nhận được OTP? " />
+                                                    <Span Text="Gửi lại"
+                                                          TextColor="Gray"
+                                                          TextDecorations="Underline"
+                                                          x:Name="spReset">
+                                                        <Span.GestureRecognizers>
+                                                            <TapGestureRecognizer Tapped="OnResetOTP" />
+                                                        </Span.GestureRecognizers>
+                                                    </Span>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label Text="{Binding Source={x:Reference progressBar},
+                                                                Path=Progress,
+                                                                Converter={StaticResource countDownTime},
+                                                                ConverterParameter=30000,
+                                                                StringFormat='({0})'}"
+                                               TextColor="Gray"
+                                               HorizontalOptions ="Center"
+                                               FontSize="14"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </ScrollView>
+                        </StackLayout>
+                    </telerikPrimitives:RadBorder>
+                </Grid>
+            </Grid>
+            <control:LoadingPopup x:Name="loadingPopup" IsVisible="{Binding IsLoading}" />
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives"
+    xmlns:control="clr-namespace:SundihomeApp.Controls"
+    x:Class="SundihomeApp.Views.UserFollowPage"
+    BackgroundColor="{StaticResource MainPageBackgroundColor}">
+
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <ListView HasUnevenRows="True"
+                      SelectionMode="None"
+                      SeparatorVisibility="None"
+                      VerticalScrollBarVisibility="Never"
+                      ItemTapped="OnCustomerTapped"
+                      BackgroundColor="{StaticResource MainPageBackgroundColor}"
+                      ItemsSource="{Binding Users}"
+                      AbsoluteLayout.LayoutBounds="0,0,1,1"
+                      AbsoluteLayout.LayoutFlags="All">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <telerikPrimitives:RadBorder 
+                                   Padding="0"
+                                   CornerRadius="10"
+                                   BorderColor="#e0dbdb"
+                                   BackgroundColor="#FFF"
+                                   Margin="10,10,10,0">
+                                <StackLayout Margin="10"
+                                             Orientation="Horizontal">
+                                    <StackLayout HeightRequest="50"
+                                                 WidthRequest="50"
+                                                 Margin="0,0,10,0"
+                                                 VerticalOptions="Center">
+                                        <telerikPrimitives:RadBorder Padding="0"
+                                                                     CornerRadius="25"
+                                                                     BorderColor="#e0dbdb">
+                                            <Image Source="{Binding AvatarFullUrl}"
+                                                   HeightRequest="50"
+                                                   WidthRequest="50"
+                                                   Aspect="AspectFill"/>
+                                        </telerikPrimitives:RadBorder>
+                                    </StackLayout>
+                                    <StackLayout VerticalOptions="CenterAndExpand">
+                                        <Label Text="{Binding FullName}"
+                                               FontSize="15"
+                                               FontAttributes="Bold"
+                                               TextColor="{StaticResource MainDarkColor}"/>
+                                        <Label Text="{Binding Email}"
+                                               TextColor="Gray"
+                                               FontSize="13"
+                                               FontAttributes="Italic"/>
+                                    </StackLayout>
+                                    <!--<StackLayout VerticalOptions="CenterAndExpand"
+                                                 HorizontalOptions="EndAndExpand"
+                                                 Margin="10,0">
+                                        <telerikPrimitives:RadBorder BorderColor="#e0dbdb"
+                                                                     CornerRadius="50"
+                                                                     BackgroundColor="white"
+                                                                     WidthRequest="36"
+                                                                     HeightRequest="36">
+                                            <Label Text="{StaticResource Heart}"
+                                                    TextColor="{StaticResource MainDarkColor}"
+                                                    FontSize="16"
+                                                    FontFamily="{StaticResource FontAwesomeSolid}"
+                                                    VerticalOptions="Center"
+                                                    HorizontalOptions="Center" />
+                                        </telerikPrimitives:RadBorder>
+                                    </StackLayout>-->
+                                </StackLayout>
+                            </telerikPrimitives:RadBorder>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <control:LoadingPopup x:Name="loadingPopup" IsVisible="{Binding IsLoading}" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" />
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage x:Name="this" xmlns="http://xamarin.com/schemas/2014/forms" Title="Chọn bất động sản" xmlns:telerikInput="clr-namespace:Telerik.XamarinForms.Input;assembly=Telerik.XamarinForms.Input" xmlns:converters="clr-namespace:SundihomeApp.Converters" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives" xmlns:controls="clr-namespace:SundihomeApp.Controls" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SundihomeApp.Views.PickPostPage">
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <Grid AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" RowSpacing="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <telerikInput:RadSegmentedControl SelectedIndex="0" Grid.Row="0" Margin="10,5,10,0" x:Name="SegmentedLoaiHinh" VerticalOptions="Start" SegmentTextColor="{StaticResource MainDarkColor}" SegmentBackgroundColor="White" SelectedSegmentTextColor="White" SelectedSegmentBackgroundColor="{StaticResource MainDarkColor}" SelectionChanged="Type_Changed">
+                    <telerikInput:RadSegmentedControl.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Cần bán</x:String>
+                            <x:String>Cho thuê</x:String>
+                        </x:Array>
+                    </telerikInput:RadSegmentedControl.ItemsSource>
+                </telerikInput:RadSegmentedControl>
+                <Frame Grid.Row="1" HeightRequest="35" CornerRadius="8" BorderColor="#aaaaaa" Padding="0" Margin="10,0" HasShadow="False">
+                    <SearchBar x:Name="searchBar" Placeholder="Tìm kiếm bất động sản..." TextChanged="Text_Changed" FontSize="14" BackgroundColor="White" SearchButtonPressed="Search_Pressed" />
+                </Frame>
+                <controls:BsdListView x:Name="Lv" Grid.Row="2" />
+            </Grid>
+            <controls:LoadingPopup x:Name="loadingPopup" />
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

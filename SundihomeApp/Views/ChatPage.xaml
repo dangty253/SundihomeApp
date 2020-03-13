@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" Shell.TabBarIsVisible="False" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives" xmlns:plugin="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin" xmlns:templateSelector="clr-namespace:SundihomeApp.TemplateSelectors" xmlns:controls="clr-namespace:SundihomeApp.Controls" xmlns:partials="clr-namespace:SundihomeApp.Views.Partials" x:Class="SundihomeApp.Views.ChatPage">
+    <Shell.TitleView>
+        <StackLayout Orientation="Horizontal" Padding="5" Spacing="5">
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="ViewUserProfile_Clicked" />
+            </StackLayout.GestureRecognizers>
+            <plugin:CircleImage x:Name="imageAvatar" HeightRequest="30" WidthRequest="30" Aspect="AspectFill" HorizontalOptions="Center" VerticalOptions="Center" Source="avatar.jpg" />
+            <Label x:Name="labelTitle" FontAttributes="Bold" FontSize="15" TextColor="White" VerticalOptions="Center" />
+        </StackLayout>
+    </Shell.TitleView>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <templateSelector:ChatTemplateSelector x:Key="MessageTemplateSelector" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <Grid RowSpacing="0" ColumnSpacing="0" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="1" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <!--<controls:ExtendedListView Grid.Row="0"
+                                           ItemTemplate="{StaticResource MessageTemplateSelector}"
+                                           ItemsSource="{Binding Data}" Margin="0,0,0,10" ItemTapped="OnListTapped" Rotation="180" FlowDirection="RightToLeft" HasUnevenRows="True" x:Name="ChatList" VerticalOptions="FillAndExpand" SeparatorColor="Transparent" ItemAppearingCommand="{Binding MessageAppearingCommand}" ItemDisappearingCommand="{Binding MessageDisappearingCommand}">
+                    <controls:ExtendedListView.Footer>
+                        <ActivityIndicator IsRunning="{Binding IsLoadingMore}" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="25" Color="{StaticResource MainDarkColor}" />
+                    </controls:ExtendedListView.Footer>
+                </controls:ExtendedListView>-->
+
+                <!--<controls:ExtendedListView Grid.Row="0" ItemsSource="{Binding Data}" Margin="0,0,0,10" ItemTapped="OnListTapped" Rotation="180" FlowDirection="RightToLeft" HasUnevenRows="True" x:Name="ChatList" VerticalOptions="FillAndExpand" SeparatorColor="Transparent" ItemAppearingCommand="{Binding MessageAppearingCommand}" ItemDisappearingCommand="{Binding MessageDisappearingCommand}">
+                    <controls:ExtendedListView.Footer>
+                        <ActivityIndicator IsRunning="{Binding IsLoadingMore}" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="25" Color="{StaticResource MainDarkColor}" />
+                    </controls:ExtendedListView.Footer>
+                    <controls:ExtendedListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Label Text="{Binding MessageContent}" Margin="0,15" />
+                            </ViewCell>
+                        </DataTemplate>
+                    </controls:ExtendedListView.ItemTemplate>
+                </controls:ExtendedListView>-->
+
+                <ListView x:Name="chatListView" Grid.Row="0" FlowDirection="RightToLeft" ItemTemplate="{StaticResource MessageTemplateSelector}" Rotation="180" SelectionMode="None" ItemTapped="OnItem_Tapped" SeparatorVisibility="None" HasUnevenRows="True" CachingStrategy="RecycleElement" ItemsSource="{Binding Data}" ItemAppearing="OnItemAppearing" />
+
+                <!--<Frame HorizontalOptions="EndAndExpand" Margin="0,0,2,15" VerticalOptions="End" HasShadow="false" Grid.Row="0" HeightRequest="50" WidthRequest="50" CornerRadius="25" Padding="1" BackgroundColor="White"
+                IsVisible="{Binding ShowScrollTap,Mode=TwoWay}">
+                <StackLayout Spacing="3">
+                    <Label Text="{Binding PendingMessageCount}" HorizontalOptions="CenterAndExpand" IsVisible="{Binding PendingMessageCountVisible}" VerticalTextAlignment="Center" TextColor="{DynamicResource primary}" />
+                    <Image Source="ic_scrolldown" WidthRequest="30" HeightRequest="30" VerticalOptions="CenterAndExpand" />
+                </StackLayout>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ScrollTap" />
+                </Frame.GestureRecognizers>
+            </Frame>-->
+                <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" BackgroundColor="LightGray" Grid.Row="1" />
+                <partials:ChatInputBarView Grid.Row="2" PickPost="PickPost_Clicked" PickFurnitureProduct="PickFurnitureProduct_Clicked" PickerLiquidationPost="PickerLiquidationPost_Clicked" x:Name="chatInput" />
+            </Grid>
+            <controls:BottomModal x:Name="ModalPicker">
+                <controls:BottomModal.ModalContent>
+                    <ContentView x:Name="ContentViewLookUp" Grid.Row="1" />
+                </controls:BottomModal.ModalContent>
+            </controls:BottomModal>
+            <controls:LoadingPopup x:Name="loadingPopup" />
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

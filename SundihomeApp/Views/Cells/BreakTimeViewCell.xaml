@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SundihomeApp.Views.Cells.BreakTimeViewCell">
+    <ViewCell.View>
+        <StackLayout Padding="5">
+            <Label HorizontalTextAlignment="Center" Text="{Binding CreatedDate, StringFormat='{0:dd/MM/yyyy}'}" FontSize="13" Rotation="180" TextColor="Gray" />
+        </StackLayout>
+    </ViewCell.View>
+</ViewCell>

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:lang="clr-namespace:SundihomeApp.Resources" Title="{x:Static lang:Language.tin_da_luu}" xmlns:controls="clr-namespace:SundihomeApp.Controls" xmlns:templateSelectors="clr-namespace:SundihomeApp.TemplateSelectors" x:Class="SundihomeApp.Views.MyFavoritePostListPage">
+    <ContentPage.Resources>
+        <templateSelectors:PostTemplateSeletor x:Key="PostTemplateSeletor" />
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <Grid AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <controls:BsdListView x:Name="lv" Grid.Row="0" ItemTemplate="{StaticResource PostTemplateSeletor}" />
+            </Grid>
+            <controls:LoadingPopup x:Name="loadingPopup" />
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:controls="clr-namespace:SundihomeApp.Controls" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" BackgroundColor="Transparent" AbsoluteLayout.LayoutBounds="0,1,1,64" AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional" HorizontalOptions="End" x:Class="SundihomeApp.Controls.FloatingButtonGroup">
+    <ContentView.Content>
+        <StackLayout VerticalOptions="End">
+            <ScrollView x:Name="MainScrollView" IsVisible="false">
+                <StackLayout x:Name="Options" BindableLayout.ItemsSource="{Binding ItemsSource}" HorizontalOptions="EndAndExpand" Padding="10" Spacing="10">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnItem_Clicked" CommandParameter="{Binding}" />
+                                </StackLayout.GestureRecognizers>
+                                <controls:ExtendedFrame Padding="15,0" Margin="0" CornerRadius="10" HeightRequest="35" BorderColor="#eeeeee" BackgroundColor="White">
+                                    <Label Text="{Binding Text}" TextColor="Black" VerticalTextAlignment="Center" FontAttributes="Bold" HeightRequest="35" MaxLines="1" LineBreakMode="MiddleTruncation" Margin="0" FontSize="15" />
+                                </controls:ExtendedFrame>
+                                <controls:ExtendedFrame WidthRequest="44" HeightRequest="44" CornerRadius="22" BorderColor="#eeeeee" Padding="0" Margin="5" BackgroundColor="White">
+                                    <Button Text="{Binding Icon}" Clicked="OnItem_Clicked" CommandParameter="{Binding}" FontSize="17" WidthRequest="44" HeightRequest="44" CornerRadius="22" FontFamily="{Binding FontFamily}" BackgroundColor="White" TextColor="Black" />
+                                </controls:ExtendedFrame>
+                            </StackLayout>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+            </ScrollView>
+            <Frame Margin="5,5,10,10" Padding="0" CornerRadius="22" WidthRequest="44" HorizontalOptions="End">
+                <Button x:Name="BtnShow" Clicked="BtnShow_CLicked" Text="&#xf129;" FontSize="20" WidthRequest="44" HeightRequest="44" CornerRadius="22" FontFamily="{StaticResource FontAwesomeSolid}" BackgroundColor="#4266B2" TextColor="White" />
+            </Frame>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:lang="clr-namespace:SundihomeApp.Resources"
+             Title="{Static lang:Language.danh_muc}"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives"
+             xmlns:controls="clr-namespace:SundihomeApp.Controls"
+             xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+             x:Class="SundihomeApp.Views.Furniture.FurnitureCategoryPage">
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <StackLayout Padding="0,10"
+                         VerticalOptions="FillAndExpand"
+                         HorizontalOptions="CenterAndExpand"
+                         AbsoluteLayout.LayoutBounds="0,0,1,1"
+                         AbsoluteLayout.LayoutFlags="All">
+                <flv:FlowListView FlowColumnCount="3"
+                                  RowHeight="140"
+                                  x:Name="CollectionViewCategories"
+                                  VerticalOptions="FillAndExpand"
+                                  SeparatorVisibility="None"
+                                  HasUnevenRows="false">
+                    <flv:FlowListView.FlowColumnTemplate>
+                        <DataTemplate>
+                            <StackLayout Padding="5">
+                                <telerikPrimitives:RadBorder BorderThickness="1"
+                                                             BorderColor="#e0dbdb"
+                                                             CornerRadius="18"
+                                                             BackgroundColor="White"
+                                                             HeightRequest="65"
+                                                             WidthRequest="65"
+                                                             HorizontalOptions="CenterAndExpand"
+                                                             VerticalOptions="CenterAndExpand">
+                                    <Image Source="{Binding Icon}"
+                                           Aspect="AspectFill" />
+                                </telerikPrimitives:RadBorder>
+                                <Label Text="{Binding Name}"
+                                       Margin="5"
+                                       VerticalTextAlignment="Center"
+                                       FontSize="15"
+                                       FontAttributes="Bold"
+                                       TextColor="{StaticResource MainDarkColor}"
+                                       HeightRequest="40"
+                                       MaxLines="2"
+                                       HorizontalTextAlignment="Center"
+                                       LineBreakMode="TailTruncation" />
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnCategoryTapped"
+                                                          CommandParameter="{Binding}" />
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
+                        </DataTemplate>
+                    </flv:FlowListView.FlowColumnTemplate>
+                </flv:FlowListView>
+            </StackLayout>
+            <controls:LoadingPopup x:Name="loadingPopup"
+                                   IsVisible="{Binding IsLoading}" />
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

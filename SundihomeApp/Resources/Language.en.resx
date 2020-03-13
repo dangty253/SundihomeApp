@@ -1,0 +1,2809 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>2.0</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <!-- common-->
+    <data name="tieng_viet">
+        <value>Vietnamese</value>
+    </data>
+    <data name="tieng_anh">
+        <value>English</value>
+    </data>
+    <data name="thong_bao">
+        <value>Notice</value>
+    </data>
+    <data name="dong_y">
+        <value>Accept</value>
+    </data>
+    <data name="huy">
+        <value>Cancel</value>
+    </data>
+    <data name="dong">
+        <value>Close</value>
+    </data>
+    <data name="tat_ca">
+        <value>All</value>
+    </data>
+    <data name="gui">
+        <value>Send</value>
+    </data>
+    <data name="binh_luan">
+        <value>Comment</value>
+    </data>
+    <data name="theo_doi">
+        <value>Follow</value>
+    </data>
+    <data name="chia_se">
+        <value>Share</value>
+    </data>
+    <data name="tim_kiem">
+        <value>Search</value>
+    </data>
+    <!--menu trai-->
+    <data name="bat_dong_san">
+        <value>Property</value>
+    </data>
+    <data name="tin_nhan">
+        <value>Messages</value>
+    </data>
+    <data name="cong_ty">
+        <value>Company</value>
+    </data>
+    <data name="danh_sach_cong_ty">
+        <value>Companies</value>
+    </data>
+    <data name="quan_ly_cong_ty">
+        <value>Company management</value>
+    </data>
+    <data name="quan_ly_moi_gioi">
+        <value>Broker management</value>
+    </data>
+    <data name="ngon_ngu">
+        <value>Languages</value>
+    </data>
+    <data name="gioi_thieu">
+        <value>About us</value>
+    </data>
+    <data name="ho_tro">
+        <value>Support</value>
+    </data>
+    <data name="dang_xuat">
+        <value>Log out</value>
+    </data>
+    <data name="ban_co_chac_chan_muon_dang_xuat">
+        <value>Are you sure to logout Sundihome?</value>
+    </data>
+    <data name="chon_ngon_ngu">
+        <value>Select language</value>
+    </data>
+    <!-- Tab BatDongSan-->
+    <data name="home">
+        <value>Home</value>
+    </data>
+    <data name="sell_rentout">
+        <value>Sell/Rent out</value>
+    </data>
+    <data name="place_an_ad">
+        <value>Property market</value>
+    </data>
+    <data name="buy_rent">
+        <value>Buy/Rent </value>
+    </data>
+    <data name="account">
+        <value>Account</value>
+    </data>
+    <!-- Views/HomePage-->
+    <data name="search_placeholder">
+        <value>Search...</value>
+    </data>
+    <data name="see_all">
+        <value>See all</value>
+    </data>
+    <data name="bat_dong_san_ban_cho_thue">
+        <value>For sell-rent</value>
+    </data>
+    <data name="canmua_thue">
+        <value>Buy-rent</value>
+    </data>
+    <data name="thanh_ly">
+        <value>Sell off</value>
+    </data>
+    <data name="du_an">
+        <value>Project</value>
+    </data>
+    <data name="noi_that">
+        <value>Funiture</value>
+    </data>
+    <data name="dang_ban">
+        <value>Sell/Rent out</value>
+    </data>
+    <data name="dang_mua">
+        <value>Buy/Rent </value>
+    </data>
+    <!--post list type 0 - 1-->
+    <data name="can_ban">
+        <value>For sell</value>
+    </data>
+    <data name="can_mua">
+        <value>Buy</value>
+    </data>
+    <data name="can_thue">
+        <value>Rent</value>
+    </data>
+    <!--PostPage-->
+    <data name="ngay_cam_ket">
+        <value>Commitment date</value>
+    </data>
+    <data name="vui_long_chon_ngay_cam_ket">
+        <value>Please select commitment date</value>
+    </data>
+    <data name="ngay_cam_ket_khong_dung_vui_long_thu_lai">
+        <value>Commitment date is incorrect. Please try again</value>
+    </data>
+    <data name="gia_chu_so_huu">
+        <value>Owner price</value>
+    </data>
+    <data name="huong_tay">
+        <value>West</value>
+    </data>
+    <data name="huong_dong">
+        <value>East</value>
+    </data>
+    <data name="huong_nam">
+        <value>South</value>
+    </data>
+    <data name="huong_bac">
+        <value>North</value>
+    </data>
+    <data name="huong_dong_bac">
+        <value>Northeast</value>
+    </data>
+    <data name="huong_tay_bac">
+        <value>Northwest</value>
+    </data>
+    <data name="huong_dong_nam">
+        <value>Southeast</value>
+    </data>
+    <data name="huong_tay_nam">
+        <value>Southwest</value>
+    </data>
+    <data name="can_ho">
+        <value>Apartment</value>
+    </data>
+    <data name="can_ho_dich_vu">
+        <value>Serviced Apartment</value>
+    </data>
+    <data name="nha_rieng">
+        <value>Single house</value>
+    </data>
+    <data name="nha_mat_pho_shophouse">
+        <value>Town house, Retail Spaces</value>
+    </data>
+    <data name="nha_biet_thu_lien_ke">
+        <value>Villa</value>
+    </data>
+    <data name="nha_tro_phong_tro">
+        <value>Hostel</value>
+    </data>
+    <data name="van_phong">
+        <value>Office</value>
+    </data>
+    <data name="cua_hang_mat_hang_ban_le">
+        <value>Shop, Retail Spaces</value>
+    </data>
+    <data name="dat_nha_xuong_kho_bai">
+        <value>Land, factory ,warehouse</value>
+    </data>
+    <data name="dat">
+        <value>Land</value>
+    </data>
+    <data name="bat_dong_san_khac">
+        <value>Other</value>
+    </data>
+    <data name="so_do">
+        <value>Land ownership certificate</value>
+    </data>
+    <data name="so_hong">
+        <value>House ownership certificate</value>
+    </data>
+    <data name="giay_phep_xay_dung">
+        <value>Construction permit</value>
+    </data>
+    <data name="giay_phep_kinh_doanh">
+        <value>Business registration certificate </value>
+    </data>
+    <data name="chua_xac_dinh">
+        <value>Undefined</value>
+    </data>
+    <data name="moi_bai_dang_phai_tu_it_nhat_x_tieng">
+        <value>Posts must be posted 2 hours apart ! Please try again</value>
+    </data>
+    <data name="dang_tin">
+        <value>New Post</value>
+    </data>
+    <data name="vui_long_chon_toi_da_9_anh">
+        <value>Please upload up to 9 photos</value>
+    </data>
+    <data name="vui_long_nhap_noi_dung">
+        <value>Please enter content</value>
+    </data>
+    <data name="don_vi">
+        <value>Unit</value>
+    </data>
+    <data name="vui_long_nhap_don_vi_hop_le">
+        <value>Please enter valid unit</value>
+    </data>
+    <data name="tin_nay_da_duoc_share_roi">
+        <value>This post was shared with the company </value>
+    </data>
+    <data name="chia_se_cho_cong_ty">
+        <value>Share to company</value>
+    </data>
+    <data name="dang_san">
+        <value>Send to property market</value>
+    </data>
+    <data name="vui_long_chon_loai_bat_dong_san">
+        <value>Please choose property type</value>
+    </data>
+    <data name="vui_long_nhap_dien_tich">
+        <value>Please enter acreage</value>
+    </data>
+    <data name="vui_long_nhap_gia">
+        <value>Please enter price</value>
+    </data>
+    <data name="vui_long_nhap_tieu_de">
+        <value>Please enter title</value>
+    </data>
+    <data name="ban_phai_cung_cap_toi_thieu_3_hinh_anh_ve_bat_dong_san">
+        <value>You must add minimum 3 images of property</value>
+    </data>
+    <data name="dia_chi_khong_tim_thay_tren_ban_do">
+        <value>Address not found on google map. Please try again.</value>
+    </data>
+    <data name="hinh_anh_vuot_qua_dung_luong">
+        <value>The image size exceed limit size. Please try again</value>
+    </data>
+    <data name="luu_thanh_cong">
+        <value>Saved successfully</value>
+    </data>
+    <data name="khong_the_luu_bai_dang">
+        <value>Cannot save, please try again.
+        </value>
+    </data>
+    <data name="ban_co_chac_chan_muon_xoa_khong">
+        <value>Are you sure to delete?
+        </value>
+    </data>
+    <data name="chia_se_thanh_cong">
+        <value>Successfully</value>
+    </data>
+    <data name="mo_ta_va_hinh_anh">
+        <value>Description/Images</value>
+    </data>
+    <data name="sundihome_can_truy_cap_vao_thu_vien_de_lay_hinh_bds_cua_ban">
+        <value>Sundihome needs to access your photo library to get your property photos</value>
+    </data>
+    <data name="sundihome_can_truy_cap_vao_may_anh_de_chup_hinh_bds">
+        <value>Sundihome needs to access your camera to take a photo of your property</value>
+    </data>
+    <data name="loai_hinh">
+        <value>Category</value>
+    </data>
+    <data name="loai_bat_dong_san">
+        <value>Property type</value>
+    </data>
+    <data name="tinh_trang_phap_ly">
+        <value>Certificate</value>
+    </data>
+    <data name="dien_tich_m2">
+        <value>Acreage (m2)</value>
+    </data>
+    <data name="tang">
+        <value>Floor</value>
+    </data>
+    <data name="mat_tien_m2">
+        <value>Facade Measurements (m)</value>
+    </data>
+    <data name="duong_vao_m2">
+        <value>Entryway Measurements (m)</value>
+    </data>
+    <data name="chieu_sau">
+        <value>Depth</value>
+    </data>
+    <data name="phong_ngu">
+        <value>bedrooms</value>
+    </data>
+    <data name="so_phong_ngu">
+        <value>Number of bedrooms</value>
+    </data>
+    <data name="phong_tam">
+        <value>bathrooms</value>
+    </data>
+    <data name="so_phong_tam">
+        <value>Number of bathrooms</value>
+    </data>
+    <data name="huong">
+        <value>Direction</value>
+    </data>
+    <data name="tieu_de_noi_dung">
+        <value>Title/Description</value>
+    </data>
+    <data name="hinh_anh_bat_dong_san">
+        <value>Property images</value>
+    </data>
+    <data name="tu_ngay">
+        <value>From date</value>
+    </data>
+    <data name="den_ngay">
+        <value>To date</value>
+    </data>
+    <data name="thong_tin_chu_bat_dong_san">
+        <value>Property owner information (Security)</value>
+    </data>
+    <!--LoginPage-->
+    <data name="otp_khong_dung_vui_long_nhap_lai">
+        <value>Incorrect OTP code. Please enter again</value>
+    </data>
+    <data name="loi_he_thong_vui_long_thu_lai">
+        <value>System error. Please try again</value>
+    </data>
+    <data name="dang_nhap">
+        <value>Login</value>
+    </data>
+    <data name="dang_ky">
+        <value>Register</value>
+    </data>
+    <data name="ho_ten">
+        <value>Full Name</value>
+    </data>
+    <data name="sdt">
+        <value>Phone</value>
+    </data>
+    <data name="sdt_moi_required">
+        <value>New phone (*)</value>
+    </data>
+    <data name="sdt_rquired">
+        <value>Phone (*)</value>
+    </data>
+    <data name="email_sdt_rquired">
+        <value>Email/Phone (*)</value>
+    </data>
+    <data name="mat_khau">
+        <value>Password</value>
+    </data>
+    <data name="vui_long_nhap_mat_khau">
+        <value>Please enter password</value>
+    </data>
+    <data name="mat_khau_required">
+        <value>Password (*)</value>
+    </data>
+    <data name="quen_mat_khau">
+        <value>Forgot password</value>
+    </data>
+    <data name="nhap_lai_mat_khau_rquired">
+        <value>Confirm password (*)</value>
+    </data>
+    <data name="hoac_dang_nhap_voi">
+        <value>Or</value>
+    </data>
+    <data name="email_khong_hop_le">
+        <value>Invalid email</value>
+    </data>
+    <data name="sdt_khong_hop_le">
+        <value>Invalid phone</value>
+    </data>
+    <data name="email_sdt_khong_hop_le">
+        <value>Invalid email/phone</value>
+    </data>
+    <data name="mat_khau_so_ky_tu">
+        <value>Password must be at least 6 characters</value>
+    </data>
+    <data name="xac_nhan_mat_khau_khong_dung">
+        <value>Password don't match</value>
+    </data>
+    <data name="doi_mat_khau_thanh_cong">
+        <value>Password changed</value>
+    </data>
+    <data name="vui_long_nhap_otp">
+        <value>Enter the OTP which has been sent to the registered phone number to complete account registration!</value>
+    </data>
+    <data name="vui_long_nhap_otp_doi_mat_khau">
+        <value>Please enter the OTP which has been sent to your phone number to change your password!</value>
+    </data>
+    <data name="la_ma_xac_thuc_cua_ban">
+        <value>is your Sundihome verification code</value>
+    </data>
+    <data name="otp_khong_hop_le">
+        <value>Invalid OTP</value>
+    </data>
+    <data name="xac_thuc_tai_khoan">
+        <value>Verify your account</value>
+    </data>
+    <data name="email_da_ton_tai">
+        <value>Email already exists</value>
+    </data>
+    <data name="sdt_da_ton_tai">
+        <value>Phone already exists</value>
+    </data>
+    <data name="doi_sdt">
+        <value>Change phone number</value>
+    </data>
+    <data name="doi_email">
+        <value>Change email</value>
+    </data>
+    <data name="doi_mat_khau">
+        <value>Changd password</value>
+    </data>
+    <data name="xac_nhan_mat_khau_moi_required">
+        <value>Confirm new password (*)</value>
+    </data>
+    <data name="mat_khau_moi_required">
+        <value>New password (*)</value>
+    </data>
+    <data name="email_moi_required">
+        <value>New email (*)</value>
+    </data>
+    <data name="chua_nhan_duoc_otp">
+        <value>Did not receive?</value>
+    </data>
+    <data name="gui_lai">
+        <value>Resend</value>
+    </data>
+    <data name="nhap_lai">
+        <value>Re-enter</value>
+    </data>
+    <data name="dang_ky_thanh_cong">
+        <value>Registration successful</value>
+    </data>
+    <data name="dang_ky_that_bai_thu_lai">
+        <value>Registration failed, please try again!</value>
+    </data>
+    <data name="khong_tim_thay_tai_khoan">
+        <value>Incorect email/phone or password</value>
+    </data>
+    <!-- AccountPage-->
+    <data name="lien_ket_facebook_thanh_cong">
+        <value>Your account is linked with Facebook</value>
+    </data>
+    <data name="lien_ket_zalo_thanh_cong">
+        <value>Your account is linked with Zalo</value>
+    </data>
+    <data name="lien_ket_google_thanh_cong">
+        <value>Your account is linked with Google</value>
+    </data>
+    <data name="loi_xac_thuc">
+        <value>Authentication error</value>
+    </data>
+    <data name="khong_the_huy_lien_ket">
+        <value>Unable to unlink</value>
+    </data>
+    <data name="ban_co_chac_chan_muon_huy_lien_ket_khong">
+        <value>Are you sure you want to unlink?</value>
+    </data>
+    <data name="lien_ket_mxh">
+        <value>Connect social media</value>
+    </data>
+    <data name="tin_da_dang">
+        <value>Posts</value>
+    </data>
+    <data name="lich">
+        <value>Appointment</value>
+    </data>
+    <data name="tin_da_luu">
+        <value>Saved</value>
+    </data>
+    <data name="nguoi_theo_doi">
+        <value>Followers</value>
+    </data>
+    <data name="dang_theo_doi">
+        <value>Following</value>
+    </data>
+    <data name="moi_gioi">
+        <value>Agent</value>
+    </data>
+    <data name="xem_thong_tin">
+        <value>View my profile</value>
+    </data>
+    <data name="dang_ky_moi_gioi">
+        <value>Agent Register</value>
+    </data>
+    <data name="dang_ky_cong_ty">
+        <value>Sign up company</value>
+    </data>
+    <data name="dang_ky_nhan_vien">
+        <value>Sign up employee</value>
+    </data>
+    <data name="vui_long_nhap_so_dien_thoai">
+        <value>Phone is required</value>
+    </data>
+    <data name="nhap_ma_otp">
+        <value>Enter OTP code</value>
+    </data>
+    <data name="ngay_sinh">
+        <value>Birthday</value>
+    </data>
+    <data name="gioi_tinh">
+        <value>Sex</value>
+    </data>
+    <data name="dia_chi">
+        <value>Address</value>
+    </data>
+    <data name="province">
+        <value>Province</value>
+    </data>
+    <data name="district">
+        <value>District</value>
+    </data>
+    <data name="ward">
+        <value>Ward</value>
+    </data>
+    <data name="street">
+        <value>Street</value>
+    </data>
+    <data name="chon_hinh_dai_dien">
+        <value>Select Image</value>
+    </data>
+    <data name="may_anh">
+        <value>Camera</value>
+    </data>
+    <data name="thu_vien_anh">
+        <value>Photo library</value>
+    </data>
+    <data name="quyen_truy_cap_may_anh">
+        <value>Camera permission</value>
+    </data>
+    <data name="quyen_truy_cap_thu_vien">
+        <value>Photo permission</value>
+    </data>
+    <data name="sundihome_can_quyen_truy_cap_vao_may_anh_anh_dai_dien">
+        <value>Sundihome needs to access your camera to take a picture and create your avatar</value>
+    </data>
+    <data name="sundihome_can_quyen_truy_cap_vao_thu_vien_anh_dai_dien">
+        <value>Sundihome needs to access your photo library to create your avatar</value>
+    </data>
+    <data name="quyen_truy_cap_bi_tu_choi">
+        <value>Access denied</value>
+    </data>
+    <data name="khong_the_truy_cap_vao_thu_vien_anh">
+        <value>Unable to access photo gallery</value>
+    </data>
+    <data name="may_anh_khong_kha_dung">
+        <value>Camera not available</value>
+    </data>
+    <data name="cap_nhat_anh_dai_dien_thanh_cong">
+        <value>Saved successfully</value>
+    </data>
+    <data name="khong_cap_nhat_duoc_anh_dai_dien">
+        <value>Không cập nhật được ảnh đại diện.</value>
+    </data>
+    <data name="vui_long_nhap_ho_ten">
+        <value>Please enter fullname</value>
+    </data>
+    <data name="cap_nhat_thong_tin_thanh_cong">
+        <value>Saved successfully</value>
+    </data>
+    <data name="mat_khau_khong_dung">
+        <value>Password incorrect</value>
+    </data>
+    <data name="cap_nhat_mat_khau_thanh_cong">
+        <value>Saved successfully</value>
+    </data>
+    <data name="cap_nhat_mat_khau_thanh_cong">
+        <value>Saved successfully</value>
+    </data>
+    <data name="vui_long_nhap_email">
+        <value>Please enter email</value>
+    </data>
+    <data name="email_khong_hop_le">
+        <value>Invalid email</value>
+    </data>
+    <data name="cap_nhat_email_thanh_cong">
+        <value>Saved successfully</value>
+    </data>
+    <data name="cap_nhat_sdt_thanh_cong">
+        <value>Saved successfully</value>
+    </data>
+    <data name="goi_vay">
+        <value>Loan</value>
+    </data>
+    <data name="ngan_hang">
+        <value>Bank</value>
+    </data>
+    <data name="dang_ky_nhan_vien_ngan_hang">
+        <value>Sign up Bank Employeer</value>
+    </data>
+    <!--Views/PostListItemPage-->
+    <data name="san_bat_dong_san">
+        <value>Posts</value>
+    </data>
+    <!--Views/UserProfilePage-->
+    <data name="thong_tin_ca_nhan">
+        <value>Personal information</value>
+    </data>
+    <data name="ngay_tham_gia">
+        <value>Date joined</value>
+    </data>
+    <data name="huy_theo_doi">
+        <value>Unfollow</value>
+    </data>
+    <data name="nam">
+        <value>Male</value>
+    </data>
+    <data name="nu">
+        <value>Female</value>
+    </data>
+    <!-- AddProjectPage-->
+    <data name="thong_tin_co_ban">
+        <value>Information</value>
+    </data>
+    <data name="dang_tin_du_an">
+        <value>Add Project</value>
+    </data>
+    <data name="tieu_de_du_an">
+        <value>Project title</value>
+    </data>
+    <data name="nhap_tieu_de_du_an">
+        <value>Add title</value>
+    </data>
+    <data name="loai_du_an">
+        <value>Project type</value>
+    </data>
+    <data name="chon_loai_du_an">
+        <value>Choose project type</value>
+    </data>
+    <data name="trang_thai">
+        <value>Status</value>
+    </data>
+    <data name="chon_trang_thai">
+        <value>Choose status</value>
+    </data>
+    <data name="gia_tien">
+        <value>Price</value>
+    </data>
+    <data name="gia_thoa_thuan">
+        <value>Offer</value>
+    </data>
+    <data name="khoang_gia">
+        <value>Price range</value>
+    </data>
+    <data name="gia_tien_tu">
+        <value>Price to</value>
+    </data>
+    <data name="gia_tien_den">
+        <value>Price from</value>
+    </data>
+    <data name="tinh_thanh">
+        <value>Province</value>
+    </data>
+    <data name="quan_huyen">
+        <value>District</value>
+    </data>
+    <data name="phuong_xa">
+        <value>Ward</value>
+    </data>
+    <data name="so_nha_duong">
+        <value>Street</value>
+    </data>
+    <data name="thong_tin_chi_tiet">
+        <value>Details</value>
+    </data>
+    <data name="chu_dau_tu">
+        <value>Investor</value>
+    </data>
+    <data name="don_vi_thiet_ke_thi_cong">
+        <value>Construction design unit</value>
+    </data>
+    <data name="phan_khu_du_an">
+        <value>Project subdivision</value>
+    </data>
+    <data name="tong_so_von_dau_tu">
+        <value>Total investment</value>
+    </data>
+    <data name="so_luong_san_pham">
+        <value>The number of products</value>
+    </data>
+    <data name="so_luong_toa_nha">
+        <value>Number of buildings</value>
+    </data>
+    <data name="mat_do_xay_dung">
+        <value>Building density</value>
+    </data>
+    <data name="so_thang_may">
+        <value>Lift number</value>
+    </data>
+    <data name="so_tang">
+        <value>Number of floors</value>
+    </data>
+    <data name="tang_ham">
+        <value>Basement</value>
+    </data>
+    <data name="dien_tich_san_trung_binh">
+        <value>Average floor area</value>
+    </data>
+    <data name="khoang_dien_tich">
+        <value>Acreage range</value>
+    </data>
+    <data name="dien_tich">
+        <value>Area</value>
+    </data>
+    <data name="dien_tich_tu">
+        <value>Min Area</value>
+    </data>
+    <data name="dien_tich_den">
+        <value>Max Area</value>
+    </data>
+    <data name="dien_tich_xay_dung">
+        <value>Construction area</value>
+    </data>
+    <data name="dien_tich_cay_xanh">
+        <value>Green area</value>
+    </data>
+    <data name="dien_tich_khu_dat">
+        <value>Land area</value>
+    </data>
+    <data name="tong_dien_tich_san">
+        <value>Total floor area</value>
+    </data>
+    <data name="thoi_gian_mo_ban">
+        <value>Sales time </value>
+    </data>
+    <data name="thoi_gian_ban_giao">
+        <value>Hand-over time</value>
+    </data>
+    <data name="nam_khoi_cong">
+        <value>The year start</value>
+    </data>
+    <data name="nam_hoan_thanh">
+        <value>Completion year</value>
+    </data>
+    <data name="noi_that_tien_nghi">
+        <value>Interior comfort</value>
+    </data>
+    <data name="tien_ich_noi_khu">
+        <value>Internal utility</value>
+    </data>
+    <data name="tien_ich_ngoai_khu">
+        <value>External utility</value>
+    </data>
+    <data name="co_so_vat_chat">
+        <value>Facilities</value>
+    </data>
+    <data name="da_chon">
+        <value>Selected:</value>
+    </data>
+    <data name="mo_ta">
+        <value>Description </value>
+    </data>
+    <data name="chon_hinh_anh">
+        <value>Choose image</value>
+    </data>
+    <data name="thong_tin_bo_sung">
+        <value>More information</value>
+    </data>
+    <data name="nhat_ky_du_an">
+        <value>Project diary</value>
+    </data>
+    <data name="them_ghi_nhan">
+        <value>Add diary</value>
+    </data>
+    <data name="xac_nhan">
+        <value>Confirm</value>
+    </data>
+    <data name="tieu_de">
+        <value>Title</value>
+    </data>
+    <data name="thoi_gian">
+        <value>Time</value>
+    </data>
+    <data name="noi_dung">
+        <value>Content</value>
+    </data>
+    <data name="huy">
+        <value>Cancel</value>
+    </data>
+    <data name="luu">
+        <value>Save</value>
+    </data>
+    <data name="xoa">
+        <value>Delete</value>
+    </data>
+    <data name="vui_long_nhap_tieu_de_du_an">
+        <value>Please enter the project title.</value>
+    </data>
+    <data name="vui_long_chon_trang_thai">
+        <value>Please choose status</value>
+    </data>
+    <data name="vui_long_nhap_khoang_gia">
+        <value>Please enter price range</value>
+    </data>
+    <data name="vui_long_chon_tinh_thanh">
+        <value>Please choose city</value>
+    </data>
+    <data name="vui_long_chon_quan_huyen">
+        <value>Please choose district</value>
+    </data>
+    <data name="vui_long_chon_phuong_xa">
+        <value>Please choose ward</value>
+    </data>
+    <data name="vui_long_nhap_mo_ta">
+        <value>Please enter description</value>
+    </data>
+    <data name="vui_long_chon_hinh">
+        <value>Please choose image</value>
+    </data>
+    <data name="vui_long_nhap_tieu_de_nhat_ky">
+        <value>Please enter title diary</value>
+    </data>
+    <data name="vui_long_nhap_noi_dung_nhat_ky">
+        <value>Please enter content diary</value>
+    </data>
+    <data name="them_nhat_ky_thanh_cong">
+        <value>Add Diary Success</value>
+    </data>
+    <data name="vui_long_nhap_day_du_thong_tin_dien_tich_san">
+        <value>Please enter the floor area</value>
+    </data>
+    <data name="vui_long_nhap_day_du_thong_tin_dien_tich_cay_xanh">
+        <value>Please enter the green area</value>
+    </data>
+    <data name="vui_long_nhap_day_du_thong_tin_dien_tich_khu_dat">
+        <value>Please enter the land area</value>
+    </data>
+    <data name="vui_long_nhap_day_du_thong_tin_dien_tich_xay_dung">
+        <value>Please enter the construction area</value>
+    </data>
+    <data name="mat_do_xay_dung_khong_dung_vui_long_nhap_lai">
+        <value>Please enter a valid building density</value>
+    </data>
+    <data name="chon_it_nhat_3_hinh">
+        <value>Add minimum 3 images</value>
+    </data>
+    <data name="dia_chi_khong_thay_tren_ban_do_vui_long_nhap_lai">
+        <value>Could not find your address on the map. Please enter the address again</value>
+    </data>
+    <data name="vui_long_upload_toi_da_8_hinh_anh_bat_dong_san">
+        <value>Please upload up to 8 images</value>
+    </data>
+    <data name="hinh_anh_vuot_qua_dung_luong_vui_long_thu_lai">
+        <value>The image size exceed limit size. Please try again</value>
+    </data>
+    <data name="ban_co_muon_bo_sung_nhat_ky_du_an_khong">
+        <value>Do you want to add project diary?</value>
+    </data>
+    <data name="khong_the_luu_du_an_vui_long_thu_lai">
+        <value>Unable to save project. Please try again</value>
+    </data>
+    <data name="ban_co_chac_chan_muon_xoa_du_an_nay_khong">
+        <value>Are you sure you want to delete ?</value>
+    </data>
+    <data name="xoa_khong_thanh_cong">
+        <value>Delete failed</value>
+    </data>
+    <data name="ban_co_chac_chan_muon_xoa_nhat_ky_nay_khong">
+        <value>Are you sure you want to delete?</value>
+    </data>
+    <data name="them_ghi_nhan_thanh_cong">
+        <value>Saved successfully</value>
+    </data>
+    <data name="xem_them">
+        <value>Show more</value>
+    </data>
+    <data name="them_su_kien">
+        <value>Add event</value>
+    </data>
+    <!-- BDSUtilities.cs -->
+    <data name="khu_vuc_de_xe_may">
+        <value>Motor park</value>
+    </data>
+    <data name="khu_vuc_de_o_to">
+        <value>Parking Space (Car)</value>
+    </data>
+    <data name="khuon_vien_cay_xanh">
+        <value>Green Space</value>
+    </data>
+    <data name="ghe_cong_cong">
+        <value>Community chair</value>
+    </data>
+    <data name="he_thong_dien_du_phong">
+        <value>Preventive electrical</value>
+    </data>
+    <data name="he_thong_dieu_hoa_tong">
+        <value>Air conditioning system</value>
+    </data>
+    <data name="lam_dep_spa">
+        <value>Spa</value>
+    </data>
+    <data name="khu_vui_choi_tre_em">
+        <value>Play area for children</value>
+    </data>
+    <data name="hop_thu_dan_cu">
+        <value>Residential mailbox</value>
+    </data>
+    <data name="ho_nuoc">
+        <value>Lake</value>
+    </data>
+    <data name="khu_tam_linh">
+        <value>Spirituality area</value>
+    </data>
+    <data name="Smarthome">
+        <value>Smarthome</value>
+    </data>
+    <data name="nha_cong_dong">
+        <value>Community Center</value>
+    </data>
+    <data name="khu_thu_gian_cho_nguoi_cao_tuoi">
+        <value>relaxation zone for elderly</value>
+    </data>
+    <data name="cong_vien">
+        <value>Park</value>
+    </data>
+    <data name="khu_to_chuc_su_kien">
+        <value>Event zone</value>
+    </data>
+    <data name="rap_chieu_phim">
+        <value>Cinema</value>
+    </data>
+    <data name="Bar">
+        <value>Bar</value>
+    </data>
+    <data name="Karaoke">
+        <value>Karaoke</value>
+    </data>
+    <data name="tu_bep">
+        <value>Kitchen cabinets</value>
+    </data>
+    <data name="bon_tam">
+        <value>Bathtub</value>
+    </data>
+    <data name="bon_rua_mat">
+        <value>Washstand</value>
+    </data>
+    <data name="binh_nong_lanh">
+        <value>Storage water heater</value>
+    </data>
+    <data name="may_hut_bui">
+        <value>Hood</value>
+    </data>
+    <data name="ban_an">
+        <value>Dining table</value>
+    </data>
+    <data name="ke_tivi">
+        <value>TV shelf</value>
+    </data>
+    <data name="tu_trang_tri">
+        <value>Decorative cabinet</value>
+    </data>
+    <data name="giuong_ngu">
+        <value>Bed</value>
+    </data>
+    <data name="ban_phan">
+        <value>Makeup table</value>
+    </data>
+    <data name="tu_quan_ao">
+        <value>wardrobe</value>
+    </data>
+    <data name="voi_hoa_sen">
+        <value>Shower</value>
+    </data>
+    <data name="bo_bien">
+        <value>Beach</value>
+    </data>
+    <data name="phong_xong_hoi">
+        <value>Sauna</value>
+    </data>
+    <data name="sofa_phong_khach">
+        <value>Living room sofa</value>
+    </data>
+    <data name="ban_tra">
+        <value>Tea table</value>
+    </data>
+    <data name="dem">
+        <value>Mattress</value>
+    </data>
+    <data name="tran_tha">
+        <value>Drop ceiling</value>
+    </data>
+    <data name="dieu_hoa">
+        <value>Air conditioner</value>
+    </data>
+    <data name="Internet">
+        <value>Internet</value>
+    </data>
+    <data name="thiet_bi_bao_chay">
+        <value>Fire system</value>
+    </data>
+    <data name="truyen_hinh_cap">
+        <value>Cable tv</value>
+    </data>
+    <data name="bep_gas_dien">
+        <value>Gas stove</value>
+    </data>
+    <data name="vuon_treo_tren_cao">
+        <value>Hanging garden</value>
+    </data>
+    <data name="xe_bus">
+        <value>Bus service</value>
+    </data>
+    <data name="cong_vien_nuoc">
+        <value>Water park</value>
+    </data>
+    <data name="he_thong_gas_tong">
+        <value>Overall gas system</value>
+    </data>
+    <data name="dai_phun_nuoc">
+        <value>Fountain</value>
+    </data>
+    <data name="quang_truong">
+        <value>Square</value>
+    </data>
+    <data name="ben_du_thuyen">
+        <value>Marinas</value>
+    </data>
+    <data name="thu_vien">
+        <value>Library</value>
+    </data>
+    <data name="Casino">
+        <value>Casino</value>
+    </data>
+    <data name="tu_am_tuong">
+        <value>Wall cabinet</value>
+    </data>
+    <data name="tu_lanh">
+        <value>Fridge</value>
+    </data>
+    <data name="san_truot_bang">
+        <value>Skating rink</value>
+    </data>
+    <data name="Tivi">
+        <value>Television</value>
+    </data>
+    <data name="may_giat">
+        <value>Washing machine</value>
+    </data>
+    <data name="lo_vi_song">
+        <value>Microwave</value>
+    </data>
+    <data name="may_rua_bat">
+        <value>Dishwasher</value>
+    </data>
+    <data name="may_phat_dien">
+        <value>Electric machine</value>
+    </data>
+    <data name="dieu_hoa_am_tran">
+        <value>Conditioner ceiling</value>
+    </data>
+    <data name="he_thong_chong_trom">
+        <value>Anti theft system</value>
+    </data>
+    <data name="may_say_quan_ao">
+        <value>Dryer</value>
+    </data>
+    <data name="dai_quan_sat">
+        <value>Observatory</value>
+    </data>
+    <data name="ban_lam_viec">
+        <value>Work table</value>
+    </data>
+    <data name="tu_giay">
+        <value>Shoes cabinet</value>
+    </data>
+    <data name="may_chieu">
+        <value>Projectors</value>
+    </data>
+    <data name="may_in">
+        <value>Printer</value>
+    </data>
+    <data name="tu_tai_lieu">
+        <value>Document cabinet</value>
+    </data>
+    <data name="tap_dau_giuong">
+        <value>Bed tab</value>
+    </data>
+    <data name="le_tan">
+        <value>Reception</value>
+    </data>
+    <data name="an_ninh_bao_ve">
+        <value>Security</value>
+    </data>
+    <data name="don_ve_sinh">
+        <value>Cleaning service</value>
+    </data>
+    <data name="the_dan_cu">
+        <value>Member card</value>
+    </data>
+    <data name="camera_giam_sat">
+        <value>Security camera</value>
+    </data>
+    <data name="nha_hang">
+        <value>Restaurant</value>
+    </data>
+    <data name="sieu_thi">
+        <value>Supermarket</value>
+    </data>
+    <data name="coffee_shop">
+        <value>Coffee shop</value>
+    </data>
+    <data name="trung_tam_thuong_mai">
+        <value>Business center</value>
+    </data>
+    <data name="ATM">
+        <value>ATM</value>
+    </data>
+    <data name="be_boi_ngoai_troi">
+        <value>Swimming pool outside</value>
+    </data>
+    <data name="be_boi_4_mua">
+        <value>Swimming pool 4 seasons</value>
+    </data>
+    <data name="phong_cho">
+        <value>Lounge</value>
+    </data>
+    <data name="truong_mam_non">
+        <value>Preschool</value>
+    </data>
+    <data name="truong_hoc_cap_1_2_3">
+        <value>High school</value>
+    </data>
+    <data name="benh_vien_phong_kham">
+        <value>Health facility</value>
+    </data>
+    <data name="shop_thoi_trang">
+        <value>Fashion shop</value>
+    </data>
+    <data name="hieu_giat_la">
+        <value>Laundry</value>
+    </data>
+    <data name="be_boi_trong_nha">
+        <value>Swimming pool in house</value>
+    </data>
+    <data name="san_tennis">
+        <value>Tennis court</value>
+    </data>
+    <data name="san_cau_long">
+        <value>Badminton court</value>
+    </data>
+    <data name="fitness">
+        <value>Gym</value>
+    </data>
+    <data name="ngan_hang">
+        <value>Bank</value>
+    </data>
+    <data name="BBQ">
+        <value>BBQ</value>
+    </data>
+    <data name="san_tap_golf">
+        <value>Golf practice</value>
+    </data>
+    <data name="san_golf">
+        <value>Golf course</value>
+    </data>
+    <data name="nha_thuoc">
+        <value>Pharmacy</value>
+    </data>
+    <data name="cua_hang_hoa_tuoi">
+        <value>Flower Shop</value>
+    </data>
+    <data name="cho">
+        <value>Market </value>
+    </data>
+    <data name="san_da_bong_mini">
+        <value>Mini football court</value>
+    </data>
+    <data name="khu_vuc_choi_bong_ban">
+        <value>Area for table tennis</value>
+    </data>
+    <data name="khu_vuc_choi_bi_a">
+        <value>Area for billiard</value>
+    </data>
+    <data name="san_bong_ro">
+        <value>Basketball court</value>
+    </data>
+    <data name="bon_cau">
+        <value>Toilet</value>
+    </data>
+    <!--LoaiBatDongSanModel.cs-->
+    <data name="cao_oc_van_phong">
+        <value>Office building</value>
+    </data>
+    <data name="biet_thu">
+        <value>Villa</value>
+    </data>
+    <data name="can_ho_cao_cap">
+        <value>Apartment</value>
+    </data>
+    <data name="can_ho_chung_cu">
+        <value>Apartment</value>
+    </data>
+    <data name="du_lich_nghi_duong">
+        <value>Tourist Resort</value>
+    </data>
+    <data name="dat_phan_lo">
+        <value>Land subdivision</value>
+    </data>
+    <data name="do_thi_moi">
+        <value>New Urban</value>
+    </data>
+    <data name="khu_cong_nghiep">
+        <value>industrial area</value>
+    </data>
+    <data name="khu_dan_cu">
+        <value>Residential area</value>
+    </data>
+    <data name="nha_o_xa_hoi">
+        <value>Social housing</value>
+    </data>
+    <data name="phuc_hop">
+        <value>Complex area</value>
+    </data>
+    <data name="khac">
+        <value>Orther</value>
+    </data>
+    <!--ProjectListPage-->
+    <data name="du_an_cua_toi">
+        <value>My project</value>
+    </data>
+    <!--ProjectStatusModel-->
+    <data name="dang_mo_ban">
+        <value>On sale</value>
+    </data>
+    <data name="dang_ban_giao">
+        <value>Handing over</value>
+    </data>
+    <data name="sap_mo_ban">
+        <value>Coming soon for sale</value>
+    </data>
+    <!--ProjectDitailPage-->
+    <data name="gioi_thieu_du_an">
+        <value>Description</value>
+    </data>
+    <data name="tong_quan_du_an">
+        <value>Project overview</value>
+    </data>
+    <data name="bat_dong_san_thuoc_du_an">
+        <value>Property under the project</value>
+    </data>
+    <data name="mua_ban">
+        <value>Buy sell</value>
+    </data>
+    <data name="cho_thue">
+        <value>For rent</value>
+    </data>
+    <data name="tien_ich_du_an">
+        <value>Project utility</value>
+    </data>
+    <data name="thong_tin_lien_he">
+        <value>Contact information</value>
+    </data>
+    <!--PostDetailPage-->
+    <data name="thoi_gian_cam_ket">
+        <value>Commitment time</value>
+    </data>
+    <data name="bai_dang_nay_da_duoc_them_vao_binh_luan_roi">
+        <value>Bài đăng này đã thêm vào bình luận rồi.</value>
+    </data>
+    <data name="nhap_binh_luan_hoac_chon_tin_dang_de_gui_binh_luan">
+        <value>Enter a comment or select a post to send comment</value>
+    </data>
+    <data name="tong_quan_bat_dong_san">
+        <value>Propery overview</value>
+    </data>
+    <data name="thuoc_du_an">
+        <value>In project</value>
+    </data>
+    <data name="tien_do">
+        <value>Progress: </value>
+    </data>
+    <data name="bat_dong_san_cung_du_an">
+        <value>Propery with the project</value>
+    </data>
+    <data name="xem_tat_ca">
+        <value>See it all</value>
+    </data>
+    <data name="binh_luan">
+        <value>Comment</value>
+    </data>
+    <data name="gui_tin_dang_binh_luan">
+        <value>Sent comment</value>
+    </data>
+    <data name="bai_dang_khong_ton_tai_hoac_da_xoa">
+        <value>Post does not exist or has been deleted</value>
+    </data>
+    <data name="theo_doi_bai_dang">
+        <value>Subscribe to the post</value>
+    </data>
+    <data name="goi_dien">
+        <value>Call</value>
+    </data>
+    <data name="chat">
+        <value>Chat</value>
+    </data>
+    <data name="nhan_tin">
+        <value>Message</value>
+    </data>
+    <data name="dat_lich_hem">
+        <value>Make an appointment</value>
+    </data>
+    <data name="khong_the_thuc_hien_chuc_nang_nay">
+        <value>Cannot perform this function</value>
+    </data>
+    <data name="bo_theo_doi_bai_dang">
+        <value>Unfollow the post</value>
+    </data>
+    <data name="dang_theo_doi_tin_dang_cua_ban">
+        <value>is following your post</value>
+    </data>
+    <!--CategoryList-->
+    <data name="binh_hoa_bat_dia_trang_tri">
+        <value>Vases, decorative dishes</value>
+    </data>
+    <data name="tham_trai_san">
+        <value>Carpet</value>
+    </data>
+    <data name="tu_ruou">
+        <value>Liquor cabinet</value>
+    </data>
+    <data name="ke_tivi_phong_khach">
+        <value>Living room TV shelf</value>
+    </data>
+    <data name="phong_khach">
+        <value>Living room</value>
+    </data>
+    <data name="phong_an">
+        <value>Dining room</value>
+    </data>
+    <data name="ban_tra">
+        <value>Tea table</value>
+    </data>
+    <data name="tab_dau_giuong">
+        <value>Bedside Table</value>
+    </data>
+    <data name="bo_ban_ghe_phong_ngu">
+        <value>Bedroom table and chair</value>
+    </data>
+    <data name="tranh_trang_tri">
+        <value>Decorative picture</value>
+    </data>
+    <data name="ban_tu_lam_viec">
+        <value>Work desk cabinet</value>
+    </data>
+    <data name="phong_lam_viec">
+        <value>Office</value>
+    </data>
+    <data name="ghe_thu_gian">
+        <value>Relax chairs</value>
+    </data>
+    <data name="ban_ghe">
+        <value>Tables and chairs</value>
+    </data>
+    <data name="quay_bar">
+        <value>Bar</value>
+    </data>
+    <data name="cay_canh">
+        <value>Plant</value>
+    </data>
+    <data name="guong_trang_diem">
+        <value>Makeup mirror</value>
+    </data>
+    <data name="ke_tivi">
+        <value>TV shelf</value>
+    </data>
+    <data name="ke_treo_tuong">
+        <value>Wall shelves</value>
+    </data>
+    <data name="sofa_thong_minh">
+        <value>Smart sofa</value>
+    </data>
+    <data name="ghe_quy_phi">
+        <value>Chaise longue</value>
+    </data>
+    <data name="bo_phong_ngu_dong_bo">
+        <value>Synchronized bedroom set</value>
+    </data>
+    <data name="ban_tra_phong_khach">
+        <value>Living room tea table</value>
+    </data>
+    <data name="tu_ly_tu_ruou">
+        <value>Cupboards, Liquor cabinet</value>
+    </data>
+    <data name="tu_giay_tu_trang_tri">
+        <value>Shoe cabinet, decorative cabinet</value>
+    </data>
+    <data name="giuong_da_nang">
+        <value>Versatile bed</value>
+    </data>
+    <data name="phu_kien_trang_tri">
+        <value>Decorative accessories</value>
+    </data>
+    <data name="ban_trang_diem">
+        <value>Vanity table</value>
+    </data>
+    <data name="ban_ghe_phong_an">
+        <value>Dining tables and chairs</value>
+    </data>
+    <data name="phong_ngu">
+        <value>Bedroom</value>
+    </data>
+    <data name="lo_suoi">
+        <value>Heater</value>
+    </data>
+    <data name="thong_minh">
+        <value>Smart</value>
+    </data>
+    <data name="sofa_phong_khach">
+        <value>Living room sofa</value>
+    </data>
+    <data name="tu_quan_ao">
+        <value>Wardrobe</value>
+    </data>
+    <data name="xe_day_do_an">
+        <value>Food trolley</value>
+    </data>
+    <data name="bo_giuong_ngu">
+        <value>Bedding sets</value>
+    </data>
+    <!--AddFurniturePostItemPage-->
+    <data name="nhap_noi_dung">
+        <value>Please enter content</value>
+    </data>
+    <data name="thong_tin_bo_sung">
+        <value>Additional information</value>
+    </data>
+    <data name="nhap_gia">
+        <value>Enter price</value>
+    </data>
+    <data name="nhap_dia_chi">
+        <value>Enter address</value>
+    </data>
+    <data name="nhom_danh_muc">
+        <value>Category group</value>
+    </data>
+    <data name="loi_load_danh_muc">
+        <value>Error load category</value>
+    </data>
+    <data name="vui_long_nhap_mo_ta_bai_dang">
+        <value>Please enter post description</value>
+    </data>
+    <data name="vui_long_chon_toi_da_5_bsd">
+        <value>Please select up to 5 posts</value>
+    </data>
+    <data name="loi_upload_hinh_anh_vui_long_thu_lai">
+        <value>Error upload image, please try again</value>
+    </data>
+    <data name="nhom_noi_that">
+        <value>Furniture group</value>
+    </data>
+    <data name="loai_noi_that">
+        <value>Furniture type</value>
+    </data>
+    <data name="tieu_de_tin_dang">
+        <value>Post title</value>
+    </data>
+    <data name="gia_san_pham">
+        <value>Product price</value>
+    </data>
+    <data name="tinh_trang">
+        <value>Status</value>
+    </data>
+    <data name="moi">
+        <value>New</value>
+    </data>
+    <data name="da_qua_su_dung">
+        <value>Used</value>
+    </data>
+    <data name="khuyen_mai">
+        <value>Promotion</value>
+    </data>
+    <data name="thoi_gian_khuyen_mai">
+        <value>Promotion time</value>
+    </data>
+    <data name="gia_giam">
+        <value>Reduced</value>
+    </data>
+    <data name="ma_san_pham">
+        <value>Product code</value>
+    </data>
+    <data name="xuat_xu">
+        <value>Origin</value>
+    </data>
+    <data name="bao_hanh">
+        <value>Guarantee</value>
+    </data>
+    <data name="thoi_gian_bao_hanh">
+        <value>Warranty period (month)</value>
+    </data>
+    <data name="mo_ta_san_pham">
+        <value>Product description</value>
+    </data>
+    <data name="ca_nhan">
+        <value>Personal</value>
+    </data>
+    <data name="hinh_anh">
+        <value>Image</value>
+    </data>
+    <data name="them_anh_san_pham">
+        <value>Add product photos</value>
+    </data>
+    <data name="kich_thuoc_toi_thieu_300x300">
+        <value>Minimum size 300 x 300px</value>
+    </data>
+    <data name="chon_nhom_danh_muc">
+        <value>Select category group</value>
+    </data>
+    <data name="chon_danh_muc">
+        <value>Select category</value>
+    </data>
+    <data name="nhap_ten_noi_that">
+        <value>Enter furniture name</value>
+    </data>
+    <data name="nhap_gia_san_pham">
+        <value>Enter product price</value>
+    </data>
+    <data name="chon_dia_chi">
+        <value>Select address</value>
+    </data>
+    <data name="chon_hinh_anh_cho_san_pham">
+        <value>Select images for the product</value>
+    </data>
+    <data name="khong_the_upload_hinh_anh">
+        <value>Unable to upload image</value>
+    </data>
+    <data name="luu_san_pham_thanh_cong">
+        <value>Product saved successfully</value>
+    </data>
+    <data name="loi">
+        <value>Error</value>
+    </data>
+    <!--FurnitureCategoryPage-->
+    <data name="danh_muc">
+        <value>Category</value>
+    </data>
+    <!--FurnitureHomePage-->
+    <data name="boi">
+        <value>By </value>
+    </data>
+    <data name="quang_cao_san_pham">
+        <value>Product ads</value>
+    </data>
+    <data name="san_pham_moi">
+        <value>New product</value>
+    </data>
+    <data name="san_pham_khuyen_mai">
+        <value>Promotion products</value>
+    </data>
+    <!--FurniturePostItemDetailPage-->
+    <data name="nhap_tu_khoa_tim_kiem">
+        <value>Enter the search keyword</value>
+    </data>
+    <data name="chon_san_pham">
+        <value>Select product</value>
+    </data>
+    <data name="xem_them_binh_luan">
+        <value>See more comments</value>
+    </data>
+    <data name="viet_binh_luan">
+        <value>Write a comment</value>
+    </data>
+    <data name="vui_long_chon_toi_da_5_san_pham">
+        <value>Please select up to 5 products!</value>
+    </data>
+    <data name="san_pham_nay_da_them_vao_binh_luan_roi">
+        <value>This product has been added to the comment already.</value>
+    </data>
+    <data name="nhap_binh_luan_hoac_chon_tin_dang_de_gui_binh_luan">
+        <value>Enter a comment or select a post to post a comment!</value>
+    </data>
+    <data name="da_binh_luan_trong_bai_viet">
+        <value> commented in a post</value>
+    </data>
+    <data name="co_loi_khi_gui_thong_bao">
+        <value>There was an error sending the message</value>
+    </data>
+    <data name="thong_tin_ca_nhan">
+        <value>Personal information</value>
+    </data>
+    <data name="xoa_bai_dang">
+        <value>Delete post</value>
+    </data>
+    <data name="tuy_chon">
+        <value>Option</value>
+    </data>
+    <data name="xac_nhan_xoa">
+        <value>Confirm delete</value>
+    </data>
+    <data name="ban_co_chac_chan_muon_xoa_tin_dang_nay_khong">
+        <value>Are you sure you want to delete this posting?</value>
+    </data>
+    <!--FurnitureProductFiltePage-->
+    <data name="loc_noi_that">
+        <value>Furniture Filter</value>
+    </data>
+    <data name="tu_khoa">
+        <value>Keyword</value>
+    </data>
+    <data name="ket_qua_tim_kiem">
+        <value>Search results</value>
+    </data>
+    <!--FurnitureProductFilterResultPage-->
+    <data name="ket_qua_loc">
+        <value>Filter results</value>
+    </data>
+    <data name="san_pham">
+        <value>Product</value>
+    </data>
+    <!--MarketPage-->
+    <data name="cho_noi_that">
+        <value>Furniture market</value>
+    </data>
+    <data name="khong_the_thuc_hien_chuc_nang_nay">
+        <value>Không thể thực hiện chức năng này.</value>
+    </data>
+    <data name="xem_chi_tiet">
+        <value>See details</value>
+    </data>
+    <!--MyproductListPage-->
+    <data name="san_pham_cua_toi">
+        <value>My product</value>
+    </data>
+    <data name="them_san_pham">
+        <value>Add product</value>
+    </data>
+    <!--MyPromotionListPage-->
+    <data name="san_pham_khuyen_mai_cua_toi">
+        <value>My promotion products</value>
+    </data>
+    <!--ProductDetailPage-->
+    <data name="dang_ban_status">
+        <value>Buying</value>
+    </data>
+    <data name="chi_tiet_san_pham">
+        <value>Product detail</value>
+    </data>
+    <data name="loai_san_pham">
+        <value>Product type</value>
+    </data>
+    <data name="nguoi_dang_ban">
+        <value>Seller for sale</value>
+    </data>
+    <data name="ngay_dang">
+        <value>Date Posting</value>
+    </data>
+    <data name="chinh_sua">
+        <value>Edit</value>
+    </data>
+    <data name="ngung_ban">
+        <value>Stop selling</value>
+    </data>
+    <data name="cap_nhat_thanh_cong">
+        <value>Update success</value>
+    </data>
+    <data name="cap_nhat_that_bai">
+        <value>Update Failed</value>
+    </data>
+    <data name="cap_nhat_san_pham">
+        <value>Update Product</value>
+    </data>
+    <data name="khong_tim_thay_san_pham">
+        <value>Product not found</value>
+    </data>
+    <!--ProductManagementPage-->
+    <data name="quan_ly">
+        <value>Management</value>
+    </data>
+    <data name="xem_thong_tin_ca_nhan">
+        <value>View personal information</value>
+    </data>
+    <data name="quan_ly_san_pham">
+        <value>Product Management</value>
+    </data>
+    <data name="quan_ly_khuyen_mai">
+        <value>Promotion Management</value>
+    </data>
+    <data name="don_dat_hang">
+        <value>The order</value>
+    </data>
+    <data name="don_mua_hang">
+        <value>Purchase oder</value>
+    </data>
+    <data name="dang_nhap_dang_ky">
+        <value>Login/Register</value>
+    </data>
+    <data name="click_de_dang_nhap_dang_ky">
+        <value>Click to login/resister</value>
+    </data>
+    <data name="vui_long_dang_nhap">
+        <value>Please login/register to perform this function.</value>
+    </data>
+    <data name="vui_long_dang_nha_dang_ky_de_thuc_hien_chuc_nang_nay">
+        <value>Please login/register to perform this function.</value>
+    </data>
+    <data name="chon_noi_that_muon_khuyen_mai">
+        <value>Select promotion product</value>
+    </data>
+    <data name="cap_nhat_khuyen_mai">
+        <value>Update promotion</value>
+    </data>
+    <!--PromotionPage-->
+    <data name="them_moi_san_pham">
+        <value>Add new product</value>
+    </data>
+    <data name="chon_tu_san_pham_noi_that">
+        <value>Select from furniture products</value>
+    </data>
+    <data name="vui_long_nhap_gia_giam">
+        <value>Please enter the discount price</value>
+    </data>
+    <data name="den">
+        <value> to </value>
+    </data>
+    <data name="tu">
+        <value>from</value>
+    </data>
+    <!--AppShell - Furniture-->
+    <data name="cho">
+        <value>Market</value>
+    </data>
+    <!--AccountPage-->
+    <data name="tai_khoan">
+        <value>Account</value>
+    </data>
+    <data name="san_pham_trong_ngay">
+        <value>Product of the day</value>
+    </data>
+    <!--AddLiquidationPage-->
+    <data name="noi_that_gia_dinh">
+        <value>Furniture</value>
+    </data>
+    <data name="ngoai_that_san_vuon">
+        <value>Exterior</value>
+    </data>
+    <data name="do_gia_dung">
+        <value>Household Goods</value>
+    </data>
+    <data name="noi_that_van_phong">
+        <value>Office Furniture</value>
+    </data>
+    <data name="xe_co">
+        <value>Vehicle</value>
+    </data>
+    <data name="thoi_trang">
+        <value>Fashion</value>
+    </data>
+    <data name="do_my_nghe">
+        <value>Fine art</value>
+    </data>
+    <data name="dien_tu_dien_may">
+        <value>Electronics</value>
+    </data>
+    <data name="the_thao">
+        <value>Sport</value>
+    </data>
+    <data name="vat_nuoi_cay_canh">
+        <value>Pet, plant</value>
+    </data>
+    <data name="sach_bao">
+        <value>Book, magazine</value>
+    </data>
+    <data name="tre_em">
+        <value>Children</value>
+    </data>
+    <data name="khac">
+        <value>Other</value>
+    </data>
+    <data name="cho_tang">
+        <value>Donate</value>
+    </data>
+    <data name="ten_san_pham">
+        <value>Product name</value>
+    </data>
+    <data name="gia_thanh_ly">
+        <value>Liquidation price</value>
+    </data>
+    <data name="gia">
+        <value>Price</value>
+    </data>
+    <data name="dang_thanh_ly">
+        <value>New liquidation</value>
+    </data>
+    <data name="xoa_thanh_cong">
+        <value>Delete successful</value>
+    </data>
+    <data name="loi_khong_the_xoa_san_pham">
+        <value>Error canot delete product</value>
+    </data>
+    <data name="vui_long_chon_danh_muc_san_pham">
+        <value>Please select a product category</value>
+    </data>
+    <data name="vui_long_nhap_ten_san_pham">
+        <value>Please enter product's name</value>
+    </data>
+    <data name="vui_long_nhap_gia_thanh_ly">
+        <value>Please enter liquidation price</value>
+    </data>
+    <data name="vui_long_cung_cap_thong_tin_dia_chi">
+        <value>Please provide address information</value>
+    </data>
+    <data name="vui_long_chon_hinh_anh_san_pham">
+        <value>Please select product image</value>
+    </data>
+    <data name="hinh_anh_vuot_qua_dung_luong_vui_long_thu_lai">
+        <value>Image exceeds capacity. Please try again</value>
+    </data>
+    <data name="khong_the_luu_san_pham_vui_long_thu_lai">
+        <value>Unable to save product. Please try again</value>
+    </data>
+    <data name="danh_muc_san_pham">
+        <value>Product portfolio</value>
+    </data>
+    <!--AddPostItemPage-->
+    <data name="nhap_tieu_de">
+        <value>Enter title</value>
+    </data>
+    <data name="dia_chi_cua_toi">
+        <value>My address</value>
+    </data>
+    <data name="vui_long_nhap_tieu_de_bai_dang">
+        <value>Please enter the post title</value>
+    </data>
+    <!--AddToDayPage-->
+    <data name="gia_cu">
+        <value>Old price</value>
+    </data>
+    <data name="gia_thanh_ly_trong_ngay">
+        <value>Liquidation price of the day</value>
+    </data>
+    <data name="dang_thanh_ly_trong_ngay">
+        <value>Post liquidation of the day</value>
+    </data>
+    <data name="dang_lai">
+        <value>Repost</value>
+    </data>
+    <data name="dang_thanh_cong">
+        <value>Posting was successful</value>
+    </data>
+    <data name="loi_vui_long_thu_lai">
+        <value>Error please try again</value>
+    </data>
+    <data name="vui_long_cung_cap_thong_tin_gia_thanh_ly_trong_ngay">
+        <value>Please provide liquidation price information for the day</value>
+    </data>
+    <data name="thanh_ly_trong_ngay">
+        <value>Liquidation of the day</value>
+    </data>
+    <data name="vui_long_dang_nhap_dang_ky_de_duoc_dang_san_pham">
+        <value>Please login/register to post products</value>
+    </data>
+    <data name="thong_tin_chung">
+        <value>Generalinformation</value>
+    </data>
+    <!--LiquidationDetailPage-->
+    <data name="nhom_san_pham">
+        <value>Product group</value>
+    </data>
+    <data name="khong_tim_thay_bai_dang">
+        <value>Post canot found</value>
+    </data>
+    <data name="chuc_nang_dang_hoan_thien_vui_long_quay_lai_sau">
+        <value>The function is complete. Please come back later</value>
+    </data>
+    <!--MarketPage-->
+    <data name="cho_thanh_ly">
+        <value>Liquidation market</value>
+    </data>
+    <data name="can_thanh_ly">
+        <value>Need liquidation</value>
+    </data>
+    <!--MyliquidationListPage-->
+    <data name="da_ban">
+        <value>Sold</value>
+    </data>
+    <data name="da_dat_hang">
+        <value>Ordered</value>
+    </data>
+    <!--MyToDayListPage-->
+    <data name="het_han">
+        <value>Expired</value>
+    </data>
+    <data name="dang_san_pham_trong_ngay">
+        <value>Post products of the day</value>
+    </data>
+    <data name="chon_tu_san_pham_thanh_ly">
+        <value>Select from liquidation product</value>
+    </data>
+    <!--PickerLiquidationPage-->
+    <data name="chon_tin_thanh_ly">
+        <value>Select liquidation news</value>
+    </data>
+    <data name="nhap_gia_thanh_ly">
+        <value>Enter liquidation price</value>
+    </data>
+    <data name="nhap_gia_thanh_ly_san_pham">
+        <value>Enter the liquidation price of the product</value>
+    </data>
+    <data name="vui_long_nhap_gia_thanh_ly_trong_ngay">
+        <value>Please enter liquidation price of the day</value>
+    </data>
+    <data name="loi_hinh_anh_vui_long_thu_lai_sau">
+        <value>Error image. Please try again</value>
+    </data>
+    <data name="dang_tin_thanh_ly_thanh_cong">
+        <value>Post successful liquidation</value>
+    </data>
+    <data name="loi_dang_tin_thanh_ly_vui_long_thu_lai">
+        <value>Error post liquidation. Please try again</value>
+    </data>
+    <!--ToDayDetailPage-->
+    <data name="dang_lai_tin">
+        <value>Post again</value>
+    </data>
+    <data name="trong_ngay">
+        <value>in day</value>
+    </data>
+    <!--BankViews/AddLoanView-->
+    <data name="ten_goi_vay">
+        <value>Loan name</value>
+    </data>
+    <data name="thoi_han_toi_da">
+        <value>Maximum loan tenors</value>
+    </data>
+    <data name="lai_suat">
+        <value>Interest rate</value>
+    </data>
+    <data name="muc_vay_toi_da">
+        <value>Loan amount</value>
+    </data>
+    <data name="dieu_kien_vay">
+        <value>Requirements</value>
+    </data>
+    <data name="vui_long_nhap_ten_goi_vay">
+        <value>Please enter loan name</value>
+    </data>
+    <data name="vui_long_nhap_dieu_kien_vay">
+        <value>Please enter requirements</value>
+    </data>
+    <data name="vui_long_chon_thoi_han_vay_toi_da">
+        <value>Please choose maximum loan tenors</value>
+    </data>
+    <data name="sundihome_can_truy_cap_vao_thu_vien_de_lay_hinh_anh_goi_vay">
+        <value>Sundihome needs to access your photo library to get your loan name</value>
+    </data>
+    <data name="sundihome_can_truy_cap_vao_may_anh_de_chup_hinh_goi_vay">
+        <value>Sundihome needs to access your camera to take a photo of your loan</value>
+    </data>
+    <data name="year">
+        <value>Year</value>
+    </data>
+    <data name="month">
+        <value>Month</value>
+    </data>
+    <data name="vui_long_chon_ngan_hang">
+        <value>Please choose a bank</value>
+    </data>
+    <!-- BankViews/DangKyNhanVienNganHangView-->
+    <data name="thong_tin_goi_vay">
+        <value>Loan package information</value>
+    </data>
+    <data name="nhan_vien_tu_van">
+        <value>Counselor</value>
+    </data>
+    <!-- BankViews/GoiVayDetailPage-->
+    <data name="dang_goi_vay">
+        <value>New Loan</value>
+    </data>
+    <data name="vui_long_dang_ky_nhan_vien_ngan_hang_de_dang_goi_vay">
+        <value>Please register a banker to post the loan package</value>
+    </data>
+    <!-- BankViews/LoadListPage-->
+    <data name="goi_vay_s">
+        <value>Loans</value>
+    </data>
+    <data name="danh_sach_goi_vay">
+        <value>Loans</value>
+    </data>
+    <data name="goi_vay_cua_toi">
+        <value>My loans</value>
+    </data>
+    <!--BankViews/CalculatorPage-->
+    <data name="goc_co_dinh_lai_giam_dan">
+        <value>Fixed principal, Amortized loan</value>
+    </data>
+    <data name="lai_va_goc_co_dinh">
+        <value>Fixed principal and interest</value>
+    </data>
+    <data name="so_tien_vay">
+        <value>Amount borrowed</value>
+    </data>
+    <data name="thoi_han_vay">
+        <value>Loan tenors</value>
+    </data>
+    <data name="lai_suat_noi">
+        <value>Floating interest rate</value>
+    </data>
+    <data name="thoi_han_co_dinh">
+        <value>Fixed time</value>
+    </data>
+    <data name="lai_suat_trung_binh_sau_thoi_gian_co_dinh">
+        <value>Average interest rate (interest rate after a fixed time)</value>
+    </data>
+    <data name="ket_qua">
+        <value>Result</value>
+    </data>
+    <data name="so_tien_phai_tra_hang_thang">
+        <value>Monthly payment amount</value>
+    </data>
+    <data name="tong_so_tien_lai">
+        <value>Total interest paid</value>
+    </data>
+    <data name="tong_so_tien_phai_tra">
+        <value>Total payments</value>
+    </data>
+    <data name="giai_doan">
+        <value>Period</value>
+    </data>
+    <data name="lai">
+        <value>Interest paid</value>
+    </data>
+    <data name="so_tien_phai_tra">
+        <value>Amount payable</value>
+    </data>
+    <data name="so_goc_con_lai">
+        <value>Principal balance</value>
+    </data>
+    <data name="tinh_tien_vay">
+        <value>Payment calculator</value>
+    </data>
+    <data name="phuong_thuc_tra_lai">
+        <value>Mode of interest payment</value>
+    </data>
+    <data name="khu_vuc_tu_van">
+        <value>Consultant Area</value>
+    </data>
+    <data name="vui_long_nhap_so_tien_vay">
+        <value>Please enter amount borrowed</value>
+    </data>
+    <data name="vui_long_nhap_lai_suat">
+        <value>Please enter interest rate</value>
+    </data>
+    <data name="vui_long_nhap_thoi_han_vay">
+        <value>Please enter loan tenors</value>
+    </data>
+    <data name="vui_long_chon_thoi_gian_co_dinh">
+        <value>Please choose fixed time</value>
+    </data>
+    <data name="thoi_han_co_dinh_khong_the_vuot_qua_thoi_han_vay">
+        <value>Fixed term cannot exceed loan tenors</value>
+    </data>
+    <data name="vui_long_nhap_lai_suat_trung_binh">
+        <value>Please enter Average interest rate</value>
+    </data>
+    <!-- ChatListPage-->
+    <data name="danh_sach_tin_nhan">
+        <value>Messages</value>
+    </data>
+    <data name="chon_bat_dong_san">
+        <value>Select post</value>
+    </data>
+    <data name="tin_nhan_bat_dong_san">
+        <value>Post message</value>
+    </data>
+    <data name="tin_nhan_noi_that">
+        <value>Furnitute message</value>
+    </data>
+    <data name="tin_nhan_thanh_ly">
+        <value>Liquidation message</value>
+    </data>
+    <data name="gui_yeu_cau_ho_tro_qua_facebook_zalo_viber">
+        <value>Send request via Facebook, Viber or Zalo</value>
+    </data>
+    <data name="nhap_noi_dung_tin_nhan">
+        <value>Type...</value>
+    </data>
+    <!--AboutPage-->
+    <data name="about_1">
+        <value>Introduction Sundihome</value>
+    </data>
+    <data name="about_2">
+        <value>Sundihome, the app helps you seek buy, rent and service for your home with supply partners to bring you a real love with your home and your family.</value>
+    </data>
+    <data name="about_3">
+        <value>With the desire to bring happiness to your home, Sundihome will bring features that have real value to your life, your family and your family members.</value>
+    </data>
+    <data name="about_4">
+        <value>"Family in your mind" will accompany you, developing your family's dreams along with Sundihome's dream.</value>
+    </data>
+    <data name="about_5">
+        <value>Simple, download Sundihome, experience and recommend for your family and friends to use.</value>
+    </data>
+    <!--CompanyView/AllCompanyPostListListPage-->
+    <data name="danh_sach_bat_dong_san">
+        <value>Real estate listings</value>
+    </data>
+    <!--CompanyView/AllCompanyProductListListPage-->
+    <data name="danh_sach_san_pham">
+        <value>Products list</value>
+    </data>
+    <!--CompanyView/B2BAddPage-->
+    <data name="thoa_thuan">
+        <value>The deal</value>
+    </data>
+    <!--CompanyView/B2BDetailPage-->
+    <data name="chon_bat_dong_san">
+        <value>Choose real estate</value>
+    </data>
+    <data name="thong_tin_cong_ty">
+        <value>Company information</value>
+    </data>
+    <!--CompanyView/B2BPage-->
+    <data name="san_b2b">
+        <value>B2B</value>
+    </data>
+    <data name="hop_tac">
+        <value>Cooperate</value>
+    </data>
+    <data name="cung_cap">
+        <value>Provided</value>
+    </data>
+    <data name="xem_thong_tin_cong_ty">
+        <value>View company information</value>
+    </data>
+    <data name="sundihome_chat">
+        <value>Sundihome chat</value>
+    </data>
+    <!--CompanyView/CompanyInfoContentView-->
+    <data name="ban_da_gui_ho_so_den_cong_ty_va_dang_cho_xet_duyet_vui_long_doi">
+        <value>You sent your CV to the company. Please waiting for approval</value>
+    </data>
+    <data name="loai_cong_ty">
+        <value>Company type</value>
+    </data>
+    <data name="ma_so_thue">
+        <value>Tax code</value>
+    </data>
+    <data name="doi_ngu_nhan_vien">
+        <value>Employees</value>
+    </data>
+    <data name="lich_su_phat_trien">
+        <value>Development history</value>
+    </data>
+    <data name="thanh_tuu_dat_duoc">
+        <value>Achievements acquired</value>
+    </data>
+    <!--CompanyView/CompanyListPage-->
+    <data name="vui_long_dang_nhap_dang_ky_de_tao_cong_ty">
+        <value>Please login/register to create a company</value>
+    </data>
+    <data name="vui_long_nhap_tu_khoa">
+        <value>Please enter a keyword</value>
+    </data>
+    <!--CompanyView/CompanyProfileDetailPage-->
+    <data name="thong_tin">
+        <value>Information</value>
+    </data>
+    <data name="tu_choi">
+        <value>Refuse</value>
+    </data>
+    <data name="ban_co_chac_chan_muon_gui_ho_so_dang_nhan_vien_cho_cong_ty">
+        <value>Are you sure you want to send CV to register employees</value>
+    </data>
+    <data name="vui_long_dang_nhap_de_gui_ho_so_dang_ky_nhan_vien">
+        <value>Please login to send CV to register employees</value>
+    </data>
+    <data name="dang_ky_nhan_vien_thanh_cong">
+        <value>Successful staff registration</value>
+    </data>
+    <data name="de_dang_ky_nha_vien_ban_phai_dang_ky_moi_gioi_truoc_ban_muon_dang_ky_moi_gioi_khong">
+        <value>If you want to register staff, you must be a broker. Do you want to sign up to be a broker?</value>
+    </data>
+    <!--CompanyView/DangKyCongtyButtonPage-->
+    <data name="dang_ky_cong_ty">
+        <value>Company register</value>
+    </data>
+    <!--CompanyView/EmployeeListPage-->
+    <data name="quan_ly_nhan_vien">
+        <value>Employee manager</value>
+    </data>
+    <data name="nhan_vien">
+        <value>Employee</value>
+    </data>
+    <data name="cho_xac_nhan">
+        <value>Wait for confirmation</value>
+    </data>
+    <data name="cho_xet_duyet">
+        <value>Awaiting approval</value>
+    </data>
+    <data name="nhap_so_dien_thoai">
+        <value>Enter your phone number</value>
+    </data>
+    <data name="gui_ma_opt">
+        <value>Send OPT</value>
+    </data>
+    <data name="xoa_nhan_vien_thanh_cong">
+        <value>Successfully deleted employee</value>
+    </data>
+    <data name="ban_co_chac_chan_muon_xoa_nhan_vien_nay_khong">
+        <value>Are you sure you want to delete this employee?</value>
+    </data>
+    <data name="xoa_nhan_vien">
+        <value>Delete employee</value>
+    </data>
+    <data name="cap_nhat_nhan_vien">
+        <value>Update employee</value>
+    </data>
+    <data name="gui_ma_thanh_cong">
+        <value>Send successfully</value>
+    </data>
+    <data name="khong">
+        <value>No</value>
+    </data>
+    <data name="co">
+        <value>Yes</value>
+    </data>
+    <data name="so_dien_thoai_nay_da_gui_ma_opt_ban_co_muon_tiep_tuc">
+        <value>You have already sent an OTP code to this phone number. Do you want to continue?</value>
+    </data>
+    <data name="nhan_vien_da_co_trong_cong_ty">
+        <value>Employee already exists in the company</value>
+    </data>
+    <data name="so_dien_thoai_khong_dung">
+        <value>The phone number is not correct</value>
+    </data>
+    <data name="gui_ma_moi">
+        <value>Send invite</value>
+    </data>
+    <data name="them_moi_nhan_vien">
+        <value>Add employee</value>
+    </data>
+    <data name="thanh_cong">
+        <value>Successfully</value>
+    </data>
+    <data name="ban_da_tro_thanh_nhan_vien_cong_ty">
+        <value>You have become a company employee</value>
+    </data>
+    <data name="duyet_thanh_cong">
+        <value>Approved successfully</value>
+    </data>
+    <data name="duyet">
+        <value>Accept</value>
+    </data>
+    <data name="khong_duyet">
+        <value>Unaccept</value>
+    </data>
+    <data name="xem_thong_tin_moi_gioi">
+        <value>See broker information</value>
+    </data>
+    <!--CompanyView/InternalAddPage-->
+    <data name="bat_dong_san_dinh_kem">
+        <value>Attach real estate</value>
+    </data>
+    <data name="dang_bai">
+        <value>Post</value>
+    </data>
+    <data name="cua_toi">
+        <value>My</value>
+    </data>
+    <data name="cong_ty">
+        <value>Company</value>
+    </data>
+    <!--CompanyView/InternalPage-->
+    <data name="noi_bo">
+        <value>Internal</value>
+    </data>
+    <!--CompanyView/QuanLyCongTyViews/FilterCompanuPostListView-->
+    <data name="xem_thong_tin_chi_tiet">
+        <value>View details</value>
+    </data>
+    <data name="dua_vao_gio_chung">
+        <value>Put in general basket</value>
+    </data>
+    <data name="dua_vao_gio_chung_thanh_cong">
+        <value>dua_vao_gio_chung_thanh_cong</value>
+    </data>
+    <!--CompanyView/QuanLyCongTyViews/HomePage-->
+    <data name="trang_chu">
+        <value>Home page</value>
+    </data>
+    <data name="bat_dong_san_ban_moi">
+        <value>New real estate for sell</value>
+    </data>
+    <data name="nhu_cau_khach_hang">
+        <value>Customer's demand</value>
+    </data>
+    <data name="khu_vuc">
+        <value>Area</value>
+    </data>
+    <!--CompanyView/QuanLyCongTyViews/PostListContentView-->
+    <data name="cho_duyet">
+        <value>Approving</value>
+    </data>
+    <data name="cam_ket">
+        <value>Commit</value>
+    </data>
+    <data name="gio_chung">
+        <value>gio_chung</value>
+    </data>
+    <!--ViewModel/CompanyViewModels/B2BAddPageViewModel-->
+    <data name="khong_the_chup_anh_vui_long_thu_lai_sau">
+        <value>Unable to take photo, please try again later.</value>
+    </data>
+    <!--Appshel-quanlycongty-->
+    <data name="khach_hang">
+        <value>Customer</value>
+    </data>
+    <!--AddEmployeePage-->
+    <data name="so_dien_thoai">
+        <value>Phone number</value>
+    </data>
+    <data name="email">
+        <value>Email</value>
+    </data>
+    <data name="nhap_email">
+        <value>Enter email</value>
+    </data>
+    <data name="them_nhan_vien">
+        <value>Add employee</value>
+    </data>
+    <data name="luu_nhan_vien">
+        <value>Save employee</value>
+    </data>
+    <data name="so_dien_thoai_khong_hop_le_vui_long_kiem_tra_lai">
+        <value>Invalid phone number. Please check again.</value>
+    </data>
+    <data name="them_nhan_vien_thanh_cong">
+        <value>Add successful employee</value>
+    </data>
+    <data name="so_dien_thoai_nay_da_co_tren_he_thong_ban_co_muon_gui_ma_moi_toi_so_dien_thoai_nay_khong">
+        <value>This phone number is already on the system, do you want to send the invitation code to this phone number?</value>
+    </data>
+    <data name="ban_khong_the_cap_nhat">
+        <value>Cannot update</value>
+    </data>
+    <data name="cap_nhat_nhan_vien_thanh_cong">
+        <value>Updated employee successfully</value>
+    </data>
+    <!--AddCompanyPage-->
+    <data name="ten_cong_ty">
+        <value>Company name</value>
+    </data>
+    <data name="ten_rut_gon">
+        <value>Short name</value>
+    </data>
+    <data name="ten_tieng_anh">
+        <value>English name</value>
+    </data>
+    <data name="slogan">
+        <value>Slogan</value>
+    </data>
+    <data name="logo">
+        <value>Logo</value>
+    </data>
+    <data name="chon_logo">
+        <value>Choose logo</value>
+    </data>
+    <data name="them_thanh_tuu">
+        <value>Add achievement</value>
+    </data>
+    <data name="nhan_vien_tieu_bieu">
+        <value>Typical staff</value>
+    </data>
+    <data name="cap_nhat_cong_ty">
+        <value>Update company</value>
+    </data>
+    <data name="vui_long_chon_thoi_gian">
+        <value>Please select the time</value>
+    </data>
+    <data name="luu_y_ban_co_chac_chan_muon_xoa_lich_su_phat_trien_nay_khong">
+        <value>Note. Are you sure you want to delete this development history?</value>
+    </data>
+    <data name="luu_y_ban_co_chac_chan_muon_xoa_thanh_tuu_dat_duoc_nay_khong">
+        <value>Note. Are you sure you want to delete this Achievement?</value>
+    </data>
+    <data name="khong_the_cap_nhat_cong_ty_vui_long_thu_lai">
+        <value>Unable to update company.Please try again</value>
+    </data>
+    <data name="khong_the_luu_cong_ty_vui_long_thu_lai">
+        <value>Unable to save company. Please try again</value>
+    </data>
+    <data name="cong_ty_cua_ban_da_duoc_luu_thanh_cong">
+        <value>Your company has been successfully saved</value>
+    </data>
+    <data name="ban_co_muon_bo_sung_thong_tin_khong">
+        <value>Would you like additional information?</value>
+    </data>
+    <data name="vui_long_chon_logo">
+        <value>Please select the logo</value>
+    </data>
+    <data name="vui_long_chon_loai_cong_ty">
+        <value>Please select company type</value>
+    </data>
+    <data name="ma_so_thue_chua_dung_vui_long_kiem_tra_lai">
+        <value>Tax code is not correct. Please check again</value>
+    </data>
+    <data name="vui_long_nhap_ma_so_thue">
+        <value>Please enter the tax code</value>
+    </data>
+    <data name="vui_long_nhap_ten_rut_gon">
+        <value>Please enter the short name</value>
+    </data>
+    <data name="vui_long_nhap_ten_cong_ty">
+        <value>Please enter the company name</value>
+    </data>
+    <data name="xoa_khong_kha_dung">
+        <value>Delete is not available</value>
+    </data>
+    <!--LoaiCongTyModel-->
+    <data name="dau_tu_du_an">
+        <value>Investment projects</value>
+    </data>
+    <data name="vat_lieu_xay_dung">
+        <value>Building materials</value>
+    </data>
+    <data name="trang_tri_noi_that">
+        <value>Furniture and Interior design</value>
+    </data>
+    <data name="thiet_ke_kien_truc">
+        <value>Architecture design</value>
+    </data>
+    <data name="thi_cong_xay_dung">
+        <value>Construction</value>
+    </data>
+    <data name="tai_chinh">
+        <value>Finance</value>
+    </data>
+    <data name="phap_ly">
+        <value>Legal</value>
+    </data>
+    <data name="sua_chua">
+        <value>Restoration</value>
+    </data>
+    <data name="van_chuyen">
+        <value>Transportation</value>
+    </data>
+    <data name="moi_gioi_dia_oc">
+        <value>Real estate agency</value>
+    </data>
+    <!--AddFurniturePostItemPageViewModel-->
+    <data name="chup_hinh">
+        <value>Take photo</value>
+    </data>
+    <data name="quyen_truy_cap_hinh_anh">
+        <value>Image Access</value>
+    </data>
+    <data name="khong_the_chup_hinh_vui_long_thu_lai_sau">
+        <value>Unable to take photo, please try again later</value>
+    </data>
+    <!--AddProductPageViewModel-->
+    <data name="Sundihome_can_truy_cap_vao_thu_vien_hinh_anh_de_lay_hinh_san_pham_cua_ban">
+        <value>Sundihome needs access to the image gallery to get a picture of your product</value>
+    </data>
+    <data name="Sundihome_can_truy_cap_vao_may_anh_de_chup_hinh_san_pham">
+        <value>Sundihome needs access to the camera to take a picture of the product</value>
+    </data>
+    <!--ProductDetailPageViewModel-->
+    <data name="ban_co_chac_chan_muon_xoa_san_pham_nay_khong">
+        <value>Are you sure you want to delete this product?</value>
+    </data>
+    <data name="xoa_that_bai">
+        <value>Delete failed</value>
+    </data>
+    <!--MoiGioiView/AddContactNeedContent-->
+    <data name="loai_hinh_bat_dong_san">
+        <value>Type of real estate</value>
+    </data>
+    <data name="sua_thong_tin_nhu_cau">
+        <value>Edit demand information</value>
+    </data>
+    <data name="them_nhu_cau_khach_hang">
+        <value>Add customer need</value>
+    </data>
+    <data name="vui_long_chon_loai_hinh_bat_dong_san">
+        <value>Please select type of real estate</value>
+    </data>
+    <data name="vui_long_nhap_ten_du_an">
+        <value>Please enter project name</value>
+    </data>
+    <data name="them_nhu_cau_thanh_cong">
+        <value>Add need success</value>
+    </data>
+    <data name="sua_thanh_cong">
+        <value>Edit success</value>
+    </data>
+    <data name="luu_y_ban_co_chac_chan_muon_xoa_nhu_cau_nay_khong">
+        <value>Note. Are you sure you want to delete this need?</value>
+    </data>
+    <data name="nhap_ten">
+        <value>Enter name</value>
+    </data>
+    <!--MoiGioiView/AllListPage-->
+    <data name="vui_long_dang_nhap_de_dang_ky_moi_gioi">
+        <value>Pleaselogin to register broker</value>
+    </data>
+    <data name="ban_dang_la_moi_gioi">
+        <value>You are broker!</value>
+    </data>
+    <!--MoiGioiView/ContactDetailContentPage-->
+    <data name="dau_tu">
+        <value>Invest</value>
+    </data>
+    <data name="da_mua">
+        <value>Bought</value>
+    </data>
+    <data name="vui_long_nhap_ten_khach_hang">
+        <value>Please enter customer name</value>
+    </data>
+    <data name="vui_long_chon_nhom_khach_hang">
+        <value>Please select customer group</value>
+    </data>
+    <data name="cap_nhat_thong_tin_khach_hang_that_bai">
+        <value>Update customer information failed</value>
+    </data>
+    <data name="khong_tim_thay_khach_hang">
+        <value>No customer found</value>
+    </data>
+    <data name="nhom_khach_hang">
+        <value>Customer group</value>
+    </data>
+    <data name="cap_nhat_khach_hang">
+        <value>Update customer</value>
+    </data>
+    <!--MoiGioiView/ContactDetailPage-->
+    <data name="bsd_quan_tam">
+        <value>Real estate care</value>
+    </data>
+    <data name="thong_tin_khach_hang">
+        <value>Customer information</value>
+    </data>
+    <!--MoiGioiView/ContactListPage-->
+    <data name="danh_sach_khach_hang">
+        <value>Customers</value>
+    </data>
+    <data name="them_khach_hang">
+        <value>Add customer</value>
+    </data>
+    <data name="them_khach_hang_thanh_cong">
+        <value>Successfully added</value>
+    </data>
+    <data name="luu_y_ban_co_chac_chan_muon_xoa_khach_hang_nay_khong">
+        <value>Note.You are sure you want to delete this customer?</value>
+    </data>
+    <data name="xoa_khach_hang_thanh_cong">
+        <value>Delete customer success</value>
+    </data>
+    <data name="xoa_khach_hang_that_bai">
+        <value>Delete customer failed</value>
+    </data>
+    <data name="nhu_cau">
+        <value>Need</value>
+    </data>
+    <data name="ten_khach_hang">
+        <value>Customer name</value>
+    </data>
+    <!--MoiGioiView/ContactPostCareContent-->
+    <data name="ngay_tao_tao_khach_hang">
+        <value>Date Created</value>
+    </data>
+    <data name="do_uu_tien">
+        <value>Priority</value>
+    </data>
+    <data name="ngan_sach_du_kien">
+        <value>Est. Budget</value>
+    </data>
+    <data name="danh_gia_kha_nang">
+        <value>Ability</value>
+    </data>
+    <data name="nhap_ngan_sach">
+        <value>Enter budget</value>
+    </data>
+    <data name="vui_long_chon_do_uu_tien">
+        <value>Please select priority</value>
+    </data>
+    <data name="xem_thong_tin_chi_tiet">
+        <value>View detail</value>
+    </data>
+    <data name="xoa_bds_quan_tam_that_bai">
+        <value>Detele real estate interest failed</value>
+    </data>
+    <data name="chon_bat_dong_san">
+        <value>Select real estate</value>
+    </data>
+    <!--MoiGioiView/DangKyMoiGioiContentView-->
+    <data name="kinh_nghiem">
+        <value>Experience</value>
+    </data>
+    <data name="loai_hinh_moi_gioi">
+        <value>Brokerage type</value>
+    </data>
+    <data name="cap_nhat">
+        <value>Update</value>
+    </data>
+    <data name="ban_co_chac_chan_muon_huy_khong">
+        <value>Are you sure you want to cancel?</value>
+    </data>
+    <data name="tiep_tuc">
+        <value>Continue</value>
+    </data>
+    <data name="vui_long_chon_kinh_nghiem">
+        <value>Please select experience</value>
+    </data>
+    <data name="vui_long_chon_loai_hinh_moi_gioi">
+        <value>Please select the type of broker</value>
+    </data>
+    <data name="vui_long_chon_khu_vuc_hoat_dong">
+        <value>Please choose active area</value>
+    </data>
+    <data name="dang_ky_moi_gioi_thanh_cong">
+        <value>Register broker success!</value>
+    </data>
+    <data name="cap_nhat_moi_gioi_thanh_cong">
+        <value>Update broker success!</value>
+    </data>
+    <!--MoiGioiView/EmployeePostListView-->
+    <data name="cam_ket">
+        <value>Commitment</value>
+    </data>
+    <!--MoiGioiView/HomePage-->
+    <data name="cong_viec_moi">
+        <value>New job</value>
+    </data>
+    <data name="nhu_cau_khach_hang">
+        <value>Customer need</value>
+    </data>
+    <data name="khu_vuc">
+        <value>Area</value>
+    </data>
+    <!--MoiGioiView/PostListPage-->
+    <data name="gio_hang">
+        <value>Cart</value>
+    </data>
+    <data name="cua_toi">
+        <value>Mine</value>
+    </data>
+    <data name="thong_tin_moi_gioi">
+        <value>Broker information</value>
+    </data>
+    <!--MoiGioiView/ThongTinMoiGioiPage-->
+    <data name="khu_vuc_hoat_dong">
+        <value>Active area</value>
+    </data>
+    <data name="cap_nhat_thong_tin_moi_gioi">
+        <value>Update broker information</value>
+    </data>
+    <data name="tu_nam">
+        <value>From year</value>
+    </data>
+    <data name="tham_gia_ngay">
+        <value>join the day</value>
+    </data>
+    <data name="ban_chac_chan_muon_huy_theo_doi">
+        <value>Are you sure unfollow?</value>
+    </data>
+    <data name="chon_anh_chung_chi">
+        <value>Select a certificate image</value>
+    </data>
+    <data name="sundihome_can_truy_cap_vao_may_anh_de_chup_hinh_anh_chung_chi">
+        <value>Sundihome needs access to the camera to take a certificate image</value>
+    </data>
+    <data name="sundihome_can_truy_cap_vao_may_anh_de_chon_hinh_anh_chung_chi">
+        <value>Sundihome needs access to the camera to choose a certificate image</value>
+    </data>
+    <data name="thong_tin">
+        <value>Information</value>
+    </data>
+    <!--QuanLyMoiGioiViews/AddTaskPage-->
+    <data name="them_cong_viec">
+        <value>Add job</value>
+    </data>
+    <data name="tieu_de_cong_viec">
+        <value> Job title</value>
+    </data>
+    <data name="ngay">
+        <value>Day</value>
+    </data>
+    <data name="gio">
+        <value>Hour</value>
+    </data>
+    <data name="thuc_hien">
+        <value>Perform</value>
+    </data>
+    <data name="vui_long_chon_khach_hang">
+        <value>Please choose customer!</value>
+    </data>
+    <data name="thoi_gian_khong_hop_le">
+        <value>Time is invalid!</value>
+    </data>
+    <data name="cap_nhat_cong_viec_thanh_cong">
+        <value>Update job successfully!</value>
+    </data>
+    <data name="cap_nhat_cong_viec_khong_thanh_cong">
+        <value>Update job failed!</value>
+    </data>
+    <data name="them_cong_viec_thanh_cong">
+        <value>Add job successfully!</value>
+    </data>
+    <data name="them_cong_viec_that_bai">
+        <value>Add job failed!</value>
+    </data>
+    <!--QuanLyMoiGioiViews/TaskDetailPage-->
+    <data name="ban_co_chac_muon_xoa_cong_viec_nay_khong">
+        <value>Are you sure delete this job?</value>
+    </data>
+    <data name="da_hoan_thanh">
+        <value>Accomplished</value>
+    </data>
+    <!--QuanLyMoiGioiViews/TaskListPage-->
+    <data name="cong_viec">
+        <value>Job</value>
+    </data>
+    <data name="da_dong">
+        <value>Closed</value>
+    </data>
+    <data name="khach_hang">
+        <value>Customer</value>
+    </data>
+    <!--MoiGioiViewModels/AddContactNeedContentViewModel-->
+    <data name="xoa_nhu_cau_thanh_cong">
+        <value>Delete the need for success</value>
+    </data>
+    <data name="xoa_nhu_cau_that_bai">
+        <value>Delete the need failed</value>
+    </data>
+    <!--MoiGioiViewModels/DangKyMoiGoiContentViewModel-->
+    <data name="can_ho_chung_cu">
+        <value>Apartment</value>
+    </data>
+    <data name="nha_pho">
+        <value>Townhouse</value>
+    </data>
+    <data name="dat_nen">
+        <value>Land</value>
+    </data>
+    <data name="bat_dong_san_nghi_duong">
+        <value>Holiday properties</value>
+    </data>
+    <data name="phong_tro_cho_thue">
+        <value>Hostel</value>
+    </data>
+    <data name="nha_xuong">
+        <value>Warehouse</value>
+    </data>
+    <data name="hoa_vien_nghia_trang">
+        <value>Cemetery</value>
+    </data>
+    <data name="hop_tac_kinh_doanh">
+        <value>Business Cooperation</value>
+    </data>
+     <data name="hop_tac">
+        <value>Cooperation</value>
+    </data>
+    <!--OwnerPage-->
+    <data name="thong_tin_chu_so_huu">
+        <value>Owner information</value>
+    </data>
+    <data name="chu">
+        <value>Owner</value>
+    </data>
+    <data name="khong_co_sdt_cua_chu_so_huu_vui_long_thu_lai">
+        <value>No owner phone number. Please try again</value>
+    </data>
+    <!-- DangKy -->
+    <data name="gioi_thieu_khi_dang_ky_moi_gioi">
+        <value>Register to become a agent - you manage customers, manage tasks, Sundihome introduce you to investors and customers, you can register to become a member of the companies in the Sundihome system</value>
+    </data>
+    <data name="gioi_thieu_khi_dang_ky_cong_ty">
+        <value>Register your company with Sundihome - you can easily grow your sales team, expand your business, manage and share property</value>
+    </data>
+     <data name="san_noi_that">
+        <value>Furniture Market</value>
+    </data>
+     <data name="gia_dat">
+        <value>Land prices</value>
+    </data>
+</root>

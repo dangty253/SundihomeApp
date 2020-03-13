@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView x:Name="Wrap" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives" x:Class="SundihomeApp.Controls.PlusMinusNumber" PropertyChanged="GridProperty_Changed">
+    <ContentView.Content>
+        <telerikPrimitives:RadBorder x:Name="radBorder" BorderColor="#eeeeee" BorderThickness="1" Padding="2" Margin="0">
+            <Grid ColumnSpacing="0" RowSpacing="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Button x:Name="btnDec" Text="&#xf068;" Clicked="Decrease_Clicked" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="13" TextColor="{StaticResource MainDarkColor}" BackgroundColor="#eeeeee" CornerRadius="0" Grid.Column="0" />
+                <Label x:Name="LblValue" Text="{Binding Value}" Grid.Column="1" FontSize="15" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="Black" HorizontalOptions="FillAndExpand" />
+                <Button x:Name="BtnInc" Text="&#xf067;" Clicked="Increase_Clicked" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="13" TextColor="{StaticResource MainDarkColor}" BackgroundColor="#eeeeee" CornerRadius="0" Grid.Column="2" />
+            </Grid>
+        </telerikPrimitives:RadBorder>
+    </ContentView.Content>
+</ContentView>

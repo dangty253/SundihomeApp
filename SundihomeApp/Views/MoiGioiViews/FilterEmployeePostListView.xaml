@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:controls="clr-namespace:SundihomeApp.Controls"
+             xmlns:templateSelectors="clr-namespace:SundihomeApp.TemplateSelectors"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SundihomeApp.Views.MoiGioiViews.FilterEmployeePostListView"
+             xmlns:lang="clr-namespace:SundihomeApp.Resources">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <templateSelectors:PostTemplateSeletor x:Key="PostTemplateSeletor" />
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <AbsoluteLayout>
+            <Grid AbsoluteLayout.LayoutBounds="0,0,1,1"
+                  AbsoluteLayout.LayoutFlags="All">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Frame Grid.Row="0"
+                       HeightRequest="35"
+                       CornerRadius="8"
+                       BorderColor="#aaaaaa"
+                       Padding="0"
+                       Margin="5,0"
+                       HasShadow="False">
+                    <SearchBar Placeholder="{Static lang:Language.tim_kiem}"
+                               BackgroundColor="{OnPlatform iOS='White'}"
+                               x:Name="searchBar"
+                               FontSize="14"
+                               TextColor="#444444"
+                               SearchButtonPressed="Search_Pressed"
+                               TextChanged="Search_TextChanged" />
+                </Frame>
+                <controls:BsdListView x:Name="DataListView"
+                                      Grid.Row="1"
+                                      ItemTemplate="{StaticResource PostTemplateSeletor}" />
+            </Grid>
+            <controls:LoadingPopup x:Name="loadingPopup" />
+        </AbsoluteLayout>
+    </ContentView.Content>
+</ContentView>

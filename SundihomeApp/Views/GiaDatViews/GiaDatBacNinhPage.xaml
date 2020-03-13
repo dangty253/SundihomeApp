@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="SundihomeApp.Views.GiaDatViews.GiaDatBacNinhPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SundihomeApp.Controls"
+    xmlns:converters="clr-namespace:SundihomeApp.Converters"
+    xmlns:lang="clr-namespace:SundihomeApp.Resources"
+    Title="Giá đất Bắc Ninh">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:GiaDatPriceConverter x:Key="GiaDatPriceConverter" />
+            <converters:NullToHideConverter x:Key="NullToHideConverter" />
+            <Style x:Key="LabelPriceStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource MainDarkColor}" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontSize" Value="15" />
+                <!--<Setter Property="Margin"  Value="10,5"/>-->
+                <!--<Setter Property="HorizontalTextAlignment"  Value="Center"/>-->
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <StackLayout Margin="10">
+                    <controls:FormLabelRequired Text="{x:Static lang:Language.district}" />
+                    <controls:LookUpControl
+                        BottomModal="{x:Reference lookUpModal}"
+                        ItemsSource="{Binding Districts}"
+                        NameDisplay="Name"
+                        Placeholder="{x:Static lang:Language.district}"
+                        SelectedItem="{Binding District}"
+                        SelectedItemChange="District_Changed" />
+
+                    <controls:FormLabelRequired Margin="0,5,0,0" Text="Tìm kiếm theo" />
+                    <StackLayout Orientation="Horizontal" Spacing="20">
+                        <StackLayout
+                            HeightRequest="30"
+                            Orientation="Horizontal"
+                            Spacing="0">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnStatusKhuDanCuCheckedTapped" />
+                            </StackLayout.GestureRecognizers>
+                            <CheckBox
+                                x:Name="chkKhuDanCu"
+                                IsChecked="True"
+                                IsEnabled="False"
+                                Color="{StaticResource LightBlueLogoColor}" />
+                            <Label Text="Khu dân cư" VerticalTextAlignment="Center" />
+                        </StackLayout>
+                        <StackLayout
+                            HeightRequest="30"
+                            Orientation="Horizontal"
+                            Spacing="0">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnStatusStreetCheckedTapped" />
+                            </StackLayout.GestureRecognizers>
+                            <CheckBox
+                                x:Name="chkStreet"
+                                IsEnabled="False"
+                                Color="{StaticResource LightBlueLogoColor}" />
+                            <Label Text="Đường" VerticalTextAlignment="Center" />
+                        </StackLayout>
+                    </StackLayout>
+
+                    <controls:FormLabelRequired
+                        x:Name="LabelWard"
+                        Margin="0,5,0,0"
+                        IsVisible="{Binding IsNoCity}"
+                        Text="{x:Static lang:Language.phuong_xa}" />
+                    <controls:LookUpControl
+                        x:Name="lookUpWard"
+                        BottomModal="{x:Reference lookUpModal}"
+                        IsVisible="{Binding IsNoCity}"
+                        ItemsSource="{Binding Wards}"
+                        NameDisplay="Name"
+                        Placeholder="{x:Static lang:Language.phuong_xa}"
+                        SelectedItem="{Binding Ward}"
+                        SelectedItemChange="Ward_Changed" />
+
+                    <controls:FormLabelRequired Margin="0,5,0,0" Text="Khu dân cư">
+                        <controls:FormLabelRequired.Triggers>
+                            <DataTrigger
+                                Binding="{Binding Source={Reference chkKhuDanCu}, Path=IsChecked}"
+                                TargetType="controls:FormLabelRequired"
+                                Value="False">
+                                <Setter Property="Text" Value="Đường" />
+                            </DataTrigger>
+                        </controls:FormLabelRequired.Triggers>
+                    </controls:FormLabelRequired>
+                    <controls:LookUpControl
+                        x:Name="lookUpKhuDanCu"
+                        BottomModal="{x:Reference lookUpModal}"
+                        ItemsSource="{Binding KhuDanCuList}"
+                        NameDisplay="Name"
+                        Placeholder="Khu dân cư"
+                        SelectedItem="{Binding KhuDanCu}"
+                        SelectedItemChange="KhuDanCu_Changed">
+                        <controls:LookUpControl.Triggers>
+                            <DataTrigger
+                                Binding="{Binding Source={Reference chkKhuDanCu}, Path=IsChecked}"
+                                TargetType="controls:LookUpControl"
+                                Value="False">
+                                <Setter Property="Placeholder" Value="Đường" />
+                            </DataTrigger>
+                        </controls:LookUpControl.Triggers>
+                    </controls:LookUpControl>
+                    <controls:FormLabelRequired
+                        x:Name="LabelGiaDat"
+                        Margin="0,5,0,0"
+                        Text="Mặt cắt đường">
+                        <controls:FormLabelRequired.Triggers>
+                            <DataTrigger
+                                Binding="{Binding Source={Reference chkKhuDanCu}, Path=IsChecked}"
+                                TargetType="controls:FormLabelRequired"
+                                Value="False">
+                                <Setter Property="Text" Value="Đoạn Đường" />
+                            </DataTrigger>
+                        </controls:FormLabelRequired.Triggers>
+                    </controls:FormLabelRequired>
+                    <controls:LookUpControl
+                        x:Name="lookUpGiaDat"
+                        BottomModal="{x:Reference lookUpModal}"
+                        ItemsSource="{Binding GiaDatList}"
+                        NameDisplay="Name"
+                        Placeholder="Mặt cắt đường"
+                        SelectedItem="{Binding GiaDat}">
+                        <controls:LookUpControl.Triggers>
+                            <DataTrigger
+                                Binding="{Binding Source={Reference chkKhuDanCu}, Path=IsChecked}"
+                                TargetType="controls:LookUpControl"
+                                Value="False">
+                                <Setter Property="Placeholder" Value="Đoạn Đường" />
+                            </DataTrigger>
+                        </controls:LookUpControl.Triggers>
+                    </controls:LookUpControl>
+
+                    <controls:FormLabelRequired Text="{x:Static lang:Language.khu_vuc}" />
+                    <controls:LookUpControl
+                        BottomModal="{x:Reference lookUpModal}"
+                        ItemsSource="{Binding KhuVucList}"
+                        NameDisplay="Name"
+                        Placeholder="{x:Static lang:Language.khu_vuc}"
+                        SelectedItem="{Binding KhuVuc}" />
+
+                    <StackLayout Margin="0,0,0,20" IsVisible="{Binding GiaDat, Converter={StaticResource NullToHideConverter}}">
+                        <Label
+                            Margin="0,10,0,0"
+                            Padding="10,5"
+                            FontAttributes="Bold"
+                            FontSize="17"
+                            IsVisible="{Binding GiaDat.VT1, Converter={StaticResource NullToHideConverter}}"
+                            Text="Giá đất "
+                            TextColor="Black" />
+                        <Label Margin="10,5" IsVisible="{Binding GiaDat.VT1, Converter={StaticResource NullToHideConverter}}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="VT1 : " TextColor="#444444" />
+                                    <Span Style="{StaticResource LabelPriceStyle}" Text="{Binding GiaDat.VT1, Converter={StaticResource GiaDatPriceConverter}}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label Margin="10,5" IsVisible="{Binding GiaDat.VT2, Converter={StaticResource NullToHideConverter}}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="VT2 : " TextColor="#444444" />
+                                    <Span Style="{StaticResource LabelPriceStyle}" Text="{Binding GiaDat.VT2, Converter={StaticResource GiaDatPriceConverter}}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label Margin="10,5" IsVisible="{Binding GiaDat.VT3, Converter={StaticResource NullToHideConverter}}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="VT3 : " TextColor="#444444" />
+                                    <Span Style="{StaticResource LabelPriceStyle}" Text="{Binding GiaDat.VT3, Converter={StaticResource GiaDatPriceConverter}}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label Margin="10,5" IsVisible="{Binding GiaDat.VT4, Converter={StaticResource NullToHideConverter}}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="VT4 : " TextColor="#444444" />
+                                    <Span Style="{StaticResource LabelPriceStyle}" Text="{Binding GiaDat.VT4, Converter={StaticResource GiaDatPriceConverter}}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+                    <StackLayout Margin="0,0,0,20" IsVisible="{Binding KhuDanCu, Converter={StaticResource NullToHideConverter}}">
+                        <Label
+                            Margin="0,10,0,0"
+                            Padding="10,5"
+                            FontAttributes="Bold"
+                            FontSize="17"
+                            IsVisible="{Binding KhuDanCu.VT1, Converter={StaticResource NullToHideConverter}}"
+                            Text="Giá đất "
+                            TextColor="Black" />
+                        <Label Margin="10,5" IsVisible="{Binding KhuDanCu.VT1, Converter={StaticResource NullToHideConverter}}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="VT1 : " TextColor="#444444" />
+                                    <Span Style="{StaticResource LabelPriceStyle}" Text="{Binding KhuDanCu.VT1, Converter={StaticResource GiaDatPriceConverter}}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label Margin="10,5" IsVisible="{Binding KhuDanCu.VT2, Converter={StaticResource NullToHideConverter}}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="VT2 : " TextColor="#444444" />
+                                    <Span Style="{StaticResource LabelPriceStyle}" Text="{Binding KhuDanCu.VT2, Converter={StaticResource GiaDatPriceConverter}}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label Margin="10,5" IsVisible="{Binding KhuDanCu.VT3, Converter={StaticResource NullToHideConverter}}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="VT3 : " TextColor="#444444" />
+                                    <Span Style="{StaticResource LabelPriceStyle}" Text="{Binding KhuDanCu.VT3, Converter={StaticResource GiaDatPriceConverter}}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label Margin="10,5" IsVisible="{Binding KhuDanCu.VT4, Converter={StaticResource NullToHideConverter}}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="VT4 : " TextColor="#444444" />
+                                    <Span Style="{StaticResource LabelPriceStyle}" Text="{Binding KhuDanCu.VT4, Converter={StaticResource GiaDatPriceConverter}}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+                    <StackLayout Margin="0,0,0,20" IsVisible="{Binding KhuVuc, Converter={StaticResource NullToHideConverter}}">
+                        <Label
+                            Margin="0,10,0,0"
+                            Padding="10,5"
+                            FontAttributes="Bold"
+                            FontSize="17"
+                            IsVisible="{Binding KhuVuc.VT1, Converter={StaticResource NullToHideConverter}}"
+                            Text="Giá đất "
+                            TextColor="Black" />
+                        <Label Margin="10,5">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="VT1 : " TextColor="#444444" />
+                                    <Span Style="{StaticResource LabelPriceStyle}" Text="{Binding KhuVuc.VT1, Converter={StaticResource GiaDatPriceConverter}}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label Margin="10,5" IsVisible="{Binding KhuVuc.VT2, Converter={StaticResource NullToHideConverter}}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="VT2 : " TextColor="#444444" />
+                                    <Span Style="{StaticResource LabelPriceStyle}" Text="{Binding KhuVuc.VT2, Converter={StaticResource GiaDatPriceConverter}}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label Margin="10,5" IsVisible="{Binding KhuVuc.VT3, Converter={StaticResource NullToHideConverter}}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="VT3 : " TextColor="#444444" />
+                                    <Span Style="{StaticResource LabelPriceStyle}" Text="{Binding KhuVuc.VT3, Converter={StaticResource GiaDatPriceConverter}}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label Margin="10,5" IsVisible="{Binding KhuVuc.VT4, Converter={StaticResource NullToHideConverter}}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="VT4 : " TextColor="#444444" />
+                                    <Span Style="{StaticResource LabelPriceStyle}" Text="{Binding KhuVuc.VT4, Converter={StaticResource GiaDatPriceConverter}}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+            <controls:BottomModal x:Name="lookUpModal" />
+            <controls:LoadingPopup x:Name="loadingPopup" />
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

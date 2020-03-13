@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:telerikInput="clr-namespace:Telerik.XamarinForms.Input;assembly=Telerik.XamarinForms.Input"
+             ios:Page.UseSafeArea="true" Title="{Binding PostItem.CreatedBy.FullName}"
+             xmlns:pluginImageCircle="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             xmlns:controls="clr-namespace:SundihomeApp.Controls"
+             xmlns:lang="clr-namespace:SundihomeApp.Resources"
+             xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives"
+             xmlns:converters="clr-namespace:SundihomeApp.Converters"
+             xmlns:templateSelectors="clr-namespace:SundihomeApp.TemplateSelectors"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SundihomeApp.Views.CompanyViews.InternalDetailPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:PostItemControlTemplateConverter x:Key="PostItemControlTemplateConverter" Folder="post" />
+            <converters:PostItemControlTemplateConverter x:Key="B2BPostItemControlTemplateConverter" Folder="internalpostitem" />
+            <converters:PostImageUrlConverter x:Key="PostImageUrlConverter" Folder="post" />
+            <converters:BoolToBoolConverter x:Key="BoolToBoolConverter" />
+            <templateSelectors:PostTemplateSeletor x:Key="PostTemplateSeletor" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <AbsoluteLayout BackgroundColor="White">
+            <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <Grid RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <!--Info-->
+                    <controls:ExtendedFrame Grid.Row="0" CornerRadius="0" Margin="0,0,0,10" Padding="0">
+                        <Grid RowSpacing="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0" ColumnSpacing="10" Margin="10,10,10,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="40" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+
+                                <Image Grid.Column="0" Aspect="AspectFill" HeightRequest="40" Source="{Binding PostItem.CreatedBy.AvatarFullUrl}" />
+                                <StackLayout Grid.Column="1" Spacing="3">
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="ViewUserProfile_Clicked" NumberOfTapsRequired="1" CommandParameter="{Binding PostItem.CreatedBy.UserId}" />
+                                    </StackLayout.GestureRecognizers>
+                                    <Label Text="{Binding PostItem.CreatedBy.FullName}" FontAttributes="Bold" FontSize="15" MaxLines="2" TextColor="#385898" />
+                                    <Label Text="{Binding PostItem.CreatedDate,StringFormat='{0:dd/MM/yyyy HH:mm}'}" FontSize="13" TextColor="#444444" />
+                                </StackLayout>
+                                <Button Text="&#xf141;" Padding="0" FontSize="16" Grid.Column="2" WidthRequest="40" HeightRequest="40" VerticalOptions="Center" FontFamily="{StaticResource FontAwesomeSolid}" BackgroundColor="transparent" TextColor="#63636D" Clicked="Option_Clicked" CommandParameter="{Binding}" />
+                            </Grid>
+
+                            <StackLayout Grid.Row="1" Margin="10,5">
+                                <Label FontSize="15" TextColor="Black" FontAttributes="Bold" Text="{Binding PostItem.Title}" />
+                                <Label FontSize="15" TextColor="#444444" MaxLines="5" LineBreakMode="TailTruncation" Text="{Binding PostItem.Description}" />
+                            </StackLayout>
+
+                            <ContentView Grid.Row="2" IsVisible="{Binding PostItem.HasImage}" Margin="10,0,10,10" Content="{Binding PostItem.Images,Converter={StaticResource B2BPostItemControlTemplateConverter}}" />
+
+                            <controls:ExtendedFrame IsVisible="{Binding PostItem.HasPost}" Grid.Row="3" Margin="5" Padding="10">
+                                <controls:ExtendedFrame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="ViewPost_Clicked" CommandParameter="{Binding PostItem.Post.PostId}" />
+                                </controls:ExtendedFrame.GestureRecognizers>
+                                <Grid RowSpacing="0" ColumnSpacing="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="80" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Image Grid.Column="0" HeightRequest="80" BackgroundColor="#eeeeee" Aspect="AspectFill" Source="{Binding PostItem.Post.AvatarFullUrl}" />
+                                    <StackLayout Grid.Column="1" Spacing="3" Margin="5">
+                                        <Label Text="{Binding PostItem.Post.Title}" TextColor="{StaticResource MainDarkColor}" FontSize="14" MaxLines="2" LineBreakMode="TailTruncation" FontAttributes="Bold" />
+                                        <Label Text="{Binding PostItem.Post.PriceText}" TextColor="Red" FontSize="13" MaxLines="1" LineBreakMode="TailTruncation" />
+                                        <Label Text="{Binding PostItem.Post.Address}" TextColor="Gray" FontSize="13" MaxLines="2" LineBreakMode="TailTruncation" />
+                                    </StackLayout>
+                                </Grid>
+                            </controls:ExtendedFrame>
+
+                            <telerikPrimitives:RadBorder Grid.Row="4" BorderThickness="0,1,0,0" BorderColor="#eeeeee">
+                                <Grid Padding="5" RowSpacing="0" ColumnSpacing="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid x:Name="gridFollow" Grid.Column="0" Padding="5" HorizontalOptions="Start">
+                                        <Grid.GestureRecognizers>
+                                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="FollowPost_Clicked" CommandParameter="{Binding Id}" />
+                                        </Grid.GestureRecognizers>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Label Text="&#xf004;" IsVisible="{Binding Path=IsVisible, Source={x:Reference btnFolllow},Converter={StaticResource BoolToBoolConverter}}" FontSize="14" Grid.Column="0" VerticalOptions="Center" FontFamily="{StaticResource FontAwesomeRegular}" BackgroundColor="transparent" TextColor="#63636D" />
+                                        <Label Text="{x:Static lang:Language.theo_doi}" IsVisible="{Binding Path=IsVisible, Source={x:Reference btnFolllow},Converter={StaticResource BoolToBoolConverter}}" Grid.Column="1" FontSize="13" VerticalTextAlignment="Center" TextColor="#63636D" />
+
+                                        <Label Text="&#xf004;" IsVisible="{Binding PostItem.IsFollow}" FontSize="14" Grid.Column="0" VerticalOptions="Center" FontFamily="{StaticResource FontAwesomeSolid}" BackgroundColor="transparent" TextColor="#2078f4" />
+                                        <Label Text="{x:Static lang:Language.theo_doi}" x:Name="btnFolllow" Grid.Column="1" IsVisible="{Binding PostItem.IsFollow}" FontAttributes="Bold" FontSize="13" VerticalTextAlignment="Center" TextColor="#2078f4" />
+                                    </Grid>
+                                    <StackLayout Grid.Column="1" Padding="5" HorizontalOptions="End" Orientation="Horizontal">
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="ShowComment_Clicked" />
+                                        </StackLayout.GestureRecognizers>
+                                        <Label Text="&#xf086;" FontSize="14" Grid.Column="0" FontFamily="{StaticResource FontAwesomeRegular}" BackgroundColor="transparent" TextColor="#63636D" />
+                                        <Label Text="{x:Static lang:Language.binh_luan}" FontSize="13" VerticalTextAlignment="Center" TextColor="#63636D" />
+                                    </StackLayout>
+                                </Grid>
+                            </telerikPrimitives:RadBorder>
+                        </Grid>
+                    </controls:ExtendedFrame>
+                    <!--info-->
+
+                    <!--Editor comment-->
+                    <controls:ExtendedFrame x:Name="FrameNewComment" IsVisible="false" Grid.Row="1" CornerRadius="0" Padding="5">
+                        <StackLayout Spacing="5">
+
+                            <Grid ColumnSpacing="3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Button x:Name="BtnPickerPost" Clicked="PickerPost_Clicked" Grid.Column="0" Text="&#xf1ad;" TextColor="#1b6fd8" HeightRequest="35" FontSize="15" FontFamily="{StaticResource FontAwesomeRegular}" BackgroundColor="#eeeeee" VerticalOptions="Start" CornerRadius="6" />
+                                <Grid Grid.Column="1" RowSpacing="0" ColumnSpacing="5">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="35" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <telerikPrimitives:RadBorder Grid.Column="0" CornerRadius="10" BackgroundColor="#f2f3f5" BorderColor="#ccd0d5" BorderThickness="1">
+                                        <Editor x:Name="EditorComment" Text="{Binding CommentText}" BackgroundColor="Transparent" AutoSize="TextChanges" Placeholder="{x:Static lang:Language.viet_binh_luan}" FontSize="14" />
+                                    </telerikPrimitives:RadBorder>
+                                    <Button Grid.Column="1" Padding="0" Text="&#xf1d8;" TextColor="#1b6fd8" HeightRequest="35" FontSize="15" FontFamily="{StaticResource FontAwesomeSolid}" Clicked="SendComment_Clicked" BackgroundColor="#eeeeee" VerticalOptions="Start" CornerRadius="6" />
+                                </Grid>
+                            </Grid>
+
+                            <ScrollView Orientation="Horizontal">
+                                <StackLayout BindableLayout.ItemsSource="{Binding CommentPosts}" Orientation="Horizontal" Spacing="0">
+                                    <BindableLayout.ItemTemplate>
+                                        <DataTemplate>
+                                            <controls:ExtendedFrame Margin="5" Padding="0" WidthRequest="120">
+                                                <Grid RowSpacing="0">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="70" />
+                                                        <RowDefinition Height="Auto" />
+                                                    </Grid.RowDefinitions>
+                                                    <Image Grid.Row="0" HeightRequest="70" WidthRequest="110" BackgroundColor="#eeeeee" Aspect="AspectFill" Source="{Binding Avatar,Converter={StaticResource PostImageUrlConverter}}" />
+                                                    <StackLayout Grid.Row="1" Margin="10,5">
+                                                        <Label Text="{Binding Title}" TextColor="{StaticResource MainDarkColor}" FontSize="13" MaxLines="3" LineBreakMode="TailTruncation" FontAttributes="Bold" />
+                                                        <Label Text="{Binding PriceText,StringFormat='{0:0,0 đ}'}" FontSize="13" TextColor="Red" MaxLines="1" LineBreakMode="TailTruncation" />
+                                                    </StackLayout>
+                                                    <Button Grid.RowSpan="2" Text="&#xf2ed;" Clicked="RemovePostComment_Clicked" CommandParameter="{Binding}" TextColor="#026294" FontSize="14" HorizontalOptions="End" VerticalOptions="Start" BorderWidth="0" BackgroundColor="White" WidthRequest="25" HeightRequest="25" Margin="0,5,5,0" Padding="0" FontFamily="{StaticResource FontAwesomeSolid}" />
+                                                </Grid>
+                                            </controls:ExtendedFrame>
+                                        </DataTemplate>
+                                    </BindableLayout.ItemTemplate>
+                                </StackLayout>
+                            </ScrollView>
+
+                            <!--huy phan binh luan-->
+                            <Button Clicked="CancelCommnet_Clicked" IsVisible="{Binding ShowClearCommentButton}" HorizontalOptions="End" HeightRequest="35" Text="{x:Static lang:Language.huy}" BackgroundColor="Transparent" TextColor="{StaticResource MainDarkColor}" />
+                        </StackLayout>
+                    </controls:ExtendedFrame>
+                    <!--Editor comment-->
+
+                    <!--Comment list-->
+                    <StackLayout x:Name="StackLayoutComments" BindableLayout.ItemsSource="{Binding Comments}" Grid.Row="2" Spacing="5" Margin="10">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Grid RowSpacing="3" Margin="0,5,0,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="35" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="1" />
+                                    </Grid.RowDefinitions>
+
+                                    <pluginImageCircle:CircleImage Grid.Row="0" Grid.Column="0" Source="{Binding CreatedBy.AvatarFullUrl}" HeightRequest="35" VerticalOptions="Start" WidthRequest="50" Aspect="AspectFill" />
+
+                                    <Grid Grid.Row="0" Grid.Column="1" RowSpacing="3">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="6*" />
+                                            <ColumnDefinition Width="4*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+
+                                        <Label Grid.Column="0" Grid.Row="0" FontAttributes="Bold" Text="{Binding CreatedBy.FullName}" TextColor="#385898" FontSize="15">
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="ViewUserProfile2_Clicked" CommandParameter="{Binding CreatedById}" />
+                                            </Label.GestureRecognizers>
+                                        </Label>
+                                        <Label Grid.Column="1" Grid.Row="0" HorizontalOptions="EndAndExpand" Text="{Binding CreatedDate,StringFormat='{0:dd/MM/yyyy HH:mm}'}" TextColor="#444444" FontSize="12" />
+                                        <Label Grid.Row="1" Text="{Binding Text}" IsVisible="{Binding HasText}" TextColor="#333333" FontSize="14" />
+
+                                        <StackLayout Grid.ColumnSpan="2" Grid.Row="2" Margin="-5,0,0,0" IsVisible="{Binding HasPost}" BindableLayout.ItemsSource="{Binding Posts}" Spacing="0">
+                                            <BindableLayout.ItemTemplate>
+                                                <DataTemplate>
+                                                    <controls:ExtendedFrame Margin="5" Padding="0">
+                                                        <controls:ExtendedFrame.GestureRecognizers>
+                                                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="ViewPostDetail_Clicked" CommandParameter="{Binding}" />
+                                                        </controls:ExtendedFrame.GestureRecognizers>
+                                                        <Grid RowSpacing="0" ColumnSpacing="0">
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="80" />
+                                                                <ColumnDefinition Width="*" />
+                                                            </Grid.ColumnDefinitions>
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="Auto" />
+                                                            </Grid.RowDefinitions>
+                                                            <Image Grid.Column="0" HeightRequest="80" BackgroundColor="#eeeeee" Aspect="AspectFill" Source="{Binding AvatarFullUrl}" />
+                                                            <StackLayout Grid.Column="1" Spacing="3" Margin="5">
+                                                                <Label Text="{Binding Title}" TextColor="{StaticResource MainDarkColor}" FontSize="13" MaxLines="2" LineBreakMode="TailTruncation" FontAttributes="Bold" />
+                                                                <Label Text="{Binding PriceText}" TextColor="Red" FontSize="12" MaxLines="1" LineBreakMode="TailTruncation" />
+                                                                <Label Text="{Binding Address}" TextColor="Gray" FontSize="12" MaxLines="2" LineBreakMode="TailTruncation" />
+                                                            </StackLayout>
+                                                        </Grid>
+                                                    </controls:ExtendedFrame>
+                                                </DataTemplate>
+                                            </BindableLayout.ItemTemplate>
+                                        </StackLayout>
+                                    </Grid>
+
+
+                                    <StackLayout HeightRequest="1" Grid.Row="1" Grid.Column="1" BackgroundColor="#eeeeee" />
+                                </Grid>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
+                    <!--Comment list-->
+
+                    <Button Grid.Row="3" Text="{x:Static lang:Language.xem_them_binh_luan}" IsVisible="{Binding ShowLoadmoreCommentButton}" Padding="10,5" HeightRequest="30" FontSize="14" HorizontalOptions="Center" Command="{Binding LoadMoreCommentCommand}" Margin="0,0,0,15" BackgroundColor="White" TextColor="{StaticResource MainDarkColor}" BorderColor="{StaticResource MainDarkColor}" BorderWidth="1" CornerRadius="5" />
+                </Grid>
+            </ScrollView>
+
+            <controls:BottomModal x:Name="ModalPickPost" Title="{x:Static lang:Language.chon_bat_dong_san}">
+                <controls:BottomModal.ModalContent>
+                    <Grid RowSpacing="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <telerikInput:RadSegmentedControl x:Name="radSegmentedControl" Grid.Row="0" Margin="5,5,5,0" SegmentTextColor="{StaticResource MainDarkColor}" SegmentBackgroundColor="White" SelectedSegmentTextColor="White" SelectedIndex="0" SelectedSegmentBackgroundColor="{StaticResource MainDarkColor}" SelectionChanged="LoaiHinh_Change"/>
+                        <StackLayout Padding="5,0" Grid.Row="1" BackgroundColor="White">
+                            <Frame HeightRequest="35" CornerRadius="8" BorderColor="Gray" Padding="0" Margin="0" HasShadow="False">
+                                <SearchBar  x:Name="ModalPopupSearchBar" TextChanged="SearchBar_TextChanged" BackgroundColor="#ffffff" FontSize="14" SearchButtonPressed="Search_Clicked" Placeholder="{x:Static lang:Language.nhap_tu_khoa_tim_kiem}" />
+                            </Frame>
+                        </StackLayout>
+                        <controls:BsdListView Grid.Row="2" x:Name="ListView0" ItemTemplate="{StaticResource PostTemplateSeletor}" />
+                    </Grid>
+                </controls:BottomModal.ModalContent>
+            </controls:BottomModal>
+            <controls:LoadingPopup x:Name="loadingPopup" />
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

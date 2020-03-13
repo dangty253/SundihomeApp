@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" Title="{Static lang:Language.home}" xmlns:lang="clr-namespace:SundihomeApp.Resources" xmlns:converters="clr-namespace:SundihomeApp.Converters" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:controls="clr-namespace:SundihomeApp.Controls" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SundihomeApp.Views.MoiGioiViews.HomePage">
+    <ContentPage.Resources>
+        <converters:LoaiBatDongSanNameConverter x:Key="LoaiBatDongSanNameConverter" />
+        <converters:NullToHideConverter x:Key="NullToHideConverter" />
+        <converters:StatusColorConverter x:Key="statusColorConverter" />
+        <ResourceDictionary>
+            <Style x:Key="ViewAllBtnStyle" TargetType="Button">
+                <Setter Property="Text" Value="{x:Static lang:Language.xem_tat_ca}" />
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="BorderWidth" Value="1" />
+                <Setter Property="CornerRadius" Value="4" />
+                <Setter Property="Padding" Value="10,0" />
+                <Setter Property="TextColor" Value="{StaticResource MainDarkColor}" />
+                <Setter Property="BorderColor" Value="{StaticResource MainDarkColor}" />
+                <Setter Property="HeightRequest" Value="20" />
+                <Setter Property="VerticalOptions" Value="Start" />
+                <Setter Property="BackgroundColor" Value="White" />
+                <Setter Property="HorizontalOptions" Value="End" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style x:Key="SectionTitleStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="TextColor" Value="{StaticResource MainDarkColor}" />
+                <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <RefreshView IsRefreshing="{Binding IsRefreshing}" Command="{Binding RefreshCommand}" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <ScrollView Padding="0,0,0,74">
+                    <Grid RowSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <StackLayout Orientation="Horizontal" Grid.Row="0" Padding="10,5" BackgroundColor="White">
+                            <Label Text="{Static lang:Language.cong_viec_moi}" Style="{StaticResource SectionTitleStyle}" />
+                            <Button Style="{StaticResource ViewAllBtnStyle}" Clicked="ViewMoreType01_Clicked" />
+                        </StackLayout>
+
+                        <StackLayout Grid.Row="1" BindableLayout.ItemsSource="{Binding Tasks}" Spacing="0" Padding="0,0,0,5" BackgroundColor="#eeeeee">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <StackLayout Padding="10" Margin="0,1,0,0" BackgroundColor="White">
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="ViewTask_Clicked" CommandParameter="{Binding Id}" />
+                                        </StackLayout.GestureRecognizers>
+                                        <Label Text="{Binding Title}" TextColor="{StaticResource MainDarkColor}" FontSize="15" FontAttributes="Bold" MaxLines="1" LineBreakMode="TailTruncation" />
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="{Binding Date, StringFormat='{0:dd/MM/yyyy - HH:mm}'}" FontSize="14" TextColor="#444444" HorizontalOptions="Start" />
+                                            <Label Text="{Binding StatusFormat}" FontSize="14" TextColor="{Binding Status, Converter={StaticResource statusColorConverter}}" HorizontalOptions="EndAndExpand" />
+                                        </StackLayout>
+                                        <Label Text="{Binding Description}" TextColor="#444444" FontSize="14" MaxLines="2" LineBreakMode="TailTruncation" />
+                                    </StackLayout>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </StackLayout>
+
+                        <StackLayout Orientation="Horizontal" Grid.Row="2" Padding="10,5" BackgroundColor="White">
+                            <Label Text="{Static lang:Language.nhu_cau_khach_hang}" Style="{StaticResource SectionTitleStyle}" />
+                            <Button Style="{StaticResource ViewAllBtnStyle}" Clicked="ViewAllContactNeeds_Clicked" />
+                        </StackLayout>
+                        <StackLayout Grid.Row="3" BindableLayout.ItemsSource="{Binding ContactNeeds}" Spacing="0" Padding="0,0,0,5" BackgroundColor="#eeeeee">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <StackLayout Padding="10" Margin="0,1,0,0" BackgroundColor="White">
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="ViewContact_Click" CommandParameter="{Binding ContactId}" />
+                                        </StackLayout.GestureRecognizers>
+                                        <Label Text="{Binding Contact.FullName}" FontAttributes="Bold" FontSize="15" TextColor="#333333" />
+                                        <Label FontSize="15">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Static lang:Language.loai_bat_dong_san}" TextColor="#444444" />
+                                                    <Span Text=" : " TextColor="#444444" />
+                                                    <Span Text="{Binding Type,Converter={StaticResource LoaiBatDongSanNameConverter}}" TextColor="{StaticResource MainDarkColor}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label FontSize="15">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Static lang:Language.khu_vuc}" TextColor="#444444" />
+                                                    <Span Text=" : " TextColor="#444444" />
+                                                    <Span Text="{Binding District.Name}" TextColor="{StaticResource MainDarkColor}" />
+                                                    <Span Text=" " />
+                                                    <Span Text="{Binding Province.Name}" TextColor="{StaticResource MainDarkColor}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label FontSize="15" IsVisible="{Binding Project,Converter={StaticResource NullToHideConverter}}">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Static lang:Language.du_an}" TextColor="#444444" />
+                                                    <Span Text=" : " TextColor="#444444" />
+                                                    <Span Text="{Binding Project}" TextColor="{StaticResource MainDarkColor}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </StackLayout>
+                    </Grid>
+                </ScrollView>
+            </RefreshView>
+
+            <StackLayout x:Name="StackButtonGroup" Orientation="Horizontal" HorizontalOptions="End" Spacing="0" AbsoluteLayout.LayoutBounds="0,1,1,64" AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional" Margin="5">
+                <Frame Margin="5" Padding="0" CornerRadius="22">
+                    <Button Text="&#xf044;" FontFamily="{StaticResource FontAwesomeSolid}" Style="{StaticResource FLoatButtonStyle}" Clicked="ViewProfile_Clicked" />
+                </Frame>
+            </StackLayout>
+
+            <controls:LoadingPopup x:Name="loadingPopup" />
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

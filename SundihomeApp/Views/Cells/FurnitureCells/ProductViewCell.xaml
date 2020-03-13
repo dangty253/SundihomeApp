@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms"
+          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+          xmlns:controls="clr-namespace:SundihomeApp.Controls"
+          xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" x:Class="SundihomeApp.Views.Cells.FurnitureCells.ProductViewCell">
+    <ViewCell.View>
+        <Grid Padding="10" ColumnSpacing="0" BackgroundColor="White" Margin="0,1,0,1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Column="0" Grid.Row="0" x:Name="thumbnail" HeightRequest="100" WidthRequest="130" Padding="0,0,10,0">
+                <ffimageloading:CachedImage DownsampleToViewSize="true" Aspect="AspectFill" Source="{Binding AvatarFullUrl}" />
+            </Grid>
+            <StackLayout Grid.Column="1" Grid.Row="0">
+                <Label Text="{Binding Name}" TextColor="{StaticResource MainDarkColor}" FontSize="15" FontAttributes="Bold" MaxLines="2" LineBreakMode="TailTruncation" />
+                <Label Text="{Binding Price, StringFormat='{0:0,0} đ'}" TextColor="Red" FontSize="14" MaxLines="1" LineBreakMode="TailTruncation" />
+                <Label FontSize="14" TextColor="#444444" Text="{Binding Address}" />
+            </StackLayout>
+        </Grid>
+    </ViewCell.View>
+</ViewCell>

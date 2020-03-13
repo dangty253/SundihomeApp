@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             Title="Giá đất TP Hồ Chí Minh"
+             xmlns:controls="clr-namespace:SundihomeApp.Controls"
+             xmlns:lang="clr-namespace:SundihomeApp.Resources"
+             xmlns:converters="clr-namespace:SundihomeApp.Converters"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SundihomeApp.Views.GiaDatViews.GiaDatHCMPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:GiaDatPriceConverter x:Key="GiaDatPriceConverter" />
+            <converters:NullToHideConverter x:Key="NullToHideConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <StackLayout Margin="10">
+                    <controls:FormLabelRequired Text="{x:Static lang:Language.district}" />
+                    <controls:LookUpControl BottomModal="{x:Reference lookUpModal}" Placeholder="{x:Static lang:Language.district}" ItemsSource="{Binding Districts}" SelectedItem="{Binding District}" SelectedItemChange="District_Changed" NameDisplay="Name"/>
+
+                    <controls:FormLabelRequired Text="Đường" Margin="0,5,0,0" />
+                    <controls:LookUpControl x:Name="lookUpStreet" BottomModal="{x:Reference lookUpModal}" Placeholder="Đường" ItemsSource="{Binding Streets}" SelectedItem="{Binding Street}" NameDisplay="Name" SelectedItemChange="Street_Changed"/>
+
+                    <controls:FormLabelRequired Text="Đoạn đường" Margin="0,5,0,0" />
+                    <controls:LookUpControl x:Name="lookUpStreetDistance" BottomModal="{x:Reference lookUpModal}" Placeholder="Đoạn đường" ItemsSource="{Binding StreetDistances}" SelectedItem="{Binding StreetDistance}" NameDisplay="Name"/>
+
+                    <Label IsVisible="{Binding StreetDistance,Converter={StaticResource NullToHideConverter}}" Margin="0,10,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Giá đất : " FontSize="17" FontAttributes="Bold" TextColor="#444444"/>
+                                <Span FontSize="17" Text="{Binding StreetDistance.Price,Converter={StaticResource GiaDatPriceConverter}}" FontAttributes="Bold" TextColor="{StaticResource MainDarkColor}" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </StackLayout>
+            </ScrollView>
+            <controls:BottomModal x:Name="lookUpModal" />
+            <controls:LoadingPopup x:Name="loadingPopup"/>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

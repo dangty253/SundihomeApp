@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SundihomeApp.Views.CompanyViews.CompanyImageListContentView">
+    <ContentView.Content>
+        <flv:FlowListView x:Name="ImageListView" Margin="5" VerticalOptions="FillAndExpand" RowHeight="100" FlowColumnCount="3" SeparatorVisibility="None" HasUnevenRows="false">
+
+            <flv:FlowListView.FlowColumnTemplate>
+                <DataTemplate>
+                    <Image Source="{Binding}" Aspect="AspectFill" Margin="2" HorizontalOptions="Fill" />
+                </DataTemplate>
+            </flv:FlowListView.FlowColumnTemplate>
+
+        </flv:FlowListView>
+    </ContentView.Content>
+</ContentView>

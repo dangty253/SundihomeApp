@@ -1,0 +1,155 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>pdbonly</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="4.4.0.991640" />  
+    <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
+    <PackageReference Include="Telerik.UI.for.Xamarin" Version="2020.1.218.1" />
+    <PackageReference Include="Xamarin.Forms.Maps" Version="4.2.0.709249" />
+    <PackageReference Include="Plugin.Permissions" Version="3.0.0.12" />
+    <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
+    <PackageReference Include="DLToolkit.Forms.Controls.FlowListView" Version="2.0.11" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="Plugin.FacebookClient" Version="2.0.1" />
+    <PackageReference Include="Xamarin.Auth" Version="1.7.0" />
+    <PackageReference Include="Xam.Plugins.Settings" Version="3.1.1" />
+    <PackageReference Include="Xam.Plugins.Forms.ImageCircle" Version="3.0.0.5" />
+    <PackageReference Include="FirebaseDatabase.net" Version="4.0.1" />
+    <PackageReference Include="Xam.Plugin.Media" Version="4.0.1.5" />
+    <PackageReference Include="PhotoBrowser.Forms" Version="0.1.4" />
+    <PackageReference Include="Plugin.FirebasePushNotification" Version="2.3.6" />
+    <PackageReference Include="MongoDB.Driver" Version="2.9.2" />
+    <PackageReference Include="Xamarin.Plugin.Calendar" Version="1.0.3.200" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="1.1.0" />
+    <PackageReference Include="Plugin.Share" Version="7.1.1" />
+    <PackageReference Include="CardsView" Version="2.3.7" />
+<PackageReference Include="Xamarin.Forms.Extended.InfiniteScrolling" Version="1.0.0-preview2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controls\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="Configuration\" />
+    <Folder Include="Converters\" />
+    <Folder Include="Settings\" />
+    <Folder Include="IServices\" />
+    <Folder Include="Views\Cells\" />
+    <Folder Include="Views\Partials\" />
+    <Folder Include="TemplateSelectors\" />
+    <Folder Include="Views\FurnitureViews\" />
+    <Folder Include="ViewModels\FurnitureViewModels\" />
+    <Folder Include="Models\Furniture\" />
+    <Folder Include="Services\Furniture\" />
+    <Folder Include="IServices\IFurniture\" />
+    <Folder Include="Views\CompanyViews\" />
+    <Folder Include="ViewModels\CompanyViewModels\" />
+    <Folder Include="Views\LiquidationViews\" />
+    <Folder Include="ViewModels\LiquidationViewModels\" />
+    <Folder Include="IServices\ILiquidation\" />
+    <Folder Include="Services\Liquidation\" />
+    <Folder Include="Models\LiquidationModel\" />
+    <Folder Include="Views\Cells\LiquidationCells\" />
+    <Folder Include="Views\Cells\FurnitureCells\" />
+    <Folder Include="Views\MoiGioiViews\" />
+    <Folder Include="ViewModels\MoiGioiViewModels\" />
+    <Folder Include="Views\CompanyViews\QuanLyCongTyViews\" />
+    <Folder Include="Views\QuanLyMoiGioiViews\" />
+    <Folder Include="Resources\" />
+    <Folder Include="Extendsions\" />
+    <Folder Include="Views\BankViews\" />
+    <Folder Include="ViewModels\BankViewModel\" />
+    <Folder Include="Views\GiaDatViews\" />
+    <Folder Include="ViewModels\GiaDatViewModels\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Controls\Modal.xaml.cs" />
+    <Compile Remove="Views\BankViews\FilterPage.xaml.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Views\UserFollowPage.xaml.cs">
+      <DependentUpon>UserFollowPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ReportPage.xaml.cs">
+      <DependentUpon>ReportPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ForgetPasswordPage.xaml.cs">
+      <DependentUpon>ForgetPasswordPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Furniture\AddProductPage.xaml.cs">
+      <DependentUpon>AddProductPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Furniture\MyProductListPage.xaml.cs">
+      <DependentUpon>MyProductListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Company\AllCompanyProductListPage.xaml.cs">
+      <DependentUpon>AllCompanyProductListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\CompanyViews\AllCompanyProductListPage.xaml.cs">
+      <DependentUpon>AllCompanyProductListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\CompanyViews\AllCompanyPostListPage.xaml.cs">
+      <DependentUpon>AllCompanyPostListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\CompanyViews\AllCompanyProjectListPage.xaml.cs">
+      <DependentUpon>AllCompanyProjectListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\CompanyViews\CompanyImageListContentView.xaml.cs">
+      <DependentUpon>CompanyImageListContentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\CompanyViews\CompanyInfoContentView.xaml.cs">
+      <DependentUpon>CompanyInfoContentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\CompanyViews\CompanyProjectListPage.xaml.cs">
+      <DependentUpon>CompanyProjectListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\CompanyViews\CompanyProjectListContentView.xaml.cs">
+      <DependentUpon>CompanyProjectListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\LiquidationViews\LiquidationDetailPage.xaml.cs">
+      <DependentUpon>LiquidationDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\LiquidationViews\ToDayListPage.xaml.cs">
+      <DependentUpon>ToDayListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\LiquidationViews\ToDayDetailPage.xaml.cs">
+      <DependentUpon>ToDayDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\LiquidationViews\AddToDayPage.xaml.cs">
+      <DependentUpon>AddToDayPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\MoiGioiViews\ContactDetailPage.xaml.cs">
+      <DependentUpon>ContactDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Language.Designer.cs">
+      <DependentUpon>Language.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Language.en.Designer.cs">
+      <DependentUpon>Language.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Views\BankViews\CalculatorPage.xaml.cs">
+      <DependentUpon>CalculatorPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="SundihomeApi.Entities">
+      <HintPath>..\SundihomeApi.Entities.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\Language.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Language.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Language.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Language.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

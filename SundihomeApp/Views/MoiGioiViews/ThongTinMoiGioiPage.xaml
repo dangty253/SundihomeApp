@@ -1,0 +1,298 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage x:Name="this" xmlns:lang="clr-namespace:SundihomeApp.Resources" Title="{Static lang:Language.thong_tin_moi_gioi}" xmlns:cv="clr-namespace:SundihomeApp.Converters" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives" xmlns:controls="clr-namespace:SundihomeApp.Controls" x:Class="SundihomeApp.Views.MoiGioiViews.ThongTinMoiGioiPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!-- Title Label Style -->
+            <Style x:Key="TitleLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="Gray" />
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+            </Style>
+
+            <!-- Info Label Style -->
+            <Style x:Key="InfoLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="#444" />
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+            </Style>
+
+            <cv:NullToHideConverter x:Key="nullToHide" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <Grid AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid x:Name="Segment" Grid.Row="0" ColumnSpacing="0" Margin="10,10,10,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <telerikPrimitives:RadBorder Grid.Column="0" BackgroundColor="{StaticResource MainDarkColor}" BorderColor="{StaticResource MainDarkColor}" CornerRadius="8,0,0,8">
+                        <telerikPrimitives:RadBorder.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="SegmentSelected_Tapped" CommandParameter="0" />
+                        </telerikPrimitives:RadBorder.GestureRecognizers>
+                        <Label Text="{Static lang:Language.thong_tin}" Margin="10,5" HorizontalTextAlignment="Center" TextColor="White" FontSize="15" LineBreakMode="TailTruncation" MaxLines="1" />
+                    </telerikPrimitives:RadBorder>
+                    <telerikPrimitives:RadBorder Grid.Column="1" BackgroundColor="White" BorderColor="{StaticResource MainDarkColor}" CornerRadius="0,8,8,0">
+                        <telerikPrimitives:RadBorder.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="SegmentSelected_Tapped" CommandParameter="1" />
+                        </telerikPrimitives:RadBorder.GestureRecognizers>
+                        <Label Text="{Static lang:Language.bat_dong_san}" Margin="10,5" HorizontalTextAlignment="Center" TextColor="#333333" FontSize="15" LineBreakMode="TailTruncation" MaxLines="1" />
+                    </telerikPrimitives:RadBorder>
+                </Grid>
+                <!--Thong tin-->
+                <ScrollView VerticalScrollBarVisibility="Never" x:Name="Information" Grid.Row="1">
+                    <StackLayout Margin="10" Spacing="0">
+                        <!--Avatar-->
+                        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" WidthRequest="100" HeightRequest="100">
+                            <telerikPrimitives:RadBorder BorderThickness="1" BorderColor="LightGray" CornerRadius="50">
+                                <Image HorizontalOptions="Center" BackgroundColor="#eeeeee" Source="{Binding MoiGioi.User.AvatarFullUrl}" x:Name="image" HeightRequest="100" WidthRequest="100" Aspect="AspectFill" />
+                            </telerikPrimitives:RadBorder>
+                        </StackLayout>
+                        <!--Name-->
+                        <Label Margin="0,10,0,0" FontSize="16" FontAttributes="Bold" Text="{Binding MoiGioi.User.FullName}" TextColor="#000" HorizontalOptions="Center" />
+                        <!--Created Date-->
+                        <Label HorizontalOptions="Center" TextColor="Gray" FontSize="15">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Static lang:Language.ngay_tham_gia}" />
+                                    <Span Text=": " />
+                                    <Span Text="{Binding MoiGioi.RegisterDate}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <!--Action-->
+                        <Grid Margin="10,10,10,0" VerticalOptions="Center">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <StackLayout Grid.Column="0">
+                                <StackLayout HeightRequest="44" WidthRequest="44" HorizontalOptions="CenterAndExpand">
+                                    <telerikPrimitives:RadBorder CornerRadius="22" BackgroundColor="#eee" HeightRequest="44" WidthRequest="44">
+                                        <Label HorizontalTextAlignment="Center" TextColor="#000" VerticalOptions="CenterAndExpand" Text="{StaticResource Users}" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="15" />
+                                    </telerikPrimitives:RadBorder>
+                                </StackLayout>
+                                <Label HorizontalTextAlignment="Center" TextColor="#000" FontSize="15">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding FollowerCount}" />
+                                            <Span Text=" " />
+                                            <Span Text="{Static lang:Language.nguoi_theo_doi}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </StackLayout>
+                            <StackLayout Grid.Column="1" x:Name="Chat">
+                                <StackLayout HeightRequest="44" WidthRequest="44" HorizontalOptions="CenterAndExpand">
+                                    <telerikPrimitives:RadBorder CornerRadius="22" BackgroundColor="#eee" HeightRequest="44" WidthRequest="44">
+                                        <Label HorizontalTextAlignment="Center" TextColor="#000" VerticalOptions="CenterAndExpand" Text="{StaticResource Comments}" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="15" />
+                                    </telerikPrimitives:RadBorder>
+                                </StackLayout>
+                                <Label HorizontalTextAlignment="Center" Text="Chat" TextColor="#000" FontSize="15" />
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Chat_Clicked" />
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
+                            <StackLayout Grid.Column="2" x:Name="Follow" IsVisible="{Binding IsUnFollow}">
+                                <StackLayout HeightRequest="44" WidthRequest="44" HorizontalOptions="CenterAndExpand">
+                                    <telerikPrimitives:RadBorder CornerRadius="22" BackgroundColor="#eee" HeightRequest="44" WidthRequest="44">
+                                        <Label HorizontalTextAlignment="Center" TextColor="#000" VerticalOptions="CenterAndExpand" Text="{StaticResource UserPlus}" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="15" />
+                                    </telerikPrimitives:RadBorder>
+                                </StackLayout>
+                                <Label HorizontalTextAlignment="Center" Text="{Static lang:Language.theo_doi}" TextColor="#000" FontSize="15" />
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnFollowTapped" />
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
+                            <StackLayout Grid.Column="2" IsVisible="{Binding IsFollow}" x:Name="UnFollow">
+                                <StackLayout HeightRequest="44" WidthRequest="44" HorizontalOptions="CenterAndExpand">
+                                    <telerikPrimitives:RadBorder CornerRadius="22" BackgroundColor="#eee" HeightRequest="44" WidthRequest="44">
+                                        <Label HorizontalTextAlignment="Center" TextColor="#000" VerticalOptions="CenterAndExpand" Text="{StaticResource UserCheck}" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="15" />
+                                    </telerikPrimitives:RadBorder>
+                                </StackLayout>
+                                <Label HorizontalTextAlignment="Center" Text="{Static lang:Language.huy_theo_doi}" TextColor="#000" FontSize="15" />
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnUnFollowTapped" />
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
+                        </Grid>
+                        <!--Contact Info-->
+                        <telerikPrimitives:RadBorder Margin="0,10,0,0" CornerRadius="5" BorderThickness="1" BorderColor="#eee">
+                            <StackLayout Margin="10">
+                                <Label Text="{Static lang:Language.thong_tin_lien_he}" TextColor="#000" FontSize="15" HorizontalOptions="Start" />
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="2*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <!--Email-->
+                                    <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource TitleLabel}" Text="Email:" />
+                                    <Label Grid.Row="0" Grid.Column="1" Style="{StaticResource InfoLabel}" Text="{Binding MoiGioi.User.Email}" />
+                                    <!--Phone-->
+                                    <Label Grid.Row="1" Grid.Column="0" Style="{StaticResource TitleLabel}">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Static lang:Language.so_dien_thoai}" />
+                                                <Span Text=":" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label Grid.Row="1" Grid.Column="1" Style="{StaticResource InfoLabel}" Text="{Binding MoiGioi.User.Phone}" />
+                                    <!--BirthDate-->
+                                    <Label Grid.Row="2" Grid.Column="0" Style="{StaticResource TitleLabel}">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Static lang:Language.ngay_sinh}" />
+                                                <Span Text=":" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label Grid.Row="2" Grid.Column="1" Style="{StaticResource InfoLabel}" Text="{Binding MoiGioi.User.Birthday, StringFormat='{0:dd/MM/yyyy}'}" />
+                                    <!--Gender-->
+                                    <Label Grid.Row="3" Grid.Column="0" Style="{StaticResource TitleLabel}">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Static lang:Language.gioi_tinh}" />
+                                                <Span Text=":" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label Grid.Row="3" Grid.Column="1" Style="{StaticResource InfoLabel}" Text="{Binding GenderFormatString}" />
+                                    <!--Address-->
+                                    <Label Grid.Row="4" Grid.Column="0" Style="{StaticResource TitleLabel}">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Static lang:Language.dia_chi}" />
+                                                <Span Text=":" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label Grid.Row="4" Grid.Column="1" Style="{StaticResource InfoLabel}" Text="{Binding MoiGioi.User.Address}" />
+                                </Grid>
+                            </StackLayout>
+                        </telerikPrimitives:RadBorder>
+                        <!--Other Info-->
+                        <telerikPrimitives:RadBorder Margin="0,10,0,0" CornerRadius="5" BorderThickness="1" BorderColor="#eee">
+                            <StackLayout Margin="10">
+                                <Label Text="{Static lang:Language.thong_tin_moi_gioi}" TextColor="#000" FontSize="15" HorizontalOptions="Start" />
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="2*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <!--Intro-->
+                                    <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource TitleLabel}">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Static lang:Language.gioi_thieu}" />
+                                                <Span Text=":" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label Grid.Row="0" Grid.Column="1" Style="{StaticResource InfoLabel}" Text="{Binding MoiGioi.Introduction}" />
+                                    <!--Exp-->
+                                    <Label Grid.Row="1" Grid.Column="0" Style="{StaticResource TitleLabel}">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Static lang:Language.kinh_nghiem}" />
+                                                <Span Text=":" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label Grid.Row="1" Grid.Column="1" Style="{StaticResource InfoLabel}" IsVisible="{Binding MoiGioi.StartYear, Converter={StaticResource nullToHide}}">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Static lang:Language.tu_nam}" />
+                                                <Span Text=" " />
+                                                <Span Text="{Binding MoiGioi.StartYear}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <!--Type-->
+                                    <Label Grid.Row="2" Grid.Column="0" Style="{StaticResource TitleLabel}">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Static lang:Language.loai_hinh_moi_gioi}" />
+                                                <Span Text=":" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label Grid.Row="2" Grid.Column="1" Style="{StaticResource InfoLabel}" Text="{Binding TypeFormatString}" />
+                                    <!--Area-->
+                                    <Label Grid.Row="3" Grid.Column="0" Style="{StaticResource TitleLabel}">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Static lang:Language.khu_vuc_hoat_dong}" />
+                                                <Span Text=":" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label Grid.Row="3" Grid.Column="1" Style="{StaticResource InfoLabel}">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding MoiGioi.District.Name, StringFormat='{0}, '}" />
+                                                <Span Text="{Binding MoiGioi.Province.Name}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <!--Certificate-->
+                                    <!--<Label Grid.Row="4"
+                                            Grid.Column="0"
+                                            Style="{StaticResource TitleLabel}"
+                                            Text="Chứng chỉ:"/>
+                                    <StackLayout Grid.Row="4"
+                                                    Grid.Column="1"
+                                                    Orientation="Horizontal">
+                                        <Image HeightRequest="50"
+                                                WidthRequest="50"
+                                                Source=""
+                                                BackgroundColor="#eee"
+                                                Aspect="AspectFill" />
+                                        <Label VerticalOptions="Center"
+                                                Style="{StaticResource InfoLabel}" 
+                                                Text="Chứng chỉ hành nghề môi giới BĐS" />
+                                    </StackLayout>-->
+                                </Grid>
+                            </StackLayout>
+                        </telerikPrimitives:RadBorder>
+                    </StackLayout>
+                </ScrollView>
+
+                <!--Danh sach bds-->
+                <ListView Grid.Row="1" x:Name="BDSList" ItemsSource="{Binding Data}" IsPullToRefreshEnabled="True" RefreshCommand="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}" HasUnevenRows="True" SelectionMode="None" SeparatorVisibility="None" BackgroundColor="{StaticResource MainPageBackgroundColor}" IsVisible="False" VerticalScrollBarVisibility="Never" />
+            </Grid>
+
+            <controls:FloatingButtonGroup ItemsSource="{Binding BindingContext.ButtonCommandList,Source={x:Reference this}}" x:Name="floatingButtonGroup" />
+            <StackLayout x:Name="btnEdit" Orientation="Horizontal" HorizontalOptions="End" Spacing="0" AbsoluteLayout.LayoutBounds="0,1,1,64" AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional" Margin="5" IsVisible="False">
+                <Frame Margin="5" Padding="0" CornerRadius="22">
+                    <Button Text="&#xf044;" FontFamily="{StaticResource FontAwesomeSolid}" Style="{StaticResource FLoatButtonStyle}" Clicked="OnEditInfo_Tapped" />
+                </Frame>
+            </StackLayout>
+
+            <controls:CenterModal x:Name="ModalDangKyMoiGioi" Title="{Static lang:Language.cap_nhat_thong_tin_moi_gioi}" />
+            <controls:BottomModal x:Name="LookUpModal" />
+            <controls:LoadingPopup x:Name="loadingPopup" />
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

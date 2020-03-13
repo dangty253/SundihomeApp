@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" ios:Page.UseSafeArea="true" xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives" xmlns:controls="clr-namespace:SundihomeApp.Controls" xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" x:Class="SundihomeApp.Views.Furniture.AddProductPage" xmlns:lang="clr-namespace:SundihomeApp.Resources">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="FormLabel" TargetType="Label">
+                <Setter Property="Padding" Value="4,5,0,0" />
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="TextColor" Value="#444" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style> 
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" VerticalScrollBarVisibility="Never" Padding="0,0,0,70">
+                <StackLayout Spacing="0">
+                    <StackLayout BackgroundColor="{StaticResource MainDarkColor}">
+                        <Label Text="{Static lang:Language.thong_tin_chung}" Margin="10,5" TextColor="White" FontSize="15" />
+                    </StackLayout>
+                    <!--danh mục nội thất-->
+
+                    <controls:FormLabelRequired Margin="10,10,10,0" Text="{Static lang:Language.nhom_noi_that}" />
+                    <controls:LookUpControl Margin="10,0" x:Name="LookUpParentCagegory" SelectedItem="{Binding ParentCategory}" ItemsSource="{Binding ParentCategories}" BottomModal="{x:Reference lookUpModal}" Placeholder="{Static lang:Language.nhom_noi_that}" NameDisplay="Name" SelectedItemChange="OnParentCategory_Changed" />
+
+
+                    <!--danh mục nội thất-->
+                    <controls:FormLabelRequired Margin="10,10,10,0" Text="{Static lang:Language.loai_noi_that}" />
+                    <controls:LookUpControl Margin="10,0" x:Name="LookUpChildCagegory" SelectedItem="{Binding ChildCategory}" ItemsSource="{Binding ChildCategories}" BottomModal="{x:Reference lookUpModal}" Placeholder="{Static lang:Language.loai_noi_that}" NameDisplay="Name" />
+
+                    <!--Tiêu đề tin đăng-->
+                    <controls:FormLabelRequired Margin="10,10,10,0" Text="{Static lang:Language.tieu_de_tin_dang}" />
+                    <controls:ClearableEntry Margin="10,0" Placeholder="{Static lang:Language.tieu_de_tin_dang}" Text="{Binding AddProductModel.Name}" />
+
+                    <!--price-->
+                    <controls:FormLabelRequired Margin="10,10,10,0" Text="{Static lang:Language.gia_san_pham}" />
+                    <controls:CurrencyEntry Margin="10,0" Placeholder="{Static lang:Language.gia_san_pham}" Text="{Binding AddProductModel.Price}" MaxValue="20000000000" />
+
+
+                    <!--status-->
+                    <controls:FormLabel Margin="10,10,10,0"  Text="{Static lang:Language.tinh_trang}" />
+                    <StackLayout Orientation="Horizontal" Spacing="20" Margin="10,0">
+                        <StackLayout Orientation="Horizontal" HeightRequest="30" Spacing="0">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnStatusNewCheckedTapped" />
+                            </StackLayout.GestureRecognizers>
+                            <CheckBox Color="{StaticResource LightBlueLogoColor}" x:Name="chkNew" IsEnabled="False" />
+                            <Label Text="{Static lang:Language.moi}" VerticalTextAlignment="Center" />
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" HeightRequest="30" Spacing="0">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnStatusOldCheckedTapped" />
+                            </StackLayout.GestureRecognizers>
+                            <CheckBox Color="{StaticResource LightBlueLogoColor}" x:Name="chkOld" IsEnabled="False" />
+                            <Label Text="{Static lang:Language.da_qua_su_dung}" VerticalTextAlignment="Center" />
+                        </StackLayout>
+                    </StackLayout>
+
+                    <!--promotion-->
+                    <Grid BackgroundColor="White" Margin="10,10,10,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Style="{StaticResource FormLabel}" Text="{Static lang:Language.khuyen_mai}" Grid.Column="0" />
+                        <Switch x:Name="SwitchPromotion" Scale="1"  IsToggled="{Binding AddProductModel.IsPromotion}" Grid.Column="1" OnColor="{StaticResource LightBlueLogoColor}" HorizontalOptions="End" />
+                    </Grid>
+                    <!--promotion detail-->
+                    <Grid  Margin="10,0" BackgroundColor="White"  IsVisible="{Binding Path=IsToggled,Source={Reference SwitchPromotion}}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <!--promotion time-->
+                        <Label  Style="{StaticResource FormLabel}" Text="{Static lang:Language.thoi_gian_khuyen_mai}" Grid.Column="0" Grid.Row="1" />
+                        <StackLayout Orientation="Horizontal" Grid.Column="0" Grid.Row="2">
+                            <Label Style="{StaticResource FormLabel}" Text="{x:Static lang:Language.tu}" />
+                            <DatePicker MinimumDate="{Binding DateNow}" MaximumDate="{Binding AddProductModel.PromotionToDate}" Date="{Binding AddProductModel.PromotionFromDate}" HorizontalOptions="FillAndExpand" />
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                            <Label Style="{StaticResource FormLabel}" Text="{Static lang:Language.den}" />
+                            <DatePicker MinimumDate="{Binding AddProductModel.PromotionFromDate}" Date="{Binding AddProductModel.PromotionToDate}" HorizontalOptions="FillAndExpand" />
+                        </StackLayout>
+
+                        <!--promotion price-->
+                        <StackLayout Margin="0,10,0,0" BackgroundColor="White" VerticalOptions="Start" Grid.Row="3" Grid.ColumnSpan="2">
+                            <controls:FormLabelRequired Text="{Static lang:Language.gia_giam}" />
+                            <controls:CurrencyEntry Placeholder="{Static lang:Language.gia_giam}" Text="{Binding AddProductModel.PromotionPrice}" MaxValue="20000000000" />
+                        </StackLayout>
+                    </Grid>
+                    <!--Mã sản phẩm-->
+                    <Label Margin="10,10,10,0" Style="{StaticResource FormLabel}" Text="{Static lang:Language.ma_san_pham}" />
+                    <controls:ClearableEntry Margin="10,0" Placeholder="{Static lang:Language.ma_san_pham}" Text="{Binding AddProductModel.Model}" />
+
+                    <!-- Xuất xứ -->
+                    <Label Margin="10,10,10,0" Style="{StaticResource FormLabel}" Text="{Static lang:Language.xuat_xu}" />
+                    <controls:ClearableEntry Margin="10,0" Placeholder="{Static lang:Language.xuat_xu}" Text="{Binding AddProductModel.Origin}" />
+
+                    <!--Bảo hành-->
+                    <Label Style="{StaticResource FormLabel}" Margin="10,10,10,0" Text="{Static lang:Language.bao_hanh}" />
+                    <controls:ClearableEntry Margin="10,0" Placeholder="{Static lang:Language.thoi_gian_bao_hanh}" EntryKeyboard="Numeric" Text="{Binding AddProductModel.Guarantee}" />
+
+                    <!--description-->
+                    <Label Margin="10,10,10,0" Style="{StaticResource FormLabel}" Text="{Static lang:Language.mo_ta_san_pham}" />
+                    <telerikPrimitives:RadBorder BorderColor="#eee" BorderThickness="1" CornerRadius="5" Margin="10,0">
+                        <Editor  Placeholder="{Static lang:Language.mo_ta_san_pham}" Text="{Binding AddProductModel.Description}" HorizontalOptions="FillAndExpand" HeightRequest="120"  />
+                    </telerikPrimitives:RadBorder>
+
+                    <!--choose address-->
+                    <StackLayout BackgroundColor="{StaticResource MainDarkColor}" >
+                        <Label Text="{Static lang:Language.dia_chi}" Margin="10,5"  TextColor="White" FontSize="15" />
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal" Spacing="20">
+                        <StackLayout Orientation="Horizontal" HeightRequest="30" Spacing="0">
+                            <CheckBox Color="{StaticResource LightBlueLogoColor}" x:Name="chkUserAddress" />
+                            <Label Text="{Static lang:Language.ca_nhan}" VerticalTextAlignment="Center">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnUserAddressCheckedTapped" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" HeightRequest="30" Spacing="0" x:Name="CompanyAddress">
+                            <CheckBox Color="{StaticResource LightBlueLogoColor}" x:Name="chkCompanyAddress" />
+                            <Label Text="{Static lang:Language.cong_ty}" VerticalTextAlignment="Center">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnCompanyAddressCheckedTapped" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </StackLayout>
+                    </StackLayout>
+
+                    <!--other address-->
+                    <!--Tỉnh/thành phố-->
+                    <controls:FormLabelRequired Margin="10,10,10,0" Text="{Static lang:Language.tinh_thanh}" />
+                    <controls:LookUpControl Margin="10,0" SelectedItem="{Binding AddProductModel.Province}" ItemsSource="{Binding ProvinceList}" BottomModal="{x:Reference lookUpModal}" Placeholder="{Static lang:Language.tinh_thanh}" NameDisplay="Name" SelectedItemChange="Province_Change" />
+                    <!--Quận/huyện-->
+                    <controls:FormLabelRequired Margin="10,10,10,0" Text="{Static lang:Language.quan_huyen}" />
+                    <controls:LookUpControl Margin="10,0" SelectedItem="{Binding AddProductModel.District}" ItemsSource="{Binding DistrictList}" BottomModal="{x:Reference lookUpModal}" Placeholder="{Static lang:Language.quan_huyen}" NameDisplay="Name" SelectedItemChange="District_Change" />
+
+                    <!--Xã/phường-->
+                    <controls:FormLabelRequired Margin="10,10,10,0" Text="{Static lang:Language.phuong_xa}" />
+                    <controls:LookUpControl Margin="10,0"  SelectedItem="{Binding AddProductModel.Ward}" ItemsSource="{Binding WardList}" BottomModal="{x:Reference lookUpModal}" Placeholder="{Static lang:Language.phuong_xa}" NameDisplay="Name" />
+
+                    <!--Dduong -->
+                    <Label Margin="10,0" Style="{StaticResource FormLabel}" Text="{Static lang:Language.so_nha_duong}" />
+                    <controls:ClearableEntry Margin="10,0" Placeholder="{Static lang:Language.so_nha_duong}" Text="{Binding AddProductModel.Street}" />
+
+                    <!--Địa chỉ-->
+
+                    <Label Margin="10,5" Style="{StaticResource FormLabel}" Text="{Binding AddProductModel.Address}" />
+
+                    <!--images-->
+
+                    <StackLayout BackgroundColor="{StaticResource MainDarkColor}" >
+                        <Label Text="{Static lang:Language.hinh_anh}" Margin="10,5" TextColor="White" FontSize="15" />
+                    </StackLayout>
+                    <ScrollView Orientation="Horizontal" Margin="10" Grid.Row="14">
+                        <StackLayout Orientation="Horizontal">
+                            <Button Text="&#xf302;" FontFamily="{StaticResource FontAwesomeSolid}" BackgroundColor="White" Padding="15,0" HeightRequest="80" WidthRequest="80" FontSize="17" VerticalOptions="CenterAndExpand" TextColor="Black" BorderWidth="1" BorderColor="Black" Command="{Binding SelectImagesCommand}" />
+                            <StackLayout Orientation="Horizontal" BindableLayout.ItemsSource="{Binding Media}">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid Margin="5">
+                                            <ffimageloading:CachedImage DownsampleToViewSize="true" HeightRequest="80" WidthRequest="80" Source="{Binding PreviewPath}" Aspect="AspectFill" HorizontalOptions="FillAndExpand" />
+                                            <Button Text="&#xf2ed;" TextColor="#026294" FontSize="14" HorizontalOptions="End" VerticalOptions="Start" BorderWidth="0" BackgroundColor="White" WidthRequest="25" HeightRequest="25" Margin="0,5,5,0" Padding="0" Clicked="Remove_Image" CommandParameter="{Binding}" FontFamily="{StaticResource FontAwesomeSolid}" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </StackLayout>
+                        </StackLayout>
+                    </ScrollView>
+                </StackLayout>
+            </ScrollView>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="End" Spacing="0" AbsoluteLayout.LayoutBounds="0,1,1,64" AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional" Margin="5">
+                <Frame Margin="5" Padding="0" CornerRadius="22">
+                    <Button Text="{StaticResource Save}" FontSize="20" WidthRequest="44" HeightRequest="44" CornerRadius="22" FontFamily="{StaticResource FontAwesomeRegular}" BackgroundColor="{StaticResource MainDarkColor}" TextColor="White" Clicked="Save_Clicked" />
+                </Frame>
+            </StackLayout>
+            <controls:BottomModal x:Name="lookUpModal" />
+            <controls:LoadingPopup x:Name="loadingPopup" />
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

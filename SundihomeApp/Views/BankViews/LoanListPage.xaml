@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:lang="clr-namespace:SundihomeApp.Resources"
+             xmlns:contentView="clr-namespace:SundihomeApp.Views"
+             Title="{x:Static lang:Language.goi_vay_s}"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SundihomeApp.Views.BankViews.LoanListPage">
+    <ContentPage.Content>
+        <contentView:LoanContentView/>
+    </ContentPage.Content>
+</ContentPage>

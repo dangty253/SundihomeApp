@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SundihomeApp.Controls.MenuItem">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <!-- Category icon style -->
+            <Style x:Key="CategoryIcon" TargetType="Label">
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="Margin" Value="10" />
+                <Setter Property="TextColor" Value="#585858" />
+            </Style>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Grid Padding="15,10" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer NumberOfTapsRequired="1"
+                                                  Tapped="On_Clicked" />
+            </Grid.GestureRecognizers>
+
+            <Label x:Name="lblIcon" Style="{StaticResource CategoryIcon}" Grid.Column="0" Margin="0" />
+            <Label x:Name="lblTitle" Grid.Column="1" 
+                                       VerticalOptions="Center" HorizontalOptions="StartAndExpand"
+                                       FontSize="15"
+                                       BackgroundColor="#fff" 
+                                       TextColor="#333333" />
+            <Label Grid.Column="2" Text="&#xf105;" HorizontalOptions="EndAndExpand"
+                                       VerticalOptions="Center"
+                                       FontSize="17"
+                                       TextColor="#9c9c9c"
+                                       FontFamily="{StaticResource FontAwesomeSolid}"/>
+
+        </Grid>
+    </ContentView.Content>
+</ContentView>

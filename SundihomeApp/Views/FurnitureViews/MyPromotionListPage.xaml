@@ -1,0 +1,391 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:controls="clr-namespace:SundihomeApp.Controls"
+             xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives"
+             x:Class="SundihomeApp.Views.FurnitureViews.MyPromotionListPage"
+             xmlns:cv="clr-namespace:SundihomeApp.Converters"
+             xmlns:lang="clr-namespace:SundihomeApp.Resources"
+             Title="{Static lang:Language.san_pham_khuyen_mai_cua_toi}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="RadBorderCategories"
+                   TargetType="telerikPrimitives:RadBorder">
+                <Setter Property="Margin"
+                        Value="0,0,0,0" />
+                <Setter Property="Padding"
+                        Value="10,7" />
+                <Setter Property="BorderColor"
+                        Value="#eeeeee" />
+                <Setter Property="BorderThickness"
+                        Value="1" />
+                <Setter Property="CornerRadius"
+                        Value="5" />
+                <Setter Property="BackgroundColor"
+                        Value="White" />
+            </Style>
+            <Style x:Key="FormLabel" TargetType="Label">
+                <Setter Property="Padding" Value="4,5,0,0" />
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="TextColor" Value="#444" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <!--Category style-->
+            <Style x:Key="Category"
+                   TargetType="Label">
+                <Setter Property="TextColor"
+                        Value="Black" />
+                <Setter Property="FontAttributes"
+                        Value="None" />
+                <Setter Property="FontSize"
+                        Value="14" />
+                <Setter Property="VerticalTextAlignment"
+                        Value="Center" />
+            </Style>
+
+            <Style x:Key="FilterButtonStyle"
+                   TargetType="Button">
+                <Setter Property="Text"
+                        Value="{StaticResource Filter}" />
+                <Setter Property="TextColor"
+                        Value="White" />
+                <Setter Property="CornerRadius"
+                        Value="10" />
+                <Setter Property="BackgroundColor"
+                        Value="{StaticResource MainDarkColor}" />
+                <Setter Property="HeightRequest"
+                        Value="35" />
+                <Setter Property="WidthRequest"
+                        Value="35" />
+                <Setter Property="HorizontalOptions"
+                        Value="Center" />
+                <Setter Property="VerticalOptions"
+                        Value="Center" />
+            </Style>
+            <cv:NullToHideConverter x:Key="NullToHideConverter"/>
+            <cv:StatusToColorSellConverter x:Key="StatusToColorSellConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <Grid AbsoluteLayout.LayoutBounds="0,0,1,1"
+                  AbsoluteLayout.LayoutFlags="All">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <controls:ScrollTab x:Name="ScrollTab" Grid.Row="0"
+                                    Margin="5,5,5,0"
+                                    SelectedIndex="0"
+                                    SelectedIndexChanged="ScrollTabIndex_Change"/>
+
+                <controls:SearchBarFrame Grid.Row="1"
+                                         Margin="5,0">
+                    <controls:SearchBar x:Name="searchBar"
+                                        SearchButtonPressed="OnSearchPressed"
+                                        TextChanged="Search_TextChanged" />
+                </controls:SearchBarFrame>
+                <controls:BsdListView x:Name="lv"
+                                      Grid.Row="2"
+                                      BackgroundColor="#eeeeee">
+                    <controls:BsdListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="10"
+                                      ColumnSpacing="0"
+                                      BackgroundColor="White"
+                                      Margin="0,1,0,1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid Grid.Column="0"
+                                          Grid.Row="0"
+                                          x:Name="thumbnail"
+                                          HeightRequest="100"
+                                          WidthRequest="130"
+                                          Padding="0,0,10,0">
+                                        <ffimageloading:CachedImage DownsampleToViewSize="true"
+                                                                    Aspect="AspectFill"
+                                                                    Source="{Binding AvatarFullUrl}" />
+                                    </Grid>
+                                    <StackLayout Grid.Column="1"
+                                                 Grid.Row="0">
+                                        <Label Text="{Binding Name}"
+                                               TextColor="{StaticResource MainDarkColor}"
+                                               FontSize="15"
+                                               FontAttributes="Bold"
+                                               MaxLines="2"
+                                               LineBreakMode="TailTruncation" />
+                                        <Label MaxLines="1" LineBreakMode="TailTruncation"  IsVisible="{Binding PromotionPrice,Converter={StaticResource NullToHideConverter}}">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding Price, StringFormat='{0:0,0} đ'}" TextDecorations="Strikethrough" FontSize="13" TextColor="Gray" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Text="{Binding PromotionPrice, StringFormat='{0:0,0} đ'}"
+                                               TextColor="Red"
+                                               FontSize="14"
+                                               MaxLines="1"
+                                               LineBreakMode="TailTruncation"
+                                                   HorizontalOptions="Start"/>
+                                            <Label Text="{Binding ProductStatusFormat}"
+                                               TextColor="{Binding ProductStatus,Converter={StaticResource StatusToColorSellConverter}}"
+                                               FontSize="14"
+                                               MaxLines="1"
+                                               LineBreakMode="TailTruncation"
+                                               Grid.Column="1"
+                                               HorizontalOptions="End"/>
+                                        </Grid>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+                                            <Label Text="{Binding PromotionFromDate,StringFormat='{0:dd/MM/yyyy}'}"
+                                                   TextColor="Black"
+                                                   FontSize="14"
+                                                   HorizontalOptions="Start" />
+                                            <Label Text= "{Static lang:Language.den}"
+                                                   FontSize="14"
+                                                   Grid.Column="1"
+                                                   HorizontalOptions="Center" />
+                                            <Label Text="{Binding PromotionToDate,StringFormat='{0:dd/MM/yyyy}'}"
+                                                   TextColor="Black"
+                                                   FontSize="14"
+                                                   HorizontalOptions="End"
+                                                   Grid.Column="2" />
+                                        </Grid>
+                                        <!--<Label FontSize="14"
+                                               TextColor="#444444"
+                                               Text="{Binding Address}" />-->
+                                    </StackLayout>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </controls:BsdListView.ItemTemplate>
+                </controls:BsdListView>
+            </Grid>
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="End"
+                         Spacing="0"
+                         AbsoluteLayout.LayoutBounds="0,1,1,64"
+                         AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional"
+                         Margin="5">
+                <Frame Margin="5"
+                       Padding="0"
+                       CornerRadius="22">
+                    <Button Text="&#xf067;"
+                            FontSize="20"
+                            WidthRequest="44"
+                            HeightRequest="44"
+                            CornerRadius="22"
+                            FontFamily="{StaticResource FontAwesomeSolid}"
+                            BackgroundColor="{StaticResource MainDarkColor}"
+                            TextColor="White"
+                            Clicked="AddProduct_Clicked" />
+                </Frame>
+            </StackLayout>
+            <ContentView
+                x:Name="ModalPopupBackground"
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+                IsVisible="{Binding Source={x:Reference ModalPopup}, Path=IsVisible}">
+                <ContentView.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1"
+                                          Tapped="CloseModal_Clicked" />
+                </ContentView.GestureRecognizers>
+            </ContentView>
+            <ContentView
+                x:Name="ModalPopup"
+                AbsoluteLayout.LayoutBounds="1,1,1,0.6"
+                AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional,HeightProportional"
+                IsVisible="false">
+                <Grid
+                    x:Name="ModalPopupContent"
+                    BackgroundColor="White"
+                    RowSpacing="0"
+                    VerticalOptions="End">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <telerikPrimitives:RadBorder
+                        Grid.Row="0"
+                        Padding="10"
+                        BorderColor="#444444"
+                        BorderThickness="0,0,0,1">
+                        <StackLayout
+                            Padding="0"
+                            Orientation="Horizontal"
+                            Spacing="0">
+                            <Label
+                                x:Name="ModalTitle"
+                                FontAttributes="Bold"
+                                FontSize="16"
+                                Text= "{Static lang:Language.chon_noi_that_muon_khuyen_mai}"
+                                TextColor="{StaticResource MainDarkColor}"
+                                VerticalTextAlignment="Center"
+                                VerticalOptions="Center" />
+                            <Button
+                                Margin="0"
+                                Padding="0"
+                                WidthRequest="30"
+                                HeightRequest="30"
+                                BackgroundColor="transparent"
+                                Clicked="CloseModal_Clicked"
+                                CornerRadius="22"
+                                FontFamily="{StaticResource FontAwesomeRegular}"
+                                FontSize="20"
+                                Text="&#xf057;"
+                                TextColor="#444444"
+                                HorizontalOptions="EndAndExpand" />
+                        </StackLayout>
+                    </telerikPrimitives:RadBorder>
+                    <StackLayout
+                        Grid.Row="1"
+                        Padding="5"
+                        BackgroundColor="White">
+                        <Frame
+                            Margin="0"
+                            Padding="0"
+                            HeightRequest="35"
+                            BorderColor="Gray"
+                            CornerRadius="8"
+                            HasShadow="False">
+                            <SearchBar
+                                x:Name="ModalPopupSearchBar"
+                                BackgroundColor="#ffffff"
+                                FontSize="14"
+                                Placeholder="{Static lang:Language.nhap_tu_khoa_tim_kiem}"
+                                SearchButtonPressed="Search_Clicked"
+                                TextChanged="SearchBar_TextChanged" />
+                        </Frame>
+                    </StackLayout>
+                    <controls:BsdListView
+                        x:Name="ListView0"
+                        Grid.Row="2">
+                        <controls:BsdListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid Padding="10"
+                                          ColumnSpacing="0"
+                                          BackgroundColor="White"
+                                          Margin="0,1,0,1">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid Grid.Column="0"
+                                              Grid.Row="0"
+                                              x:Name="thumbnail"
+                                              HeightRequest="100"
+                                              WidthRequest="130"
+                                              Padding="0,0,10,0">
+                                            <ffimageloading:CachedImage DownsampleToViewSize="true"
+                                                                        Aspect="AspectFill"
+                                                                        Source="{Binding AvatarFullUrl}" />
+                                        </Grid>
+                                        <StackLayout Grid.Column="1"
+                                                     Grid.Row="0">
+                                            <Label Text="{Binding Name}"
+                                                   TextColor="{StaticResource MainDarkColor}"
+                                                   FontSize="15"
+                                                   FontAttributes="Bold"
+                                                   MaxLines="2"
+                                                   LineBreakMode="TailTruncation" />
+                                            <Label Text="{Binding Price, StringFormat='{0:0,0} đ'}"
+                                                   TextColor="Red"
+                                                   FontSize="14"
+                                                   MaxLines="1"
+                                                   LineBreakMode="TailTruncation" />
+                                            <Label FontSize="14"
+                                                   TextColor="#444444"
+                                                   Text="{Binding Address}" />
+                                        </StackLayout>
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </controls:BsdListView.ItemTemplate>
+
+
+                    </controls:BsdListView>
+                </Grid>
+            </ContentView>
+            <controls:CenterModal x:Name="ModalUpdate" Title="{Static lang:Language.cap_nhat_khuyen_mai}">
+                <controls:CenterModal.Body>
+                    <ScrollView>
+
+                        <!--promotion detail-->
+                    <Grid Padding="10,0,10,10" BackgroundColor="White">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <!--promotion time-->
+                        <Label Padding="0,10,0,0" Style="{StaticResource FormLabel}"  Text="{Static lang:Language.thoi_gian_khuyen_mai}" Grid.ColumnSpan="2" Grid.Row="0" />
+                        <StackLayout Orientation="Horizontal" Grid.Column="0" Grid.Row="1" >
+                            <!--<Label Style="{StaticResource FormLabel}" Text="Từ"/>-->
+                            <DatePicker MinimumDate="{Binding DateNow}" MaximumDate="{Binding PromotionToDate}" Date="{Binding PromotionFromDate}" HorizontalOptions="FillAndExpand"/>
+
+                        </StackLayout>
+                        <Label Style="{StaticResource FormLabel}" Text= "{Static lang:Language.den}" Grid.Column="1" Grid.Row="1"/>
+                        <StackLayout Orientation="Horizontal" Grid.Column="2" Grid.Row="1" >
+                            
+                            <DatePicker MinimumDate="{Binding PromotionFromDate}"  Date="{Binding PromotionToDate}" HorizontalOptions="FillAndExpand"/>
+                        </StackLayout>
+
+                        <!--promotion price-->
+                        <StackLayout Padding="0,10,0,0"  BackgroundColor="White" VerticalOptions="Start"  Grid.Row="3" Grid.ColumnSpan="2" >
+                            <controls:FormLabelRequired Text="{Static lang:Language.gia_giam}" />
+                            <controls:CurrencyEntry Placeholder="{Static lang:Language.gia_giam}" Text="{Binding PromotionPrice}" MaxValue="20000000000" />
+                        </StackLayout>
+                    </Grid>
+
+                    </ScrollView>
+                </controls:CenterModal.Body>
+                <controls:CenterModal.Footer>
+                    <Grid Margin="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+
+                        </Grid.RowDefinitions>
+                        <Button Grid.Column="0" Padding="0" HeightRequest="40" BackgroundColor="White" BorderColor="{StaticResource MainDarkColor}" BorderWidth="1" Clicked="OnBtnCancelAddContactNeed_Click" CornerRadius="10" FontSize="16" Text= "{Static lang:Language.huy}" TextColor="{StaticResource MainDarkColor}" HorizontalOptions="FillAndExpand" />
+                        <Button Grid.Column="1" Padding="0" HeightRequest="40" BackgroundColor="{StaticResource MainDarkColor}" Clicked="OnBtnSaveAddContactNeed_Click" CornerRadius="10" FontSize="16" Text= "{Static lang:Language.luu}" TextColor="#fff" HorizontalOptions="FillAndExpand" />
+                    </Grid>
+                </controls:CenterModal.Footer>
+            </controls:CenterModal>
+            <controls:LoadingPopup x:Name="loadingPopup" />
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>
+

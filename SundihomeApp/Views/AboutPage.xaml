@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:lang="clr-namespace:SundihomeApp.Resources" Title="{x:Static lang:Language.gioi_thieu}" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SundihomeApp.Views.AboutPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="15" Spacing="10">
+                <Image WidthRequest="200" Margin="10,15" Source="logo_text.png" HorizontalOptions="Center" />
+                <Label TextColor="#444444" FontSize="Medium" Text="{x:Static lang:Language.about_1}" />
+                <Label TextColor="#444444" FontSize="Medium" Text="{x:Static lang:Language.about_2}" />
+                <Label TextColor="#444444" FontSize="Medium" Text="{x:Static lang:Language.about_3}" />
+                <Label TextColor="#444444" FontSize="Medium" Text="{x:Static lang:Language.about_4}" />
+                <Label TextColor="#444444" FontSize="Medium" Text="{x:Static lang:Language.about_5}" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

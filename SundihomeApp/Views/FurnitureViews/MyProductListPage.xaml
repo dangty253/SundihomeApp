@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:controls="clr-namespace:SundihomeApp.Controls" xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives" x:Class="SundihomeApp.Views.Furniture.MyProductListPage" xmlns:cv="clr-namespace:SundihomeApp.Converters" xmlns:lang="clr-namespace:SundihomeApp.Resources" Title="{Static lang:Language.san_pham_cua_toi}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="RadBorderCategories" TargetType="telerikPrimitives:RadBorder">
+                <Setter Property="Margin" Value="0,0,0,0" />
+                <Setter Property="Padding" Value="10,7" />
+                <Setter Property="BorderColor" Value="#eeeeee" />
+                <Setter Property="BorderThickness" Value="1" />
+                <Setter Property="CornerRadius" Value="5" />
+                <Setter Property="BackgroundColor" Value="White" />
+            </Style>
+            <!--Category style-->
+            <Style x:Key="Category" TargetType="Label">
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontAttributes" Value="None" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+            </Style>
+
+            <Style x:Key="FilterButtonStyle" TargetType="Button">
+                <Setter Property="Text" Value="{StaticResource Filter}" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="CornerRadius" Value="10" />
+                <Setter Property="BackgroundColor" Value="{StaticResource MainDarkColor}" />
+                <Setter Property="HeightRequest" Value="35" />
+                <Setter Property="WidthRequest" Value="35" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+            <cv:NullToHideConverter x:Key="NullToHideConverter" />
+            <cv:StatusToColorSellConverter x:Key="StatusToColorSellConverter" />
+            <cv:FurnitureProductStatusNameConverter x:Key="FurnitureProductStatusNameConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <Grid AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <controls:ScrollTab Grid.Row="0" Margin="5,5,5,0" SelectedIndex="0" SelectedIndexChanged="ScrollTabIndex_Change" x:Name="ScrollTab">
+                </controls:ScrollTab>
+                <controls:SearchBarFrame Grid.Row="1" Margin="5,0">
+                    <controls:SearchBar x:Name="searchBar" SearchButtonPressed="OnSearchPressed" TextChanged="Search_TextChanged" />
+                </controls:SearchBarFrame>
+                <controls:BsdListView x:Name="lv" Grid.Row="2" BackgroundColor="#eeeeee">
+                    <controls:BsdListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="10" ColumnSpacing="0" BackgroundColor="White" Margin="0,1,0,1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="130" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid Grid.Column="0" Grid.Row="0" x:Name="thumbnail" HeightRequest="100"  Padding="0,0,10,0">
+                                        <ffimageloading:CachedImage DownsampleToViewSize="true" Aspect="AspectFill" Source="{Binding AvatarFullUrl}" />
+                                    </Grid>
+                                    <StackLayout Grid.Column="1" Grid.Row="0">
+                                        <Label Text="{Binding Name}" TextColor="{StaticResource MainDarkColor}" FontSize="15" FontAttributes="Bold" MaxLines="2" LineBreakMode="TailTruncation" />
+                                        <Label x:Name="PriceStrike" MaxLines="1" LineBreakMode="TailTruncation" IsVisible="{Binding PromotionPrice,Converter={StaticResource NullToHideConverter}}">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding Price, StringFormat='{0:0,0} đ'}" TextDecorations="Strikethrough" FontSize="13" TextColor="Gray" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Grid IsVisible="{Binding PromotionPrice,Converter={StaticResource NullToHideConverter}}">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Label Text="{Binding PromotionPrice, StringFormat='{0:0,0} đ'}" TextColor="Red" FontSize="14" MaxLines="1" LineBreakMode="TailTruncation" HorizontalOptions="Start" />
+                                            <Label Text="{Binding ProductStatus, Converter={StaticResource FurnitureProductStatusNameConverter}}" TextColor="{Binding ProductStatus,Converter={StaticResource StatusToColorSellConverter}}" FontSize="14" MaxLines="1" LineBreakMode="TailTruncation" Grid.Column="1" HorizontalOptions="End" />
+                                        </Grid>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Label Text="{Binding Price, StringFormat='{0:0,0} đ'}" TextColor="Red" FontSize="14" MaxLines="1" LineBreakMode="TailTruncation" HorizontalOptions="Start" />
+                                            <Label Text="{Binding ProductStatus, Converter={StaticResource FurnitureProductStatusNameConverter}}" TextColor="{Binding ProductStatus,Converter={StaticResource StatusToColorSellConverter}}" FontSize="14" MaxLines="1" LineBreakMode="TailTruncation" Grid.Column="1" HorizontalOptions="End" />
+                                            <Grid.Triggers>
+                                                <DataTrigger TargetType="Grid"
+                                                             Binding="{Binding Source={Reference PriceStrike},Path=IsVisible}"
+                                                             Value="True">
+                                                    <Setter Property="IsVisible" Value="False" />
+                                                    
+                                                </DataTrigger>
+                                            </Grid.Triggers>
+                                        </Grid>
+
+                                        <Label FontSize="14" TextColor="#444444" Text="{Binding Address}" />
+                                    </StackLayout>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </controls:BsdListView.ItemTemplate>
+                </controls:BsdListView>
+            </Grid>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="End" Spacing="0" AbsoluteLayout.LayoutBounds="0,1,1,64" AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional" Margin="5">
+                <Frame Margin="5" Padding="0" CornerRadius="22">
+                    <Button Text="&#xf067;" FontSize="20" WidthRequest="44" HeightRequest="44" CornerRadius="22" FontFamily="{StaticResource FontAwesomeSolid}" BackgroundColor="{StaticResource MainDarkColor}" TextColor="White" Clicked="AddProduct_Clicked" />
+                </Frame>
+            </StackLayout>
+            <controls:LoadingPopup x:Name="loadingPopup" />
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

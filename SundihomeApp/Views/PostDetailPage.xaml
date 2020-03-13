@@ -1,0 +1,379 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:lang="clr-namespace:SundihomeApp.Resources"
+             x:Name="this" xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:d="http://xamarin.com/schemas/2014/forms/design" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView" xmlns:pluginImageCircle="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin" xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" xmlns:controls="clr-namespace:SundihomeApp.Controls" ios:Page.UseSafeArea="true" xmlns:converters="clr-namespace:SundihomeApp.Converters" mc:Ignorable="d" x:Class="SundihomeApp.Views.PostDetailPage" Title="{Binding GetPost.Title}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:NullToHideConverter x:Key="NullToHideConverter" />
+            <converters:CommentPostImageGridConverter x:Key="CommentPostImageGridConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <AbsoluteLayout BackgroundColor="#fff">
+            <ScrollView x:Name="ScrollView_Detail_M_B" IsVisible="false" VerticalScrollBarVisibility="Never" Padding="0,0,0,60" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <Grid x:Name="gridContent">
+                    <!-- Start CarouseView -->
+                    <StackLayout x:Name="stListImg" IsVisible="False">
+                        <cards:CarouselView x:Name="carouseView" HeightRequest="215">
+                            <cards:CarouselView.ItemTemplate>
+                                <DataTemplate>
+                                    <Image Source="{Binding URL}" Aspect="AspectFill">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnClickedShowGallery" CommandParameter="{Binding URL}" />
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </DataTemplate>
+                            </cards:CarouselView.ItemTemplate>
+                        </cards:CarouselView>
+                        <Frame CornerRadius="4" Padding="10,1,10,1" Margin="15,-75,15,0" HorizontalOptions="Start">
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="&#xf03e;" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="15" BackgroundColor="{StaticResource BackGroundText}" TextColor="{StaticResource ColorText}" Margin="0,2,0,0" />
+                                <Label x:Name="lbNumImages" Margin="0,1,2,0" FontSize="13" TextColor="{StaticResource ColorText}" BackgroundColor="{StaticResource BackGroundText}" />
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+                    <!-- End CarouseView -->
+
+                    <!-- Start Content -->
+                    <controls:ExtendedFrame x:Name="frContentPost" Padding="0" Margin="10,0,10,0" CornerRadius="15" HasShadow="True">
+                        <StackLayout BackgroundColor="#fff" Margin="15">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding GetPost.PostTypeFormatText}" BackgroundColor="{StaticResource BackGroundText}" FontSize="13" TextColor="{StaticResource ColorText}" />
+                                            <Span Text=" | " />
+                                            <Span x:Name="lbLoaiBatDongSan" FontSize="13" TextColor="{StaticResource ColorText}" BackgroundColor="{StaticResource BackGroundText}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label Grid.Column="1" Text="{Binding GetPost.CreatedDate,StringFormat='{0:dd/MM/yyyy HH:mm}'}" BackgroundColor="{StaticResource BackGroundText}" FontSize="13" TextColor="{StaticResource ColorText}" />
+                            </Grid>
+                            <Label Text="{Binding GetPost.Title}" TextColor="{StaticResource MainDarkColor}" FontSize="18" BackgroundColor="{StaticResource BackGroundText}" FontAttributes="Bold" />
+                            <Label Text="{Binding GetPost.Address}" FontSize="13" TextColor="{StaticResource ColorText}" BackgroundColor="{StaticResource BackGroundText}" />
+
+                            <Label Text="{Binding GetPost.PriceFormatText}" TextColor="{StaticResource TextColorBlack}" FontSize="17" BackgroundColor="{StaticResource BackGroundText}" FontAttributes="Bold" />
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Text="{Binding GetPost.AreaFormatText}" TextColor="{StaticResource TextColorBlack}" BackgroundColor="{StaticResource BackGroundText}" FontAttributes="Bold" FontSize="14" />
+                                <Label Grid.Column="1" Text="{Binding GetPost.PriceOnSpuareMeterFmText}" TextColor="{StaticResource TextColorBlack}" FontAttributes="Bold" FontSize="14" BackgroundColor="{StaticResource BackGroundText}" />
+                            </Grid>
+                        </StackLayout>
+                    </controls:ExtendedFrame>
+                    <!-- End Content -->
+
+                    <!-- Description-->
+                    <StackLayout Grid.Row="3" Margin="0,10,0,0">
+                        <StackLayout Orientation="Horizontal" Padding="15,10,15,10" BackgroundColor="{StaticResource BackgroundOfOrtherDetail}">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="onClick_HideShow_Description" />
+                            </StackLayout.GestureRecognizers>
+                            <Label Text="{x:Static lang:Language.gioi_thieu}" FontAttributes="Bold" FontSize="15" HorizontalOptions="Start" TextColor="{StaticResource TextColorBlack}" BackgroundColor="{StaticResource BackgroundOfOrtherDetail}" />
+                            <Label x:Name="showmore_Description" FontSize="12" HorizontalOptions="EndAndExpand" VerticalOptions="Center" Margin="0,3,5,0" Text="&#xf078;" TextColor="#c1c1c1" BackgroundColor="{StaticResource BackgroundOfOrtherDetail}" FontFamily="{StaticResource FontAwesomeSolid}" />
+                        </StackLayout>
+                        <Label x:Name="lbAbout" FontSize="14" Margin="15,10" Text="{Binding GetPost.Description}" BackgroundColor="{StaticResource BackGroundText}" IsVisible="true" />
+                    </StackLayout>
+
+                    <!--Start "Tổng quan bất động sản -->
+                    <StackLayout>
+                        <StackLayout Orientation="Horizontal" Padding="15,10,15,10" Margin="0" BackgroundColor="{StaticResource BackgroundOfOrtherDetail}">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="onClick_HideShow_TQ" />
+                            </StackLayout.GestureRecognizers>
+                            <Label Text="{x:Static lang:Language.tong_quan_bat_dong_san}" FontAttributes="Bold" FontSize="15" TextColor="{StaticResource TextColorBlack}" BackgroundColor="{StaticResource BackgroundOfOrtherDetail}" />
+                            <Label x:Name="showmore_TQ" VerticalOptions="Center" HorizontalOptions="EndAndExpand" Margin="0,3,5,0" FontSize="12" Text="&#xf078;" TextColor="#c1c1c1" FontFamily="{StaticResource FontAwesomeSolid}" Rotation="-180" />
+                        </StackLayout>
+                        <StackLayout x:Name="HideShow_TQ" Margin="0,-5,0,0" Padding="0,5,0,0" IsVisible="false">
+                            <StackLayout x:Name="stTinhTrangPhapLy" IsVisible="False">
+                                <StackLayout Padding="15,5,15,5" Orientation="Horizontal">
+                                    <Label Text="{x:Static lang:Language.tinh_trang_phap_ly}" HorizontalOptions="StartAndExpand" FontSize="13" TextColor="{StaticResource ColorText}" BackgroundColor="{StaticResource BackGroundText}" />
+                                    <Label x:Name="lbTinhTrangPhapLy" HorizontalOptions="End" FontSize="13" TextColor="{StaticResource ColorText}" BackgroundColor="{StaticResource BackGroundText}" />
+                                </StackLayout>
+                                <BoxView HeightRequest="1" BackgroundColor="#e0e0e0" />
+                            </StackLayout>
+                            <StackLayout x:Name="stHuongNha" IsVisible="False">
+                                <StackLayout Padding="15,5,15,5" Orientation="Horizontal">
+                                    <Label Text="{x:Static lang:Language.huong}" HorizontalOptions="StartAndExpand" FontSize="13" TextColor="{StaticResource ColorText}" BackgroundColor="{StaticResource BackGroundText}" />
+                                    <Label x:Name="lbHuongNha" HorizontalOptions="End" FontSize="13" TextColor="{StaticResource ColorText}" BackgroundColor="{StaticResource BackGroundText}" />
+                                </StackLayout>
+                                <BoxView HeightRequest="1" BackgroundColor="#e0e0e0" />
+                            </StackLayout>
+                            <StackLayout x:Name="stTongDienTichSuDung" IsVisible="False">
+                                <StackLayout Padding="15,5,15,5" Orientation="Horizontal">
+                                    <Label Text="{x:Static lang:Language.dien_tich}" HorizontalOptions="StartAndExpand" FontSize="13" TextColor="{StaticResource ColorText}" BackgroundColor="{StaticResource BackGroundText}" />
+                                    <Label x:Name="lbTongDienTichSuDung" HorizontalOptions="End" FontSize="13" TextColor="{StaticResource ColorText}" BackgroundColor="{StaticResource BackGroundText}" />
+                                </StackLayout>
+                                <BoxView HeightRequest="1" BackgroundColor="#e0e0e0" />
+                            </StackLayout>
+                            <StackLayout x:Name="stDuongVao" IsVisible="False">
+                                <StackLayout Padding="15,5,15,5" Orientation="Horizontal">
+                                    <Label Text="{x:Static lang:Language.duong_vao_m2}" HorizontalOptions="StartAndExpand" FontSize="13" TextColor="{StaticResource ColorText}" BackgroundColor="{StaticResource BackGroundText}" />
+                                    <Label x:Name="lbDuongVao" HorizontalOptions="End" FontSize="13" TextColor="{StaticResource ColorText}" BackgroundColor="{StaticResource BackGroundText}" />
+                                </StackLayout>
+                                <BoxView HeightRequest="1" BackgroundColor="#e0e0e0" />
+                            </StackLayout>
+                            <StackLayout x:Name="stMatTien" IsVisible="False">
+                                <StackLayout Padding="15,5,15,5" Orientation="Horizontal">
+                                    <Label Text="{x:Static lang:Language.mat_tien_m2}" HorizontalOptions="StartAndExpand" FontSize="13" TextColor="{StaticResource ColorText}" BackgroundColor="{StaticResource BackGroundText}" />
+                                    <Label x:Name="lbMatTien" HorizontalOptions="End" FontSize="13" TextColor="{StaticResource ColorText}" BackgroundColor="{StaticResource BackGroundText}" />
+                                </StackLayout>
+                                <BoxView HeightRequest="1" BackgroundColor="#e0e0e0" />
+                            </StackLayout>
+                            <StackLayout x:Name="stChieuSau" IsVisible="False">
+                                <StackLayout Padding="15,5,15,5" Orientation="Horizontal">
+                                    <Label Text="{x:Static lang:Language.chieu_sau}" HorizontalOptions="StartAndExpand" FontSize="13" TextColor="{StaticResource ColorText}" BackgroundColor="{StaticResource BackGroundText}" />
+                                    <Label x:Name="lbChieuSau" HorizontalOptions="End" FontSize="13" TextColor="{StaticResource ColorText}" BackgroundColor="{StaticResource BackGroundText}" />
+                                </StackLayout>
+                                <BoxView HeightRequest="1" BackgroundColor="#e0e0e0" />
+                            </StackLayout>
+                            <StackLayout x:Name="stSoTang" IsVisible="False">
+                                <StackLayout Padding="15,5,15,5" Orientation="Horizontal">
+                                    <Label Text="{x:Static lang:Language.so_tang}" HorizontalOptions="StartAndExpand" FontSize="13" TextColor="{StaticResource ColorText}" BackgroundColor="{StaticResource BackGroundText}" />
+                                    <Label x:Name="lbSoTang" HorizontalOptions="End" FontSize="13" TextColor="{StaticResource ColorText}" BackgroundColor="{StaticResource BackGroundText}" />
+                                </StackLayout>
+                                <BoxView HeightRequest="1" BackgroundColor="#e0e0e0" />
+                            </StackLayout>
+                            <StackLayout x:Name="stTang" IsVisible="False">
+                                <StackLayout Padding="15,5,15,5" Orientation="Horizontal">
+                                    <Label Text="{x:Static lang:Language.tang}" HorizontalOptions="StartAndExpand" FontSize="13" TextColor="{StaticResource ColorText}" BackgroundColor="{StaticResource BackGroundText}" />
+                                    <Label x:Name="lbTang" HorizontalOptions="End" FontSize="13" TextColor="{StaticResource ColorText}" BackgroundColor="{StaticResource BackGroundText}" />
+                                </StackLayout>
+                                <BoxView HeightRequest="1" BackgroundColor="#e0e0e0" />
+                            </StackLayout>
+                            <StackLayout x:Name="stSoThangMay" IsVisible="False">
+                                <StackLayout Padding="15,5,15,5" Orientation="Horizontal">
+                                    <Label Text="{x:Static lang:Language.so_thang_may}" HorizontalOptions="StartAndExpand" FontSize="13" TextColor="{StaticResource ColorText}" BackgroundColor="{StaticResource BackGroundText}" />
+                                    <Label x:Name="lbSoThangMay" HorizontalOptions="End" FontSize="13" TextColor="{StaticResource ColorText}" BackgroundColor="{StaticResource BackGroundText}" />
+                                </StackLayout>
+                                <BoxView HeightRequest="1" BackgroundColor="#e0e0e0" />
+                            </StackLayout>
+                            <StackLayout x:Name="stSoDuongNgu" IsVisible="False">
+                                <StackLayout Padding="15,5,15,5" Orientation="Horizontal">
+                                    <Label Text="{x:Static lang:Language.so_phong_ngu}" HorizontalOptions="StartAndExpand" FontSize="13" TextColor="{StaticResource ColorText}" BackgroundColor="{StaticResource BackGroundText}" />
+                                    <Label x:Name="lbSoDuongNgu" HorizontalOptions="End" FontSize="13" TextColor="{StaticResource ColorText}" BackgroundColor="{StaticResource BackGroundText}" />
+                                </StackLayout>
+                                <BoxView HeightRequest="1" BackgroundColor="#e0e0e0" />
+                            </StackLayout>
+                            <StackLayout x:Name="stSoPhongTam" IsVisible="False">
+                                <StackLayout Padding="15,5,15,5" Orientation="Horizontal">
+                                    <Label Text="{x:Static lang:Language.so_phong_tam}" HorizontalOptions="StartAndExpand" FontSize="13" TextColor="{StaticResource ColorText}" BackgroundColor="{StaticResource BackGroundText}" />
+                                    <Label x:Name="lbSoPhongtam" HorizontalOptions="End" FontSize="13" TextColor="{StaticResource ColorText}" BackgroundColor="{StaticResource BackGroundText}" />
+                                </StackLayout>
+                                <BoxView HeightRequest="1" BackgroundColor="#e0e0e0" />
+                            </StackLayout>
+
+                        </StackLayout>
+                    </StackLayout>
+                    <!--End "Tổng quan dự án -->
+
+                    <!--chu so huu-->
+                    <StackLayout x:Name="stThoiGianCamKet" IsVisible="false">
+                        <StackLayout Orientation="Horizontal" Padding="15,10" Margin="0" BackgroundColor="{StaticResource BackgroundOfOrtherDetail}">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="onClick_HideShow_ThoiGianCamKet" />
+                            </StackLayout.GestureRecognizers>
+                            <Label Text="{x:Static lang:Language.thoi_gian_cam_ket}" FontAttributes="Bold" TextColor="{StaticResource TextColorBlack}" FontSize="15" BackgroundColor="{StaticResource BackgroundOfOrtherDetail}" />
+                            <Label x:Name="showmore_ThoiGianCamKet" HorizontalOptions="EndAndExpand" VerticalOptions="Center" Margin="0,3,5,0" FontSize="12" Text="&#xf078;" TextColor="#c1c1c1" FontFamily="{StaticResource FontAwesomeSolid}" Rotation="-180" />
+                        </StackLayout>
+                        <StackLayout x:Name="stContent_ThoiGianCamKet" Padding="15,5" IsVisible="false" Orientation="Horizontal">
+                            <Label Text="{Binding GetPost.CommitmentDateFrom,StringFormat='{0:dd/MM/yyyy}'}" FontSize="14" TextColor="{StaticResource ColorText}"/>
+                            <Label Text="{x:Static lang:Language.den}" FontSize="14" TextColor="{StaticResource ColorText}"/>
+                            <Label Text="{Binding GetPost.CommitmentDateTo,StringFormat='{0:dd/MM/yyyy}'}" FontSize="14" TextColor="{StaticResource ColorText}"/>
+                        </StackLayout>
+                    </StackLayout>
+
+                    <!--Start "Nội thất tiện nghi -->
+                    <StackLayout x:Name="stNoiThatTienNghi" IsVisible="False">
+                        <StackLayout Orientation="Horizontal" Padding="15,10,15,10" Margin="0" BackgroundColor="{StaticResource BackgroundOfOrtherDetail}">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="onClick_HideShow_Utility" />
+                            </StackLayout.GestureRecognizers>
+                            <Label Text="{x:Static lang:Language.noi_that_tien_nghi}" FontAttributes="Bold" TextColor="{StaticResource TextColorBlack}" FontSize="15" BackgroundColor="{StaticResource BackgroundOfOrtherDetail}" />
+                            <Label x:Name="showmore_Utility" HorizontalOptions="EndAndExpand" VerticalOptions="Center" Margin="0,3,5,0" FontSize="12" Text="&#xf078;" TextColor="#c1c1c1" FontFamily="{StaticResource FontAwesomeSolid}" Rotation="-180" />
+                        </StackLayout>
+                        <StackLayout Padding="15,5,15,0" x:Name="HideShow_Utility" IsVisible="false">
+                            <Label Text="{x:Static lang:Language.co_so_vat_chat}" TextColor="#0098da" BackgroundColor="{StaticResource BackGroundText}" />
+                            <flv:FlowListView x:Name="flvUtilities" FlowColumnCount="4" RowHeight="100" VerticalScrollBarVisibility="Never">
+                                <flv:FlowListView.FlowColumnTemplate>
+                                    <DataTemplate>
+                                        <StackLayout  HorizontalOptions="Center" Margin="0,0,5,10" Padding="5">
+                                            <Image Source="{Binding Image}" HeightRequest="35" WidthRequest="35" />
+                                            <Label Text="{Binding Name}" MaxLines="2" FontSize="13" TextColor="{StaticResource ColorText}" BackgroundColor="{StaticResource BackGroundText}" HorizontalTextAlignment="Center" />
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </flv:FlowListView.FlowColumnTemplate>
+                            </flv:FlowListView>
+                        </StackLayout>
+                    </StackLayout>
+                    <!--End "Nội thất tiện nghi -->
+
+                    <!-- Start " Thuộc dự án"-->
+                    <StackLayout x:Name="stThuocDuAn" IsVisible="False">
+                        <StackLayout Orientation="Horizontal" Padding="15,10,15,10" Margin="0" BackgroundColor="{StaticResource BackgroundOfOrtherDetail}">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="onClick_HideShow_TDA" />
+                            </StackLayout.GestureRecognizers>
+                            <Label Text="{x:Static lang:Language.thuoc_du_an}" FontAttributes="Bold" TextColor="{StaticResource TextColorBlack}" FontSize="15" BackgroundColor="{StaticResource BackgroundOfOrtherDetail}" />
+                            <Label x:Name="showmore_TDA" HorizontalOptions="EndAndExpand" VerticalOptions="Center" Margin="0,3,5,0" FontSize="12" Text="&#xf078;" TextColor="#c1c1c1" FontFamily="{StaticResource FontAwesomeSolid}" Rotation="-180" />
+                        </StackLayout>
+                        <StackLayout x:Name="HideShow_TDA" Orientation="Horizontal" Padding="15,5,15,10" Spacing="20" IsVisible="false">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer CommandParameter="{Binding GetPost.ProjectId}" Tapped="onClick_GotoProject" NumberOfTapsRequired="1" />
+                            </StackLayout.GestureRecognizers>
+                            <pluginImageCircle:CircleImage Source="{Binding GetPost.Project.AvatarFullUrl}" HeightRequest="60" VerticalOptions="Start" WidthRequest="60" Aspect="AspectFill" />
+                            <StackLayout Spacing="2">
+                                <Label Text="{Binding GetPost.Project.Name}" FontSize="16" TextColor="{StaticResource MainDarkColor}" FontAttributes="Bold" BackgroundColor="{StaticResource BackGroundText}" />
+                                <Label TextColor="{StaticResource TextColorBlack}" BackgroundColor="{StaticResource BackGroundText}">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static lang:Language.tien_do}" FontSize="13" FontAttributes="Bold" />
+                                            <Span x:Name="spStatus" FontSize="13" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+
+                                <Label TextColor="{StaticResource TextColorBlack}" BackgroundColor="{StaticResource BackGroundText}">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static lang:Language.nam_khoi_cong}" FontSize="13" FontAttributes="Bold" />
+                                            <Span Text="{Binding GetPost.Project.NamKhoiCong}" FontSize="13" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label TextColor="{StaticResource TextColorBlack}" BackgroundColor="{StaticResource BackGroundText}">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static lang:Language.nam_hoan_thanh}" FontSize="13" FontAttributes="Bold" />
+                                            <Span Text="{Binding GetPost.Project.NamHoanThanh}" FontSize="13" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label TextColor="{StaticResource TextColorBlack}" BackgroundColor="{StaticResource BackGroundText}">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static lang:Language.loai_bat_dong_san}" FontSize="13" FontAttributes="Bold" />
+                                            <Span x:Name="lbCatogoriBDS" Text="{Binding GetPost.Project.CategoriBDS}" FontSize="13" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </StackLayout>
+                        </StackLayout>
+                    </StackLayout>
+                    <!-- End " Thuộc dự án"-->
+
+                    <!-- Start "Bất động sản cùng dự an" -->
+                    <StackLayout x:Name="stBDSKhac" IsVisible="False">
+                        <StackLayout Orientation="Horizontal" Padding="15,10,15,10" Margin="0" BackgroundColor="{StaticResource BackgroundOfOrtherDetail}">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="onClick_HideShow_BatDongSanCungKhuVuc" />
+                            </StackLayout.GestureRecognizers>
+                            <Label Text="{x:Static lang:Language.bat_dong_san_cung_du_an}" FontAttributes="Bold" FontSize="15" TextColor="{StaticResource TextColorBlack}" BackgroundColor="{StaticResource BackgroundOfOrtherDetail}" />
+                            <Label x:Name="showmore_BatDongSanCungDuAn" HorizontalOptions="EndAndExpand" VerticalOptions="Center" Margin="0,3,5,0" FontSize="12" Text="&#xf078;" TextColor="#c1c1c1" FontFamily="{StaticResource FontAwesomeSolid}" Rotation="-180" />
+                        </StackLayout>
+
+                        <cards:CarouselView x:Name="cvBDSCungKhuVuc" ItemsSource="{Binding BDSKhac}" Margin="10" IsVisible="false">
+                            <cards:CarouselView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackLayout BackgroundColor="#fff">
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="onClick_BDSCKV" NumberOfTapsRequired="1" CommandParameter="{Binding}" />
+                                        </StackLayout.GestureRecognizers>
+                                        <Frame IsVisible="{Binding Avatar,Converter={StaticResource NullToHideConverter}}" CornerRadius="7" Padding="0" HeightRequest="160" IsClippedToBounds="True">
+                                            <Image Source="{Binding AvatarFullUrl}" Aspect="AspectFill" />
+                                        </Frame>
+                                        <StackLayout Padding="0,5,5,5" Spacing="3">
+                                            <Label  Text="{Binding Title}" TextColor="{StaticResource MainDarkColor}" BackgroundColor="{StaticResource BackGroundText}" FontSize="16" MaxLines="2" LineBreakMode="TailTruncation" FontAttributes="Bold" />
+                                            <Label x:Name="lblAndress" Text="{Binding Address}" TextColor="{StaticResource ColorText}" LineBreakMode="TailTruncation" FontSize="16" BackgroundColor="{StaticResource BackGroundText}" />
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+                                                <Label Grid.Column="0" Text="{Binding PriceFormatText}" FontSize="13" HorizontalOptions="StartAndExpand" FontAttributes="Bold" TextColor="{StaticResource TextColorBlack}" BackgroundColor="{StaticResource BackGroundText}" />
+                                                <Label Grid.Column="1" Text="{Binding AreaFormatText}" FontSize="13" HorizontalOptions="EndAndExpand" FontAttributes="Bold" TextColor="{StaticResource TextColorBlack}" BackgroundColor="{StaticResource BackGroundText}" />
+                                            </Grid>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </cards:CarouselView.ItemTemplate>
+                        </cards:CarouselView>
+                        <Button Text="{x:Static lang:Language.xem_tat_ca}" IsVisible="{Binding Source={x:Reference cvBDSCungKhuVuc},Path=IsVisible}" Margin="10" FontSize="15" TextColor="{StaticResource MainDarkColor}" BorderWidth="1" CornerRadius="4" BorderColor="{StaticResource MainDarkColor}" Padding="10,0" HorizontalOptions="End" HeightRequest="20" VerticalOptions="Start" Clicked="ViewPostByProject_Clicked" BackgroundColor="transparent" FontAttributes="Bold" />
+                    </StackLayout>
+                    <!-- End "Bất động sản cùng khu vực" -->
+
+                    <!--Start "Thông tin liên hệ" -->
+                    <StackLayout x:Name="stThongTinLienHe">
+                        <StackLayout Orientation="Horizontal" Padding="15,10,15,10" Margin="0" BackgroundColor="{StaticResource BackgroundOfOrtherDetail}">
+                            <Label Text="{x:Static lang:Language.thong_tin_lien_he}" FontAttributes="Bold" FontSize="15" TextColor="{StaticResource TextColorBlack}" BackgroundColor="{StaticResource BackgroundOfOrtherDetail}" />
+                        </StackLayout>
+                        <Grid x:Name="Contact" Padding="15,5,15,5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="60" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <pluginImageCircle:CircleImage Grid.Column="0" WidthRequest="60" HeightRequest="60" VerticalOptions="Center" Source="{Binding GetPost.User.AvatarFullUrl}" Aspect="AspectFill" />
+                            <StackLayout Grid.Column="1" Spacing="3" VerticalOptions="Center">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="ViewProfile_Clicked" />
+                                </StackLayout.GestureRecognizers>
+                                <Label Text="{Binding GetPost.User.FullName}" FontSize="15" FontAttributes="Bold" TextColor="{StaticResource MainDarkColor}" BackgroundColor="{StaticResource BackGroundText}" />
+                                <Label Text="{Binding GetPost.User.Email}" FontSize="13" BackgroundColor="{StaticResource BackGroundText}" TextColor="{StaticResource ColorText}" />
+                                <Label Text="{Binding GetPost.User.Phone}" FontSize="13" BackgroundColor="{StaticResource BackGroundText}" TextColor="{StaticResource ColorText}" />
+                            </StackLayout>
+                        </Grid>
+                    </StackLayout>
+                    <!--End "Thông tin liên hệ" -->
+
+
+
+
+                    <StackLayout x:Name="StacklayoutPostComments" IsVisible="false">
+                        <StackLayout Orientation="Horizontal" Padding="15,10,15,10" Margin="0" BackgroundColor="{StaticResource BackgroundOfOrtherDetail}">
+                            <Label Text="{x:Static lang:Language.binh_luan}" FontAttributes="Bold" FontSize="15" TextColor="{StaticResource TextColorBlack}" BackgroundColor="{StaticResource BackgroundOfOrtherDetail}" />
+                        </StackLayout>
+                        <Button Margin="10" Clicked="PickerPost_Clicked" Text="{x:Static lang:Language.gui_tin_dang_binh_luan}" FontSize="14" TextColor="White" BackgroundColor="{StaticResource MainDarkColor}" />
+                        <StackLayout BindableLayout.ItemsSource="{Binding PostComments}" BackgroundColor="#eeeeee" Spacing="1">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid BackgroundColor="White" Padding="10,5" ColumnSpacing="7">
+                                        <Grid.GestureRecognizers>
+                                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="ViewPostCommentDetail_Tapped" CommandParameter="{Binding Id}" />
+                                        </Grid.GestureRecognizers>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <pluginImageCircle:CircleImage Grid.Column="0" WidthRequest="50" VerticalOptions="Start" Source="{Binding User.AvatarFullUrl}" />
+                                        <StackLayout Grid.Column="1">
+                                            <Label Text="{Binding User.FullName}" FontSize="15" FontAttributes="Bold" TextColor="{StaticResource MainDarkColor}" MaxLines="1" LineBreakMode="TailTruncation">
+                                                <Label.GestureRecognizers>
+                                                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="ViewCommentPostUserProfile_Tapped" CommandParameter="{Binding User.Id}" />
+                                                </Label.GestureRecognizers>
+                                            </Label>
+                                            <Label Text="{Binding Title}" FontSize="15" FontAttributes="Bold" TextColor="Black" MaxLines="2" LineBreakMode="TailTruncation" />
+                                            <Label Text="{Binding PriceFormatText}" FontSize="14" TextColor="Red" />
+                                            <ContentView Content="{Binding ImageList,Converter={StaticResource CommentPostImageGridConverter}}" />
+                                            <Label Text="{Binding Address}" FontSize="14" TextColor="#444444" MaxLines="2" LineBreakMode="TailTruncation" />
+                                            <Label Text="{Binding CreatedDateTimeAgo}" FontSize="13" TextColor="#444444" HorizontalOptions="End" />
+                                        </StackLayout>
+                                    </Grid>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </StackLayout>
+                        <Button Margin="10" x:Name="LoadMorePostCommentButton" Clicked="LoadMorePostComment_Clicked" FontSize="14" Text="{x:Static lang:Language.xem_them}" TextColor="{StaticResource MainDarkColor}" BackgroundColor="Transparent" BorderWidth="0" IsVisible="{Binding ShowLoadmorePostCommentButton}" />
+                    </StackLayout>
+                </Grid>
+            </ScrollView>
+
+            <controls:FloatingButtonGroup ItemsSource="{Binding BindingContext.ButtonCommandList,Source={x:Reference this}}" />
+            <controls:LoadingPopup x:Name="loadingPopup" />
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

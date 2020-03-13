@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" Title="{x:Static lang:Language.danh_sach_san_pham}" xmlns:lang="clr-namespace:SundihomeApp.Resources"
+             xmlns:controls="clr-namespace:SundihomeApp.Controls" xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SundihomeApp.Views.CompanyViews.AllCompanyProductListPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!--RadBorder Categories Style-->
+            <Style x:Key="RadBorderCategories" TargetType="telerikPrimitives:RadBorder">
+                <Setter Property="Margin" Value="0,0,0,0" />
+                <Setter Property="Padding" Value="10,5" />
+                <Setter Property="BorderThickness" Value="1" />
+                <Setter Property="CornerRadius" Value="5" />
+            </Style>
+            <!--Category style-->
+            <Style x:Key="Category" TargetType="Label">
+                <Setter Property="TextColor" Value="#333333" />
+                <Setter Property="FontAttributes" Value="None" />
+                <Setter Property="FontSize" Value="15" />
+            </Style>
+            <!--Product name style-->
+            <Style x:Key="ProductName" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource MainDarkColor}" />
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="MaxLines" Value="2" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="LineBreakMode" Value="TailTruncation" />
+            </Style>
+            <!--Product price style-->
+            <Style x:Key="ProductPrice" TargetType="Label">
+                <Setter Property="TextColor" Value="Red" />
+                <Setter Property="FontAttributes" Value="None" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="MaxLines" Value="1" />
+                <Setter Property="LineBreakMode" Value="TailTruncation" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <controls:BsdListView x:Name="LvData" Margin="{OnPlatform iOS='0,-30,0,0'}" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <controls:BsdListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <telerikPrimitives:RadBorder Margin="5,5,5,0" BorderThickness="1" BorderColor="#e0dbdb" CornerRadius="3" BackgroundColor="White">
+                                <Grid Padding="10" ColumnSpacing="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid Grid.Column="0" Grid.Row="0" x:Name="thumbnail" HeightRequest="100" WidthRequest="130" Padding="0,0,10,0">
+                                        <ffimageloading:CachedImage DownsampleToViewSize="true" Aspect="AspectFill" Source="{Binding AvatarFullUrl}" />
+                                    </Grid>
+                                    <StackLayout Grid.Column="1" Grid.Row="0">
+                                        <Label Style="{StaticResource ProductName}" Text="{Binding Name}" />
+                                        <Label Style="{StaticResource ProductPrice}" Text="{Binding Price, StringFormat='{0:0,0} đ'}" />
+                                        <Label FontSize="14" TextColor="#444444" Text="{Binding Address}" />
+                                    </StackLayout>
+                                </Grid>
+                            </telerikPrimitives:RadBorder>
+                        </ViewCell>
+                    </DataTemplate>
+                </controls:BsdListView.ItemTemplate>
+            </controls:BsdListView>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="End" Spacing="0" AbsoluteLayout.LayoutBounds="0,1,1,64" AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional" Margin="5">
+                <Frame Margin="5" Padding="0" CornerRadius="22">
+                    <Button Text="&#xf067;" FontSize="20" WidthRequest="44" HeightRequest="44" CornerRadius="22" FontFamily="{StaticResource FontAwesomeSolid}" BackgroundColor="{StaticResource MainDarkColor}" TextColor="White" Clicked="AddPost_Clicked" />
+                </Frame>
+            </StackLayout>
+            <controls:LoadingPopup x:Name="loadingPopup" />
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" Title="{x:Static lang:Language.san_pham}"
+             xmlns:lang="clr-namespace:SundihomeApp.Resources"
+             xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives" xmlns:controls="clr-namespace:SundihomeApp.Controls" xmlns:telerikInput="clr-namespace:Telerik.XamarinForms.Input;assembly=Telerik.XamarinForms.Input" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SundihomeApp.Views.CompanyViews.QuanLyCongTyViews.ProductPage">
+    <Shell.TitleView>
+        <StackLayout VerticalOptions="FillAndExpand" Orientation="Horizontal">
+            <Label Text="{x:Static lang:Language.san_pham}" FontSize="16" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" FontAttributes="Bold" HorizontalOptions="StartAndExpand"/>
+            <StackLayout VerticalOptions="FillAndExpand" Margin="0,0,5,0">
+                <Label FontSize="16" TextColor="White" HorizontalTextAlignment="End" VerticalOptions="CenterAndExpand" FontAttributes="Bold">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span x:Name="SpanDropdownButotn" />
+                            <Span Text=" " />
+                            <Span Text="&#xf107;"  FontFamily="{StaticResource FontAwesomeSolid}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OpenTopModal_Tapped" />
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+        </StackLayout>
+    </Shell.TitleView>
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <Grid AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <ContentView x:Name="ProjectContentView" Grid.Row="0" Margin="0,5,0,0" />
+                <ContentView x:Name="PostContentView" Grid.Row="0" IsVisible="false"/>
+                <ContentView x:Name="ProductContentView" Grid.Row="0" IsVisible="false" Margin="0,5,0,0"/>
+            </Grid>
+            <controls:TopModal x:Name="topModal">
+                <controls:TopModal.Body>
+                    <Grid Margin="10" ColumnSpacing="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <telerikPrimitives:RadBorder Grid.Column="0" CornerRadius="4" BorderColor="Gray" BackgroundColor="White">
+                            <telerikPrimitives:RadBorder.GestureRecognizers>
+                                <TapGestureRecognizer CommandParameter="0" Tapped="SegmentSelected_Tapped" />
+                            </telerikPrimitives:RadBorder.GestureRecognizers>
+                            <StackLayout Margin="10" Spacing="10">
+                                <Image x:Name="projectImage" HeightRequest="40" Aspect="AspectFit" HorizontalOptions="Center"/>
+                                <Label Text="{x:Static lang:Language.du_an}" FontSize="15" TextColor="#444444" HorizontalTextAlignment="Center"/>
+                            </StackLayout>
+                        </telerikPrimitives:RadBorder>
+
+                        <telerikPrimitives:RadBorder Grid.Column="1" CornerRadius="4" BorderColor="Gray" BackgroundColor="White">
+                            <telerikPrimitives:RadBorder.GestureRecognizers>
+                                <TapGestureRecognizer CommandParameter="1" Tapped="SegmentSelected_Tapped" />
+                            </telerikPrimitives:RadBorder.GestureRecognizers>
+                            <StackLayout Margin="10" Spacing="10">
+                                <Image x:Name="postImage" HeightRequest="40" Aspect="AspectFit" HorizontalOptions="Center" />
+                                <Label Text="{x:Static lang:Language.bat_dong_san}" FontSize="15" TextColor="#444444" HorizontalTextAlignment="Center"/>
+                            </StackLayout>
+                        </telerikPrimitives:RadBorder>
+
+                        <telerikPrimitives:RadBorder Grid.Column="2" CornerRadius="4" BorderColor="Gray" BackgroundColor="White">
+                            <telerikPrimitives:RadBorder.GestureRecognizers>
+                                <TapGestureRecognizer CommandParameter="2" Tapped="SegmentSelected_Tapped" />
+                            </telerikPrimitives:RadBorder.GestureRecognizers>
+                            <StackLayout Margin="10" Spacing="10">
+                                <Image x:Name="furnitureImage" HeightRequest="40" Aspect="AspectFit" HorizontalOptions="Center"/>
+                                <Label Text="{x:Static lang:Language.san_pham}" FontSize="15" TextColor="#444444" HorizontalTextAlignment="Center"/>
+                            </StackLayout>
+                        </telerikPrimitives:RadBorder>
+                    </Grid>
+                </controls:TopModal.Body>
+            </controls:TopModal>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage Title="{Binding CongViec.Title}"
+             xmlns:lang="clr-namespace:SundihomeApp.Resources"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:SundihomeApp.Controls"
+             xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives"
+             xmlns:cv="clr-namespace:SundihomeApp.Converters"
+             x:Class="SundihomeApp.Views.QuanLyMoiGioiViews.TaskDetailPage"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <cv:StatusColorConverter x:Key="statusColorConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <AbsoluteLayout BackgroundColor="White">
+            <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1"
+                        AbsoluteLayout.LayoutFlags="All">
+                <StackLayout Spacing="10"
+                             Margin="10">
+                    <Label Text="{Binding CongViec.Title}"
+                           TextColor="{StaticResource MainDarkColor}"
+                           FontSize="16"
+                           FontAttributes="Bold" />
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0"
+                               Text="{Binding CongViec.Date, StringFormat='{0:dd/MM/yyyy - HH:mm}'}"
+                               FontSize="14"
+                               TextColor="#444"
+                               VerticalTextAlignment="Center" />
+                        <Label Grid.Column="1"
+                               Text="{Binding CongViec.StatusFormat}"
+                               TextColor="{Binding CongViec.Status, Converter={StaticResource statusColorConverter}}"
+                               FontSize="14"
+                               VerticalTextAlignment="Center" />
+                    </Grid>
+                    <telerikPrimitives:RadBorder BorderThickness="1"
+                                                 BorderColor="#eee"
+                                                 CornerRadius="5">
+                        <Grid Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Label Grid.Row="0"
+                                   Grid.Column="0"
+                                   
+                                   TextColor="{StaticResource MainDarkColor}"
+                                   FontSize="15" >
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Static lang:Language.khach_hang}"/>
+                                        <Span Text=":"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label Grid.Row="0"
+                                   Grid.Column="1"
+                                   Text="{Binding CongViec.Contact.FullName}"
+                                   TextColor="#000"
+                                   FontSize="15"
+                                   FontAttributes="Bold" />
+                            <Label Grid.Row="1"
+                                   Grid.Column="0"
+                                   
+                                   TextColor="#000"
+                                   FontSize="15" >
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Static lang:Language.so_dien_thoai}"/>
+                                        <Span Text=":"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label Grid.Row="1"
+                                   Grid.Column="1"
+                                   Text="{Binding CongViec.Contact.Phone}"
+                                   TextColor="#000"
+                                   FontSize="15"
+                                   FontAttributes="Bold" />
+                            <Label Grid.Row="2"
+                                   Grid.Column="0"
+                                   
+                                   TextColor="#000"
+                                   FontSize="15" >
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Static lang:Language.dia_chi}"/>
+                                        <Span Text=":"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label Grid.Row="2"
+                                   Grid.Column="1"
+                                   Text="{Binding CongViec.Contact.Address}"
+                                   TextColor="#000"
+                                   FontSize="15"
+                                   FontAttributes="Bold" />
+                        </Grid>
+                    </telerikPrimitives:RadBorder>
+                    <StackLayout Spacing="5">
+                        <Label 
+                               FontSize="15" >
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Static lang:Language.noi_dung}"/>
+                                        <Span Text=":"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        <Label Text="{Binding CongViec.Description}"
+                               TextColor="#000"
+                               FontSize="15" />
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="End"
+                         Spacing="0"
+                         AbsoluteLayout.LayoutBounds="0,1,1,64"
+                         AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional"
+                         Margin="5">
+                <Frame Margin="5"
+                       Padding="0"
+                       CornerRadius="22"
+                       x:Name="btnCompleted"
+                       IsVisible="False"
+                       BorderColor="Gray">
+                    <Button Text="{StaticResource Check}"
+                            Style="{StaticResource FLoatButtonStyle}"
+                            FontFamily="{StaticResource FontAwesomeSolid}"
+                            Clicked="CompletedTask_Clicked"
+                            BackgroundColor="DarkGreen" />
+                </Frame>
+                <Frame Margin="5"
+                       Padding="0"
+                       CornerRadius="22"
+                       x:Name="btnEdit"
+                       IsVisible="False"
+                       BorderColor="Gray">
+                    <Button Text="{StaticResource Edit}"
+                            Style="{StaticResource FLoatButtonStyle}"
+                            FontFamily="{StaticResource FontAwesomeRegular}"
+                            Clicked="EditTask_Clicked" />
+                </Frame>
+                <Frame Margin="5"
+                       Padding="0"
+                       CornerRadius="22"
+                       x:Name="btnDelete"
+                       BorderColor="Gray">
+                    <Button Text="{StaticResource Remove}"
+                            Style="{StaticResource FLoatButtonStyle}"
+                            FontFamily="{StaticResource FontAwesomeSolid}"
+                            Clicked="DeleteTask_Clicked"
+                            BackgroundColor="#FFF"
+                            TextColor="{StaticResource MainDarkColor}" />
+                </Frame>
+            </StackLayout>
+            <controls:LoadingPopup x:Name="loadingPopup" />
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

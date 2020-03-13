@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives"
+             BackgroundColor="#eeeeee"
+             AbsoluteLayout.LayoutBounds="0,0,1,1"
+             AbsoluteLayout.LayoutFlags="All"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SundihomeApp.Controls.TopModal">
+    <ContentView.Content>
+        <StackLayout x:Name="MainContent" VerticalOptions="Start" Padding="0" BackgroundColor="White">
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer />
+            </StackLayout.GestureRecognizers>
+            <ContentView Content="{Binding Body}" />
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

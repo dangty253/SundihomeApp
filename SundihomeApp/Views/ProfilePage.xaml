@@ -1,0 +1,266 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:lang="clr-namespace:SundihomeApp.Resources" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:SundihomeApp.Controls" xmlns:cv="clr-namespace:SundihomeApp.Converters" xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives" x:Class="SundihomeApp.Views.ProfilePage" Title="{x:Static lang:Language.thong_tin_ca_nhan}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!-- Time count down -->
+            <cv:CountDownConverter x:Key="countDownTime" />
+
+            <!-- FORM LABEL STYLE -->
+            <Style x:Key="FormLabel" TargetType="Label">
+                <Setter Property="Padding" Value="4,5,0,0" />
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="TextColor" Value="#444" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+
+            <!-- TITLE LABEL STYLE -->
+            <Style x:Key="TitleLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="Gray" />
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+            </Style>
+
+            <!-- RIGHT ICON STYLE -->
+            <Style x:Key="RightIcon" TargetType="Label">
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="TextColor" Value="#444" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalOptions" Value="EndAndExpand" />
+                <Setter Property="Margin" Value="10,0" />
+            </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <Grid AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <ScrollView Padding="0,0,0,64">
+                    <StackLayout Spacing="10" Margin="20">
+                        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" WidthRequest="100" HeightRequest="100" Margin="0,0,0,15">
+                            <telerikPrimitives:RadBorder BorderThickness="1" BorderColor="LightGray" CornerRadius="50">
+                                <Image HorizontalOptions="Center" BackgroundColor="#eeeeee" Source="{Binding User.AvatarFullUrl}" x:Name="image" HeightRequest="100" WidthRequest="100" Aspect="AspectFill">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnEditAvatarClicked" />
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </telerikPrimitives:RadBorder>
+                        </StackLayout>
+                        <!-- NAME -->
+                        <StackLayout BackgroundColor="White" VerticalOptions="Start">
+                            <Label Style="{StaticResource FormLabel}" Text="{x:Static lang:Language.ho_ten}" />
+                            <controls:ClearableEntry Placeholder="{x:Static lang:Language.ho_ten}" Text="{Binding User.FullName}" />
+                        </StackLayout>
+                        <!-- PHONE -->
+                        <StackLayout BackgroundColor="White" VerticalOptions="Start">
+                            <Label Style="{StaticResource FormLabel}" Text="{x:Static lang:Language.sdt}" />
+                            <Grid>
+                                <Entry FontSize="16" x:Name="entry" Text="{Binding User.Phone}" IsReadOnly="True" />
+                                <Label Text="{StaticResource Edit}" FontFamily="{StaticResource FontAwesomeRegular}" Style="{StaticResource RightIcon}">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnEditPhoneClicked" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+                            </Grid>
+                        </StackLayout>
+                        <!-- EMAIL -->
+                        <StackLayout BackgroundColor="White" VerticalOptions="Start">
+                            <Label Style="{StaticResource FormLabel}" Text="Email" />
+                            <Grid>
+                                <Entry FontSize="16" Text="{Binding User.Email}" IsReadOnly="True" />
+                                <Label Text="{StaticResource Edit}" FontFamily="{StaticResource FontAwesomeRegular}" Style="{StaticResource RightIcon}">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnEditEmailClicked" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+                            </Grid>
+                        </StackLayout>
+                        <!-- PASSWORD -->
+                        <StackLayout BackgroundColor="White" VerticalOptions="Start">
+                            <Label Style="{StaticResource FormLabel}" Text="{x:Static lang:Language.mat_khau}" />
+                            <Grid>
+                                <Entry FontSize="16" Text="******" IsReadOnly="True" />
+                                <Label Text="{StaticResource Edit}" FontFamily="{StaticResource FontAwesomeRegular}" Style="{StaticResource RightIcon}">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnEditPasswordClicked" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+                            </Grid>
+                        </StackLayout>
+                        <!-- BIRTHDATE -->
+                        <StackLayout BackgroundColor="White" VerticalOptions="Start">
+                            <Label Style="{StaticResource FormLabel}" Text="{x:Static lang:Language.ngay_sinh}" />
+                            <Grid>
+                                <Entry Placeholder="{x:Static lang:Language.ngay_sinh}" FontSize="16" x:Name="BirthDatePlaceholder" IsVisible="{Binding IsNullBirthday}" />
+                                <Button BackgroundColor="Transparent" Clicked="OnOpenDatePicker" IsVisible="{Binding IsNullBirthday}" HeightRequest="{Binding Path=Height, Source={x:Reference entry}}" />
+                                <DatePicker Date="{Binding User.Birthday}" FontSize="16" Format="dd/MM/yyyy" IsVisible="{Binding IsBirthdayHasValue}" x:Name="BirthDateDatePicker" />
+                                <Label Text="{StaticResource TimesCircle}" FontFamily="{StaticResource FontAwesomeSolid}" Style="{StaticResource RightIcon}" x:Name="CleanBirthDate" IsVisible="{Binding IsBirthdayHasValue}">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnCleanBirthDate" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+                            </Grid>
+                        </StackLayout>
+                        <!--Gender-->
+                        <StackLayout>
+                            <Label Style="{StaticResource FormLabel}" Text="{x:Static lang:Language.gioi_tinh}" />
+                            <controls:LookUpControl SelectedItem="{Binding GenderSelected}" ItemsSource="{Binding GenderList}" BottomModal="{x:Reference LookUpModal}" Placeholder="{x:Static lang:Language.gioi_tinh}" NameDisplay="Name" SelectedItemChange="Gender_Change" />
+                        </StackLayout>
+                        <StackLayout BackgroundColor="White">
+                            <Label Style="{StaticResource FormLabel}" Text="{x:Static lang:Language.dia_chi}" />
+                            <StackLayout BackgroundColor="White" VerticalOptions="Start">
+                                <!--Tỉnh/thành phố-->
+                                <StackLayout BackgroundColor="White" VerticalOptions="Start">
+                                    <Label Style="{StaticResource FormLabel}" Text="{x:Static lang:Language.province}" />
+                                    <controls:LookUpControl SelectedItem="{Binding UserProfile.Province}" ItemsSource="{Binding ProvinceList}" BottomModal="{x:Reference LookUpModal}" Placeholder="{x:Static lang:Language.province}" NameDisplay="Name" SelectedItemChange="Province_Change" />
+                                </StackLayout>
+
+                                <!--Quận/huyện-->
+                                <StackLayout BackgroundColor="White" VerticalOptions="Start">
+                                    <Label Style="{StaticResource FormLabel}" Text="{x:Static lang:Language.district}" />
+                                    <controls:LookUpControl SelectedItem="{Binding UserProfile.District}" ItemsSource="{Binding DistrictList}" BottomModal="{x:Reference LookUpModal}" Placeholder="{x:Static lang:Language.district}" NameDisplay="Name" SelectedItemChange="District_Change" />
+                                </StackLayout>
+
+                                <!--Xã/phường-->
+                                <StackLayout BackgroundColor="White" VerticalOptions="Start" Margin="0,0,0,0">
+                                    <Label Style="{StaticResource FormLabel}" Text="{x:Static lang:Language.ward}" />
+                                    <controls:LookUpControl SelectedItem="{Binding UserProfile.Ward}" ItemsSource="{Binding WardList}" BottomModal="{x:Reference LookUpModal}" Placeholder="{x:Static lang:Language.ward}" NameDisplay="Name" />
+                                </StackLayout>
+
+                                <!--Dduong -->
+                                <StackLayout BackgroundColor="White" VerticalOptions="Start" Margin="0,0,0,5">
+                                    <Label Style="{StaticResource FormLabel}" Text="{x:Static lang:Language.street}" />
+                                    <controls:ClearableEntry Placeholder="{x:Static lang:Language.street}" Text="{Binding UserProfile.Street}" />
+                                </StackLayout>
+
+                                <!--Địa chỉ-->
+                                <StackLayout BackgroundColor="White" VerticalOptions="Start" Margin="0,0,0,5">
+                                    <Label Style="{StaticResource FormLabel}" Text="{Binding UserProfile.Address}" />
+                                </StackLayout>
+                            </StackLayout>
+                        </StackLayout>
+                    </StackLayout>
+                </ScrollView>
+            </Grid>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="End" Spacing="0" AbsoluteLayout.LayoutBounds="0,1,1,64" AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional" Margin="5">
+                <Frame Margin="5" Padding="0" CornerRadius="22">
+                    <Button Text="{StaticResource Save}" FontSize="20" WidthRequest="44" HeightRequest="44" CornerRadius="22" FontFamily="{StaticResource FontAwesomeRegular}" BackgroundColor="{StaticResource MainDarkColor}" TextColor="White" Command="{Binding OnUpdateCommand}" />
+                </Frame>
+            </StackLayout>
+
+            <!-- Change Password Popup -->
+            <controls:CenterModal x:Name="ChangePasswordPopup" Title="{x:Static lang:Language.doi_mat_khau}">
+                <controls:CenterModal.Body>
+                    <ScrollView>
+                        <StackLayout Spacing="10" Margin="10">
+                            <Entry HeightRequest="40" x:Name="entryPassword" IsPassword="True" Text="{Binding ChangePassword.Password}" Placeholder="{x:Static lang:Language.mat_khau_required}" />
+                            <Entry HeightRequest="40" x:Name="entryNewPassword" IsPassword="True" Text="{Binding ChangePassword.NewPassword}" Placeholder="{x:Static lang:Language.mat_khau_moi_required}" />
+                            <Entry HeightRequest="40" x:Name="entryConfirm" IsPassword="True" Text="{Binding ChangePassword.Confirm}" Placeholder="{x:Static lang:Language.xac_nhan_mat_khau_moi_required}" />
+                        </StackLayout>
+                    </ScrollView>
+                </controls:CenterModal.Body>
+                <controls:CenterModal.Footer>
+                    <Button Margin="10,0,10,10" Text="{x:Static lang:Language.xac_nhan}" FontSize="15" CornerRadius="5" Clicked="OnChangePassword_Clicked" BackgroundColor="{StaticResource MainDarkColor}" TextColor="#fff" />
+                </controls:CenterModal.Footer>
+            </controls:CenterModal>
+
+
+            <!-- Change Email Popup -->
+            <controls:CenterModal x:Name="ChangeEmailPopup" Title="{x:Static lang:Language.doi_email}">
+                <controls:CenterModal.Body>
+                    <StackLayout Spacing="10" Padding="10">
+                        <controls:ClearableEntry HeightRequest="40" x:Name="entryEmail" Text="{Binding NewEmail}" Placeholder="{x:Static lang:Language.email_moi_required}" />
+                    </StackLayout>
+                </controls:CenterModal.Body>
+                <controls:CenterModal.Footer>
+                    <Button Margin="10,0,10,10" Text="{x:Static lang:Language.xac_nhan}" FontSize="15" CornerRadius="5" Clicked="OnChangeEmail_Clicked" BackgroundColor="{StaticResource MainDarkColor}" TextColor="#fff" />
+                </controls:CenterModal.Footer>
+            </controls:CenterModal>
+
+            <!-- Change Phone Popup -->
+            <controls:CenterModal x:Name="ChangePhonePopup" Title="{x:Static lang:Language.doi_sdt}">
+                <controls:CenterModal.Body>
+                    <StackLayout Spacing="10" Padding="10">
+                        <controls:ClearableEntry HeightRequest="40" x:Name="entryPhone" Text="{Binding NewPhone}" Placeholder="{x:Static lang:Language.sdt_moi_required}" />
+                    </StackLayout>
+                </controls:CenterModal.Body>
+                <controls:CenterModal.Footer>
+                    <Button Margin="10,0,10,10" Text="{x:Static lang:Language.xac_nhan}" FontSize="15" CornerRadius="5" Clicked="OnChangePhone_Clicked" BackgroundColor="{StaticResource MainDarkColor}" TextColor="#fff" />
+                </controls:CenterModal.Footer>
+            </controls:CenterModal>
+
+            <!-- OTP Popup -->
+            <Grid Padding="30" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" x:Name="OtpPopup" IsVisible="False">
+                <telerikPrimitives:RadBorder VerticalOptions="Center" BackgroundColor="#FFF" CornerRadius="10" BorderThickness="0">
+                    <StackLayout>
+                        <StackLayout HeightRequest="50" BackgroundColor="{StaticResource MainDarkColor}" Orientation="Horizontal">
+                            <Label Text="{x:Static lang:Language.xac_thuc_tai_khoan}" FontAttributes="Bold" TextColor="#FFF" FontSize="18" Margin="20,0" VerticalTextAlignment="Center" />
+                            <Label Text="{StaticResource TimesCircle}" FontFamily="{StaticResource FontAwesomeRegular}" TextColor="#FFF" FontAttributes="Bold" Margin="20,0" FontSize="18" HorizontalOptions="EndAndExpand" VerticalTextAlignment="Center">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnClosePopup" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </StackLayout>
+                        <ScrollView>
+                            <StackLayout Margin="20">
+                                <!-- BODY -->
+                                <Label FontSize="14" HorizontalTextAlignment="Center" Text="{x:Static lang:Language.vui_long_nhap_otp}" TextColor="#444" />
+                                <StackLayout Margin=" 0,10">
+                                    <Grid RowSpacing="10">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="auto" />
+                                        </Grid.RowDefinitions>
+                                        <Frame Grid.Column="0" Grid.Row="0" Style="{StaticResource EntryFrame}" />
+                                        <controls:BlankEntry Grid.Column="0" Grid.Row="0" x:Name="entryOTP1" Keyboard="Numeric" HorizontalTextAlignment="Center" MaxLength="1" Text="{Binding RegisterOtp.Otp1}" TextChanged="EntryOTP1_TextChanged" />
+                                        <Frame Grid.Column="1" Grid.Row="0" Style="{StaticResource EntryFrame}" />
+                                        <controls:BlankEntry Grid.Column="1" Grid.Row="0" x:Name="entryOTP2" Keyboard="Numeric" HorizontalTextAlignment="Center" MaxLength="1" Text="{Binding RegisterOtp.Otp2}" TextChanged="EntryOTP2_TextChanged" />
+                                        <Frame Grid.Column="2" Grid.Row="0" Style="{StaticResource EntryFrame}" />
+                                        <controls:BlankEntry Grid.Column="2" Grid.Row="0" x:Name="entryOTP3" Keyboard="Numeric" HorizontalTextAlignment="Center" MaxLength="1" Text="{Binding RegisterOtp.Otp3}" TextChanged="EntryOTP3_TextChanged" />
+                                        <Frame Grid.Column="3" Grid.Row="0" Style="{StaticResource EntryFrame}" />
+                                        <controls:BlankEntry Grid.Column="3" Grid.Row="0" x:Name="entryOTP4" Keyboard="Numeric" HorizontalTextAlignment="Center" MaxLength="1" TextChanged="EntryOTP4_TextChanged" Text="{Binding RegisterOtp.Otp4}" />
+                                        <Button Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Text="{x:Static lang:Language.nhap_lai}" Style="{ StaticResource LightBlueOutlineButton }" Clicked="OnCleanOTPButtonClicked" />
+                                        <Button Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" Text="{x:Static lang:Language.xac_nhan}" Style="{ StaticResource LightBlueButton }" Command="{Binding OnConfirmOtpCommand}" />
+                                        <ProgressBar x:Name="progressBar" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="2" IsVisible="true" Progress="1" WidthRequest="300" HorizontalOptions="Center">
+                                        </ProgressBar>
+                                    </Grid>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                                    <Label x:Name="lblResetOtp" IsEnabled="False" FontSize="14">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{x:Static lang:Language.chua_nhan_duoc_otp}" />
+                                                <Span Text="{x:Static lang:Language.gui_lai}" TextColor="Gray" TextDecorations="Underline" x:Name="spReset">
+                                                    <Span.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="OnResetOTP" />
+                                                    </Span.GestureRecognizers>
+                                                </Span>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label Text="{Binding Source={x:Reference progressBar},
+                                                            Path=Progress,
+                                                            Converter={StaticResource countDownTime},
+                                                            ConverterParameter=30000,
+                                                            StringFormat='({0})'}" TextColor="Gray" HorizontalOptions="Center" FontSize="14" />
+                                </StackLayout>
+                            </StackLayout>
+                        </ScrollView>
+                    </StackLayout>
+                </telerikPrimitives:RadBorder>
+            </Grid>
+
+            <controls:BottomModal x:Name="LookUpModal" />
+            <controls:LoadingPopup x:Name="loadingPopup" IsVisible="{Binding IsLoading}" />
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:d="http://xamarin.com/schemas/2014/forms/design" x:Class="SundihomeApp.Controls.FormLabelRequired">
+    <ContentView.Content>
+        <StackLayout Orientation="Horizontal" Spacing="5">
+            <Label x:Name="lbl" Text="" FontSize="15" TextColor="#444444" FontAttributes="Bold" />
+            <Label Text="*" TextColor="Red" FontSize="15" />
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

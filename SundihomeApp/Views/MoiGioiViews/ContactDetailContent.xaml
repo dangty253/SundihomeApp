@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="SundihomeApp.Views.MoiGioiViews.ContactDetailContent"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SundihomeApp.Controls"
+    xmlns:converters="clr-namespace:SundihomeApp.Converters"
+    xmlns:lang="clr-namespace:SundihomeApp.Resources"
+    xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives"
+    xmlns:views="clr-namespace:SundihomeApp.Views.MoiGioiViews"
+    x:Name="this">
+    <ContentView.Content>
+        <AbsoluteLayout>
+
+            <ScrollView
+                Margin="10,5"
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All">
+
+                <StackLayout>
+
+                    <Label BackgroundColor="{StaticResource BackGroundText}" FontSize="14">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{Static lang:Language.nhom_khach_hang}" />
+                                <Span Text=": " />
+                                <Span Text="{Binding Contact.SelectGroup.Name}" TextColor="{StaticResource ColorText}" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label BackgroundColor="{StaticResource BackGroundText}" FontSize="14">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{Static lang:Language.so_dien_thoai}" />
+                                <Span Text=": " />
+                                <Span Text="{Binding Contact.Phone}" TextColor="{StaticResource ColorText}" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label BackgroundColor="{StaticResource BackGroundText}" FontSize="14">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{Static lang:Language.ngay_tao_tao_khach_hang}" />
+                                <Span Text=": " />
+                                <Span Text="{Binding Contact.CreatedDate, StringFormat='{0:dd/MM/yyyy}'}" TextColor="{StaticResource ColorText}" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label BackgroundColor="{StaticResource BackGroundText}" FontSize="14">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{Static lang:Language.dia_chi}" />
+                                <Span Text=": " />
+                                <Span Text="{Binding Contact.Address}" TextColor="{StaticResource ColorText}" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </StackLayout>
+
+            </ScrollView>
+            <ContentView x:Name="MainContentView" Grid.Row="1" />
+
+
+            <controls:FloatingButtonGroup ItemsSource="{Binding BindingContext.ButtonCommandList, Source={x:Reference this}}" />
+
+            <controls:CenterModal x:Name="ModalEditContact" Title="{Static lang:Language.cap_nhat_khach_hang}">
+                <controls:CenterModal.Body>
+                    <ScrollView>
+                        <StackLayout Margin="10,0,10,10" Spacing="5">
+                            <controls:FormLabelRequired Margin="0,5,0,0" Text="{Static lang:Language.ten_khach_hang}" />
+                            <controls:ClearableEntry Placeholder="{Static lang:Language.ten_khach_hang}" Text="{Binding ContactModel.FullName}" />
+                            <controls:FormLabelRequired Margin="0,5,0,0" Text="{Static lang:Language.nhom_khach_hang}" />
+                            <controls:LookUpControl
+                                BottomModal="{x:Reference ModalLookup}"
+                                ItemsSource="{Binding GroupList}"
+                                NameDisplay="Name"
+                                Placeholder="{Static lang:Language.nhom_khach_hang}"
+                                SelectedItem="{Binding ContactModel.SelectGroup}" />
+                            <controls:FormLabelRequired Margin="0,5,0,0" Text="{Static lang:Language.so_dien_thoai}" />
+                            <controls:ClearableEntry Placeholder="{Static lang:Language.so_dien_thoai}" Text="{Binding ContactModel.Phone}" />
+                            <StackLayout
+                                x:Name="stProvince"
+                                BackgroundColor="White"
+                                HorizontalOptions="Start">
+                                <controls:FormLabel Margin="0,5,0,0" Text="{Static lang:Language.tinh_thanh}" />
+                                <controls:LookUpControl
+                                    BottomModal="{x:Reference ModalLookup}"
+                                    ItemsSource="{Binding ProvinceList}"
+                                    NameDisplay="Name"
+                                    Placeholder="{Static lang:Language.tinh_thanh}"
+                                    SelectedItem="{Binding ContactModel.Province}"
+                                    SelectedItemChange="Province_Change" />
+                            </StackLayout>
+
+                            <StackLayout BackgroundColor="White" HorizontalOptions="Start">
+                                <controls:FormLabel Margin="0,5,0,0" Text="{Static lang:Language.quan_huyen}" />
+                                <controls:LookUpControl
+                                    BottomModal="{x:Reference ModalLookup}"
+                                    ItemsSource="{Binding DistrictList}"
+                                    NameDisplay="Name"
+                                    Placeholder="{Static lang:Language.quan_huyen}"
+                                    SelectedItem="{Binding ContactModel.District}"
+                                    SelectedItemChange="District_Change" />
+                            </StackLayout>
+
+                            <controls:FormLabel Margin="0,5,0,0" Text="{Static lang:Language.phuong_xa}" />
+                            <controls:LookUpControl
+                                BottomModal="{x:Reference ModalLookup}"
+                                ItemsSource="{Binding WardList}"
+                                NameDisplay="Name"
+                                Placeholder="{Static lang:Language.phuong_xa}"
+                                SelectedItem="{Binding ContactModel.Ward}" />
+
+                            <controls:FormLabel Margin="0,5,0,0" Text="{Static lang:Language.so_nha_duong}" />
+                            <controls:ClearableEntry Placeholder="{Static lang:Language.so_nha_duong}" Text="{Binding ContactModel.Street}" />
+
+                            <controls:FormLabel Margin="0,5,0,0" Text="{Static lang:Language.dia_chi}" />
+                            <Entry
+                                FontSize="16"
+                                IsEnabled="False"
+                                Placeholder="{Static lang:Language.dia_chi}"
+                                Text="{Binding ContactModel.Address}" />
+                        </StackLayout>
+                    </ScrollView>
+                </controls:CenterModal.Body>
+                <controls:CenterModal.Footer>
+                    <Grid Margin="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Button
+                            x:Name="btnHuy"
+                            Grid.Column="0"
+                            Padding="0"
+                            BackgroundColor="White"
+                            BorderColor="{StaticResource MainDarkColor}"
+                            BorderWidth="1"
+                            Clicked="OnBtnCancelContactDetail_Click"
+                            CornerRadius="10"
+                            FontSize="16"
+                            HeightRequest="40"
+                            HorizontalOptions="FillAndExpand"
+                            Text="{Static lang:Language.huy}"
+                            TextColor="{StaticResource MainDarkColor}" />
+                        <Button
+                            x:Name="btnLuu"
+                            Grid.Column="1"
+                            Padding="0"
+                            BackgroundColor="{StaticResource MainDarkColor}"
+                            Clicked="OnBtnSaveContactDetail_Click"
+                            CornerRadius="10"
+                            FontSize="16"
+                            HeightRequest="40"
+                            HorizontalOptions="FillAndExpand"
+                            Text="{Static lang:Language.luu}"
+                            TextColor="#fff" />
+                    </Grid>
+                </controls:CenterModal.Footer>
+            </controls:CenterModal>
+            <controls:BottomModal x:Name="ModalLookup" />
+            <controls:LoadingPopup x:Name="loadingPopup" />
+        </AbsoluteLayout>
+    </ContentView.Content>
+</ContentView>

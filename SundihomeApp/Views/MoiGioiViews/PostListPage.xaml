@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:lang="clr-namespace:SundihomeApp.Resources"
+             Title="{Static lang:Language.gio_hang}"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives"
+             xmlns:controls="clr-namespace:SundihomeApp.Controls"
+             xmlns:templateSelectors="clr-namespace:SundihomeApp.TemplateSelectors"
+             x:Class="SundihomeApp.Views.MoiGioiViews.PostListPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <templateSelectors:PostTemplateSeletor x:Key="PostTemplateSeletor" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <Grid AbsoluteLayout.LayoutBounds="0,0,1,1"
+                  AbsoluteLayout.LayoutFlags="All">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <controls:Segment x:Name="Segment" Grid.Row="0" OnSelectedIndexChanged="Segment_OnSelectedIndexChanged" />
+
+                <ContentView x:Name="moiView" Grid.Row="1" />
+                <ContentView x:Name="camKetView" IsVisible="false" Grid.Row="1" />
+                <ContentView x:Name="moiCompanyView" IsVisible="false" Grid.Row="1" />
+                <ContentView x:Name="camKetComapnyView" IsVisible="false" Grid.Row="1" />
+            </Grid>
+            <StackLayout HorizontalOptions="End"
+                         AbsoluteLayout.LayoutBounds="0,1,1,64"
+                         AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional"
+                         Margin="5">
+                <Frame Margin="5"
+                       Padding="0"
+                       CornerRadius="22">
+                    <Button Text="&#xf067;"
+                            FontSize="20"
+                            WidthRequest="44"
+                            HeightRequest="44"
+                            CornerRadius="22"
+                            FontFamily="{StaticResource FontAwesomeSolid}"
+                            BackgroundColor="{StaticResource MainDarkColor}"
+                            TextColor="White"
+                            Clicked="AddPost_Clicked" />
+                </Frame>
+            </StackLayout>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

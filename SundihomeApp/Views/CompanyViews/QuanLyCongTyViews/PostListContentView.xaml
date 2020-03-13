@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:controls="clr-namespace:SundihomeApp.Controls"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SundihomeApp.Views.CompanyViews.QuanLyCongTyViews.PostListContentView">
+    <ContentView.Content>
+        <AbsoluteLayout>
+            <Grid AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <controls:Segment x:Name="SegmentFilter" OnSelectedIndexChanged="SegmentFilter_OnSelectedIndexChanged" Grid.Row="0" IsVisible="false" />
+
+                <ContentView x:Name="MoiView" Grid.Row="1" IsVisible="false" />
+                <ContentView x:Name="CamKetView" Grid.Row="1" IsVisible="false" />
+                <ContentView x:Name="ChoDuyetView" Grid.Row="1" IsVisible="false" />
+                <ContentView x:Name="GioiChungView" Grid.Row="1" IsVisible="false" />
+            </Grid>
+            <StackLayout x:Name="StackButton" IsVisible="false" Orientation="Horizontal" HorizontalOptions="End" Spacing="0" AbsoluteLayout.LayoutBounds="0,1,1,64" AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional" Margin="5">
+                <Frame Margin="5" Padding="0" CornerRadius="22">
+                    <Button Text="&#xf067;" Style="{StaticResource FLoatButtonStyle}" FontFamily="{StaticResource FontAwesomeSolid}" Clicked="AddPost_Clicked" />
+                </Frame>
+            </StackLayout>
+            <controls:LoadingPopup x:Name="loadingPopup" />
+        </AbsoluteLayout>
+    </ContentView.Content>
+</ContentView>

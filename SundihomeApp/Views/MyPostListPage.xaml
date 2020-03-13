@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:lang="clr-namespace:SundihomeApp.Resources" xmlns:templateSelectors="clr-namespace:SundihomeApp.TemplateSelectors" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:SundihomeApp.Controls" Title="{x:Static lang:Language.tin_da_dang}" x:Class="SundihomeApp.Views.MyPostListPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <templateSelectors:PostTemplateSeletor x:Key="PostTemplateSelector" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <Grid AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" RowSpacing="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Frame Grid.Row="0" HeightRequest="35" CornerRadius="8" BorderColor="#aaaaaa" Padding="0" Margin="5" HasShadow="False">
+                    <SearchBar x:Name="searchBar" Placeholder="{x:Static lang:Language.search_placeholder}" FontSize="14" BackgroundColor="{OnPlatform iOS='White'}" TextChanged="Text_Changed" SearchButtonPressed="Search_Pressed" />
+                </Frame>
+                <controls:BsdListView x:Name="lv" Grid.Row="1" ItemTemplate="{StaticResource PostTemplateSelector}" />
+            </Grid>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="End" Spacing="0" AbsoluteLayout.LayoutBounds="0,1,1,64" AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional" Margin="5">
+                <Frame Margin="5" Padding="0" CornerRadius="22">
+                    <Button Text="&#xf067;" FontSize="20" WidthRequest="44" HeightRequest="44" CornerRadius="22" FontFamily="{StaticResource FontAwesomeSolid}" BackgroundColor="{StaticResource MainDarkColor}" TextColor="White" Clicked="AddPost_Clicked" />
+                </Frame>
+            </StackLayout>
+            <controls:LoadingPopup x:Name="loadingPopup" />
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

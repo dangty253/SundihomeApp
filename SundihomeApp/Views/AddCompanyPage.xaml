@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives" xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:pluginImageCircle="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin" xmlns:controls="clr-namespace:SundihomeApp.Controls" xmlns:lang="clr-namespace:SundihomeApp.Resources" xmlns:converters="clr-namespace:SundihomeApp.Converters" xmlns:viewModel="clr-namespace:SundihomeApp.ViewModels" xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" x:Class="SundihomeApp.Views.AddCompanyPage" ios:Page.UseSafeArea="true" Title="{Binding TitleCompany}">
+    <ContentPage.BindingContext>
+        <viewModel:AddCompanyPageViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:NullToHideConverter x:Key="NullToHideConverter" />
+            <Style x:Key="ViewMoreBtnStyle" TargetType="Button">
+                <Setter Property="Text" Value="{x:Static lang:Language.xem_them}" />
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="BorderWidth" Value="1" />
+                <Setter Property="CornerRadius" Value="4" />
+                <Setter Property="Padding" Value="10,0" />
+                <Setter Property="TextColor" Value="{StaticResource MainDarkColor}" />
+                <Setter Property="BorderColor" Value="{StaticResource MainDarkColor}" />
+                <Setter Property="HeightRequest" Value="20" />
+                <Setter Property="VerticalOptions" Value="Start" />
+                <Setter Property="BackgroundColor" Value="White" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <ScrollView Padding="0,0,0,64" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <Grid x:Name="grContent" RowSpacing="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <StackLayout Grid.Row="0" Spacing="5" Margin="10,0">
+                        <StackLayout Padding="10,5" Margin="-10,0,-10,5" BackgroundColor="{StaticResource MainDarkColor}">
+                            <Label Text="{x:Static lang:Language.thong_tin_chung}" TextColor="White" FontSize="15" />
+                        </StackLayout>
+
+                        <!--Ten cong ty-->
+                        <controls:FormLabelRequired Text="{x:Static lang:Language.ten_cong_ty}" />
+                        <controls:ClearableEntry Placeholder="{x:Static lang:Language.ten_cong_ty}" Text="{Binding AddCompanyModel.Name}" />
+
+                        <!--Ten rut gon-->
+                        <controls:FormLabelRequired Text="{x:Static lang:Language.ten_rut_gon}" Margin="0,10,0,0" />
+                        <controls:ClearableEntry Placeholder="{x:Static lang:Language.ten_rut_gon}" Text="{Binding AddCompanyModel.ShortName}" />
+                        <!--Tên tiếng anh-->
+                        <controls:FormLabel Text="{x:Static lang:Language.ten_tieng_anh}" Margin="0,10,0,0" />
+                        <controls:ClearableEntry Placeholder="{x:Static lang:Language.ten_tieng_anh}" Text="{Binding AddCompanyModel.NameEng}" />
+
+                        <!--Ma so thue-->
+                        <controls:FormLabelRequired Text="{x:Static lang:Language.ma_so_thue}" Margin="0,10,0,0" HorizontalOptions="Start" />
+                        <controls:ClearableEntry x:Name="entMST" Placeholder="{x:Static lang:Language.ma_so_thue}" Text="{Binding AddCompanyModel.MST}" EntryKeyboard="Numeric" />
+
+                        <!--Loại công ty-->
+                        <controls:FormLabelRequired Text="{x:Static lang:Language.loai_cong_ty}" Margin="0,10,0,0" />
+                        <controls:LookUpControl SelectedItem="{Binding AddCompanyModel.LoaiCongTy}" ItemsSource="{Binding ListLoaiCongTy}" BottomModal="{x:Reference lookUpModal}" NameDisplay="Name" Placeholder="{x:Static lang:Language.loai_cong_ty}" />
+
+                        <!--Slogan-->
+                        <controls:FormLabel Text="{x:Static lang:Language.slogan}" Margin="0,10,0,0" />
+                        <Grid>
+                            <telerikPrimitives:RadBorder BorderColor="LightGray" BorderThickness="1" CornerRadius="4">
+                                <Editor x:Name="edtSlogan" Placeholder="{x:Static lang:Language.slogan}" HorizontalOptions="FillAndExpand" HeightRequest="100" Text="{Binding AddCompanyModel.Slogan}" FontSize="16" />
+                            </telerikPrimitives:RadBorder>
+                            <Button Style="{StaticResource ClearButtonStyle}" VerticalOptions="Start" Padding="0" FontFamily="{StaticResource FontAwesomeSolid}" IsVisible="{Binding AddCompanyModel.Slogan,Converter={StaticResource NullToHideConverter}}" Clicked="DeleteContentSlogan_Clicked" />
+                        </Grid>
+
+                        <!--Gioi thieu-->
+                        <controls:FormLabel Text="{x:Static lang:Language.gioi_thieu}" Margin="0,10,0,0" />
+                        <Grid>
+                            <telerikPrimitives:RadBorder BorderColor="LightGray" BorderThickness="1" CornerRadius="4">
+                                <Editor x:Name="edtAboutCompany" Placeholder="{x:Static lang:Language.gioi_thieu}" HorizontalOptions="FillAndExpand" HeightRequest="200" Text="{Binding AddCompanyModel.Introduction}" FontSize="16" />
+                            </telerikPrimitives:RadBorder>
+                            <Button Style="{StaticResource ClearButtonStyle}" VerticalOptions="Start" Padding="0" FontFamily="{StaticResource FontAwesomeSolid}" IsVisible="{Binding AddCompanyModel.Introduction,Converter={StaticResource NullToHideConverter}}" Clicked="DeleteContentAboutCompany_Clicked" />
+                        </Grid>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="1" Spacing="5" Margin="10,0">
+                        <StackLayout Margin="-10,0,-10,5" Padding="10,5" BackgroundColor="{StaticResource MainDarkColor}">
+                            <Label Text="{x:Static lang:Language.dia_chi}" TextColor="White" FontSize="15" />
+                        </StackLayout>
+                        <!--Tinh/thanh-->
+                        <controls:FormLabelRequired Text="{x:Static lang:Language.tinh_thanh}" />
+                        <controls:LookUpControl SelectedItem="{Binding AddCompanyModel.Province}" ItemsSource="{Binding  ProvinceList}" BottomModal="{x:Reference lookUpModal}" Placeholder="{x:Static lang:Language.tinh_thanh}" NameDisplay="Name" SelectedItemChange="Province_Change" />
+
+                        <!--Quan/Huyen-->
+                        <controls:FormLabelRequired Text="{x:Static lang:Language.quan_huyen}" Margin="0,10,0,0" />
+                        <controls:LookUpControl SelectedItem="{Binding AddCompanyModel.District}" ItemsSource="{Binding DistrictList}" BottomModal="{x:Reference lookUpModal}" NameDisplay="Name" Placeholder="{x:Static lang:Language.quan_huyen}" SelectedItemChange="District_Change" />
+
+                        <!--Phuong/xa-->
+                        <controls:FormLabelRequired Text="{x:Static lang:Language.phuong_xa}" Margin="0,10,0,0" />
+                        <controls:LookUpControl SelectedItem="{Binding AddCompanyModel.Ward}" ItemsSource="{Binding WardList}" BottomModal="{x:Reference lookUpModal}" NameDisplay="Name" Placeholder="{x:Static lang:Language.phuong_xa}" />
+
+                        <!--so nha/duong-->
+                        <controls:FormLabel Text="{x:Static lang:Language.so_nha_duong}" Margin="0,10,0,0" />
+                        <controls:ClearableEntry Placeholder="{x:Static lang:Language.so_nha_duong}" Text="{Binding AddCompanyModel.Street}" />
+
+                        <!--Dia chi-->
+                        <controls:FormLabelRequired Text="{x:Static lang:Language.dia_chi}" Margin="0,10,0,0" />
+                        <Entry Placeholder="{x:Static lang:Language.dia_chi}" IsEnabled="False" FontSize="16" Text="{Binding AddCompanyModel.Address}" />
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="2" Spacing="0">
+                        <StackLayout BackgroundColor="{StaticResource MainDarkColor}">
+                            <Label Text="{x:Static lang:Language.logo}" Margin="10,5" TextColor="White" FontSize="15" />
+                        </StackLayout>
+                        <!--chon logo-->
+                        <StackLayout HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="100" Margin="0,10,0,0">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding SelectLogoCommand}" />
+                            </StackLayout.GestureRecognizers>
+                            <Grid HeightRequest="100" RowSpacing="0" WidthRequest="100" BackgroundColor="{StaticResource MainPageBackgroundColor}">
+                                <Image Source="{Binding AddCompanyModel.LogoFullUrl}" HeightRequest="100" BackgroundColor="#fff" Aspect="AspectFill" Margin="5" />
+                                <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                                    <Button Text="&#xf03e;" TextColor="#026294" FontSize="14" HorizontalOptions="Center" VerticalOptions="Center" Padding="0" BorderWidth="0" BackgroundColor="White" WidthRequest="25" HeightRequest="25" Margin="0,5,5,0" FontFamily="{StaticResource FontAwesomeSolid}" />
+                                    <telerikPrimitives:RadBorder CornerRadius="5" BackgroundColor="#fff" Padding="0">
+                                        <Label Text="{x:Static lang:Language.chon_logo}" Padding="3" BackgroundColor="#fff" HorizontalTextAlignment="Center" TextColor="#8a8888" FontSize="13" />
+                                    </telerikPrimitives:RadBorder>
+
+                                </StackLayout>
+
+                            </Grid>
+                        </StackLayout>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="3" Spacing="0">
+                        <StackLayout BackgroundColor="{StaticResource MainDarkColor}">
+                            <Label Text="{x:Static lang:Language.chon_hinh_anh}" Margin="10,5" TextColor="White" FontSize="15" />
+                        </StackLayout>
+                        <ScrollView Orientation="Horizontal" Margin="10,10,10,0">
+                            <StackLayout Orientation="Horizontal">
+                                <Button Text="&#xf302;" FontFamily="{StaticResource FontAwesomeSolid}" BackgroundColor="White" Padding="15,0" HeightRequest="80" WidthRequest="80" FontSize="17" VerticalOptions="CenterAndExpand" TextColor="#026294" BorderWidth="1" BorderColor="#026294" Command="{Binding SelectImagesCommand}" />
+                                <StackLayout Orientation="Horizontal" BindableLayout.ItemsSource="{Binding Media}" Spacing="2">
+                                    <BindableLayout.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid>
+                                                <ffimageloading:CachedImage DownsampleToViewSize="true" HeightRequest="80" WidthRequest="80" Source="{Binding PreviewPath}" Aspect="AspectFill" HorizontalOptions="FillAndExpand" />
+                                                <Button Text="&#xf2ed;" TextColor="#026294" FontSize="14" HorizontalOptions="End" VerticalOptions="Start" BorderWidth="0" BackgroundColor="White" WidthRequest="25" HeightRequest="25" Margin="0,5,5,0" Padding="0" Clicked="Remove_Image" CommandParameter="{Binding}" FontFamily="{StaticResource FontAwesomeSolid}" />
+                                            </Grid>
+                                        </DataTemplate>
+                                    </BindableLayout.ItemTemplate>
+                                </StackLayout>
+
+                            </StackLayout>
+                        </ScrollView>
+                    </StackLayout>
+
+                    <StackLayout x:Name="stThongTinBoSung" Grid.Row="4" Spacing="0" IsVisible="false">
+                        <StackLayout BackgroundColor="{StaticResource MainDarkColor}">
+                            <Label Margin="10,5" FontSize="16" Text="{x:Static lang:Language.thong_tin_bo_sung}" TextColor="White" />
+                        </StackLayout>
+                        <StackLayout Padding="10,5" Margin="0,10,0,0" Orientation="Horizontal">
+                            <Label FontSize="16" HorizontalOptions="StartAndExpand" Text="{x:Static lang:Language.lich_su_phat_trien}" TextColor="{StaticResource MainDarkColor}" FontAttributes="Bold" />
+                            <telerikPrimitives:RadBorder BorderColor="{StaticResource MainDarkColor}" CornerRadius="5">
+                                <Label FontSize="16" HorizontalOptions="End" Text="{x:Static lang:Language.them_ghi_nhan}" TextColor="{StaticResource MainDarkColor}" Padding="5,0" FontAttributes="Bold">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="AddHistory_Tapped" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+                            </telerikPrimitives:RadBorder>
+
+                        </StackLayout>
+                        <StackLayout x:Name="ItemSourceHistory" Padding="10,0" BackgroundColor="White" Spacing="5">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <telerikPrimitives:RadBorder BorderColor="LightGray" BorderThickness="1" CornerRadius="4" BackgroundColor="White">
+                                        <StackLayout Spacing="0" Margin="5">
+                                            <Grid Padding="5" BackgroundColor="#fff" RowSpacing="1">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                </Grid.ColumnDefinitions>
+                                                <Label Grid.Column="0" FontSize="16" Text="{Binding Year}" TextColor="#000" />
+                                                <Label Grid.Column="1" FontSize="16" Text="{Binding Title}" FontAttributes="Bold" TextColor="{StaticResource MainDarkColor}" />
+                                                <Label Grid.Column="2" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="14" Text="&#xf057;" TextColor="#444444" VerticalOptions="Start">
+                                                    <Label.GestureRecognizers>
+                                                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="DeleteHistoryItemClick" CommandParameter="{Binding }" />
+                                                    </Label.GestureRecognizers>
+                                                </Label>
+                                            </Grid>
+                                            <controls:ShowMoreLabel MaxLines="3" Text="{Binding Description}" />
+                                        </StackLayout>
+                                    </telerikPrimitives:RadBorder>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </StackLayout>
+                        <Button Margin="0,5" IsVisible="{Binding ShowMoreHistory}" Style="{StaticResource ViewMoreBtnStyle}" Clicked="XemThemLichSuPhatTrien" />
+                        <StackLayout Padding="10,5" Margin="0,10,0,0" Orientation="Horizontal">
+                            <Label FontSize="16" HorizontalOptions="StartAndExpand" Text="{x:Static lang:Language.thanh_tuu_dat_duoc}" TextColor="{StaticResource MainDarkColor}" FontAttributes="Bold" />
+                            <telerikPrimitives:RadBorder BorderColor="{StaticResource MainDarkColor}" CornerRadius="5">
+                                <Label FontSize="16" HorizontalOptions="End" Text="{x:Static lang:Language.them_thanh_tuu}" TextColor="{StaticResource MainDarkColor}" Padding="5,0" FontAttributes="Bold">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="AddSucceed_Tapped" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+                            </telerikPrimitives:RadBorder>
+                        </StackLayout>
+                        <StackLayout x:Name="ItemSourceSucceed" Padding="10,0" Spacing="5">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <telerikPrimitives:RadBorder BorderColor="LightGray" BorderThickness="1" CornerRadius="4" BackgroundColor="White">
+                                        <StackLayout Spacing="0" Margin="5">
+                                            <Grid Padding="5" BackgroundColor="#fff" RowSpacing="1">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                </Grid.ColumnDefinitions>
+                                                <Label Grid.Column="0" FontSize="15" Text="{Binding Year}" TextColor="#000" />
+                                                <Label Grid.Column="1" FontSize="15" Text="{Binding Title}" TextColor="{StaticResource MainDarkColor}" FontAttributes="Bold" />
+                                                <Label Grid.Column="2" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="14" Text="&#xf057;" TextColor="#444444" VerticalOptions="Start">
+                                                    <Label.GestureRecognizers>
+                                                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="DeleteSucceedItemClick" CommandParameter="{Binding }" />
+                                                    </Label.GestureRecognizers>
+                                                </Label>
+                                            </Grid>
+                                            <controls:ShowMoreLabel MaxLines="3" Text="{Binding Description} " />
+                                        </StackLayout>
+                                    </telerikPrimitives:RadBorder>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </StackLayout>
+                        <Button Margin="0,5" IsVisible="{Binding ShowMoreSucceed}" Style="{StaticResource ViewMoreBtnStyle}" Clicked="XemThemThanhTuu" />
+                        <StackLayout Padding="10" Margin="0,10,0,0" Orientation="Horizontal">
+                            <Label FontSize="16" HorizontalOptions="StartAndExpand" Text="{x:Static lang:Language.nhan_vien_tieu_bieu}" TextColor="{StaticResource MainDarkColor}" FontAttributes="Bold" />
+                        </StackLayout>
+                        <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never" Margin="10">
+                            <StackLayout x:Name="collectionViewList" Orientation="Horizontal" Spacing="10">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid Margin="0" WidthRequest="75" RowSpacing="3">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <pluginImageCircle:CircleImage Grid.Row="0" Source="{Binding AvatarFullUrl}" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="60" WidthRequest="60" Aspect="AspectFill" />
+                                            <Label Grid.Row="1" Text="{Binding FullName}" FontSize="14" LineBreakMode="TailTruncation" TextColor="#000" HorizontalTextAlignment="Center" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </StackLayout>
+                        </ScrollView>
+                    </StackLayout>
+                </Grid>
+            </ScrollView>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="End" Spacing="0" AbsoluteLayout.LayoutBounds="0,1,1,64" Margin="5" AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional">
+                <Frame Margin="5" Padding="0" CornerRadius="22">
+                    <Button Text="&#xf0c7;" FontSize="20" WidthRequest="44" HeightRequest="44" CornerRadius="22" FontFamily="{StaticResource FontAwesomeSolid}" BackgroundColor="{StaticResource MainDarkColor}" TextColor="White" Clicked="Save_Click" />
+                </Frame>
+            </StackLayout>
+
+            <controls:CenterModal x:Name="modalAddHistory" Title="{Binding TitlePopUp}">
+                <controls:CenterModal.Body>
+                    <ScrollView>
+                        <StackLayout Grid.Row="1" Margin="10" Spacing="5">
+                            <controls:FormLabelRequired Text="{x:Static lang:Language.tieu_de}" Margin="0,5,0,0" />
+                            <controls:ClearableEntry Text="{Binding Title}" Placeholder="{x:Static lang:Language.tieu_de}" />
+
+                            <controls:FormLabelRequired Text="{x:Static lang:Language.thoi_gian}" Margin="0,5,0,0" />
+                            <controls:LookUpControl ItemsSource="{Binding ItemSourcePicker}" BottomModal="{x:Reference lookUpModal}" NameDisplay="Name" Placeholder="{x:Static lang:Language.thoi_gian}" SelectedItem="{Binding SelectedYear}" />
+
+                            <controls:FormLabelRequired Text="{x:Static lang:Language.noi_dung}" Margin="0,5,0,0" />
+                            <Grid>
+                                <telerikPrimitives:RadBorder BorderColor="LightGray" BorderThickness="1" CornerRadius="4">
+                                    <Editor x:Name="edtContentModalPopup" FontSize="16" HeightRequest="100" HorizontalOptions="FillAndExpand" Placeholder="{x:Static lang:Language.noi_dung}" Text="{Binding Description}" />
+                                </telerikPrimitives:RadBorder>
+                                <Button Padding="0" FontFamily="{StaticResource FontAwesomeSolid}" IsVisible="{Binding Description, Converter={StaticResource NullToHideConverter}}" Style="{StaticResource ClearButtonStyle}" VerticalOptions="Start" Clicked="DeleteContentModalPopup_Clicked" />
+                            </Grid>
+                        </StackLayout>
+                    </ScrollView>
+                </controls:CenterModal.Body>
+                <controls:CenterModal.Footer>
+                    <Grid Margin="10,0,10,10" ColumnSpacing="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40" />
+                        </Grid.RowDefinitions>
+                        <Button x:Name="btnHuy" Padding="0" Grid.Row="0" BackgroundColor="White" CornerRadius="10" FontSize="16" HeightRequest="40" HorizontalOptions="FillAndExpand" Text="{x:Static lang:Language.huy}" TextColor="{StaticResource MainDarkColor}" Grid.Column="0" Clicked="CloseModalHistory_Clicked" BorderColor="{StaticResource MainDarkColor}" BorderWidth="1" />
+                        <Button x:Name="btnLuu" Padding="0" Grid.Row="0" BackgroundColor="{StaticResource MainDarkColor}" CornerRadius="10" FontSize="16" HeightRequest="40" HorizontalOptions="FillAndExpand" Text="{x:Static lang:Language.luu}" TextColor="#fff" Grid.Column="1" Clicked="OnBtnSaveHistory_Click" />
+                    </Grid>
+                </controls:CenterModal.Footer>
+            </controls:CenterModal>
+            <controls:BottomModal x:Name="lookUpModal" />
+            <controls:LoadingPopup x:Name="loadingPopup" />
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

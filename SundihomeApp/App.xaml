@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:d="http://xamarin.com/schemas/2014/forms/design" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="SundihomeApp.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <!-- FontAwesomeSolid -->
+            <x:String x:Key="CartPlus">&#xf217;</x:String>
+            <x:String x:Key="AngleRight">&#xf105;</x:String>
+            <x:String x:Key="AngleDoubleRight">&#xf101;</x:String>
+            <x:String x:Key="Building">&#xf1ad;</x:String>
+            <x:String x:Key="Congs">&#xf085;</x:String>
+            <x:String x:Key="DollarSign">&#xf155;</x:String>
+            <x:String x:Key="ExclamationCircle">&#xf06a;</x:String>
+            <x:String x:Key="FileUpload">&#xf574;</x:String>
+            <x:String x:Key="FileDownload">&#xf56d;</x:String>
+            <x:String x:Key="FlagCheckered">&#xf11e;</x:String>
+            <x:String x:Key="HandHoldingUsd">&#xf4c0;</x:String>
+            <x:String x:Key="Heart">&#xf004;</x:String>
+            <x:String x:Key="MapMarker">&#xf3c5;</x:String>
+            <x:String x:Key="Phone">&#xf095;</x:String>
+            <x:String x:Key="Share">&#xf1e0;</x:String>
+            <x:String x:Key="SignOutAlt">&#xf2f5;</x:String>
+            <x:String x:Key="Tag">&#xf02b;</x:String>
+            <x:String x:Key="UserPlus">&#xf234;</x:String>
+            <x:String x:Key="UserCheck">&#xf4fc;</x:String>
+            <x:String x:Key="Users">&#xf0c0;</x:String>
+            <x:String x:Key="UserFriends">&#xf500;</x:String>
+            <x:String x:Key="RegisterEmployee">&#xf508;</x:String>
+            <x:String x:Key="Remove">&#xf2ed;</x:String>
+            <x:String x:Key="Check">&#xf00c;</x:String>
+
+            <!-- FontAwesomeRegular -->
+            <x:String x:Key="Comments">&#xf086;</x:String>
+            <x:String x:Key="Edit">&#xf044;</x:String>
+            <x:String x:Key="Email">&#xf0e0;</x:String>
+            <x:String x:Key="TimesCircle">&#xf057;</x:String>
+            <x:String x:Key="Save">&#xf0c7;</x:String>
+            <x:String x:Key="Filter">&#xf0b0;</x:String>
+
+            <!--<OnPlatform x:TypeArguments="x:String" x:Key="BoldFont">
+                <On Platform="Android" Value="Roboto-Bold.ttf#Roboto Bold" />
+                <On Platform="iOS" Value="Roboto-Bold" />
+            </OnPlatform>
+            <OnPlatform x:TypeArguments="x:String" x:Key="NormalFont">
+                <On Platform="Android" Value="Roboto-Regular.ttf#Roboto" />
+                <On Platform="iOS" Value="Roboto-Regular" />
+            </OnPlatform>
+            <OnPlatform x:TypeArguments="x:String" x:Key="ThinFont">
+                <On Platform="Android" Value="Roboto-Thin.ttf#Roboto Thin" />
+                <On Platform="iOS" Value="Roboto-Thin" />
+            </OnPlatform>
+            <OnPlatform x:TypeArguments="x:String" x:Key="LightFont">
+                <On Platform="Android" Value="Roboto-Light.ttf#Roboto Light" />
+                <On Platform="iOS" Value="Roboto-Light" />
+            </OnPlatform>-->
+
+            <!-- COLOR -->
+            <Color x:Key="MainDarkColor">#026294</Color>
+            <Color x:Key="MainPageBackgroundColor">#e3eaf2</Color>
+
+            <Color x:Key="LightBlueLogoColor">#0089D1</Color>
+            <Color x:Key="LightBlueBackgroundColor">#FAFDFE</Color>
+            <Color x:Key="LightGrayBorderColor">#E8EFF2</Color>
+            <Color x:Key="BackGroundText">#fff</Color>
+            <Color x:Key="ColorText">#404040</Color>
+            <Color x:Key="TextColorBlack">Black</Color>
+            <Color x:Key="BackgroundOfOrtherDetail">#eaeaea</Color>
+            <Color x:Key="BackgroundMessage">#e86e05</Color>
+
+            <!-- BORDER FARME STYLE -->
+            <Style x:Key="BorderFrame" TargetType="Frame">
+                <Setter Property="HasShadow" Value="False" />
+                <Setter Property="BorderColor" Value="{StaticResource LightGrayBorderColor}" />
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="CornerRadius" Value="10" />
+            </Style>
+
+            <!-- ENTRY FARME STYLE -->
+            <Style x:Key="EntryFrame" TargetType="Frame">
+                <Setter Property="HasShadow" Value="False" />
+                <Setter Property="BorderColor" Value="{StaticResource LightGrayBorderColor}" />
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="CornerRadius" Value="15" />
+            </Style>
+
+            <!-- LIGHTBLUE BUTTON STYLE -->
+            <Style x:Key="LightBlueButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource LightBlueLogoColor}" />
+                <Setter Property="TextColor" Value="#FFF" />
+                <Setter Property="CornerRadius" Value="15" />
+                <Setter Property="HeightRequest" Value="45" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontSize" Value="15" />
+            </Style>
+
+            <!-- LIGHTBLUE OUTLINE BUTTON STYLE -->
+            <Style x:Key="LightBlueOutlineButton" TargetType="Button">
+                <Setter Property="BorderColor" Value="{StaticResource LightBlueLogoColor}" />
+                <Setter Property="BorderWidth" Value="1" />
+                <Setter Property="BackgroundColor" Value="#FFF" />
+                <Setter Property="TextColor" Value="{StaticResource LightBlueLogoColor}" />
+                <Setter Property="CornerRadius" Value="15" />
+                <Setter Property="HeightRequest" Value="45" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontSize" Value="15" />
+            </Style>
+
+            <!--CLEAR DATA BUTTON-->
+            <Style x:Key="ClearButtonStyle" TargetType="Button">
+                <Setter Property="Text" Value="&#xf057;" />
+                <Setter Property="TextColor" Value="#444444" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="BackgroundColor" Value="transparent" />
+                <Setter Property="HeightRequest" Value="25" />
+                <Setter Property="WidthRequest" Value="25" />
+                <Setter Property="HorizontalOptions" Value="End" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="Margin" Value="0,0,5,0" />
+            </Style>
+
+            <!--FLoatButtonStyle-->
+            <Style x:Key="FLoatButtonStyle" TargetType="Button">
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="WidthRequest" Value="44" />
+                <Setter Property="HeightRequest" Value="44" />
+                <Setter Property="CornerRadius" Value="22" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="BackgroundColor" Value="{StaticResource MainDarkColor}" />
+            </Style>
+        </ResourceDictionary>
+
+        <!--font awsome-->
+        <OnPlatform x:TypeArguments="x:String" x:Key="FontAwesomeBrands">
+            <On Platform="Android" Value="FontAwesome5BrandsRegular.otf#Regular" />
+            <On Platform="iOS" Value="FontAwesome5Brands-Regular" />
+        </OnPlatform>
+
+        <OnPlatform x:TypeArguments="x:String" x:Key="FontAwesomeSolid">
+            <On Platform="Android" Value="FontAwesome5Solid.otf#Regular" />
+            <On Platform="iOS" Value="FontAwesome5Free-Solid" />
+        </OnPlatform>
+
+        <OnPlatform x:TypeArguments="x:String" x:Key="FontAwesomeRegular">
+            <On Platform="Android" Value="FontAwesome5Regular.otf#Regular" />
+            <On Platform="iOS" Value="FontAwesome5Free-Regular" />
+        </OnPlatform>
+    </Application.Resources>
+</Application>

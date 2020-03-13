@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+
+	<EditText
+        android:paddingVertical="100dp"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+        android:hint="Nhập username"
+		android:id="@+id/editText1" />
+	<EditText
+        android:hint="nhap mat khau"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/editText2" />
+    <EditText
+        android:hint="nhap mat khau"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/editText2" />
+	<Button
+		android:text="Dang nahp"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:minWidth="25px"
+		android:minHeight="25px"
+		android:id="@+id/btnLogin"
+		android:layout_marginBottom="0.0dp" />
+	<Switch
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/switch1" />
+	<RatingBar
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/ratingBar1" />
+</LinearLayout>

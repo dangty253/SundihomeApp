@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:lang="clr-namespace:SundihomeApp.Resources"
+             Shell.TabBarIsVisible="False" Title="{x:Static lang:Language.danh_sach_tin_nhan}" xmlns:pluginImageCircle="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin" xmlns:controls="clr-namespace:SundihomeApp.Controls" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SundihomeApp.Views.ChatListPage">
+    <ContentPage.Content>
+        <AbsoluteLayout BackgroundColor="#eeeeee">
+            <controls:BsdListView AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" x:Name="lv" Grid.Row="0">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid BackgroundColor="White" Margin="0,0,0,1" ColumnSpacing="10" Padding="10,5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="55" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <pluginImageCircle:CircleImage VerticalOptions="Center" Grid.Column="0" Aspect="AspectFill" HeightRequest="55" WidthRequest="55" Source="{Binding Partner.AvatarFullUrl}" />
+                                <StackLayout Grid.Column="1" Spacing="5" Margin="10,5">
+                                    <Label Text="{Binding Partner.FullName}" FontSize="15" FontAttributes="Bold" TextColor="{StaticResource MainDarkColor}" />
+                                    <Label Text="{Binding MessageContent}" FontSize="14" MaxLines="2" TextColor="#333333" />
+                                    <Label FontSize="13" TextColor="Gray" Text="{Binding CreatedDateTimeAgo}" />
+                                </StackLayout>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </controls:BsdListView>
+            <controls:LoadingPopup x:Name="loadingPoup" />
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

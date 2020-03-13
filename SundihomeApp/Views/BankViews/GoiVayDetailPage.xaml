@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:lang="clr-namespace:SundihomeApp.Resources" xmlns:plugin="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin" xmlns:controls="clr-namespace:SundihomeApp.Controls" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SundihomeApp.Views.BankViews.GoiVayDetailPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label" x:Key="KeyStyle">
+                <Setter Property="TextColor" Value="#444444" />
+                <Setter Property="FontSize" Value="15" />
+            </Style>
+            <Style TargetType="Label" x:Key="ValueStyle">
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontSize" Value="15" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <Grid AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <ScrollView Padding="0,0,0,64">
+                    <Grid RowSpacing="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="4*"/>
+                            <RowDefinition Height="6*"/>
+                        </Grid.RowDefinitions>
+                        <Image x:Name="image" Grid.Row="0"/>
+
+                        <StackLayout Grid.Row="1" >
+                            
+                            <StackLayout Margin="10,0">
+                                <Label x:Name="lblGoiVayName" FontAttributes="Bold" FontSize="16" TextColor="{x:StaticResource MainDarkColor}" />
+                                <Label x:Name="lblNganHang" Style="{StaticResource ValueStyle}" FontSize="16" />
+                            </StackLayout>
+
+                            <StackLayout BackgroundColor="{StaticResource MainDarkColor}" Margin="0,5,0,0">
+                                <Label TextColor="White" FontSize="15" Margin="10,5" Text="{x:Static lang:Language.thong_tin_goi_vay}" />
+                            </StackLayout>
+
+                            <StackLayout Margin="10,5,10,0" Orientation="Horizontal">
+                                <Label Text="{x:Binding Source={x:Static lang:Language.thoi_han_toi_da},StringFormat='{0} : '}" Style="{StaticResource KeyStyle}" />
+                                <Label x:Name="lblMaxTime" Style="{StaticResource ValueStyle}" />
+                            </StackLayout>
+
+                            <StackLayout Margin="10,5,10,0" Orientation="Horizontal">
+                                <Label Text="{x:Binding Source={x:Static lang:Language.lai_suat},StringFormat='{0} : '}" Style="{StaticResource KeyStyle}" />
+                                <Label x:Name="lblLaiSuat" Style="{StaticResource ValueStyle}" />
+                            </StackLayout>
+
+                            <StackLayout Margin="10,5,10,0" Orientation="Horizontal">
+                                <Label Text="{x:Binding Source={x:Static lang:Language.muc_vay_toi_da},StringFormat='{0} : '}" Style="{StaticResource KeyStyle}" />
+                                <Label x:Name="lblMaxPrice" Style="{StaticResource ValueStyle}" />
+                            </StackLayout>
+
+                            <StackLayout Margin="10,5,10,0" Orientation="Horizontal">
+                                <Label Text="{x:Binding Source={x:Static lang:Language.dieu_kien_vay},StringFormat='{0} : '}" Style="{StaticResource KeyStyle}" />
+                                <Label x:Name="lblCondition" Style="{StaticResource ValueStyle}" />
+                            </StackLayout>
+
+                            <StackLayout Margin="10,5,10,0" Orientation="Horizontal">
+                                <Label Text="{x:Binding Source={x:Static lang:Language.mo_ta},StringFormat='{0} : '}" Style="{StaticResource KeyStyle}" />
+                                <Label x:Name="lblDescription" Style="{StaticResource ValueStyle}" />
+                            </StackLayout>
+
+                            <StackLayout BackgroundColor="{StaticResource MainDarkColor}" Margin="0,5,0,0">
+                                <Label TextColor="White" FontSize="15" Margin="10,5" Text="{x:Binding Source={x:Static lang:Language.nhan_vien_tu_van},StringFormat='{0} : '}" />
+                            </StackLayout>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="70" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <plugin:CircleImage Grid.Column="0" HeightRequest="70" Grid.Row="0" VerticalOptions="Center" x:Name="imageAvatar" Aspect="AspectFill" />
+
+                                <StackLayout Grid.Column="1" Grid.Row="0">
+                                    <StackLayout Margin="10,5,10,0" Orientation="Horizontal">
+                                        <Label Text="{x:Binding Source={x:Static lang:Language.nhan_vien_tu_van},StringFormat='{0} : '}" Style="{StaticResource KeyStyle}" />
+                                        <Label x:Name="lblEmpName" Style="{StaticResource ValueStyle}" />
+                                    </StackLayout>
+
+                                    <StackLayout Margin="10,5,10,0" Orientation="Horizontal">
+                                        <Label Text="{x:Binding Source={x:Static lang:Language.sdt},StringFormat='{0} : '}" Style="{StaticResource KeyStyle}" />
+                                        <Label x:Name="lblPhone" Style="{StaticResource ValueStyle}" />
+                                    </StackLayout>
+
+                                    <StackLayout Margin="10,5,10,0" Orientation="Horizontal">
+                                        <Label Text="{x:Binding Source={x:Static lang:Language.khu_vuc_tu_van},StringFormat='{0} : '}" Style="{StaticResource KeyStyle}" />
+                                        <Label x:Name="lblAddress" Style="{StaticResource ValueStyle}" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </Grid>
+                        </StackLayout>
+
+
+                    </Grid>
+                </ScrollView>
+            </Grid>
+            <controls:FloatingButtonGroup x:Name="floatingButtonGroup" />
+            <controls:CenterModal x:Name="ModalAddLoan" Title="{x:Static lang:Language.dang_goi_vay}" />
+            <controls:BottomModal x:Name="bottomModal" />
+            <controls:LoadingPopup x:Name="loadingPopup" />
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" Shell.TabBarIsVisible="False" xmlns:lang="clr-namespace:SundihomeApp.Resources" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:controls="clr-namespace:SundihomeApp.Controls" Title="{x:Static lang:Language.du_an}" x:Class="SundihomeApp.Views.ProjectListPage">
+    <ContentPage.Content>
+        <AbsoluteLayout BackgroundColor="White">
+            <Grid AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <controls:SearchBarFrame Margin="5,5,5,0" Grid.Row="0">
+                    <controls:SearchBar x:Name="searchBar" TextChanged="SearchBar_TextChanged" SearchButtonPressed="Search_Clicked" />
+                </controls:SearchBarFrame>
+                <ScrollView x:Name="ScrollViewFilter" Grid.Row="1" Margin="5,0" Orientation="Horizontal" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
+                    <StackLayout x:Name="stListLoaiDuAn" Orientation="Horizontal" Spacing="5">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <telerikPrimitives:RadBorder x:Name="FilterBanRadborder" Padding="10,5" BorderColor="Gray" BorderThickness="1" CornerRadius="8" BackgroundColor="White">
+                                    <telerikPrimitives:RadBorder.GestureRecognizers>
+                                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="LoaiBatDongSan_Tapped" CommandParameter="{Binding Id}" />
+                                    </telerikPrimitives:RadBorder.GestureRecognizers>
+                                    <Label Text="{Binding Name}" TextColor="#444444" FontSize="14" />
+                                </telerikPrimitives:RadBorder>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
+                </ScrollView>
+                <controls:BsdListView x:Name="lv" Grid.Row="2">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Margin="10,10,10,0" BackgroundColor="White">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid Grid.Row="0">
+                                        <ffimageloading:CachedImage DownsampleToViewSize="true" Source="{Binding AvatarFullUrl}" HeightRequest="150" Aspect="AspectFill" />
+                                        <telerikPrimitives:RadBorder VerticalOptions="End" Margin="0,0,0,10" CornerRadius="0,5,5,0" HorizontalOptions="Start" BackgroundColor="white" Padding="5">
+                                            <Label Text="{Binding PriceBDS}" FontSize="15" FontAttributes="Bold" TextColor="Red" />
+                                        </telerikPrimitives:RadBorder>
+                                    </Grid>
+                                    <Label Grid.Row="1" Margin="10,0" FontSize="15" TextColor="#026294" FontAttributes="Bold" MaxLines="2" LineBreakMode="TailTruncation" Text="{Binding Name}" />
+                                    <StackLayout Grid.Row="2" Orientation="Horizontal" Spacing="0" Margin="10,0,10,10">
+                                        <Label Text="&#xf3c5;" TextColor="#026294" FontSize="14" Margin="0,2,5,0" VerticalTextAlignment="Start" FontFamily="{StaticResource FontAwesomeSolid}" />
+                                        <Label Text="{Binding Address}" FontSize="14" MaxLines="2" VerticalTextAlignment="Center" LineBreakMode="TailTruncation" TextColor="#444444" />
+                                    </StackLayout>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </controls:BsdListView>
+            </Grid>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="End" Spacing="0" AbsoluteLayout.LayoutBounds="0,1,1,64" Margin="5" AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional">
+                <Frame Margin="5" Padding="0" CornerRadius="22">
+                    <Button Text="&#xf067;" Style="{StaticResource FLoatButtonStyle}" FontFamily="{StaticResource FontAwesomeSolid}" Clicked="AddProject_Clicked" />
+                </Frame>
+            </StackLayout>
+
+            <controls:LoadingPopup x:Name="loadingPopup" />
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

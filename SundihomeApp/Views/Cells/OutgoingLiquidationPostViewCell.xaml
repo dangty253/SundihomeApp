@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms" xmlns:controls="clr-namespace:SundihomeApp.Controls" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SundihomeApp.Views.Cells.OutgoingLiquidationPostViewCell">
+    <ViewCell.View>
+        <Grid Rotation="180" ColumnSpacing="2" Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="50" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <controls:ExtendedFrame Grid.Row="0" Padding="0" BackgroundColor="White" CornerRadius="5">
+                <StackLayout Margin="10" Spacing="5">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Tapped" CommandParameter="{Binding LiquidationPost.PostId}" />
+                    </StackLayout.GestureRecognizers>
+                    <Image HeightRequest="120" Aspect="AspectFill" Source="{Binding LiquidationPost.AvatarFullUrl}" />
+                    <Label Margin="0,5,0,0" Text="{Binding LiquidationPost.Title}" TextColor="{StaticResource MainDarkColor}" FontSize="15" FontAttributes="Bold"/>
+                    <Label Text="{Binding LiquidationPost.PriceText}" TextColor="Red" FontSize="13" />
+                    <Label Margin="0,0,0,5" Text="{Binding LiquidationPost.Address}" TextColor="#444444" FontSize="13" />
+                </StackLayout>
+            </controls:ExtendedFrame>
+            <Label Grid.Row="1" Grid.Column="0" FontSize="Micro" HorizontalOptions="Start" Text="{Binding CreatedDate, StringFormat='{0:HH:mm}'}" TextColor="#444444" />
+        </Grid>
+    </ViewCell.View>
+</ViewCell>

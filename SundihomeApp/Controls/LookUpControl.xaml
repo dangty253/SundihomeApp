@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="SundihomeApp.Controls.LookUpControl">
+    <ContentView.Content>
+        <Grid>
+            <Entry
+                x:Name="Entry"
+                Placeholder="{Binding Placeholder}"
+                HorizontalOptions="FillAndExpand"
+                FontSize="16" />
+            <StackLayout VerticalOptions="Fill"
+                         HorizontalOptions="Fill">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1"
+                                          Tapped="OpenLookUp_Tapped" />
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+            <Button
+                x:Name="BtnClear"
+                Style="{StaticResource ClearButtonStyle}"
+                FontFamily="{StaticResource FontAwesomeSolid}"
+                Padding="0"
+                Clicked="Clear_Clicked" />
+        </Grid>
+    </ContentView.Content>
+</ContentView>

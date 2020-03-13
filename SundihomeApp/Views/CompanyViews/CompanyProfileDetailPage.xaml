@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:controls="clr-namespace:SundihomeApp.Controls"
+             xmlns:lang="clr-namespace:SundihomeApp.Resources"
+             xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SundihomeApp.Views.CompanyViews.CompanyProfileDetailPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="ButtonGroupStyle" TargetType="Button">
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="BackgroundColor" Value="White" />
+                <Setter Property="BorderColor" Value="White" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="Padding" Value="10,0" />
+                <Setter Property="CornerRadius" Value="0" />
+                <Setter Property="BorderWidth" Value="1" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <Grid AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" VerticalOptions="FillAndExpand" RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <controls:Segment x:Name="ControlSegment" Grid.Row="0" OnSelectedIndexChanged="Segment_OnSelectedIndexChanged"/>
+                
+                <ContentView x:Name="MainCompanyContentView" Grid.Row="1" VerticalOptions="Fill" />
+                <ContentView x:Name="MainProductContentView" Grid.Row="1" VerticalOptions="Fill" IsVisible="false"/>
+                <ContentView x:Name="MainImagesContentView" Grid.Row="1" VerticalOptions="Fill" IsVisible="false" />
+
+            </Grid>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="End" Spacing="0" AbsoluteLayout.LayoutBounds="0,1,1,64" Margin="5" AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional">
+                <Frame x:Name="btnEmployeeRegister" IsVisible="false" Margin="5" Padding="0" CornerRadius="22">
+                    <Button Text="&#xf007;" FontSize="20" WidthRequest="44" HeightRequest="44" CornerRadius="22" FontFamily="{StaticResource FontAwesomeSolid}" BackgroundColor="{StaticResource MainDarkColor}" TextColor="White" Clicked="EmployeeRegister_Clicked" />
+                </Frame>
+                <Frame Margin="5" Padding="0" CornerRadius="22">
+                    <Button Text="{StaticResource Share}" FontSize="20" WidthRequest="44" HeightRequest="44" CornerRadius="22" FontFamily="{StaticResource FontAwesomeSolid}" BackgroundColor="{StaticResource MainDarkColor}" TextColor="White" Clicked="OnShareData_Clicked" />
+                </Frame>
+            </StackLayout>
+
+            <controls:CenterModal x:Name="ModalDangKyMoiGioi" Title="{x:Static lang:Language.dang_ky_moi_gioi}" />
+            <controls:BottomModal x:Name="LookUpModal" />
+            <controls:LoadingPopup x:Name="loadingPopup" />
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

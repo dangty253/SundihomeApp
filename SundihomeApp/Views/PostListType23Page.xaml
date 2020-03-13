@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:lang="clr-namespace:SundihomeApp.Resources"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives"
+             xmlns:controls="clr-namespace:SundihomeApp.Controls"
+             xmlns:telerikInput="clr-namespace:Telerik.XamarinForms.Input;assembly=Telerik.XamarinForms.Input"
+             Title="Bất động sản cần mua - cần thuê"
+             x:Class="SundihomeApp.Views.PostListType23Page">
+    <Shell.TitleView>
+        <StackLayout Padding="0,5"
+                     VerticalOptions="FillAndExpand"
+                     Margin="{OnPlatform Android='-10,0,10,0'}"
+                     HorizontalOptions="FillAndExpand">
+            <telerikPrimitives:RadBorder VerticalOptions="FillAndExpand"
+                                         HorizontalOptions="FillAndExpand"
+                                         CornerRadius="3"
+                                         BackgroundColor="White">
+                <StackLayout Padding="10,0"
+                             Orientation="Horizontal"
+                             Spacing="5"
+                             BackgroundColor="White">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer NumberOfTapsRequired="1"
+                                              Tapped="OpenSearch_Clicked" />
+                    </StackLayout.GestureRecognizers>
+                    <Label Text="&#xf002;"
+                           TextColor="#444444"
+                           FontSize="13"
+                           FontFamily="{StaticResource FontAwesomeSolid}"
+                           VerticalOptions="Center" />
+                    <Label VerticalOptions="FillAndExpand"
+                           VerticalTextAlignment="Center"
+                           Text="{x:Static lang:Language.search_placeholder}"
+                           TextColor="#444444"
+                           FontSize="15" />
+                </StackLayout>
+            </telerikPrimitives:RadBorder>
+        </StackLayout>
+    </Shell.TitleView>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="LabelStyle"
+                   TargetType="Label">
+                <Setter Property="VerticalOptions"
+                        Value="Center" />
+                <Setter Property="VerticalTextAlignment"
+                        Value="Center" />
+                <Setter Property="HorizontalOptions"
+                        Value="Center" />
+                <Setter Property="HorizontalTextAlignment"
+                        Value="Center" />
+                <Setter Property="MaxLines"
+                        Value="1" />
+                <Setter Property="LineBreakMode"
+                        Value="TailTruncation" />
+                <Setter Property="FontSize"
+                        Value="14" />
+                <Setter Property="LineBreakMode"
+                        Value="TailTruncation" />
+            </Style>
+            <Style x:Key="LabelIconStyle"
+                   TargetType="Label">
+                <Setter Property="VerticalOptions"
+                        Value="Center" />
+                <Setter Property="VerticalTextAlignment"
+                        Value="Center" />
+                <Setter Property="Text"
+                        Value="&#xf107;" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource FontAwesomeSolid}" />
+                <Setter Property="FontSize"
+                        Value="14" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <Grid AbsoluteLayout.LayoutBounds="0,0,1,1"
+                  AbsoluteLayout.LayoutFlags="All">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="0.5" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <controls:Segment x:Name="Segment" Grid.Row="0" OnSelectedIndexChanged="Segment_OnSelectedIndexChanged" />
+
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <StackLayout Grid.Column="0"
+                                 Padding="10,5,5,5"
+                                 HorizontalOptions="Center"
+                                 Orientation="Horizontal">
+                        <Label x:Name="LabelProvince"
+                               Text="{Static lang:Language.tinh_thanh}"
+                               Grid.Column="0"
+                               Style="{StaticResource LabelStyle}">
+                        </Label>
+                        <Label Grid.Column="1"
+                               Style="{StaticResource LabelIconStyle}" />
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="FilterProvince_Click" />
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                    <StackLayout Grid.Column="1"
+                                 Padding="5"
+                                 HorizontalOptions="Center"
+                                 Orientation="Horizontal">
+                        <Label  x:Name="LabelDistrict"
+                                Text="{Static lang:Language.quan_huyen}"
+                                Grid.Column="1"
+                                Style="{StaticResource LabelStyle}">
+
+                        </Label>
+                        <Label Grid.Column="1"
+                               Style="{StaticResource LabelIconStyle}" />
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="FilterDistric_Click" />
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                    <StackLayout Grid.Column="2"
+                                 Padding="5,5,10,5"
+                                 HorizontalOptions="Center"
+                                 Orientation="Horizontal">
+                        <Label  x:Name="LabelType"
+                                Text="{Static lang:Language.loai_bat_dong_san}"
+                                Grid.Column="2"
+                                Style="{StaticResource LabelStyle}">
+                        </Label>
+                        <Label Grid.Column="1"
+                               Style="{StaticResource LabelIconStyle}" />
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="FilterType_Click" />
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                    <Label
+                        Padding="0,5,10,5"
+                        Grid.Column="3"
+                        Text="&#xf021;"
+                        TextColor="#444444"
+                        FontSize="12"
+                        HorizontalOptions="End"
+                        VerticalOptions="Center"
+                        IsVisible="{Binding ShowClearFilterButton}"
+                        FontFamily="{StaticResource FontAwesomeSolid}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Clear_Clicked"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Grid>
+
+                <BoxView HeightRequest="0.5" Grid.Row="2" BackgroundColor="Gray" />
+
+                <controls:BsdListView x:Name="ListView0"
+                                      Grid.Row="3" />
+                <controls:BsdListView x:Name="ListView1"
+                                      Grid.Row="3"
+                                      IsVisible="false" />
+            </Grid>
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="End"
+                         Spacing="0"
+                         AbsoluteLayout.LayoutBounds="0,1,1,64"
+                         AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional"
+                         Margin="5">
+                <Frame Margin="5"
+                       Padding="0"
+                       CornerRadius="22">
+                    <Button Text="&#xf3c5;"
+                            FontSize="20"
+                            WidthRequest="44"
+                            HeightRequest="44"
+                            CornerRadius="22"
+                            FontFamily="{StaticResource FontAwesomeSolid}"
+                            BackgroundColor="{StaticResource MainDarkColor}"
+                            TextColor="White"
+                            Clicked="GoToMap_Clicked" />
+                </Frame>
+                <Frame Margin="5"
+                       Padding="0"
+                       CornerRadius="22">
+                    <Button Text="&#xf067;"
+                            FontSize="20"
+                            WidthRequest="44"
+                            HeightRequest="44"
+                            CornerRadius="22"
+                            FontFamily="{StaticResource FontAwesomeSolid}"
+                            BackgroundColor="{StaticResource MainDarkColor}"
+                            TextColor="White"
+                            Clicked="AddNeedPost_Clicked" />
+                </Frame>
+            </StackLayout>
+
+            <controls:CenterModal x:Name="ModalDangKyMoiGioi"
+                                  Title="{Static lang:Language.dang_ky_moi_gioi}" />
+            <controls:BottomModal x:Name="LookUpModal" />
+            <controls:LoadingPopup x:Name="loadingPopup" />
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

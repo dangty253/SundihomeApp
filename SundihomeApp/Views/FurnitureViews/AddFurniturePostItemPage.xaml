@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
+             xmlns:controls="clr-namespace:SundihomeApp.Controls"
+             xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives"
+             xmlns:telerikInput="clr-namespace:Telerik.XamarinForms.Input;assembly=Telerik.XamarinForms.Input"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="{x:Static lang:Language.dang_bai}"
+             xmlns:lang="clr-namespace:SundihomeApp.Resources"
+             x:Class="SundihomeApp.Views.Furniture.AddFurniturePostItemPage">
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <ScrollView Padding="0,0,0,64"
+                        AbsoluteLayout.LayoutBounds="0,0,1,1"
+                        AbsoluteLayout.LayoutFlags="All">
+                <StackLayout Margin="10,5,10,10">
+                    <controls:Segment x:Name="ControlSegment" Margin="-2,0"/>
+
+                    <telerikPrimitives:RadBorder BorderColor="#eeeeee"
+                                                 BorderThickness="1"
+                                                 CornerRadius="0"
+                                                 Padding="5">
+                        <StackLayout Spacing="0">
+                            <Editor x:Name="editor"
+                                    HeightRequest="100"
+                                    BackgroundColor="White"
+                                    Placeholder="{Static lang:Language.nhap_noi_dung}" />
+                            <Button Text="&#xf302;"
+                                    HorizontalOptions="End"
+                                    Margin="5"
+                                    BackgroundColor="{StaticResource MainDarkColor}"
+                                    FontFamily="{StaticResource FontAwesomeSolid}"
+                                    TextColor="White"
+                                    HeightRequest="40"
+                                    WidthRequest="40"
+                                    Command="{Binding SelectImagesCommand}" />
+                        </StackLayout>
+                    </telerikPrimitives:RadBorder>
+
+                    <ScrollView Grid.Row="1"
+                                Orientation="Horizontal"
+                                Margin="10,0,10,10">
+                        <StackLayout Orientation="Horizontal"
+                                     BindableLayout.ItemsSource="{Binding Media}"
+                                     Spacing="5"
+                                     Margin="5">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid WidthRequest="100"
+                                          HeightRequest="120">
+                                        <ffimageloading:CachedImage  DownsampleToViewSize="true"
+                                                                     HeightRequest="100"
+                                                                     Source="{Binding PreviewPath}"
+                                                                     Aspect="AspectFill"
+                                                                     HorizontalOptions="FillAndExpand" />
+                                        <Button Text="&#xf2ed;"
+                                                TextColor="#026294"
+                                                FontSize="14"
+                                                HorizontalOptions="End"
+                                                VerticalOptions="Start"
+                                                BorderWidth="0"
+                                                BackgroundColor="White"
+                                                WidthRequest="25"
+                                                HeightRequest="25"
+                                                Margin="0,5,5,0"
+                                                Padding="0"
+                                                Clicked="Remove_Image"
+                                                CommandParameter="{Binding}"
+                                                FontFamily="{StaticResource FontAwesomeSolid}" />
+                                    </Grid>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </StackLayout>
+                    </ScrollView>
+
+                    <StackLayout>
+                        <Label Text="{Static lang:Language.thong_tin_bo_sung}" />
+                        <controls:CurrencyEntry x:Name="EntryPrice"
+                                                MaxValue="9000000000000"
+                                                HorizontalOptions="FillAndExpand"
+                                                Placeholder="{Static lang:Language.nhap_gia}" />
+
+                        <controls:ClearableEntry x:Name="EntryAddress"
+                                                 Placeholder="{Static lang:Language.nhap_dia_chi}" />
+                        <!--danh muc cha -->
+                        <controls:FormLabel Text="{Binding Source={x:Static lang:Language.nhom_danh_muc},StringFormat='{0} : '}"
+                                            Margin="0,10,0,0" />
+                        <FlexLayout x:Name="Flexlayout_ParentCategory"
+                                    Wrap="Wrap"
+                                    FlowDirection="LeftToRight"
+                                    Direction="Row"
+                                    AlignItems="Start" />
+
+                        <!--danh muc cha -->
+                        <controls:FormLabel Text="{Binding Source={x:Static lang:Language.danh_muc},StringFormat='{0} : '}"
+                                            Margin="0,10,0,0" />
+                        <FlexLayout x:Name="Flexlayout_ChildCategory"
+                                    Wrap="Wrap"
+                                    FlowDirection="LeftToRight"
+                                    Direction="Row"
+                                    AlignItems="Start" />
+                    </StackLayout>
+
+                </StackLayout>
+            </ScrollView>
+
+
+            <!--Add Button-->
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="End"
+                         Spacing="0"
+                         AbsoluteLayout.LayoutBounds="0,1,1,64"
+                         AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional"
+                         Margin="5">
+                <Frame Margin="5"
+                       Padding="0"
+                       CornerRadius="22">
+                    <Button Text="&#xf044;"
+                            FontSize="20"
+                            WidthRequest="44"
+                            HeightRequest="44"
+                            CornerRadius="22"
+                            FontFamily="{StaticResource FontAwesomeRegular}"
+                            BackgroundColor="{StaticResource MainDarkColor}"
+                            TextColor="White"
+                            Clicked="Save_Clicked" />
+                </Frame>
+            </StackLayout>
+            <controls:LoadingPopup x:Name="loadingPopup" />
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

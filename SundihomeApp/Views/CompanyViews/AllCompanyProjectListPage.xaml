@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" Title="{x:Static lang:Language.du_an}"
+             xmlns:lang="clr-namespace:SundihomeApp.Resources"
+             xmlns:controls="clr-namespace:SundihomeApp.Controls" xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SundihomeApp.Views.CompanyViews.AllCompanyProjectListPage">
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <Grid AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Margin="{OnPlatform iOS='0,-30,0,0'}">
+                <controls:BsdListView x:Name="LvData" BackgroundColor="#eeeeee">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Margin="10,10,10,0" BackgroundColor="White">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid Grid.Row="0">
+                                        <ffimageloading:CachedImage DownsampleToViewSize="true" Source="{Binding AvatarFullUrl}" HeightRequest="150" Aspect="AspectFill" />
+                                        <telerikPrimitives:RadBorder VerticalOptions="End" Margin="0,0,0,10" CornerRadius="0,5,5,0" HorizontalOptions="Start" BackgroundColor="white" Padding="5">
+                                            <Label Text="{Binding PriceBDS}" FontSize="15" FontAttributes="Bold" TextColor="Red" />
+                                        </telerikPrimitives:RadBorder>
+                                    </Grid>
+                                    <Label Grid.Row="1" Margin="10,0" FontSize="15" TextColor="#026294" FontAttributes="Bold" MaxLines="2" LineBreakMode="TailTruncation" Text="{Binding Name}" />
+                                    <StackLayout Grid.Row="2" Orientation="Horizontal" Spacing="0" Margin="10,0,10,10">
+                                        <Label Text="&#xf3c5;" TextColor="#026294" FontSize="14" Margin="0,2,5,0" VerticalTextAlignment="Start" FontFamily="{StaticResource FontAwesomeSolid}" />
+                                        <Label Text="{Binding Address}" FontSize="14" MaxLines="2" VerticalTextAlignment="Center" LineBreakMode="TailTruncation" TextColor="#444444" />
+                                    </StackLayout>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </controls:BsdListView>
+            </Grid>
+            <StackLayout x:Name="StackButton" Orientation="Horizontal" HorizontalOptions="End" Spacing="0" AbsoluteLayout.LayoutBounds="0,1,1,64" AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional" Margin="5">
+                <Frame Margin="5" Padding="0" CornerRadius="22">
+                    <Button Text="&#xf067;" FontSize="20" WidthRequest="44" HeightRequest="44" CornerRadius="22" FontFamily="{StaticResource FontAwesomeSolid}" BackgroundColor="{StaticResource MainDarkColor}" TextColor="White" Clicked="AddPost_Clicked" />
+                </Frame>
+            </StackLayout>
+            <controls:LoadingPopup x:Name="loadingPopup" />
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

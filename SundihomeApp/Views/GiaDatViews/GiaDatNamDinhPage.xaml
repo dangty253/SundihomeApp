@@ -1,0 +1,321 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="SundihomeApp.Views.GiaDatViews.GiaDatNamDinhPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SundihomeApp.Controls"
+    xmlns:converters="clr-namespace:SundihomeApp.Converters"
+    xmlns:lang="clr-namespace:SundihomeApp.Resources"
+    Title="Giá đất Nam Định">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:GiaDatPriceConverter x:Key="GiaDatPriceConverter" />
+            <converters:NullToHideConverter x:Key="NullToHideConverter" />
+            <Style x:Key="LabelPriceStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource MainDarkColor}" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontSize" Value="15" />
+                <!--<Setter Property="Margin"  Value="10,5"/>-->
+                <!--<Setter Property="HorizontalTextAlignment"  Value="Center"/>-->
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <StackLayout Margin="10">
+                    <controls:FormLabelRequired Text="{x:Static lang:Language.district}" />
+                    <controls:LookUpControl
+                        BottomModal="{x:Reference lookUpModal}"
+                        ItemsSource="{Binding Districts}"
+                        NameDisplay="Name"
+                        Placeholder="{x:Static lang:Language.district}"
+                        SelectedItem="{Binding District}"
+                        SelectedItemChange="District_Changed" />
+
+                    <controls:FormLabelRequired
+                        x:Name="LabelWard"
+                        Margin="0,5,0,0"
+                        IsVisible="{Binding IsCity}"
+                        Text="{x:Static lang:Language.phuong_xa}" />
+                    <controls:LookUpControl
+                        x:Name="lookUpWard"
+                        BottomModal="{x:Reference lookUpModal}"
+                        IsVisible="{Binding IsCity}"
+                        ItemsSource="{Binding Wards}"
+                        NameDisplay="Name"
+                        Placeholder="{x:Static lang:Language.phuong_xa}"
+                        SelectedItem="{Binding Ward}"
+                        SelectedItemChange="Ward_Changed" />
+
+                    <controls:FormLabelRequired Margin="0,5,0,0" Text="Đường" />
+                    <controls:LookUpControl
+                        x:Name="lookUpStreet"
+                        BottomModal="{x:Reference lookUpModal}"
+                        ItemsSource="{Binding Streets}"
+                        NameDisplay="Name"
+                        Placeholder="Đường"
+                        SelectedItem="{Binding Street}"
+                        SelectedItemChange="Street_Changed" />
+
+                    <controls:FormLabelRequired
+                        x:Name="LabelStreetDistanc"
+                        Margin="0,5,0,0"
+                        Text="Đoạn đường" />
+                    <controls:LookUpControl
+                        x:Name="lookUpStreetDistance"
+                        BottomModal="{x:Reference lookUpModal}"
+                        ItemsSource="{Binding StreetDistances}"
+                        NameDisplay="Name"
+                        Placeholder="Đoạn đường"
+                        SelectedItem="{Binding StreetDistance}" />
+
+                    <StackLayout Margin="0,0,0,20" IsVisible="{Binding StreetDistance, Converter={StaticResource NullToHideConverter}}">
+                        <Label
+                            Margin="0,10,0,0"
+                            Padding="10,5"
+                            FontAttributes="Bold"
+                            FontSize="17"
+                            Text="Giá đất ở"
+                            TextColor="Black" />
+                        <Label Margin="10,5">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="VT1 : " TextColor="#444444" />
+                                    <Span Style="{StaticResource LabelPriceStyle}" Text="{Binding StreetDistance.GiaDatO_VT1, Converter={StaticResource GiaDatPriceConverter}}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label Margin="10,5">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="VT2 : " TextColor="#444444" />
+                                    <Span Style="{StaticResource LabelPriceStyle}" Text="{Binding StreetDistance.GiaDatO_VT2, Converter={StaticResource GiaDatPriceConverter}}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label Margin="10,5">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="VT3 : " TextColor="#444444" />
+                                    <Span Style="{StaticResource LabelPriceStyle}" Text="{Binding StreetDistance.GiaDatO_VT3, Converter={StaticResource GiaDatPriceConverter}}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label Margin="10,5" IsVisible="{Binding StreetDistance.VT4, Converter={StaticResource NullToHideConverter}}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="VT4 : " TextColor="#444444" />
+                                    <Span Style="{StaticResource LabelPriceStyle}" Text="{Binding StreetDistance.GiaDatO_VT4, Converter={StaticResource GiaDatPriceConverter}}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label
+                            Margin="0,10,0,0"
+                            Padding="10,5"
+                            FontAttributes="Bold"
+                            FontSize="17"
+                            Text="Giá đất thương mại dịch vụ"
+                            TextColor="Black" />
+                        <Label Margin="10,5">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="VT1 : " TextColor="#444444" />
+                                    <Span Style="{StaticResource LabelPriceStyle}" Text="{Binding StreetDistance.GiaDatThuongMaiDichVu_VT1, Converter={StaticResource GiaDatPriceConverter}}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label Margin="10,5">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="VT2 : " TextColor="#444444" />
+                                    <Span Style="{StaticResource LabelPriceStyle}" Text="{Binding StreetDistance.GiaDatThuongMaiDichVu_VT2, Converter={StaticResource GiaDatPriceConverter}}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label Margin="10,5">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="VT3 : " TextColor="#444444" />
+                                    <Span Style="{StaticResource LabelPriceStyle}" Text="{Binding StreetDistance.GiaDatThuongMaiDichVu_VT3, Converter={StaticResource GiaDatPriceConverter}}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label Margin="10,5" IsVisible="{Binding StreetDistance.VT4, Converter={StaticResource NullToHideConverter}}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="VT4 : " TextColor="#444444" />
+                                    <Span Style="{StaticResource LabelPriceStyle}" Text="{Binding StreetDistance.GiaDatThuongMaiDichVu_VT4, Converter={StaticResource GiaDatPriceConverter}}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label
+                            Margin="0,10,0,0"
+                            Padding="10,5"
+                            FontAttributes="Bold"
+                            FontSize="17"
+                            Text="Giá đất sản xuất"
+                            TextColor="Black" />
+                        <Label Margin="10,5">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="VT1 : " TextColor="#444444" />
+                                    <Span Style="{StaticResource LabelPriceStyle}" Text="{Binding StreetDistance.GiaDatSanXuat_VT1, Converter={StaticResource GiaDatPriceConverter}}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label Margin="10,5">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="VT2 : " TextColor="#444444" />
+                                    <Span Style="{StaticResource LabelPriceStyle}" Text="{Binding StreetDistance.GiaDatSanXuat_VT2, Converter={StaticResource GiaDatPriceConverter}}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label Margin="10,5">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="VT3 : " TextColor="#444444" />
+                                    <Span Style="{StaticResource LabelPriceStyle}" Text="{Binding StreetDistance.GiaDatSanXuat_VT3, Converter={StaticResource GiaDatPriceConverter}}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label Margin="10,5" IsVisible="{Binding StreetDistance.VT4, Converter={StaticResource NullToHideConverter}}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="VT4 : " TextColor="#444444" />
+                                    <Span Style="{StaticResource LabelPriceStyle}" Text="{Binding StreetDistance.GiaDatSanXuat_VT4, Converter={StaticResource GiaDatPriceConverter}}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+                    <StackLayout Margin="0,0,0,20" IsVisible="{Binding Street, Converter={StaticResource NullToHideConverter}}">
+                        <Label
+                            x:Name="LabelStreetWard"
+                            Margin="0,10,0,0"
+                            Padding="10,5"
+                            FontAttributes="Bold"
+                            FontSize="17"
+                            IsVisible="{Binding Street.GiaDatO_VT1, Converter={StaticResource NullToHideConverter}}"
+                            Text="Giá đất ở"
+                            TextColor="Black" />
+                        <Label Margin="10,5" IsVisible="{Binding Street.GiaDatO_VT1, Converter={StaticResource NullToHideConverter}}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="VT1 : " TextColor="#444444" />
+                                    <Span Style="{StaticResource LabelPriceStyle}" Text="{Binding Street.GiaDatO_VT1, Converter={StaticResource GiaDatPriceConverter}}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label Margin="10,5" IsVisible="{Binding Street.GiaDatO_VT2, Converter={StaticResource NullToHideConverter}}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="VT2 : " TextColor="#444444" />
+                                    <Span Style="{StaticResource LabelPriceStyle}" Text="{Binding Street.GiaDatO_VT2, Converter={StaticResource GiaDatPriceConverter}}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label Margin="10,5" IsVisible="{Binding Street.GiaDatO_VT3, Converter={StaticResource NullToHideConverter}}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="VT3 : " TextColor="#444444" />
+                                    <Span Style="{StaticResource LabelPriceStyle}" Text="{Binding Street.GiaDatO_VT3, Converter={StaticResource GiaDatPriceConverter}}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label Margin="10,5" IsVisible="{Binding Street.GiaDatO_VT4, Converter={StaticResource NullToHideConverter}}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="VT4 : " TextColor="#444444" />
+                                    <Span Style="{StaticResource LabelPriceStyle}" Text="{Binding Street.GiaDatO_VT4, Converter={StaticResource GiaDatPriceConverter}}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label
+                            Margin="0,10,0,0"
+                            Padding="10,5"
+                            FontAttributes="Bold"
+                            FontSize="17"
+                            IsVisible="{Binding Street.GiaDatThuongMaiDichVu_VT1, Converter={StaticResource NullToHideConverter}}"
+                            Text="Giá đất thương mại dịch vụ"
+                            TextColor="Black" />
+                        <Label Margin="10,5" IsVisible="{Binding Street.GiaDatThuongMaiDichVu_VT1, Converter={StaticResource NullToHideConverter}}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="VT1 : " TextColor="#444444" />
+                                    <Span Style="{StaticResource LabelPriceStyle}" Text="{Binding Street.GiaDatThuongMaiDichVu_VT1, Converter={StaticResource GiaDatPriceConverter}}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label Margin="10,5" IsVisible="{Binding Street.GiaDatThuongMaiDichVu_VT2, Converter={StaticResource NullToHideConverter}}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="VT2 : " TextColor="#444444" />
+                                    <Span Style="{StaticResource LabelPriceStyle}" Text="{Binding Street.GiaDatThuongMaiDichVu_VT2, Converter={StaticResource GiaDatPriceConverter}}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label Margin="10,5" IsVisible="{Binding Street.GiaDatThuongMaiDichVu_VT3, Converter={StaticResource NullToHideConverter}}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="VT3 : " TextColor="#444444" />
+                                    <Span Style="{StaticResource LabelPriceStyle}" Text="{Binding Street.GiaDatThuongMaiDichVu_VT3, Converter={StaticResource GiaDatPriceConverter}}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label Margin="10,5" IsVisible="{Binding Street.GiaDatThuongMaiDichVu_VT4, Converter={StaticResource NullToHideConverter}}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="VT4 : " TextColor="#444444" />
+                                    <Span Style="{StaticResource LabelPriceStyle}" Text="{Binding Street.GiaDatThuongMaiDichVu_VT4, Converter={StaticResource GiaDatPriceConverter}}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label
+                            Margin="0,10,0,0"
+                            Padding="10,5"
+                            FontAttributes="Bold"
+                            FontSize="17"
+                            IsVisible="{Binding Street.GiaDatSanXuat_VT1, Converter={StaticResource NullToHideConverter}}"
+                            Text="Giá đất sản xuất"
+                            TextColor="Black" />
+                        <Label Margin="10,5" IsVisible="{Binding Street.GiaDatSanXuat_VT1, Converter={StaticResource NullToHideConverter}}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="VT1 : " TextColor="#444444" />
+                                    <Span Style="{StaticResource LabelPriceStyle}" Text="{Binding Street.GiaDatSanXuat_VT1, Converter={StaticResource GiaDatPriceConverter}}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label Margin="10,5" IsVisible="{Binding Street.GiaDatSanXuat_VT2, Converter={StaticResource NullToHideConverter}}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="VT2 : " TextColor="#444444" />
+                                    <Span Style="{StaticResource LabelPriceStyle}" Text="{Binding Street.GiaDatSanXuat_VT2, Converter={StaticResource GiaDatPriceConverter}}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label Margin="10,5" IsVisible="{Binding Street.GiaDatSanXuat_VT3, Converter={StaticResource NullToHideConverter}}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="VT3 : " TextColor="#444444" />
+                                    <Span Style="{StaticResource LabelPriceStyle}" Text="{Binding Street.GiaDatSanXuat_VT3, Converter={StaticResource GiaDatPriceConverter}}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label Margin="10,5" IsVisible="{Binding Street.GiaDatSanXuat_VT4, Converter={StaticResource NullToHideConverter}}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="VT4 : " TextColor="#444444" />
+                                    <Span Style="{StaticResource LabelPriceStyle}" Text="{Binding Street.GiaDatSanXuat_VT4, Converter={StaticResource GiaDatPriceConverter}}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+            <controls:BottomModal x:Name="lookUpModal" />
+            <controls:LoadingPopup x:Name="loadingPopup" />
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

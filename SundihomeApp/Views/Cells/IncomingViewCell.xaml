@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms" xmlns:plugin="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SundihomeApp.Views.Cells.IncomingViewCell">
+    <ViewCell.View>
+        <Grid Rotation="180" ColumnSpacing="2" Padding="5,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="35" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="35" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <StackLayout Grid.Row="0" Grid.Column="2">
+                <plugin:CircleImage HeightRequest="30" WidthRequest="30" BorderThickness="2" BorderColor="Transparent" Aspect="AspectFill" HorizontalOptions="Center" VerticalOptions="Center" Source="{Binding Receive.AvatarFullUrl}" />
+            </StackLayout>
+
+            <Frame Grid.Row="0" Grid.Column="1" Padding="9,7,9,5" HorizontalOptions="End">
+                <Frame.HasShadow>
+                    <OnPlatform x:TypeArguments="x:Boolean" iOS="false" Android="true" />
+                </Frame.HasShadow>
+                <Frame.BackgroundColor>
+                    <OnPlatform x:TypeArguments="Color" iOS="#EFEFEF" Android="White" />
+                </Frame.BackgroundColor>
+                <StackLayout HorizontalOptions="End">
+                    <Label TextColor="#444444" FontSize="16" Text="{Binding MessageContent}" />
+                    <Label FontSize="Micro" HorizontalTextAlignment="Start" Text="{Binding CreatedDate, StringFormat='{0:HH:mm}'}" TextColor="Gray" />
+                </StackLayout>
+            </Frame>
+        </Grid>
+    </ViewCell.View>
+</ViewCell>

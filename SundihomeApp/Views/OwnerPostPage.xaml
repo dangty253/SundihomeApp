@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:lang="clr-namespace:SundihomeApp.Resources"
+             x:Name="this"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:controls="clr-namespace:SundihomeApp.Controls" ios:Page.UseSafeArea="true"
+             x:Class="SundihomeApp.Views.OwnerPostPage" Title="{x:Static lang:Language.thong_tin_chu_so_huu}">
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <ScrollView Padding="0,0,0,64" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" BackgroundColor="#e9f0f3" >
+                <StackLayout>
+                    <Frame HasShadow="False" BackgroundColor="White" Margin="10,10,10,0" Padding="0,10">
+                        <StackLayout Spacing="10" Margin="0,5">
+                            <StackLayout BackgroundColor="White" Padding="20,0">
+                                <Label Text="{x:Static lang:Language.chu}" TextColor="Black" FontSize="18" FontAttributes="Bold"/>
+                            </StackLayout>
+                            <BoxView HeightRequest="1" BackgroundColor="LightGray"/>
+                            <Label FontSize="16"  Margin="20,0">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static lang:Language.ho_ten}" TextColor="#000" FontAttributes="Bold"/>
+                                        <Span Text=": "/>
+                                        <Span Text="{Binding Owner.OwnerFullName}" TextColor="{StaticResource MainDarkColor}" FontAttributes="Bold"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+
+                            <Label FontSize="16" Margin="20,0">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static lang:Language.so_dien_thoai}" TextColor="Black" FontAttributes="Bold"/>
+                                        <Span Text="{Binding Owner.OwnerPhone,StringFormat=': {0}'}"  TextColor="{StaticResource ColorText}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+
+                            <Label FontSize="16" Margin="20,0">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static lang:Language.dia_chi}" TextColor="Black" FontAttributes="Bold"/>
+                                        <Span Text="{Binding Owner.OwnerAddress,StringFormat=': {0}'}" TextColor="{StaticResource ColorText}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+
+                            <Label FontSize="16" Margin="20,0" >
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static lang:Language.gia}" TextColor="Black" FontAttributes="Bold"/>
+                                        <Span Text=": "/>
+                                        <Span Text="{Binding Owner.OwnerPrice,StringFormat='{0:0,0} đ'}" TextColor="Red"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+
+                        </StackLayout>
+                    </Frame>
+                    <Frame HasShadow="False" BackgroundColor="White" Margin="10,10,10,0" Padding="0,10">
+                        <StackLayout Spacing="10" Margin="0,5">
+                            <StackLayout BackgroundColor="White" Padding="20,0" >
+                                <Label Text="{x:Static lang:Language.mo_ta}" TextColor="Black" FontSize="18" FontAttributes="Bold"/>
+                            </StackLayout>
+                            <BoxView HeightRequest="1" BackgroundColor="LightGray"/>
+                            <Label Text="{Binding Owner.OwnerDescription}" FontSize="16" TextColor="{StaticResource ColorText}" Margin="20,0"/>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </ScrollView>
+            <controls:FloatingButtonGroup ItemsSource="{Binding BindingContext.ButtonCommandList,Source={x:Reference this}}" />
+            <controls:LoadingPopup x:Name="loadingPopup"/>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

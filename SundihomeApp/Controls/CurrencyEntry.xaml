@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SundihomeApp.Controls.CurrencyEntry">
+    <ContentView.Content>
+        <Grid>
+            <Entry x:Name="entry" TextChanged="Entry_TextChanged" FontSize="16" Keyboard="Numeric" />
+            <Button x:Name="BtnClear" Style="{StaticResource ClearButtonStyle}" FontFamily="{StaticResource FontAwesomeSolid}" Clicked="Clear_Clicked" Padding="0" />
+        </Grid>
+    </ContentView.Content>
+</ContentView>

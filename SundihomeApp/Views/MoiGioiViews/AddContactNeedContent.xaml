@@ -1,0 +1,302 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="SundihomeApp.Views.MoiGioiViews.AddContactNeedContent"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SundihomeApp.Controls"
+    xmlns:converters="clr-namespace:SundihomeApp.Converters"
+    xmlns:lang="clr-namespace:SundihomeApp.Resources"
+    xmlns:telerikInput="clr-namespace:Telerik.XamarinForms.Input;assembly=Telerik.XamarinForms.Input"
+    xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives"
+    BackgroundColor="White"
+    HorizontalOptions="Fill"
+    VerticalOptions="Fill">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <converters:LoaiBatDongSanNameConverter x:Key="LoaiBatDongSanNameConverter" />
+            <converters:NullToHideConverter x:Key="NullToHideConverter" />
+            <converters:TextDecimalConverter x:Key="TextDecimalConverter" />
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <AbsoluteLayout>
+            <controls:BsdListView
+                x:Name="LvData"
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+                BackgroundColor="#eeeeee">
+                <x:Arguments>
+                    <ListViewCachingStrategy>RetainElement</ListViewCachingStrategy>
+                </x:Arguments>
+                <controls:BsdListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout
+                                Margin="0,2,0,0"
+                                Padding="10"
+                                BackgroundColor="White">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label
+                                        Grid.Column="0"
+                                        BackgroundColor="{StaticResource BackGroundText}"
+                                        FontAttributes="Bold"
+                                        FontSize="16"
+                                        Text="{Binding Type, Converter={StaticResource LoaiBatDongSanNameConverter}}"
+                                        TextColor="{StaticResource MainDarkColor}" />
+                                    <Label
+                                        Grid.Column="2"
+                                        FontFamily="{StaticResource FontAwesomeSolid}"
+                                        FontSize="14"
+                                        Text="&#xf057;"
+                                        TextColor="#444444"
+                                        VerticalOptions="Start">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                                CommandParameter="{Binding}"
+                                                NumberOfTapsRequired="1"
+                                                Tapped="DeleteContactNeedItemClick" />
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </Grid>
+                                <Label BackgroundColor="{StaticResource BackGroundText}" FontSize="14">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Static lang:Language.du_an}" />
+                                            <Span Text=": " />
+                                            <Span Text="{Binding Project}" TextColor="{StaticResource ColorText}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label BackgroundColor="{StaticResource BackGroundText}" FontSize="14">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Static lang:Language.khu_vuc}" />
+                                            <Span Text=": " />
+                                            <Span Text="{Binding Province.Name}" TextColor="{StaticResource ColorText}" />
+                                            <Span Text=" - " />
+                                            <Span Text="{Binding District.Name}" TextColor="{StaticResource ColorText}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <StackLayout Orientation="Horizontal">
+
+                                    <Label BackgroundColor="{StaticResource BackGroundText}" FontSize="14">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Static lang:Language.do_uu_tien}" />
+                                                <Span Text=": " />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <telerikInput:RadShapeRating
+                                        HeightRequest="14"
+                                        IsReadOnly="True"
+                                        ItemsCount="10"
+                                        ItemsSpacing="5"
+                                        Value="{Binding Piority}" />
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label BackgroundColor="{StaticResource BackGroundText}" FontSize="14">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Static lang:Language.danh_gia_kha_nang}" />
+                                                <Span Text=": " />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <telerikInput:RadShapeRating
+                                        HeightRequest="14"
+                                        IsReadOnly="True"
+                                        ItemsCount="10"
+                                        ItemsSpacing="5"
+                                        Value="{Binding Rate}" />
+                                </StackLayout>
+                                <Label BackgroundColor="{StaticResource BackGroundText}" FontSize="14">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Static lang:Language.ngan_sach_du_kien}" />
+                                            <Span Text=": " />
+                                            <Span Text="{Binding Budget, Converter={StaticResource TextDecimalConverter}, StringFormat='{0} VNĐ'}" TextColor="{StaticResource ColorText}" />
+
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label
+                                    BackgroundColor="{StaticResource BackGroundText}"
+                                    FontSize="14"
+                                    LineBreakMode="TailTruncation"
+                                    MaxLines="3">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Static lang:Language.mo_ta}" />
+                                            <Span Text=": " />
+                                            <Span Text="{Binding Description}" TextColor="{StaticResource ColorText}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </controls:BsdListView.ItemTemplate>
+                <controls:BsdListView.Footer>
+                    <StackLayout
+                        HeightRequest="64"
+                        HorizontalOptions="Fill"
+                        VerticalOptions="Fill" />
+                </controls:BsdListView.Footer>
+            </controls:BsdListView>
+
+            <StackLayout
+                x:Name="AddContactNeedButton"
+                Margin="5"
+                AbsoluteLayout.LayoutBounds="0,1,1,64"
+                AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional"
+                HorizontalOptions="End"
+                Orientation="Horizontal"
+                Spacing="0">
+                <Frame
+                    Margin="5"
+                    Padding="0"
+                    CornerRadius="22">
+                    <Button
+                        BackgroundColor="{StaticResource MainDarkColor}"
+                        Clicked="AddContactList_Clicked"
+                        CornerRadius="22"
+                        FontFamily="{StaticResource FontAwesomeSolid}"
+                        FontSize="20"
+                        HeightRequest="44"
+                        Text="&#xf067;"
+                        TextColor="White"
+                        WidthRequest="44" />
+                </Frame>
+            </StackLayout>
+            <controls:CenterModal x:Name="ModalAddContactNeed" Title="{Binding TitlePopUp}">
+                <controls:CenterModal.Body>
+                    <ScrollView>
+
+                        <StackLayout Margin="10,0,10,10" Spacing="5">
+                            <controls:FormLabelRequired Margin="0,5,0,0" Text="{Static lang:Language.loai_hinh_bat_dong_san}" />
+                            <controls:LookUpControl
+                                BottomModal="{x:Reference ModalLookup}"
+                                ItemsSource="{Binding LoaiBatDongSanList}"
+                                NameDisplay="Name"
+                                Placeholder="{Static lang:Language.loai_hinh_bat_dong_san}"
+                                SelectedItem="{Binding LoaiBatDongSanSelected}" />
+
+                            <controls:FormLabel Margin="0,5,0,0" Text="{Static lang:Language.du_an}" />
+                            <controls:ClearableEntry Placeholder="{Static lang:Language.nhap_ten}" Text="{Binding ContactNeedModel.Project}" />
+                            <controls:FormLabelRequired Margin="0,5,0,0" Text="{Static lang:Language.tinh_thanh}" />
+                            <controls:LookUpControl
+                                BottomModal="{x:Reference ModalLookup}"
+                                ItemsSource="{Binding ProvinceList}"
+                                NameDisplay="Name"
+                                Placeholder="{Static lang:Language.tinh_thanh}"
+                                SelectedItem="{Binding ContactNeedModel.Province}"
+                                SelectedItemChange="Province_Change" />
+
+                            <controls:FormLabelRequired Margin="0,5,0,0" Text="{Static lang:Language.quan_huyen}" />
+                            <controls:LookUpControl
+                                BottomModal="{x:Reference ModalLookup}"
+                                ItemsSource="{Binding DistrictList}"
+                                NameDisplay="Name"
+                                Placeholder="{Static lang:Language.quan_huyen}"
+                                SelectedItem="{Binding ContactNeedModel.District}"
+                                SelectedItemChange="District_Change" />
+
+
+                            <controls:FormLabelRequired Margin="0,5,0,0" Text="{Static lang:Language.do_uu_tien}" />
+                            <telerikInput:RadShapeRating
+                                x:Name="DoUuTien"
+                                ItemsCount="10"
+                                ItemsSpacing="5"
+                                ValueChanged="DoUuTien_ValueChanged"
+                                Value="{Binding ContactNeedModel.Piority}" />
+                            <controls:FormLabel Margin="0,5,0,0" Text="{Static lang:Language.danh_gia_kha_nang}" />
+                            <telerikInput:RadShapeRating
+                                x:Name="DanhGiaKhaNang"
+                                ItemsCount="10"
+                                ItemsSpacing="5"
+                                ValueChanged="DanhGiaKhaNang_ValueChanged"
+                                Value="{Binding ContactNeedModel.Rate}" />
+                            <controls:FormLabel Margin="0,5,0,0" Text="{Static lang:Language.ngan_sach_du_kien}" />
+                            <controls:DecimalEntry
+                                x:Name="Decimal_nganSach"
+                                Placeholder="{Static lang:Language.nhap_ngan_sach}"
+                                Text="{Binding ContactNeedModel.budget, StringFormat='{0} VNĐ'}" />
+                            <controls:FormLabel Margin="0,5,0,0" Text="{Static lang:Language.mo_ta}" />
+                            <Grid>
+                                <telerikPrimitives:RadBorder
+                                    BorderColor="LightGray"
+                                    BorderThickness="1"
+                                    CornerRadius="4">
+                                    <Editor
+                                        Margin="0,5,0,0"
+                                        FontSize="16"
+                                        HeightRequest="100"
+                                        HorizontalOptions="FillAndExpand"
+                                        Placeholder="{x:Static lang:Language.mo_ta}"
+                                        Text="{Binding ContactNeedModel.Description}" />
+                                </telerikPrimitives:RadBorder>
+                                <Button
+                                    x:Name="BtnClear"
+                                    Padding="0"
+                                    Clicked="Clear_Clicked"
+                                    FontFamily="{StaticResource FontAwesomeSolid}"
+                                    IsVisible="{Binding ContactNeedModel.Description, Converter={StaticResource NullToHideConverter}}"
+                                    Style="{StaticResource ClearButtonStyle}"
+                                    VerticalOptions="Start" />
+                            </Grid>
+
+                        </StackLayout>
+
+                    </ScrollView>
+                </controls:CenterModal.Body>
+                <controls:CenterModal.Footer>
+                    <Grid Margin="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Button
+                            Grid.Column="0"
+                            Padding="0"
+                            BackgroundColor="White"
+                            BorderColor="{StaticResource MainDarkColor}"
+                            BorderWidth="1"
+                            Clicked="OnBtnCancelAddContactNeed_Click"
+                            CornerRadius="10"
+                            FontSize="16"
+                            HeightRequest="40"
+                            HorizontalOptions="FillAndExpand"
+                            Text="{Static lang:Language.huy}"
+                            TextColor="{StaticResource MainDarkColor}" />
+                        <Button
+                            Grid.Column="1"
+                            Padding="0"
+                            BackgroundColor="{StaticResource MainDarkColor}"
+                            Clicked="OnBtnSaveAddContactNeed_Click"
+                            CornerRadius="10"
+                            FontSize="16"
+                            HeightRequest="40"
+                            HorizontalOptions="FillAndExpand"
+                            Text="{Static lang:Language.luu}"
+                            TextColor="#fff" />
+                    </Grid>
+                </controls:CenterModal.Footer>
+            </controls:CenterModal>
+            <controls:BottomModal x:Name="ModalLookup" />
+            <controls:LoadingPopup x:Name="loadingPopup" />
+        </AbsoluteLayout>
+
+    </ContentView.Content>
+</ContentView>

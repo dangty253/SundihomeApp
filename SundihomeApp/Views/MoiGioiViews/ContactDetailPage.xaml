@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="SundihomeApp.Views.MoiGioiViews.ContactDetailPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SundihomeApp.Controls"
+    xmlns:converters="clr-namespace:SundihomeApp.Converters"
+    xmlns:lang="clr-namespace:SundihomeApp.Resources"
+    xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives"
+    xmlns:views="clr-namespace:SundihomeApp.Views"
+    Title="{Static lang:Language.thong_tin_khach_hang}">
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <Grid
+                Padding="0"
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+                BackgroundColor="White"
+                RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <controls:Segment
+                    x:Name="segment"
+                    Grid.Row="0"
+                    OnSelectedIndexChanged="SegmentSelected_Tapped" />
+                <ContentView
+                    x:Name="MainContentView"
+                    Grid.Row="1"
+                    Margin="0,0,0,0" />
+                <ContentView
+                    x:Name="MainContentView2"
+                    Grid.Row="1"
+                    Margin="0,0,0,0"
+                    IsVisible="false" />
+                <ContentView
+                    x:Name="MainContentView3"
+                    Grid.Row="1"
+                    Margin="0,0,0,0"
+                    IsVisible="false" />
+            </Grid>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

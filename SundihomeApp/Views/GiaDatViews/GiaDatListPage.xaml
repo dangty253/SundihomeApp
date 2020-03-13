@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="SundihomeApp.Views.GiaDatViews.GiaDatListPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:lang="clr-namespace:SundihomeApp.Resources"
+    Title="{x:Static lang:Language.gia_dat}"
+    BackgroundColor="#eeeeee">
+    <ContentPage.Content>
+        <Grid Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Label
+                Grid.Row="0"
+                Margin="0,10"
+                FontSize="16"
+                HorizontalTextAlignment="Center"
+                Text="Chọn khu vực bạn muốn tra cứu giá đất"
+                TextColor="Black" />
+            <Grid Grid.Row="1" Margin="0,10,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Button
+                    Grid.Column="0"
+                    Padding="10,5"
+                    BackgroundColor="White"
+                    BorderColor="{StaticResource MainDarkColor}"
+                    BorderWidth="1"
+                    Clicked="HoChiMinh_Clicked"
+                    Text="TP Hồ Chí Minh"
+                    TextColor="{StaticResource MainDarkColor}" />
+                <Button
+                    Grid.Column="1"
+                    Padding="10,5"
+                    BackgroundColor="White"
+                    BorderColor="{StaticResource MainDarkColor}"
+                    BorderWidth="1"
+                    Clicked="HaNoi_Clicked"
+                    Text="Hà Nội"
+                    TextColor="{StaticResource MainDarkColor}" />
+                <Button
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Padding="10,5"
+                    BackgroundColor="White"
+                    BorderColor="{StaticResource MainDarkColor}"
+                    BorderWidth="1"
+                    Clicked="NamDinh_Clicked"
+                    Text="Nam Dinh"
+                    TextColor="{StaticResource MainDarkColor}" />
+                <Button
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Padding="10,5"
+                    BackgroundColor="White"
+                    BorderColor="{StaticResource MainDarkColor}"
+                    BorderWidth="1"
+                    Clicked="BinhDuong_Clicked"
+                    Text="Binh Duong"
+                    TextColor="{StaticResource MainDarkColor}" />
+                <Button
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Padding="10,5"
+                    BackgroundColor="White"
+                    BorderColor="{StaticResource MainDarkColor}"
+                    BorderWidth="1"
+                    Clicked="DongNai_Clicked"
+                    Text="DongNai"
+                    TextColor="{StaticResource MainDarkColor}" />
+                <Button
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    Padding="10,5"
+                    BackgroundColor="White"
+                    BorderColor="{StaticResource MainDarkColor}"
+                    BorderWidth="1"
+                    Clicked="BacNinh_Clicked"
+                    Text="Bac Ninh"
+                    TextColor="{StaticResource MainDarkColor}" />
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

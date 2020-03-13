@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:lang="clr-namespace:SundihomeApp.Resources"
+             Title="{Static lang:Language.loc_noi_that}"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
+             xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives"
+             xmlns:controls="clr-namespace:SundihomeApp.Controls"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SundihomeApp.Views.Furniture.FurnitureProductFiltePage">
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1"
+                        AbsoluteLayout.LayoutFlags="All">
+                <StackLayout Spacing="10"
+                             Margin="10,5">
+                    <!--danh mục nội thất-->
+                    <controls:FormLabel Text="{Static lang:Language.nhom_noi_that}" />
+                    <controls:LookUpControl x:Name="LookUpParentCagegory"
+                                            SelectedItem="{Binding ParentCategory}"
+                                            ItemsSource="{Binding ParentCategories}"
+                                            ModalPopup="{x:Reference ModalPopup}"
+                                            Placeholder="{Static lang:Language.nhom_noi_that}"
+                                            NameDisplay="Name"
+                                            SelectedItemChange="OnParentCategory_Changed" />
+
+                    <!--danh mục nội thất-->
+                    <controls:FormLabel Text="{Static lang:Language.loai_noi_that}" />
+                    <controls:LookUpControl x:Name="LookUpChildCagegory"
+                                            SelectedItem="{Binding ChildCategory}"
+                                            ItemsSource="{Binding ChildCategories}"
+                                            ModalPopup="{x:Reference ModalPopup}"
+                                            Placeholder="{Static lang:Language.loai_noi_that}"
+                                            NameDisplay="Name" />
+
+                    <!--Tỉnh/thành phố-->
+                    <controls:FormLabel Text="{Static lang:Language.tinh_thanh}" />
+                    <controls:LookUpControl SelectedItem="{Binding Province}"
+                                            ItemsSource="{Binding ProvinceList}"
+                                            ModalPopup="{x:Reference ModalPopup}"
+                                            Placeholder="{Static lang:Language.tinh_thanh}"
+                                            NameDisplay="Name"
+                                            SelectedItemChange="OnProvice_Change" />
+
+                    <!--Quận/huyện-->
+                    <controls:FormLabel Text="{Static lang:Language.quan_huyen}" />
+                    <controls:LookUpControl SelectedItem="{Binding District}"
+                                            ItemsSource="{Binding DistrictList}"
+                                            ModalPopup="{x:Reference ModalPopup}"
+                                            Placeholder="{Static lang:Language.quan_huyen}"
+                                            NameDisplay="Name"
+                                            SelectedItemChange="OnDistrict_Change" />
+
+                    <!--Xã/phường-->
+                    <controls:FormLabel Text="{Static lang:Language.phuong_xa}" />
+                    <controls:LookUpControl SelectedItem="{Binding Ward}"
+                                            ItemsSource="{Binding WardList}"
+                                            ModalPopup="{x:Reference ModalPopup}"
+                                            Placeholder="{Static lang:Language.phuong_xa}"
+                                            NameDisplay="Name" />
+
+                    <!--Từ khoá-->
+                    <controls:FormLabel Text="{Static lang:Language.tu_khoa}"
+                                        Margin="0,0,0,-5" />
+                    <controls:ClearableEntry x:Name="EntryTitle"
+                                             Placeholder="{Static lang:Language.nhap_tu_khoa_tim_kiem}"
+                                             Text="{Binding Keyword}" />
+                </StackLayout>
+            </ScrollView>
+
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="End"
+                         Spacing="0"
+                         AbsoluteLayout.LayoutBounds="0,1,1,64"
+                         AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional"
+                         Margin="5">
+                <Frame Margin="5"
+                       Padding="0"
+                       CornerRadius="22">
+                    <Button Text="&#xf021;"
+                            FontSize="20"
+                            WidthRequest="44"
+                            HeightRequest="44"
+                            CornerRadius="22"
+                            FontFamily="{StaticResource FontAwesomeSolid}"
+                            BackgroundColor="White"
+                            TextColor="{StaticResource MainDarkColor}"
+                            Clicked="ResetForm_Clicked" />
+                </Frame>
+                <Frame Margin="5"
+                       Padding="0"
+                       CornerRadius="22">
+                    <Button Text="&#xf002;"
+                            FontSize="20"
+                            WidthRequest="44"
+                            HeightRequest="44"
+                            CornerRadius="22"
+                            FontFamily="{StaticResource FontAwesomeSolid}"
+                            BackgroundColor="White"
+                            TextColor="{StaticResource MainDarkColor}"
+                            Clicked="Filter_Clicked" />
+                </Frame>
+            </StackLayout>
+
+            <ContentView x:Name="ModalPopupBackground"
+                         AbsoluteLayout.LayoutBounds="0,0,1,1"
+                         AbsoluteLayout.LayoutFlags="All"
+                         IsVisible="{Binding Source={x:Reference ModalPopup},Path=IsVisible}">
+                <ContentView.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1"
+                                          Tapped="CloseModal_Clicked" />
+                </ContentView.GestureRecognizers>
+            </ContentView>
+
+            <ContentView x:Name="ModalPopup"
+                         IsVisible="false"
+                         TranslationY="{Binding Path=Height, Source={x:Reference ModalPopup}}"
+                         AbsoluteLayout.LayoutBounds="1,1,1,0.6"
+                         AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional,HeightProportional">
+                <StackLayout x:Name="ModalPopupContent"
+                             VerticalOptions="End"
+                             Spacing="0">
+                    <telerikPrimitives:RadBorder BackgroundColor="White"
+                                                 BorderThickness="0,0,0,1"
+                                                 BorderColor="#444444"
+                                                 Padding="10">
+                        <StackLayout Orientation="Horizontal"
+                                     Padding="0"
+                                     Spacing="0">
+                            <Label x:Name="ModalTitle"
+                                   TextColor="{StaticResource MainDarkColor}"
+                                   FontSize="16"
+                                   VerticalOptions="Center"
+                                   VerticalTextAlignment="Center"
+                                   FontAttributes="Bold" />
+                            <Button Text="&#xf057;"
+                                    FontSize="20"
+                                    WidthRequest="30"
+                                    Padding="0"
+                                    Margin="0"
+                                    HeightRequest="30"
+                                    CornerRadius="22"
+                                    FontFamily="{StaticResource FontAwesomeRegular}"
+                                    HorizontalOptions="EndAndExpand"
+                                    BackgroundColor="transparent"
+                                    TextColor="#444444"
+                                    Clicked="CloseModal_Clicked" />
+                        </StackLayout>
+                    </telerikPrimitives:RadBorder>
+                </StackLayout>
+            </ContentView>
+
+            <controls:LoadingPopup x:Name="loadingPopup" />
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             Title="{Static lang:Language.moi_gioi}"
+             xmlns:contentView="clr-namespace:SundihomeApp.Views"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:lang="clr-namespace:SundihomeApp.Resources"
+             x:Class="SundihomeApp.Views.MoiGioiViews.AllListPage">
+    
+    <ContentPage.Content>
+        <contentView:AgentContentView/>
+    </ContentPage.Content>
+</ContentPage>

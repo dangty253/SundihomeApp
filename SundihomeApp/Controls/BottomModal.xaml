@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" IsVisible="false" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives" xmlns:controls="clr-namespace:SundihomeApp.Controls" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SundihomeApp.Controls.BottomModal">
+    <ContentView.Content>
+        <AbsoluteLayout>
+            <ContentView x:Name="ModalPopupBackground" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <ContentView.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Hide_Tapped" />
+                </ContentView.GestureRecognizers>
+            </ContentView>
+            <ContentView x:Name="ModalPopup" TranslationY="{Binding Path=Height, Source={x:Reference ModalPopup}}" AbsoluteLayout.LayoutBounds="1,1,1,0.8" AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional,HeightProportional">
+                <Grid x:Name="ModalPopupContent" VerticalOptions="End" RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <telerikPrimitives:RadBorder Grid.Row="0" BorderThickness="0,0,0,1" BackgroundColor="White" CornerRadius="10,10,0,0" BorderColor="#444444" Padding="10,5">
+                        <StackLayout Orientation="Horizontal" Padding="0" Spacing="0">
+                            <Label x:Name="ModalTitle" TextColor="{StaticResource MainDarkColor}" FontSize="16" VerticalOptions="Center" VerticalTextAlignment="Center" FontAttributes="Bold" Text="{Binding Title}" />
+                            <Button Text="&#xf057;" Padding="0" FontSize="20" WidthRequest="30" Margin="0" HeightRequest="30" CornerRadius="22" FontFamily="{StaticResource FontAwesomeRegular}" HorizontalOptions="EndAndExpand" BackgroundColor="transparent" TextColor="#444444" Clicked="Hide_Tapped" />
+                        </StackLayout>
+                    </telerikPrimitives:RadBorder>
+                    <ContentView Grid.Row="1" Content="{Binding ModalContent}" BackgroundColor="White" />
+                </Grid>
+            </ContentView>
+        </AbsoluteLayout>
+    </ContentView.Content>
+</ContentView>

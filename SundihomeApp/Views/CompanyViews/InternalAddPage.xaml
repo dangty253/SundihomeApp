@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:lang="clr-namespace:SundihomeApp.Resources"
+             Title="{x:Static lang:Language.dang_bai}"
+             xmlns:templateSelectors="clr-namespace:SundihomeApp.TemplateSelectors"
+             xmlns:converters="clr-namespace:SundihomeApp.Converters"
+             xmlns:controls="clr-namespace:SundihomeApp.Controls"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives"
+             xmlns:telerikInput="clr-namespace:Telerik.XamarinForms.Input;assembly=Telerik.XamarinForms.Input"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true" x:Class="SundihomeApp.Views.CompanyViews.InternalAddPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:BoolToBoolConverter  x:Key="BoolToBoolConverter" />
+            <templateSelectors:PostTemplateSeletor x:Key="PostTemplateSeletor" />
+            <converters:NullToHideConverter x:Key="NullToHideConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Padding="0,0,0,70">
+                <StackLayout Padding="10">
+                    <controls:FormLabelRequired Text="{x:Static lang:Language.tieu_de}" Margin="0,5,0,0" />
+                    <controls:ClearableEntry x:Name="EntryTitle" Placeholder="{x:Static lang:Language.tieu_de}" />
+
+                    <controls:FormLabelRequired Text="{x:Static lang:Language.noi_dung}" Margin="0,5,0,0" />
+                    <telerikPrimitives:RadBorder BorderColor="#eeeeee" BorderThickness="1" CornerRadius="0" Padding="5">
+                        <StackLayout Spacing="0">
+                            <Editor x:Name="editor" HeightRequest="100" BackgroundColor="White" Placeholder="{x:Static lang:Language.nhap_noi_dung}" />
+                        </StackLayout>
+                    </telerikPrimitives:RadBorder>
+
+                    <StackLayout>
+                        <controls:FormLabel Text="{x:Static lang:Language.hinh_anh}" />
+                        <ScrollView Orientation="Horizontal">
+                            <StackLayout Orientation="Horizontal" BindableLayout.ItemsSource="{Binding Media}" Spacing="5">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid WidthRequest="100" HeightRequest="120">
+                                            <ffimageloading:CachedImage  DownsampleToViewSize="true" HeightRequest="100" Source="{Binding PreviewPath}" Aspect="AspectFill" HorizontalOptions="FillAndExpand" />
+                                            <Button Text="&#xf2ed;" TextColor="#026294" FontSize="14" HorizontalOptions="End" VerticalOptions="Start" BorderWidth="0" BackgroundColor="White" WidthRequest="25" HeightRequest="25" Margin="0,5,5,0" Clicked="Remove_Image" CommandParameter="{Binding}" Padding="0" FontFamily="{StaticResource FontAwesomeSolid}" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </StackLayout>
+                        </ScrollView>
+                        <Button Text="{x:Static lang:Language.chon_hinh_anh}" Command="{Binding SelectImagesCommand}" BackgroundColor="White" TextColor="{StaticResource MainDarkColor}" BorderColor="{StaticResource MainDarkColor}" BorderWidth="1" HorizontalOptions="Start" Padding="10,0" HeightRequest="30" />
+                    </StackLayout>
+
+                    <StackLayout>
+                        <controls:FormLabel Text="{x:Static lang:Language.bat_dong_san_dinh_kem}" />
+                        <controls:ExtendedFrame Margin="5" Padding="10" IsVisible="{Binding InternalPost,Converter={StaticResource NullToHideConverter}}">
+                            <Grid RowSpacing="0" ColumnSpacing="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="80" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Image Grid.Column="0" HeightRequest="80" BackgroundColor="#eeeeee" Aspect="AspectFill" Source="{Binding InternalPost.AvatarFullUrl}" />
+                                <StackLayout Grid.Column="1" Spacing="3" Margin="5">
+                                    <Label Text="{Binding InternalPost.Title}" TextColor="{StaticResource MainDarkColor}" FontSize="14" MaxLines="2" LineBreakMode="TailTruncation" FontAttributes="Bold" />
+                                    <Label Text="{Binding InternalPost.PriceText}" TextColor="Red" FontSize="13" MaxLines="1" LineBreakMode="TailTruncation" />
+                                    <Label Text="{Binding InternalPost.Address}" TextColor="Gray" FontSize="13" MaxLines="2" LineBreakMode="TailTruncation" />
+                                </StackLayout>
+                                <Button Grid.ColumnSpan="2" Text="&#xf2ed;" CornerRadius="17" Clicked="RemovePost_Clicked" WidthRequest="35" HeightRequest="35" FontFamily="{StaticResource FontAwesomeRegular}" FontSize="15" BackgroundColor="White" BorderColor="Gray" TextColor="Black" BorderWidth="1" HorizontalOptions="End" VerticalOptions="Start" />
+                            </Grid>
+                        </controls:ExtendedFrame>
+                        <Button Text="{x:Static lang:Language.chon_bat_dong_san}" Clicked="PickerPost_Clicked" BackgroundColor="White" TextColor="{StaticResource MainDarkColor}" BorderColor="{StaticResource MainDarkColor}" BorderWidth="1" HorizontalOptions="Start" Padding="10,0" HeightRequest="30" />
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+
+            <!--Add Button-->
+            <StackLayout Orientation="Horizontal" HorizontalOptions="End" Spacing="0" AbsoluteLayout.LayoutBounds="0,1,1,64" AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional" Margin="5">
+                <Frame Margin="5" Padding="0" CornerRadius="22">
+                    <Button Text="&#xf044;" Style="{StaticResource FLoatButtonStyle}" FontFamily="{StaticResource FontAwesomeRegular}" Clicked="Save_Clicked" />
+                </Frame>
+            </StackLayout>
+
+            <controls:BottomModal x:Name="BottomModal" Title="{x:Static lang:Language.chon_bat_dong_san}">
+                <controls:BottomModal.ModalContent>
+                    <Grid RowSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <StackLayout Padding="5" Grid.Row="0" BackgroundColor="White">
+                            <Frame HeightRequest="35" CornerRadius="8" BorderColor="Gray" Padding="0" Margin="0" HasShadow="False">
+                                <SearchBar  x:Name="ModalPopupSearchBar" TextChanged="SearchBar_TextChanged" BackgroundColor="#ffffff" FontSize="14" SearchButtonPressed="Search_Clicked" Placeholder="{x:Static lang:Language.nhap_tu_khoa_tim_kiem}" />
+                            </Frame>
+                        </StackLayout>
+                        <controls:BsdListView Grid.Row="1" x:Name="ListView0" ItemTemplate="{StaticResource PostTemplateSeletor}" />
+                    </Grid>
+                </controls:BottomModal.ModalContent>
+            </controls:BottomModal>
+            <controls:LoadingPopup x:Name="loadingPopup" />
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

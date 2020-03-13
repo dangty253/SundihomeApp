@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <string name="facebook_app_name">SundiHome</string>
+    <string name="facebook_app_id">764532897311608</string>
+    <string name="fb_login_protocol_scheme">fb764532897311608</string>
+</resources>

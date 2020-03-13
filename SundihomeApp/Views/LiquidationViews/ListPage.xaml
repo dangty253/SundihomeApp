@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives"
+             x:Class="SundihomeApp.Views.LiquidationViews.ListPage"
+             xmlns:controls="clr-namespace:SundihomeApp.Controls"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
+             xmlns:lang="clr-namespace:SundihomeApp.Resources"
+             Title="{Static lang:Language.thanh_ly}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!--RadBorder Categories Style-->
+            <Style x:Key="RadBorderCategories"
+                   TargetType="telerikPrimitives:RadBorder">
+                <Setter Property="Margin"
+                        Value="0,0,0,0" />
+                <Setter Property="Padding"
+                        Value="10,7" />
+                <Setter Property="BorderColor"
+                        Value="#eeeeee" />
+                <Setter Property="BorderThickness"
+                        Value="1" />
+                <Setter Property="CornerRadius"
+                        Value="5" />
+                <Setter Property="BackgroundColor"
+                        Value="White" />
+            </Style>
+            <!--Category style-->
+            <Style x:Key="Category"
+                   TargetType="Label">
+                <Setter Property="TextColor"
+                        Value="Black" />
+                <Setter Property="FontAttributes"
+                        Value="None" />
+                <Setter Property="FontSize"
+                        Value="14" />
+                <Setter Property="VerticalTextAlignment"
+                        Value="Center" />
+            </Style>
+            <!--Product name style-->
+            <Style x:Key="ProductName"
+                   TargetType="Label">
+                <Setter Property="TextColor"
+                        Value="{StaticResource MainDarkColor}" />
+                <Setter Property="FontSize"
+                        Value="16" />
+                <Setter Property="MaxLines"
+                        Value="2" />
+                <Setter Property="FontAttributes"
+                        Value="Bold" />
+                <Setter Property="LineBreakMode"
+                        Value="TailTruncation" />
+            </Style>
+            <!--Product price style-->
+            <Style x:Key="ProductPrice"
+                   TargetType="Label">
+                <Setter Property="TextColor"
+                        Value="Red" />
+                <Setter Property="FontAttributes"
+                        Value="None" />
+                <Setter Property="FontSize"
+                        Value="14" />
+                <Setter Property="MaxLines"
+                        Value="1" />
+                <Setter Property="LineBreakMode"
+                        Value="TailTruncation" />
+            </Style>
+
+            <Style x:Key="FilterButtonStyle"
+                   TargetType="Button">
+                <Setter Property="Text"
+                        Value="{StaticResource Filter}" />
+                <Setter Property="TextColor"
+                        Value="White" />
+                <Setter Property="CornerRadius"
+                        Value="10" />
+                <Setter Property="BackgroundColor"
+                        Value="{StaticResource MainDarkColor}" />
+                <Setter Property="HeightRequest"
+                        Value="35" />
+                <Setter Property="WidthRequest"
+                        Value="35" />
+                <Setter Property="HorizontalOptions"
+                        Value="Center" />
+                <Setter Property="VerticalOptions"
+                        Value="Center" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <AbsoluteLayout BackgroundColor="White">
+            <Grid AbsoluteLayout.LayoutBounds="0,0,1,1"
+                  AbsoluteLayout.LayoutFlags="All">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <controls:BsdListView x:Name="ListViewThanhLy"
+                                      Grid.Row="0"
+                                      BackgroundColor="#eeeeee">
+                    <ListView.Header>
+                        <Grid Padding="10,5"
+                              BackgroundColor="White">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="35" />
+                            </Grid.RowDefinitions>
+                            <ScrollView Grid.Row="0"
+                                        Orientation="Horizontal"
+                                        HorizontalScrollBarVisibility="Never"
+                                        x:Name="scroll">
+                                <StackLayout x:Name="CategoriesStackLayout"
+                                             Orientation="Horizontal">
+                                    <BindableLayout.ItemTemplate>
+                                        <DataTemplate>
+                                            <telerikPrimitives:RadBorder Style="{StaticResource RadBorderCategories}">
+                                                <telerikPrimitives:RadBorder.GestureRecognizers>
+                                                    <TapGestureRecognizer NumberOfTapsRequired="1"
+                                                                          Tapped="OnCategoryTapped"
+                                                                          CommandParameter="{Binding Id}" />
+                                                </telerikPrimitives:RadBorder.GestureRecognizers>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Image HeightRequest="20"
+                                                           Source="{Binding Icon}" />
+                                                    <Label Text="{Binding Name}"
+                                                           Style="{StaticResource Category}" />
+                                                </StackLayout>
+                                            </telerikPrimitives:RadBorder>
+                                        </DataTemplate>
+                                    </BindableLayout.ItemTemplate>
+                                </StackLayout>
+                            </ScrollView>
+                            <Frame Grid.Row="1"
+                                   HeightRequest="35"
+                                   CornerRadius="8"
+                                   BorderColor="#aaaaaa"
+                                   Padding="0"
+                                   Margin="0"
+                                   HasShadow="False">
+                                <SearchBar x:Name="SearchBarLiquidation"
+                                           BackgroundColor="{OnPlatform iOS='White'}"
+                                           TextColor="Black"
+                                           FontSize="14"
+                                           Placeholder="{Static lang:Language.tim_kiem}"
+                                           SearchButtonPressed="Clicked_BtnSearch"
+                                           TextChanged="Search_TextChaned" />
+                            </Frame>
+                        </Grid>
+                    </ListView.Header>
+                </controls:BsdListView>
+            </Grid>
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="End"
+                         Spacing="0"
+                         AbsoluteLayout.LayoutBounds="0,1,1,64"
+                         AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional"
+                         Margin="5">
+                <Frame Margin="5"
+                       Padding="0"
+                       CornerRadius="22">
+                    <Button Text="&#xf067;"
+                            Style="{StaticResource FLoatButtonStyle}"
+                            FontFamily="{StaticResource FontAwesomeSolid}"
+                            Clicked="AddLiquidation_Clicked" />
+                </Frame>
+            </StackLayout>
+            <controls:LoadingPopup x:Name="loadingPopup" />
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

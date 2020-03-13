@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:lang="clr-namespace:SundihomeApp.Resources"
+             xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" Title="Nhập giá" xmlns:controls="clr-namespace:SundihomeApp.Controls" xmlns:converters="clr-namespace:SundihomeApp.Converters" BackgroundColor="{StaticResource MainPageBackgroundColor}" x:Class="SundihomeApp.Views.SelectPricePage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:TextDecimalConverter x:Key="TextDecimalConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="10">
+                <controls:FormLabel Text="{x:Static lang:Language.nhap_gia}" />
+                <Entry x:Name="EntryPrice" TextChanged="TextChanged" Placeholder="{x:Static lang:Language.nhap_gia}" Keyboard="Numeric" Text="{Binding Text}" FontSize="15" />
+                <controls:FormLabel Text="{x:Static lang:Language.don_vi}" />
+                <StackLayout x:Name="STDonViTinh" BindableLayout.ItemsSource="{Binding Options}" BackgroundColor="White" Spacing="0">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <telerikPrimitives:RadBorder BorderThickness="0,0,0,1" BorderColor="#eeeeee">
+                                <telerikPrimitives:RadBorder.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Selected_Tapped" CommandParameter="{Binding}" />
+                                </telerikPrimitives:RadBorder.GestureRecognizers>
+                                <Grid Padding="10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0" Text="{Binding Name}" FontSize="16" TextColor="Black" />
+                                    <Label Grid.Column="1" HorizontalOptions="End" Margin="0,0,5,0" VerticalOptions="Center" Text="&#xf00c;" IsVisible="{Binding IsSelected}" TextColor="DarkGreen" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="15" />
+                                </Grid>
+                            </telerikPrimitives:RadBorder>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+                <Button x:Name="BtnSave" Clicked="Save_Clicked" Text="{x:Static lang:Language.xac_nhan}" Margin="0,15,0,0" BackgroundColor="{StaticResource MainDarkColor}" TextColor="White" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

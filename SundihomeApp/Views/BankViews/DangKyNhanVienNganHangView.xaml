@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:lang="clr-namespace:SundihomeApp.Resources" xmlns:controls="clr-namespace:SundihomeApp.Controls" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SundihomeApp.Views.BankViews.DangKyNhanVienNganHangView">
+    <ContentView.Content>
+        <AbsoluteLayout>
+            <Grid AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <ScrollView Grid.Row="0">
+                    <StackLayout Margin="10">
+                        <controls:FormLabelRequired Text="{x:Static lang:Language.ngan_hang}" />
+                        <controls:LookUpControl x:Name="lookupBank" SelectedItem="{Binding Bank}" ItemsSource="{Binding BankList}" Placeholder="{x:Static lang:Language.ngan_hang}" NameDisplay="FullName" />
+
+                        <controls:FormLabelRequired Text="{x:Static lang:Language.province}" />
+                        <controls:LookUpControl x:Name="lookupProvince" SelectedItem="{Binding Province}" ItemsSource="{Binding ProvinceList}" Placeholder="{x:Static lang:Language.province}" NameDisplay="Name" SelectedItemChange="Province_Change" />
+
+                        <controls:FormLabel Text="{x:Static lang:Language.district}" />
+                        <controls:LookUpControl x:Name="lookupDistrict" SelectedItem="{Binding District}" ItemsSource="{Binding DistrictList}" Placeholder="{x:Static lang:Language.district}" NameDisplay="Name" />
+                    </StackLayout>
+                </ScrollView>
+                <Grid Margin="5" Grid.Row="1" ColumnSpacing="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35" />
+                    </Grid.RowDefinitions>
+                    <Button x:Name="btnCancel" Text="{x:Static lang:Language.huy}" Grid.Column="0" Grid.Row="0" BackgroundColor="White" CornerRadius="5" BorderWidth="1" BorderColor="{StaticResource MainDarkColor}" TextColor="{StaticResource MainDarkColor}" Clicked="Cancel_Clicked" />
+                    <Button x:Name="btnRegister" Text="{x:Static lang:Language.dang_ky}" Grid.Column="1" Grid.Row="0" BackgroundColor="{StaticResource MainDarkColor}" TextColor="White" CornerRadius="5" />
+                </Grid>
+            </Grid>
+            <controls:LoadingPopup x:Name="loadingPopup" />
+        </AbsoluteLayout>
+    </ContentView.Content>
+</ContentView>

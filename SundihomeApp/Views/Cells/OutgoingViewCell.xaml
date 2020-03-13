@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SundihomeApp.Views.Cells.OutgoingViewCell">
+    <ViewCell.View>
+        <Grid Rotation="180" ColumnSpacing="2" Padding="5,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="35" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Frame Grid.Row="0" Grid.Column="0" BackgroundColor="#0084FF" Padding="9,7,9,5" HorizontalOptions="Start">
+                <Frame.HasShadow>
+                    <OnPlatform x:TypeArguments="x:Boolean" iOS="false" Android="true" />
+                </Frame.HasShadow>
+                <StackLayout HorizontalOptions="Start">
+                    <Label TextColor="White" FontSize="16" Text="{Binding MessageContent}" />
+                    <Label FontSize="Micro" HorizontalTextAlignment="End" Text="{Binding CreatedDate, StringFormat='{0:HH:mm}'}" TextColor="#eeeeee" />
+                </StackLayout>
+            </Frame>
+        </Grid>
+    </ViewCell.View>
+</ViewCell>

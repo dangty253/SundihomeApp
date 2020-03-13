@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" Title="{x:Static lang:Language.tinh_tien_vay}" xmlns:telerikDataGrid="clr-namespace:Telerik.XamarinForms.DataGrid;assembly=Telerik.XamarinForms.DataGrid" xmlns:controls="clr-namespace:SundihomeApp.Controls" xmlns:lang="clr-namespace:SundihomeApp.Resources" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SundihomeApp.Views.BankViews.CalculatorPage">
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <StackLayout Margin="10">
+                    <controls:FormLabelRequired Text="{x:Static lang:Language.phuong_thuc_tra_lai}" Margin="0,5,0,0" />
+                    <controls:LookUpControl x:Name="LookupMethod" SelectedItem="{Binding Method}" BottomModal="{x:Reference lookupModal}" Placeholder="{x:Static lang:Language.phuong_thuc_tra_lai}" NameDisplay="Name" SelectedItemChange="OnMethod_Changed" />
+
+                    <controls:FormLabelRequired Text="{x:Static lang:Language.so_tien_vay}" Margin="0,5,0,0" />
+                    <controls:CurrencyEntry Placeholder="{x:Static lang:Language.so_tien_vay}" Text="{Binding SoTienVay}" />
+
+                    <!--Lãi suất (%/năm)-->
+                    <controls:FormLabelRequired x:Name="EntryLaiSuatPerYear" Margin="0,5,0,0" />
+                    <controls:DecimalEntry x:Name="EntryLaiSuat" Placeholder="{x:Static lang:Language.lai_suat}" Text="{Binding LaiSuatText}" />
+
+                    <StackLayout Margin="0,5,0,0" Orientation="Horizontal">
+                        <controls:FormLabelRequired Text="{x:Static lang:Language.thoi_han_vay}" />
+                        <Label Text="{Binding Source={x:Static lang:Language.month},StringFormat='({0})'}" FontSize="15" TextColor="Gray" />
+                    </StackLayout>
+                    <controls:CurrencyEntry Placeholder="{x:Static lang:Language.thoi_han_vay}" Text="{Binding ThoiHanVay}" x:Name="EntryTime" />
+
+                    <StackLayout Orientation="Horizontal" Margin="0,5,0,0" x:Name="StackLaiSuatNoi">
+                        <controls:FormLabel Text="{x:Static lang:Language.lai_suat_noi}" VerticalOptions="Center" />
+                        <Switch x:Name="CKLaiSuatNoi" IsToggled="{Binding LaiSuatNoi}" Toggled="LaiSuatNoi_Checked" />
+                    </StackLayout>
+
+                    <StackLayout Margin="0,5,0,0" x:Name="StackFixTime" IsVisible="false">
+                        <StackLayout  Orientation="Horizontal">
+                            <controls:FormLabelRequired Text="{x:Static lang:Language.thoi_han_co_dinh}" />
+                            <Label Text="{Binding Source={x:Static lang:Language.month},StringFormat='({0})'}" FontSize="15" TextColor="Gray" />
+                        </StackLayout>
+                        <controls:CurrencyEntry Placeholder="{x:Static lang:Language.thoi_han_co_dinh}" Text="{Binding ThoiHanVayCoDinh}" x:Name="EntryFixTime" />
+                    </StackLayout>
+
+                    <StackLayout Margin="0,5,0,0" x:Name="StackLaiSuatTrungBinh" IsVisible="false">
+                        <controls:FormLabelRequired Text="{x:Static lang:Language.lai_suat_trung_binh_sau_thoi_gian_co_dinh}" />
+                        <controls:DecimalEntry x:Name="EntryLaiSuatTrungBinh" Placeholder="{x:Static lang:Language.lai_suat_trung_binh_sau_thoi_gian_co_dinh}" Text="{Binding LaiSuatTrungBinhText}" />
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="End" Spacing="0" AbsoluteLayout.LayoutBounds="0,1,1,64" AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional" Margin="5">
+                <Frame Margin="5" Padding="0" CornerRadius="22">
+                    <Button Style="{StaticResource FLoatButtonStyle}" Text="&#xf1ec;" FontFamily="{StaticResource FontAwesomeSolid}" Clicked="Calculator_Clicked" />
+                </Frame>
+            </StackLayout>
+            <controls:CenterModal x:Name="ModalCalculatorResult" Title="{x:Static lang:Language.ket_qua}">
+                <controls:CenterModal.Body>
+                    <ScrollView VerticalOptions="FillAndExpand">
+                        <StackLayout Margin="10" VerticalOptions="FillAndExpand">
+                            <StackLayout>
+                                <Label x:Name="LabelGocLai" FontSize="14" TextColor="Black">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static lang:Language.so_tien_phai_tra_hang_thang}" />
+                                            <Span Text=" : " />
+                                            <Span x:Name="SpanGL" FontAttributes="Bold" TextColor="Red" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+
+                                <Label FontSize="14" TextColor="Black">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static lang:Language.tong_so_tien_lai}" />
+                                            <Span Text=" : " />
+                                            <Span x:Name="SpanTTL" FontAttributes="Bold" TextColor="Red" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+
+                                <Label FontSize="14" TextColor="Black">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static lang:Language.tong_so_tien_phai_tra}" />
+                                            <Span Text=" : " />
+                                            <Span x:Name="SpanTTT" FontAttributes="Bold" TextColor="Red" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </StackLayout>
+                            <controls:BsdRadDataGrid x:Name="dataGrid" ItemsSource="{Binding CalcResult}" LoadOnDemandMode="Manual">
+                                <!--<controls:BsdRadDataGrid.GroupDescriptors>
+                                    <common:PropertyGroupDescriptor PropertyName="Nam" />
+                                </controls:BsdRadDataGrid.GroupDescriptors>-->
+                                <telerikDataGrid:RadDataGrid.Columns>
+                                    <telerikDataGrid:DataGridTextColumn PropertyName="NoOfmOnthText" HeaderText="{x:Static lang:Language.thoi_gian}" />
+                                    <telerikDataGrid:DataGridNumericalColumn PropertyName="LaiText" HeaderText="{x:Static lang:Language.lai}" />
+                                    <telerikDataGrid:DataGridNumericalColumn PropertyName="SoTienPhaiTraText" HeaderText="{x:Static lang:Language.so_tien_phai_tra}" />
+                                    <telerikDataGrid:DataGridNumericalColumn PropertyName="SoGocConLaiText" HeaderText="{x:Static lang:Language.so_goc_con_lai}" />
+                                </telerikDataGrid:RadDataGrid.Columns>
+                            </controls:BsdRadDataGrid>
+                        </StackLayout>
+                    </ScrollView>
+                </controls:CenterModal.Body>
+            </controls:CenterModal>
+            <controls:BottomModal x:Name="lookupModal" />
+            <controls:LoadingPopup x:Name="loadingPopup" />
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

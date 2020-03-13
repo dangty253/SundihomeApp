@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage Title="{Static lang:Language.them_cong_viec}"
+             xmlns:lang="clr-namespace:SundihomeApp.Resources"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:SundihomeApp.Controls"
+             xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
+             x:Class="SundihomeApp.Views.QuanLyMoiGioiViews.AddTaskPage">
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1"
+                        AbsoluteLayout.LayoutFlags="All">
+                <StackLayout Margin="10">
+                    <!--Tieu de-->
+                    <controls:FormLabelRequired Text="{Static lang:Language.tieu_de_cong_viec}"
+                                                Margin="0,5,0,0" />
+                    <Entry Placeholder="{Static lang:Language.tieu_de_cong_viec}"
+                           Text="{Binding CongViec.Title}" />
+
+                    <!--Khach hang-->
+                    <controls:FormLabelRequired Text="{Static lang:Language.khach_hang}"
+                                                Margin="0,5,0,0" />
+                    <controls:LookUpControl SelectedItem="{Binding CongViec.Contact}"
+                                            ItemsSource="{Binding ContactList}"
+                                            BottomModal="{x:Reference ModalLookup}"
+                                            NameDisplay="FullName"
+                                            Placeholder="{Static lang:Language.khach_hang}"
+                                            SelectedItemChange="Contact_Change" />
+
+                    <!--Noi dung-->
+                    <controls:FormLabelRequired Text="{Static lang:Language.noi_dung}"
+                                                Margin="0,5,0,0" />
+                    <telerikPrimitives:RadBorder BorderThickness="1"
+                                                 BorderColor="LightGray"
+                                                 CornerRadius="5">
+                        <Editor Placeholder="{Static lang:Language.noi_dung}"
+                                HeightRequest="150"
+                                Text="{Binding CongViec.Description}" />
+                    </telerikPrimitives:RadBorder>
+
+                    <!--Thoi gian-->
+                    <Grid Grid.Row="3"
+                          Margin="0,5,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Grid.Column="0"
+                                     Spacing="5">
+                            <controls:FormLabelRequired Text="{Static lang:Language.ngay}" />
+                            <DatePicker Date="{Binding CongViec.Date}"
+                                        Format="dd/MM/yyyy" />
+                        </StackLayout>
+                        <StackLayout Grid.Column="1"
+                                     Spacing="5">
+                            <controls:FormLabelRequired Text="{Static lang:Language.gio}" />
+                            <TimePicker Time="{Binding SelectedTime}" />
+                        </StackLayout>
+                    </Grid>
+
+                    <!--Trang thai-->
+                    <StackLayout Margin="0,5,0,0"
+                                 Orientation="Horizontal">
+                        <controls:FormLabel  >
+                            <controls:FormLabel.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Static lang:Language.trang_thai}"/>
+                                    <Span Text=": "/>
+                                </FormattedString>
+                            </controls:FormLabel.FormattedText>
+                        </controls:FormLabel>
+                        <Label Text="{Static lang:Language.thuc_hien}"
+                               TextColor="DarkGreen"
+                               FontSize="15"
+                               FontAttributes="Bold"
+                               Margin="0,5,0,0" />
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="End"
+                         Spacing="0"
+                         AbsoluteLayout.LayoutBounds="0,1,1,64"
+                         AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional"
+                         Margin="5">
+                <Frame Margin="5"
+                       Padding="0"
+                       CornerRadius="22"
+                       BorderColor="Gray">
+                    <Button Text="{StaticResource Save}"
+                            Style="{StaticResource FLoatButtonStyle}"
+                            FontFamily="{StaticResource FontAwesomeSolid}"
+                            Clicked="SaveTask_Clicked" />
+                </Frame>
+            </StackLayout>
+            <controls:BottomModal x:Name="ModalLookup" />
+            <controls:LoadingPopup x:Name="loadingPopup" />
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

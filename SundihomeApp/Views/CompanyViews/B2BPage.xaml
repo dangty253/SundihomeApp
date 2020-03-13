@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" BackgroundColor="#eeeeee" xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" ios:Page.UseSafeArea="true" xmlns:converters="clr-namespace:SundihomeApp.Converters" xmlns:controls="clr-namespace:SundihomeApp.Controls" xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives"
+             xmlns:lang="clr-namespace:SundihomeApp.Resources"
+             Title="{x:Static lang:Language.san_b2b}" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SundihomeApp.Views.CompanyViews.B2BPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:PostItemControlTemplateConverter x:Key="PostItemControlTemplateConverter" Folder="b2bpostitem" />
+            <converters:BoolToBoolConverter x:Key="BoolToBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <AbsoluteLayout BackgroundColor="White">
+            <Grid AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <controls:SearchBarFrame Margin="5,5,5,0" Grid.Row="0">
+                    <controls:SearchBar x:Name="searchBar" TextChanged="SearchText_Changed" SearchButtonPressed="Search_Clicked" />
+                </controls:SearchBarFrame>
+                <ScrollView x:Name="ScrollViewFilter" Orientation="Horizontal" Grid.Row="1" Margin="5,0">
+                    <StackLayout Orientation="Horizontal" Spacing="5">
+                        <telerikPrimitives:RadBorder x:Name="FilterAllRadborder" Padding="10,5" BorderColor="Gray" BorderThickness="1" CornerRadius="8" BackgroundColor="DarkGreen">
+                            <Label Text="{x:Static lang:Language.tat_ca}" TextColor="White" FontSize="14" />
+                        </telerikPrimitives:RadBorder>
+                        <telerikPrimitives:RadBorder x:Name="FilterBanRadborder" Padding="10,5" BorderColor="Gray" BorderThickness="1" CornerRadius="8" BackgroundColor="White">
+                            <Label Text="{x:Static lang:Language.hop_tac}" TextColor="#444444" FontSize="14" />
+                        </telerikPrimitives:RadBorder>
+                        <telerikPrimitives:RadBorder x:Name="FilterCanMuaRadborder" Padding="10,5" BorderColor="Gray" BorderThickness="1" CornerRadius="8" BackgroundColor="White">
+                            <Label Text="{x:Static lang:Language.cung_cap}" TextColor="#444444" FontSize="14" />
+                        </telerikPrimitives:RadBorder>
+                    </StackLayout>
+                </ScrollView>
+                <controls:BsdListView x:Name="LV" Grid.Row="2">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <controls:ExtendedFrame CornerRadius="0" Margin="0,0,0,10" Padding="0">
+                                    <Grid RowSpacing="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+
+
+                                        <Grid Grid.Row="0" ColumnSpacing="10" Margin="10,10,10,0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="40" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="40" />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+
+                                            <Image Grid.Column="0" Aspect="AspectFill" HeightRequest="40" Source="{Binding CreatedBy.AvatarFullUrl}" />
+                                            <StackLayout Grid.Column="1" Spacing="3">
+                                                <StackLayout.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="ViewUserProfile_Clicked" NumberOfTapsRequired="1" CommandParameter="{Binding CreatedBy.UserId}" />
+                                                </StackLayout.GestureRecognizers>
+                                                <Label Text="{Binding CreatedBy.FullName}" FontAttributes="Bold" FontSize="15" MaxLines="2" TextColor="#385898" />
+                                                <Label Text="{Binding CreatedDate,StringFormat='{0:dd/MM/yyyy HH:mm}'}" FontSize="13" TextColor="#444444" />
+                                            </StackLayout>
+                                            <Button Text="&#xf141;" FontSize="16" Grid.Column="2" WidthRequest="40" HeightRequest="40" VerticalOptions="Center" FontFamily="{StaticResource FontAwesomeSolid}" BackgroundColor="transparent" TextColor="#63636D" Clicked="Option_Clicked" CommandParameter="{Binding}" />
+                                        </Grid>
+
+                                        <StackLayout Grid.Row="1" Margin="10,5">
+                                            <Label FontSize="15" TextColor="Black" FontAttributes="Bold" Text="{Binding Title}" />
+                                            <Label FontSize="15" TextColor="#444444" MaxLines="5" LineBreakMode="TailTruncation" Text="{Binding Description}" />
+                                        </StackLayout>
+
+                                        <Label Margin="10,5" Grid.Row="2" IsVisible="{Binding HasAddress}" FontSize="14" TextColor="#333333">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="&#xf3c5;" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="Small"></Span>
+                                                    <Span Text=" " />
+                                                    <Span Text="{Binding Address}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+
+                                        <ScrollView Grid.Row="3" Orientation="Horizontal" Margin="10,0,10,10" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
+                                            <StackLayout Orientation="Horizontal" Spacing="3">
+                                                <telerikPrimitives:RadBorder Padding="10,5" BorderColor="{Binding TypeColor}" BorderThickness="1" CornerRadius="15" BackgroundColor="{Binding TypeColor}">
+                                                    <Label Text="{Binding TypeTextFormat}" FontAttributes="Bold" TextColor="White" FontSize="13" />
+                                                </telerikPrimitives:RadBorder>
+                                                <telerikPrimitives:RadBorder IsVisible="{Binding HasPrice}" Padding="10,5" BorderColor="Gray" BorderThickness="1" CornerRadius="15" BackgroundColor="White">
+                                                    <Label Text="{Binding PriceText}" TextColor="Red" FontSize="13" />
+                                                </telerikPrimitives:RadBorder>
+                                            </StackLayout>
+                                        </ScrollView>
+
+                                        <ContentView Grid.Row="4" IsVisible="{Binding HasImage}" Margin="10,0,10,10" Content="{Binding Images,Converter={StaticResource PostItemControlTemplateConverter}}" />
+
+                                        <telerikPrimitives:RadBorder Grid.Row="5" BorderThickness="0,1,0,0" BorderColor="#eeeeee">
+                                            <Grid Padding="5" RowSpacing="0" ColumnSpacing="0">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+
+                                                <Grid Grid.Column="0" Padding="5" HorizontalOptions="Start">
+                                                    <Grid.GestureRecognizers>
+                                                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="FollowPost_Clicked" CommandParameter="{Binding .}" />
+                                                    </Grid.GestureRecognizers>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto" />
+                                                        <ColumnDefinition Width="Auto" />
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <Label Text="&#xf004;" IsVisible="{Binding Path=IsVisible, Source={x:Reference btnFolllow},Converter={StaticResource BoolToBoolConverter}}" FontSize="14" Grid.Column="0" VerticalOptions="Center" FontFamily="{StaticResource FontAwesomeRegular}" BackgroundColor="transparent" TextColor="#63636D" />
+                                                    <Label Text="{x:Static lang:Language.theo_doi}" IsVisible="{Binding Path=IsVisible, Source={x:Reference btnFolllow},Converter={StaticResource BoolToBoolConverter}}" Grid.Column="1" FontSize="13" VerticalTextAlignment="Center" TextColor="#63636D" />
+
+                                                    <Label Text="&#xf004;" IsVisible="{Binding IsFollow}" FontSize="14" Grid.Column="0" VerticalOptions="Center" FontFamily="{StaticResource FontAwesomeSolid}" BackgroundColor="transparent" TextColor="#2078f4" />
+                                                    <Label Text="{x:Static lang:Language.theo_doi}" x:Name="btnFolllow" Grid.Column="1" IsVisible="{Binding IsFollow}" FontAttributes="Bold" FontSize="13" VerticalTextAlignment="Center" TextColor="#2078f4" />
+                                                </Grid>
+
+                                                <StackLayout Grid.Column="1" Padding="5" HorizontalOptions="End" Orientation="Horizontal">
+                                                    <Label Text="&#xf086;" FontSize="14" Grid.Column="0" FontFamily="{StaticResource FontAwesomeRegular}" BackgroundColor="transparent" TextColor="#63636D" />
+                                                    <Label Text="{x:Static lang:Language.binh_luan}" FontSize="13" VerticalTextAlignment="Center" TextColor="#63636D" />
+                                                </StackLayout>
+                                            </Grid>
+                                        </telerikPrimitives:RadBorder>
+                                    </Grid>
+                                </controls:ExtendedFrame>
+
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    <ListView.Footer>
+                        <ActivityIndicator WidthRequest="20" Color="Gray" HorizontalOptions="Center" IsRunning="{Binding IsLoadingMore}" />
+                    </ListView.Footer>
+                </controls:BsdListView>
+            </Grid>
+
+            <StackLayout Orientation="Horizontal" x:Name="StackButton" IsVisible="false" HorizontalOptions="End" Spacing="0" AbsoluteLayout.LayoutBounds="0,1,1,64" AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional" Margin="5">
+                <Frame Margin="5" Padding="0" CornerRadius="22">
+                    <Button Text="&#xf067;" FontSize="20" WidthRequest="44" HeightRequest="44" CornerRadius="22" FontFamily="{StaticResource FontAwesomeSolid}" BackgroundColor="{StaticResource MainDarkColor}" TextColor="White" Clicked="AddPost_Clicked" />
+                </Frame>
+            </StackLayout>
+
+            <controls:LoadingPopup x:Name="loadingPopup" />
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

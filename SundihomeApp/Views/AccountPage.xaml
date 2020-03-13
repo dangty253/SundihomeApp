@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:lang="clr-namespace:SundihomeApp.Resources"
+             xmlns:imgae="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" ios:Page.UseSafeArea="true" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives" xmlns:control="clr-namespace:SundihomeApp.Controls" Title="{x:Static lang:Language.account}" x:Class="SundihomeApp.Views.AccountPage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <!-- Category icon style -->
+            <Style x:Key="CategoryIcon" TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource FontAwesomeSolid}" />
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="Margin" Value="10" />
+                <Setter Property="TextColor" Value="{StaticResource MainDarkColor}" />
+            </Style>
+
+            <!-- Category title style -->
+            <Style x:Key="CategoryTitle" TargetType="Label">
+                <Setter Property="FontSize" Value="14" />
+                <!--<Setter Property="HorizontalOptions" Value="CenterAndExpand" />-->
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="#444" />
+            </Style>
+
+            <!-- Detail title style -->
+            <Style x:Key="DetailTitle" TargetType="Label">
+                <Setter Property="MaxLines" Value="1" />
+                <Setter Property="FontSize" Value="13" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="TextColor" Value="Gray" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <Grid RowSpacing="8" BackgroundColor="#e8e8e8">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <Grid x:Name="grAccountName"
+                          ColumnSpacing="15"
+                          Grid.Row="0"
+                          RowSpacing="3"
+                          BackgroundColor="#fff"
+                          Padding="15,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <imgae:CircleImage x:Name="image" Source="{Binding User.AvatarFullUrl}"
+                                           Grid.Column="0"
+                                           VerticalOptions="Center"
+                                           HeightRequest="60"
+                                           WidthRequest="60"
+                                           Aspect="AspectFill" />
+                        <StackLayout Grid.Column="1"
+                                     VerticalOptions="Center"
+                                     Spacing="0">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnEditProfileClicked" />
+                            </StackLayout.GestureRecognizers>
+                            <Label x:Name="lblUserName"
+                                   FontSize="16" Text="{Binding User.FullName}"
+                                   FontAttributes="Bold"
+                                   BackgroundColor="#fff"
+                                   TextColor="{StaticResource MainDarkColor}" />
+                            <Label Text="{Binding User.Email}" MaxLines="1" FontSize="14" TextColor="Gray" />
+                            <Label x:Name="lblThongTin"
+                                   Text= "{Static lang:Language.xem_thong_tin}"
+                                   TextColor="{StaticResource LightBlueLogoColor}"
+                                   BackgroundColor="#fff"
+                                   FontSize="14" />
+                        </StackLayout>
+                    </Grid>
+                    <StackLayout Grid.Row="1" BackgroundColor="#fff" Spacing="0">
+                        <!--cong ty-->
+                        <control:MenuItem Title="{Static lang:Language.cong_ty}" OnClicked="OnCompanyClicked" Icon="{StaticResource Building}" FontFamily="{StaticResource FontAwesomeSolid}" />
+                        <StackLayout Orientation="Horizontal" Spacing="5" Margin="15,0">
+                            <StackLayout WidthRequest="30"/>
+                            <BoxView HeightRequest=".5" BackgroundColor="LightGray"  HorizontalOptions="FillAndExpand"/>
+                        </StackLayout>
+
+                        <!-- Project -->
+                        <control:MenuItem Title="{Static lang:Language.du_an}" OnClicked="OnMyProjectListClicked" Icon="&#xf288;" FontFamily="{StaticResource FontAwesomeBrands}" />
+                        <StackLayout Orientation="Horizontal" Spacing="5" Margin="15,0">
+                            <StackLayout WidthRequest="30"/>
+                            <BoxView HeightRequest=".5" BackgroundColor="LightGray"  HorizontalOptions="FillAndExpand"/>
+                        </StackLayout>
+                        <!-- Posted -->
+                        <control:MenuItem Title="{Static lang:Language.tin_da_dang}" OnClicked="OnPostedListClicked" Icon="{StaticResource FileUpload}" FontFamily="{StaticResource FontAwesomeSolid}"  />
+                        <StackLayout Orientation="Horizontal" Spacing="5" Margin="15,0">
+                            <StackLayout WidthRequest="30"/>
+                            <BoxView HeightRequest=".5" BackgroundColor="LightGray"  HorizontalOptions="FillAndExpand"/>
+                        </StackLayout>
+                        <!-- Saved -->
+                        <control:MenuItem Title="{Static lang:Language.tin_da_luu}" OnClicked="OnPostSavedListClicked" Icon="{StaticResource FileDownload}" FontFamily="{StaticResource FontAwesomeSolid}" />
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="2" BackgroundColor="#fff" Spacing="0">
+                        <!-- Followers -->
+                        <control:MenuItem Title="{Static lang:Language.nguoi_theo_doi}" OnClicked="OnFollowerListClicked" Icon="{StaticResource UserFriends}" FontFamily="{StaticResource FontAwesomeSolid}" />
+                        <StackLayout Orientation="Horizontal" Spacing="5" Margin="15,0">
+                            <StackLayout WidthRequest="30"/>
+                            <BoxView HeightRequest=".5" BackgroundColor="LightGray"  HorizontalOptions="FillAndExpand"/>
+                        </StackLayout>
+                        <!-- Following -->
+                        <control:MenuItem Title="{Static lang:Language.dang_theo_doi}" OnClicked="OnFollowingListClicked" Icon="{StaticResource Heart}" FontFamily="{StaticResource FontAwesomeSolid}" />
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="3" BackgroundColor="#fff" Spacing="0">
+                        <!--moi gioi-->
+                        <control:MenuItem Title="{Static lang:Language.moi_gioi}" OnClicked="OpenModalDangKyMoiGioi_Tapped" Icon="&#xf2b5;" FontFamily="{StaticResource FontAwesomeSolid}" />
+                        <StackLayout Orientation="Horizontal" Spacing="5" Margin="15,0">
+                            <StackLayout WidthRequest="30"/>
+                            <BoxView HeightRequest=".5" BackgroundColor="LightGray"  HorizontalOptions="FillAndExpand"/>
+                        </StackLayout>
+                        <!-- gói vay -->
+                        <control:MenuItem Title="{Static lang:Language.goi_vay}" OnClicked="GoiVay_Clicked" Icon="{StaticResource HandHoldingUsd}" FontFamily="{StaticResource FontAwesomeSolid}" />
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="4" BackgroundColor="#fff" Spacing="0">
+                        <!-- Transactions -->
+                        <control:MenuItem Title="{Static lang:Language.lich}" OnClicked="ViewAppointment_Clicked" Icon="&#xf073;" FontFamily="{StaticResource FontAwesomeSolid}" />
+                        <StackLayout Orientation="Horizontal" Spacing="5" Margin="15,0">
+                            <StackLayout WidthRequest="30"/>
+                            <BoxView HeightRequest=".5" BackgroundColor="LightGray"  HorizontalOptions="FillAndExpand"/>
+                        </StackLayout>
+                        <!-- Social linked -->
+                        <control:MenuItem Title="{Static lang:Language.lien_ket_mxh}" OnClicked="OnSocialLinkedClicked" Icon="{StaticResource Share}" FontFamily="{StaticResource FontAwesomeSolid}" />
+                        <StackLayout Orientation="Horizontal" Spacing="5" Margin="15,0">
+                            <StackLayout WidthRequest="30"/>
+                            <BoxView HeightRequest=".5" BackgroundColor="LightGray"  HorizontalOptions="FillAndExpand"/>
+                        </StackLayout>
+                        <!-- Ngôn ngữ -->
+                        <control:MenuItem Title="{Static lang:Language.ngon_ngu}" OnClicked="ChangeLanguage_Clicked" Icon="&#xf57e;" FontFamily="{StaticResource FontAwesomeSolid}" />
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="5" BackgroundColor="#fff" Spacing="0">
+                        <!-- Logout -->
+                        <control:MenuItem Title="{Static lang:Language.dang_xuat}" OnClicked="OnLogoutClicked" Icon="{StaticResource SignOutAlt}" FontFamily="{StaticResource FontAwesomeSolid}" />
+                    </StackLayout>
+                </Grid>
+            </ScrollView>
+
+            <control:CenterModal x:Name="ModalRegisterEmployee" Title="{x:Static lang:Language.xac_nhan}">
+                <control:CenterModal.Body>
+                    <control:ClearableEntry Margin="10" HeightRequest="40" x:Name="enNumPhone" EntryKeyboard="Numeric" Placeholder="{x:Static lang:Language.nhap_ma_otp}" />
+                </control:CenterModal.Body>
+                <control:CenterModal.Footer>
+                    <Button Margin="10,0,10,10" x:Name="btnSendOPT" BorderWidth="1" Text="{x:Static lang:Language.gui}" FontSize="15" CornerRadius="5" Clicked="OnClick_SendConFirm" BackgroundColor="White" BorderColor="{StaticResource MainDarkColor}" TextColor="{StaticResource MainDarkColor}" />
+                </control:CenterModal.Footer>
+            </control:CenterModal>
+
+            <control:CenterModal x:Name="ModalBankEmployeeRegister" Title="{x:Static lang:Language.dang_ky_nhan_vien_ngan_hang}" />
+
+            <control:CenterModal x:Name="ModalDangKyMoiGioi" Title="{x:Static lang:Language.dang_ky_moi_gioi}" />
+
+            <control:BottomModal x:Name="LookUpModal" />
+
+            <control:LoadingPopup x:Name="loadingPopup" IsVisible="{Binding IsLoading}" />
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

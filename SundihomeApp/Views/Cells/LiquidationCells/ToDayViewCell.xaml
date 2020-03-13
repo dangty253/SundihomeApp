@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms" xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SundihomeApp.Views.Cells.LiquidationCells.ToDayViewCell">
+    <Grid BackgroundColor="White" Margin="0,0,0,1" ColumnSpacing="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <telerikPrimitives:RadBorder Grid.Column="0" Grid.Row="0" CornerRadius="10" IsClippedToBounds="True" Margin="10,10,0,0">
+            <ffimageloading:CachedImage BackgroundColor="#eeeeee" HeightRequest="100" WidthRequest="100" DownsampleToViewSize="True" Source="{Binding AvatarFullUrl}" Aspect="AspectFill" />
+        </telerikPrimitives:RadBorder>
+        <StackLayout Grid.Column="1" Grid.RowSpan="2" Spacing="3" Margin="0,10,10,5">
+            <Label FontSize="15" TextColor="Black" MaxLines="2" LineBreakMode="TailTruncation" Text="{Binding Name}" />
+            <Label FontSize="13" TextColor="#444444" Text="{Binding CreatedDateTimeAgo}" />
+            <Label Text="{Binding Address}" FontSize="13" MaxLines="1" VerticalTextAlignment="Center" LineBreakMode="TailTruncation" TextColor="{StaticResource MainDarkColor}" />
+            <Label Text="{Binding PriceToDay, StringFormat='{0:0,0} đ'}" FontSize="15" FontAttributes="Bold" MaxLines="1" LineBreakMode="TailTruncation" TextColor="Black" />
+        </StackLayout>
+    </Grid>
+</ViewCell>

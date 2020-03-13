@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives"
+             xmlns:controls="clr-namespace:SundihomeApp.Controls"
+             xmlns:lang="clr-namespace:SundihomeApp.Resources"
+             xmlns:converters="clr-namespace:SundihomeApp.Converters"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SundihomeApp.Views.ModalDiaryContentView">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <converters:NullToHideConverter x:Key="NullToHideConverter" />
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <AbsoluteLayout>
+
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <ScrollView Grid.Row="0">
+                    <StackLayout Margin="10">
+                        <controls:FormLabelRequired Text="{x:Static lang:Language.tieu_de}" Margin="0,5,0,0"/>
+                        <controls:ClearableEntry x:Name="entTitleProjectDiary"
+                                            Text="{Binding ProjectDiary.Title}"
+                                            Placeholder="{x:Static lang:Language.tieu_de}" />
+
+                        <controls:FormLabelRequired Text="{x:Static lang:Language.thoi_gian}" Margin="0,5,0,0"/>
+                        <DatePicker x:Name="dateProjectDiary"  FontSize="15" Date="{Binding ProjectDiary.Date}"/>
+
+                        <controls:FormLabelRequired Text="{x:Static lang:Language.noi_dung}" />
+                        <Grid Margin="0,5,0,0">
+                            <telerikPrimitives:RadBorder
+                                                BorderColor="LightGray"
+                                                BorderThickness="1"
+                                                CornerRadius="4">
+                                <Editor x:Name="edtModalDescriptionDiary"
+                                                FontSize="16"
+                                                HeightRequest="100"
+                                                HorizontalOptions="FillAndExpand"
+                                                Placeholder="{x:Static lang:Language.noi_dung}"
+                                                Text="{Binding ProjectDiary.Description}" />
+                            </telerikPrimitives:RadBorder>
+                            <Button Padding="0"
+                                            FontFamily="{StaticResource FontAwesomeSolid}"
+                                            IsVisible="{Binding ProjectDiary.Description, Converter={StaticResource NullToHideConverter}}"
+                                            Style="{StaticResource ClearButtonStyle}"
+                                            VerticalOptions="Start" Clicked="DeleteContentModalPopup_Clicked"/>
+                        </Grid>
+                        <ScrollView Orientation="Horizontal" Margin="0,5,0,0" HorizontalScrollBarVisibility="Never" x:Name="ImageListScroll">
+                            <StackLayout Orientation="Horizontal">
+                                <Button Text="&#xf302;"
+                                        FontFamily="{StaticResource FontAwesomeSolid}"
+                                        BackgroundColor="White"
+                                        Padding="15,0"
+                                        HeightRequest="80"
+                                        WidthRequest="80"
+                                        FontSize="17"
+                                        VerticalOptions="CenterAndExpand"
+                                        TextColor="#026294"
+                                        BorderWidth="1"
+                                        BorderColor="#026294"
+                                        Command="{Binding SelectedImageDiaryCommand}"/>
+
+                                <StackLayout x:Name="stMediaDiary" Orientation="Horizontal"  BindableLayout.ItemsSource="{Binding MediaDiary}"
+                                             Spacing="2">
+                                    <BindableLayout.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid>
+                                                <ffimageloading:CachedImage DownsampleToViewSize="true"
+                                                                            HeightRequest="80"
+                                                                            WidthRequest="80"
+                                                                            Source="{Binding PreviewPath}"
+                                                                            Aspect="AspectFill"
+                                                                            HorizontalOptions="FillAndExpand" />
+                                                <Button Text="&#xf2ed;"
+                                                        TextColor="#026294"
+                                                        FontSize="14"
+                                                        HorizontalOptions="End"
+                                                        VerticalOptions="Start"
+                                                        BorderWidth="0"
+                                                        BackgroundColor="White"
+                                                        WidthRequest="25"
+                                                        HeightRequest="25"
+                                                        Margin="0,5,5,0"
+                                                        Padding="0"
+                                                        Clicked="Remove_ImageDiary"
+                                                        CommandParameter="{Binding}"
+                                                        FontFamily="{StaticResource FontAwesomeSolid}" />
+                                            </Grid>
+                                        </DataTemplate>
+                                    </BindableLayout.ItemTemplate>
+                                </StackLayout>
+                            </StackLayout>
+                        </ScrollView>
+
+
+                    </StackLayout>
+                </ScrollView>
+                <Grid Margin="10,0,10,10" ColumnSpacing="2" Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="btnHuy"
+                                            Padding="0"
+                                            BackgroundColor="White"
+                                            CornerRadius="10"
+                                            FontSize="16"
+                                            HeightRequest="40"
+                                            HorizontalOptions="FillAndExpand"
+                                            Text="{x:Static lang:Language.huy}"
+                                            TextColor="{StaticResource MainDarkColor}"
+                                            Grid.Column="0"
+                                            Clicked="CloseModalDiary_Clicked"
+                                            BorderColor="{StaticResource MainDarkColor}"
+                                            BorderWidth="1" />
+                    <Button x:Name="btnLuu"
+                                            Padding="0"
+                                            BackgroundColor="{StaticResource MainDarkColor}"
+                                            CornerRadius="10"
+                                            FontSize="16"
+                                            HeightRequest="40"
+                                            HorizontalOptions="FillAndExpand"
+                                            Text="{x:Static lang:Language.luu}"
+                                            TextColor="#fff"
+                                            Grid.Column="1"
+                                            Clicked="AddProjectDiary_Clicked" />
+                </Grid>
+            </Grid>
+            <controls:LoadingPopup x:Name="loadingPopup"/>
+        </AbsoluteLayout>
+    </ContentView.Content>
+</ContentView>

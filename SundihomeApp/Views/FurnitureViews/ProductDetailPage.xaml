@@ -1,0 +1,301 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage x:Name="this"
+             xmlns:cv="clr-namespace:SundihomeApp.Converters"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives"
+             xmlns:controls="clr-namespace:SundihomeApp.Controls"
+             xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView"
+             x:Class="SundihomeApp.Views.Furniture.ProductDetailPage"
+             BackgroundColor="{StaticResource MainPageBackgroundColor}"
+             xmlns:lang="clr-namespace:SundihomeApp.Resources">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="RadBorder"
+                   TargetType="telerikPrimitives:RadBorder">
+                <Setter Property="Margin"
+                        Value="5,5,5,0" />
+                <Setter Property="BorderThickness"
+                        Value="1" />
+                <Setter Property="BorderColor"
+                        Value="#e0dbdb" />
+                <Setter Property="BackgroundColor"
+                        Value="White" />
+                <Setter Property="CornerRadius"
+                        Value="3" />
+            </Style>
+            <Style x:Key="Title"
+                   TargetType="Label">
+                <Setter Property="FontSize"
+                        Value="15" />
+                <Setter Property="TextColor"
+                        Value="{StaticResource MainDarkColor}" />
+                <Setter Property="FontAttributes"
+                        Value="Bold" />
+                <Setter Property="Margin"
+                        Value="10,0" />
+            </Style>
+            <Style x:Key="ProductPrice"
+                   TargetType="Label">
+                <Setter Property="FontSize"
+                        Value="15" />
+                <Setter Property="TextColor"
+                        Value="Red" />
+                <Setter Property="Margin"
+                        Value="10,0" />
+            </Style>
+            <Style x:Key="ProductProperty"
+                   TargetType="Label">
+                <Setter Property="TextColor"
+                        Value="#444" />
+                <Setter Property="FontSize"
+                        Value="13" />
+                <Setter Property="Margin"
+                        Value="10,0" />
+            </Style>
+            <Style x:Key="ProductDetail"
+                   TargetType="Label">
+                <Setter Property="TextColor"
+                        Value="#000" />
+                <Setter Property="FontSize"
+                        Value="13" />
+                <Setter Property="Margin"
+                        Value="10,0" />
+            </Style>
+            <Style x:Key="RadBorderImageList"
+                   TargetType="telerikPrimitives:RadBorder">
+                <Setter Property="Padding"
+                        Value="5" />
+                <Setter Property="BorderThickness"
+                        Value="1" />
+                <Setter Property="CornerRadius"
+                        Value="3" />
+            </Style>
+            <!-- Converter -->
+            <cv:MonthToYearConverter x:Key="monthToYear" />
+            <cv:NullToHideConverter x:Key="NullToHideConverter" />
+            <cv:FurnitureProductStatusNameConverter x:Key="FurnitureProductStatusNameConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <Grid AbsoluteLayout.LayoutBounds="0,0,1,1"
+                  AbsoluteLayout.LayoutFlags="All">
+                <ScrollView VerticalScrollBarVisibility="Never">
+                    <StackLayout Spacing="0">
+                        <telerikPrimitives:RadBorder Style="{StaticResource RadBorder}">
+                            <StackLayout Margin="0,0,0,10">
+                                <StackLayout x:Name="ImageListStackLayout">
+                                    <cards:CarouselView x:Name="ImageListCarouselView"
+                                                        SelectedIndex="{Binding Position}"
+                                                        HeightRequest="210"
+                                                        ItemsSource="{Binding FurnitureProduct.ImageList}">
+                                        <cards:CarouselView.ItemTemplate>
+                                            <DataTemplate>
+                                                <Image Source="{Binding}"
+                                                       Aspect="AspectFill">
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer NumberOfTapsRequired="1"
+                                                                              Tapped="OnClickedShowGallery"
+                                                                              CommandParameter="{Binding}" />
+                                                    </Image.GestureRecognizers>
+                                                </Image>
+                                            </DataTemplate>
+                                        </cards:CarouselView.ItemTemplate>
+                                    </cards:CarouselView>
+                                </StackLayout>
+                                <ScrollView Orientation="Horizontal"
+                                            HorizontalScrollBarVisibility="Never"
+                                            x:Name="ImageListScroll"
+                                            IsVisible="false">
+                                    <StackLayout x:Name="ImageList"
+                                                 HorizontalOptions="Center"
+                                                 BindableLayout.ItemsSource="{Binding FurnitureProduct.ImageList}"
+                                                 Orientation="Horizontal">
+                                        <BindableLayout.ItemTemplate>
+                                            <DataTemplate>
+                                                <telerikPrimitives:RadBorder Style="{StaticResource RadBorderImageList}">
+                                                    <telerikPrimitives:RadBorder.GestureRecognizers>
+                                                        <TapGestureRecognizer NumberOfTapsRequired="1"
+                                                                              Tapped="OnImageTapped"
+                                                                              CommandParameter="{Binding}" />
+                                                    </telerikPrimitives:RadBorder.GestureRecognizers>
+                                                    <Image HeightRequest="60"
+                                                           WidthRequest="60"
+                                                           Aspect="AspectFill"
+                                                           Source="{Binding}" />
+                                                </telerikPrimitives:RadBorder>
+                                            </DataTemplate>
+                                        </BindableLayout.ItemTemplate>
+                                    </StackLayout>
+                                </ScrollView>
+                                <Label Style="{StaticResource Title}"
+                                       Text="{Binding FurnitureProduct.Name}" />
+                                <Label MaxLines="1"
+                                       LineBreakMode="TailTruncation"
+                                       Padding="10,0"
+                                       IsVisible="false"
+                                       x:Name="LabelPriceStrike">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding FurnitureProduct.Price, StringFormat='{0:0,0} đ'}"
+                                                  TextDecorations="Strikethrough"
+                                                  FontSize="13"
+                                                  TextColor="Gray" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label Style="{StaticResource ProductPrice}"
+                                       x:Name="LabelPromotionPrice"
+                                       IsVisible="false"
+                                       Text="{Binding FurnitureProduct.PromotionPrice, StringFormat='{0:0,0} đ'}" />
+
+                                <Label Style="{StaticResource ProductPrice}"
+                                       IsVisible="false"
+                                       x:Name="LabelPrice"
+                                       Text="{Binding FurnitureProduct.Price, StringFormat='{0:0,0} đ'}" />
+
+
+                            </StackLayout>
+                        </telerikPrimitives:RadBorder>
+                        <telerikPrimitives:RadBorder  Style="{StaticResource RadBorder}">
+                            <StackLayout Margin="0,10">
+                                <Label Style="{StaticResource Title}"
+                                       Text="{Static lang:Language.chi_tiet_san_pham}" />
+                                <Grid RowSpacing="10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="2*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <!--parent category-->
+                                    <Label Grid.Column="0"
+                                           Grid.Row="0"
+                                           Style="{StaticResource ProductProperty}"
+                                           Text="{Static lang:Language.danh_muc}"/>
+                                    <Label Grid.Column="1"
+                                           Grid.Row="0"
+                                           Style="{StaticResource ProductDetail}"
+                                           Text="{Binding FurnitureProduct.Category.Parent.Name}" />
+                                    <!--category-->
+                                    <Label Grid.Column="0"
+                                           Grid.Row="1"
+                                           Style="{StaticResource ProductProperty}"
+                                           Text="{Static lang:Language.loai_san_pham}" />
+                                    <Label Grid.Column="1"
+                                           Grid.Row="1"
+                                           Style="{StaticResource ProductDetail}"
+                                           Text="{Binding FurnitureProduct.Category.Name}" />
+                                    <!--status-->
+                                    <Label Grid.Column="0"
+                                           Grid.Row="2"
+                                           Style="{StaticResource ProductProperty}"
+                                           Text="{Static lang:Language.tinh_trang}" />
+                                    <Label Grid.Column="1"
+                                           Grid.Row="2"
+                                           Style="{StaticResource ProductDetail}"
+                                           Text="{Binding StatusString}" />
+                                    <!--status-->
+                                    <Label Grid.Column="0"
+                                           Grid.Row="3"
+                                           Style="{StaticResource ProductProperty}"
+                                           Text="{Static lang:Language.trang_thai}" />
+                                    <Label Grid.Column="1"
+                                           Grid.Row="3"
+                                           Style="{StaticResource ProductDetail}"
+                                           Text="{Binding FurnitureProduct.ProductStatus,Converter={StaticResource FurnitureProductStatusNameConverter}}" />
+                                    <!--company-->
+                                    <Label Grid.Column="0"
+                                           Grid.Row="4"
+                                           Style="{StaticResource ProductProperty}"
+                                           Text="{Static lang:Language.cong_ty}" />
+                                    <Label Grid.Column="1"
+                                           Grid.Row="4"
+                                           Style="{StaticResource ProductDetail}"
+                                           Text="{Binding FurnitureProduct.Company.Name}" />
+                                    <!--model-->
+                                    <Label Grid.Column="0"
+                                           Grid.Row="5"
+                                           Style="{StaticResource ProductProperty}"
+                                           Text="{Static lang:Language.ma_san_pham}" />
+                                    <Label Grid.Column="1"
+                                           Grid.Row="5"
+                                           Style="{StaticResource ProductDetail}"
+                                           Text="{Binding FurnitureProduct.Model}" />
+                                    <!--origin-->
+                                    <Label Grid.Column="0"
+                                           Grid.Row="6"
+                                           Style="{StaticResource ProductProperty}"
+                                           Text="{Static lang:Language.xuat_xu}" />
+                                    <Label Grid.Column="1"
+                                           Grid.Row="6"
+                                           Style="{StaticResource ProductDetail}"
+                                           Text="{Binding FurnitureProduct.Origin}" />
+                                    <!--guarantee-->
+                                    <Label Grid.Column="0"
+                                           Grid.Row="7"
+                                           Style="{StaticResource ProductProperty}"
+                                           Text="{Static lang:Language.thoi_gian_bao_hanh}" />
+                                    <Label Grid.Column="1"
+                                           Grid.Row="7"
+                                           Style="{StaticResource ProductDetail}"
+                                           Text="{Binding FurnitureProduct.Guarantee, Converter={StaticResource monthToYear}}" />
+                                    <!--address-->
+                                    <Label Grid.Column="0"
+                                           Grid.Row="8"
+                                           Style="{StaticResource ProductProperty}"
+                                           Text="{Static lang:Language.dia_chi}" />
+                                    <Label Grid.Column="1"
+                                           Grid.Row="8"
+                                           Style="{StaticResource ProductDetail}"
+                                           Text="{Binding FurnitureProduct.Address}" />
+                                    <!--created by-->
+                                    <Label Grid.Column="0"
+                                           Grid.Row="9"
+                                           Style="{StaticResource ProductProperty}"
+                                           Text="{Static lang:Language.nguoi_dang_ban}" />
+                                    <Label Grid.Column="1"
+                                           Grid.Row="9"
+                                           Style="{StaticResource ProductDetail}"
+                                           Text="{Binding FurnitureProduct.CreatedBy.FullName}" />
+                                    <!--created date-->
+                                    <Label Grid.Column="0"
+                                           Grid.Row="10"
+                                           Style="{StaticResource ProductProperty}"
+                                           Text="{Static lang:Language.ngay_dang}" />
+                                    <Label Grid.Column="1"
+                                           Grid.Row="10"
+                                           Style="{StaticResource ProductDetail}"
+                                           Text="{Binding FurnitureProduct.CreatedDate, StringFormat='{0:dd/MM/yyyy}'}" />
+                                </Grid>
+                            </StackLayout>
+                        </telerikPrimitives:RadBorder>
+                        <telerikPrimitives:RadBorder Style="{StaticResource RadBorder}">
+                            <StackLayout Margin="0,10">
+                                <Label Style="{StaticResource Title}"
+                                       Text="{Static lang:Language.mo_ta_san_pham}" />
+                                <Label Style="{StaticResource ProductDetail}"
+                                       Text="{Binding FurnitureProduct.Description}" />
+                            </StackLayout>
+                        </telerikPrimitives:RadBorder>
+                    </StackLayout>
+                </ScrollView>
+            </Grid>
+            <controls:FloatingButtonGroup ItemsSource="{Binding BindingContext.ButtonCommandList,Source={x:Reference this}}" />
+            <controls:LoadingPopup x:Name="loadingPopup"
+                                   IsVisible="{Binding IsLoading}" />
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage SizeChanged="ContentPage_SizeChanged" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:lang="clr-namespace:SundihomeApp.Resources" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:controls="clr-namespace:SundihomeApp.Controls" Title="Sundihome" x:Class="SundihomeApp.Views.HomePage">
+    <Shell.TitleView>
+        <StackLayout Padding="0,5" VerticalOptions="FillAndExpand" Margin="{OnPlatform Android='-10,0,10,0'}" HorizontalOptions="FillAndExpand">
+            <telerikPrimitives:RadBorder VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" CornerRadius="3" BackgroundColor="White">
+                <StackLayout Padding="10,0" Orientation="Horizontal" Spacing="5" BackgroundColor="White">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OpenSearch_Clicked" />
+                    </StackLayout.GestureRecognizers>
+                    <Label Text="&#xf002;" TextColor="#444444" FontSize="13" FontFamily="{StaticResource FontAwesomeSolid}" VerticalOptions="Center" />
+                    <Label VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" Text="{x:Static lang:Language.search_placeholder}" TextColor="#444444" FontSize="15" />
+                </StackLayout>
+            </telerikPrimitives:RadBorder>
+        </StackLayout>
+    </Shell.TitleView>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="SectionTitleStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="TextColor" Value="#333333" />
+                <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Color x:Key="BackgroudOverlay">
+                <x:Arguments>
+                    <x:Double>0</x:Double>
+                    <!-- R/255 -->
+                    <x:Double>0</x:Double>
+                    <!-- G/255 -->
+                    <x:Double>0</x:Double>
+                    <!-- B/255 -->
+                    <x:Double>.6</x:Double>
+                    <!-- A: 0.0-1.0 -->
+                </x:Arguments>
+            </Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="ic_bell.png" Clicked="GoToNotifications_Clicked" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <AbsoluteLayout BackgroundColor="White">
+            <RefreshView IsRefreshing="{Binding IsRefreshing}" Command="{Binding RefreshCommand}" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <ScrollView Padding="0,0,0,74">
+                    <Grid RowSpacing="10" Margin="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <StackLayout Orientation="Horizontal" Grid.Row="0" Margin="0,10,0,0">
+                            <Label Text="{x:Static lang:Language.bat_dong_san_ban_cho_thue}" Style="{StaticResource SectionTitleStyle}" />
+                            <controls:MoreLabel OnTapped="ViewMoreType01_Clicked" />
+                        </StackLayout>
+
+                        <ScrollView Grid.Row="1" Orientation="Horizontal" VerticalScrollBarVisibility="Never" HorizontalScrollBarVisibility="Never" VerticalOptions="Start">
+                            <StackLayout BindableLayout.ItemsSource="{Binding NewestBuyOrRentList}" Orientation="Horizontal" Spacing="0">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <telerikPrimitives:RadBorder WidthRequest="240" BackgroundColor="white" CornerRadius="5" BorderColor="#eeeeee" Margin="0,0,5,0">
+                                            <StackLayout>
+                                                <StackLayout.GestureRecognizers>
+                                                    <TapGestureRecognizer CommandParameter="{Binding Id}" NumberOfTapsRequired="1" Tapped="GoTo_PostDetail_Cliked" />
+                                                </StackLayout.GestureRecognizers>
+                                                <Grid>
+                                                    <ffimageloading:CachedImage BackgroundColor="#eeeeee" DownsampleToViewSize="True" Source="{Binding AvatarFullUrl}" HeightRequest="200" Aspect="AspectFill" />
+                                                    <StackLayout Orientation="Horizontal" VerticalOptions="End" Spacing="3" Padding="5" BackgroundColor="{StaticResource BackgroudOverlay}">
+                                                        <Label Text="&#xf3c5;" TextColor="White" FontSize="13" Margin="0,3,0,0" FontFamily="{StaticResource FontAwesomeSolid}" />
+                                                        <Label Text="{Binding Address}" FontSize="14" MaxLines="2" VerticalTextAlignment="Center" LineBreakMode="TailTruncation" TextColor="White" />
+                                                    </StackLayout>
+                                                </Grid>
+                                                <StackLayout Margin="10,0,10,5">
+                                                    <Label FontSize="15" TextColor="#026294" MaxLines="2" FontAttributes="Bold" LineBreakMode="TailTruncation" Text="{Binding Title}" />
+                                                    <Label Text="{Binding PriceFormatText}" FontSize="14" MaxLines="1" LineBreakMode="TailTruncation" TextColor="Red" />
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </telerikPrimitives:RadBorder>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </StackLayout>
+                        </ScrollView>
+
+                        <StackLayout Orientation="Horizontal" Grid.Row="2" Margin="0,20,0,0">
+                            <Label Text="{x:Static lang:Language.canmua_thue}" Style="{StaticResource SectionTitleStyle}" />
+                            <controls:MoreLabel OnTapped="ViewMoreType23_Clicked" />
+                        </StackLayout>
+
+                        <StackLayout BindableLayout.ItemsSource="{Binding NewestNeedToBuyOrRentList}" Grid.Row="3">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <telerikPrimitives:RadBorder CornerRadius="5" BackgroundColor="White" BorderColor="#eeeeee">
+                                        <StackLayout Margin="10,5">
+                                            <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer CommandParameter="{Binding Id}" NumberOfTapsRequired="1" Tapped="GoTo_PostDetail_Cliked" />
+                                            </StackLayout.GestureRecognizers>
+                                            <Label FontSize="15" TextColor="#026294" MaxLines="2" FontAttributes="Bold" LineBreakMode="TailTruncation" Text="{Binding Title}" />
+                                            <Label Text="{Binding PriceFormatText}" FontSize="14" MaxLines="1" LineBreakMode="TailTruncation" TextColor="Red" />
+                                            <StackLayout Orientation="Horizontal" Spacing="3">
+                                                <Label Text="&#xf3c5;" TextColor="#026294" FontSize="14" VerticalTextAlignment="Center" FontFamily="{StaticResource FontAwesomeSolid}" />
+                                                <Label Text="{Binding Address}" FontSize="14" MaxLines="1" VerticalTextAlignment="Center" LineBreakMode="TailTruncation" TextColor="#444444" />
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </telerikPrimitives:RadBorder>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </StackLayout>
+
+                        <Grid Grid.Row="4" Margin="0,20,0,0" ColumnSpacing="10" RowSpacing="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <telerikPrimitives:RadBorder x:Name="sectionGiaDatLeft" Grid.Column="0" BorderColor="#d8d6d6" BorderThickness="1">
+                                <telerikPrimitives:RadBorder.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="GiaDat_Tapped" />
+                                </telerikPrimitives:RadBorder.GestureRecognizers>
+                                <Image x:Name="Image_home_GiaDat" Aspect="Fill"/>
+                            </telerikPrimitives:RadBorder>
+                            <StackLayout Grid.Column="1" Spacing="10">
+                                <telerikPrimitives:RadBorder x:Name="sectionMoigioRightTop" BorderColor="#d8d6d6" BorderThickness="1">
+                                    <telerikPrimitives:RadBorder.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="MoiGioi_Tapped" />
+                                    </telerikPrimitives:RadBorder.GestureRecognizers>
+                                    <Image x:Name="Image_home_MoiGioi" Aspect="Fill"/>
+                                </telerikPrimitives:RadBorder>
+                                <telerikPrimitives:RadBorder x:Name="sectionGoiVayRightBototm" BorderColor="#d8d6d6" BorderThickness="1">
+                                    <telerikPrimitives:RadBorder.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="GoiVay_Tapped" />
+                                    </telerikPrimitives:RadBorder.GestureRecognizers>
+                                    <Image x:Name="Image_home_GoiVay" Aspect="Fill"/>
+                                </telerikPrimitives:RadBorder>
+                            </StackLayout>
+                        </Grid>
+
+                        <StackLayout Grid.Row="5" Orientation="Horizontal" Margin="0,20,0,0">
+                            <Label Text="{x:Static lang:Language.du_an}" Style="{StaticResource SectionTitleStyle}" />
+                            <controls:MoreLabel OnTapped="ViewMoreProject_Clicked" />
+                        </StackLayout>
+
+                        <Frame Padding="0" HasShadow="false" IsClippedToBounds="True" Grid.Row="6" CornerRadius="6" BackgroundColor="White" BorderColor="#eeeeee">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="ProjectListView_Tapped" CommandParameter="{Binding Project.Id}" />
+                            </Frame.GestureRecognizers>
+                            <StackLayout>
+                                <Grid>
+                                    <ffimageloading:CachedImage DownsampleToViewSize="True" Source="{Binding Project.AvatarFullUrl}" HeightRequest="150" Aspect="AspectFill" />
+                                    <telerikPrimitives:RadBorder VerticalOptions="End" Margin="0,0,0,15" CornerRadius="0,5,5,0" HorizontalOptions="Start" BackgroundColor="white" Padding="5">
+                                        <Label Text="{Binding Project.PriceBDS}" FontSize="14" FontAttributes="Bold" TextColor="Red" />
+                                    </telerikPrimitives:RadBorder>
+                                </Grid>
+                                <Label Margin="10,0" FontSize="15" TextColor="#026294" FontAttributes="Bold" MaxLines="2" LineBreakMode="TailTruncation" Text="{Binding Project.Name}" />
+                                <StackLayout Orientation="Horizontal" Spacing="0" Margin="10,0">
+                                    <Label Text="&#xf3c5;" TextColor="#026294" FontSize="14" Margin="0,2,5,0" VerticalTextAlignment="Start" FontFamily="{StaticResource FontAwesomeSolid}" />
+                                    <Label Text="{Binding Project.Address}" FontSize="14" MaxLines="2" VerticalTextAlignment="Center" LineBreakMode="TailTruncation" TextColor="#444444" />
+                                </StackLayout>
+                                <BoxView Margin="10,0" HeightRequest="1" BackgroundColor="#eeeeee" />
+                            </StackLayout>
+                        </Frame>
+
+                        <StackLayout Orientation="Horizontal" Grid.Row="7" Margin="0,20,0,0">
+                            <Label Text="{x:Static lang:Language.noi_that}" Style="{StaticResource SectionTitleStyle}" />
+                            <controls:MoreLabel OnTapped="ViewAllFurnitureProduct_Clicked" />
+                        </StackLayout>
+
+                        <ScrollView Grid.Row="8" Orientation="Horizontal" VerticalScrollBarVisibility="Never" HorizontalScrollBarVisibility="Never" VerticalOptions="Start">
+                            <StackLayout BindableLayout.ItemsSource="{Binding FurnitureProducts}" Orientation="Horizontal" Spacing="0">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <telerikPrimitives:RadBorder WidthRequest="225" BackgroundColor="white" CornerRadius="5" BorderColor="#eeeeee" Margin="0,0,5,0" Padding="0">
+                                            <StackLayout WidthRequest="225">
+                                                <StackLayout.GestureRecognizers>
+                                                    <TapGestureRecognizer CommandParameter="{Binding Id}" NumberOfTapsRequired="1" Tapped="GoTo_FurnitureProductDetail_Cliked" />
+                                                </StackLayout.GestureRecognizers>
+                                                <ffimageloading:CachedImage BackgroundColor="#eeeeee" DownsampleToViewSize="True" Source="{Binding AvatarFullUrl}" HeightRequest="200" Aspect="AspectFill" />
+                                                <Label Margin="10,5,10,0" FontSize="15" TextColor="#026294" MaxLines="2" FontAttributes="Bold" LineBreakMode="TailTruncation" Text="{Binding Name}" />
+                                                <Label Margin="10,0,10,10" Text="{Binding Price,StringFormat='{0:0,0 đ}'}" FontSize="13" MaxLines="1" LineBreakMode="TailTruncation" TextColor="Red" />
+                                            </StackLayout>
+                                        </telerikPrimitives:RadBorder>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </StackLayout>
+                        </ScrollView>
+
+                        <StackLayout Orientation="Horizontal" Grid.Row="9" Margin="0,20,0,0">
+                            <Label Text="{x:Static lang:Language.thanh_ly}" Style="{StaticResource SectionTitleStyle}" />
+                            <controls:MoreLabel OnTapped="ViewAll_Liquidation_Clicked" />
+                        </StackLayout>
+
+                        <StackLayout Grid.Row="10" BindableLayout.ItemsSource="{Binding Liquidations}" BackgroundColor="#eeeeee" Spacing="0">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid BackgroundColor="White" Margin="0,1,0,1" ColumnSpacing="10">
+                                        <Grid.GestureRecognizers>
+                                            <TapGestureRecognizer CommandParameter="{Binding}" Tapped="OnLiquidationDetail_Tapped" />
+                                        </Grid.GestureRecognizers>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="100" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="100" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <telerikPrimitives:RadBorder Grid.Column="0" CornerRadius="10" IsClippedToBounds="True" Margin="0,10,0,0">
+                                            <ffimageloading:CachedImage BackgroundColor="#eeeeee" DownsampleToViewSize="True" Source="{Binding AvatarFullUrl}" Aspect="AspectFill" />
+                                        </telerikPrimitives:RadBorder>
+                                        <StackLayout Grid.Column="1" Grid.RowSpan="2" Spacing="3" Margin="0,10,10,5">
+                                            <Label FontSize="15" TextColor="Black" MaxLines="2" LineBreakMode="TailTruncation" Text="{Binding Name}" />
+                                            <Label FontSize="13" TextColor="#444444" Text="{Binding CreatedDateTimeAgo}" />
+                                            <Label Text="{Binding Address}" FontSize="13" MaxLines="1" VerticalTextAlignment="Center" LineBreakMode="TailTruncation" TextColor="{StaticResource MainDarkColor}" />
+                                            <Label Text="{Binding Price, StringFormat='{0:0,0} đ'}" FontSize="15" FontAttributes="Bold" MaxLines="1" LineBreakMode="TailTruncation" TextColor="Black" />
+                                        </StackLayout>
+                                    </Grid>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </StackLayout>
+                    </Grid>
+                </ScrollView>
+            </RefreshView>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="End" Spacing="0" AbsoluteLayout.LayoutBounds="0,1,1,64" AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional" Margin="5">
+                <Frame Margin="5" Padding="0" CornerRadius="22">
+                    <Button Text="{x:Static lang:Language.dang_ban}" FontSize="14" Padding="10,0" HeightRequest="35" CornerRadius="22" BackgroundColor="{StaticResource MainDarkColor}" TextColor="White" Clicked="AddPost_Clicked" />
+                </Frame>
+                <Frame Margin="5" Padding="0" CornerRadius="22">
+                    <Button Text="{x:Static lang:Language.dang_mua}" FontSize="14" Padding="10,0" HeightRequest="35" CornerRadius="22" BackgroundColor="{StaticResource MainDarkColor}" TextColor="White" Clicked="AddNeedPost_Clicked" />
+                </Frame>
+            </StackLayout>
+            <controls:LoadingPopup x:Name="loadingPopup" />
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

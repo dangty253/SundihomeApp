@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ScrollView xmlns="http://xamarin.com/schemas/2014/forms" Orientation="Horizontal" BackgroundColor="White" HorizontalScrollBarVisibility="Never" xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SundihomeApp.Controls.ScrollTab">
+    <StackLayout x:Name="StackLayoutFilter" Orientation="Horizontal" Spacing="5">
+        <BindableLayout.ItemTemplate>
+            <DataTemplate>
+                <telerikPrimitives:RadBorder BorderThickness="1" BorderColor="Gray" CornerRadius="5" Padding="10,5">
+                    <telerikPrimitives:RadBorder.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnTaped" NumberOfTapsRequired="1" />
+                    </telerikPrimitives:RadBorder.GestureRecognizers>
+                    <Label Text="{Binding}" TextColor="#333333" FontSize="15" FontAttributes="None" />
+                </telerikPrimitives:RadBorder>
+            </DataTemplate>
+        </BindableLayout.ItemTemplate>
+    </StackLayout>
+</ScrollView>

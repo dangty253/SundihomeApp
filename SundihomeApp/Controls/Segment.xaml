@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<telerikPrimitives:RadBorder xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives"
+                             Margin="5,5,5,0" Grid.Row="0" BackgroundColor="#d9dce0" CornerRadius="8" Padding="0"
+             x:Class="SundihomeApp.Controls.Segment">
+    <telerikPrimitives:RadBorder.Resources>
+        <ResourceDictionary>
+            <Style x:Key="RadStyle" TargetType="telerikPrimitives:RadBorder">
+                <Setter Property="CornerRadius" Value="8" />
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup>
+                            <VisualState x:Name="Active">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource MainDarkColor}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="InActive">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="Transparent" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+            <Style x:Key="LabelStyle" TargetType="Label">
+                <Setter Property="FontAttributes"  Value="Bold"/>
+                <Setter Property="Margin"  Value="10,5"/>
+                <Setter Property="HorizontalTextAlignment"  Value="Center"/>
+                <Setter Property="FontSize"  Value="14"/>
+                <Setter Property="LineBreakMode"  Value="TailTruncation"/>
+                <Setter Property="MaxLines"  Value="1"/>
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup>
+                            <VisualState x:Name="Active">
+                                <VisualState.Setters>
+                                    <Setter Property="TextColor" Value="White" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="InActive">
+                                <VisualState.Setters>
+                                    <Setter Property="TextColor" Value="{StaticResource MainDarkColor}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+
+        </ResourceDictionary>
+    </telerikPrimitives:RadBorder.Resources>
+    <telerikPrimitives:RadBorder.Content>
+        <Grid x:Name="grSegment" ColumnSpacing="0" Margin="1.5"/>
+    </telerikPrimitives:RadBorder.Content>
+</telerikPrimitives:RadBorder>

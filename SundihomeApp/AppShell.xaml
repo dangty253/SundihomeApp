@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:GiaDatViews="clr-namespace:SundihomeApp.Views.GiaDatViews"
+       xmlns:BankViews="clr-namespace:SundihomeApp.Views.BankViews" xmlns:lang="clr-namespace:SundihomeApp.Resources" xmlns:d="http://xamarin.com/schemas/2014/forms/design" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" xmlns:local="clr-namespace:SundihomeApp" xmlns:MoiGioiViews="clr-namespace:SundihomeApp.Views.MoiGioiViews" xmlns:QuanLyMoiGioiViews="clr-namespace:SundihomeApp.Views.QuanLyMoiGioiViews" xmlns:LiquidationViews="clr-namespace:SundihomeApp.Views.LiquidationViews" xmlns:FurnitureViews="clr-namespace:SundihomeApp.Views.Furniture" xmlns:CompanyViews="clr-namespace:SundihomeApp.Views.CompanyViews" xmlns:views="clr-namespace:SundihomeApp.Views" FlyoutHeaderBehavior="Fixed" Shell.ItemTemplate="{StaticResource MenuTemplate}" Shell.MenuItemTemplate="{StaticResource MenuTemplate}" BackgroundColor="#026294" ForegroundColor="White" TitleColor="White" DisabledColor="#B4FFFFFF" UnselectedColor="#95FFFFFF" Title="SundihomeApp" xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" ios:Page.UseSafeArea="true" x:Class="SundihomeApp.AppShell">
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Color x:Key="FlyoutHeaderBGColor">White</Color>
+            <Color x:Key="ThemeColor">#026294</Color>
+            <Color x:Key="GrayColor">Gray</Color>
+            <Color x:Key="BgColor">White</Color>
+            <Style x:Key="BaseStyle" TargetType="Element">
+                <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource BgColor}" />
+                <Setter Property="Shell.TabBarForegroundColor" Value="{StaticResource ThemeColor}" />
+                <Setter Property="Shell.TabBarUnselectedColor" Value="{StaticResource GrayColor}" />
+                <Setter Property="Shell.TabBarTitleColor" Value="{StaticResource ThemeColor}" />
+            </Style>
+            <Style TargetType="FlyoutItem" BasedOn="{StaticResource BaseStyle}" />
+
+            <DataTemplate x:Key="MenuTemplate">
+                <Grid Padding="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" Source="{Binding Icon}" WidthRequest="20" HeightRequest="20" HorizontalOptions="Start" VerticalOptions="Center" />
+                    <Label Grid.Column="1" Text="{Binding Title}" TextColor="#444444" FontSize="16" VerticalTextAlignment="Center" VerticalOptions="CenterAndExpand" />
+                </Grid>
+            </DataTemplate>
+        </ResourceDictionary>
+    </Shell.Resources>
+    <Shell.FlyoutHeader>
+        <StackLayout Spacing="10" Margin="0,15,0,0" BackgroundColor="#eeeeee" Padding="20" HeightRequest="60">
+            <Image Source="logo_text.png" VerticalOptions="Center" HorizontalOptions="Start" WidthRequest="160" />
+        </StackLayout>
+    </Shell.FlyoutHeader>
+
+    <FlyoutItem x:Name="HomeFlyoutItem" Title="{x:Static lang:Language.bat_dong_san}" Icon="ic_home.png" Route="batdongsan">
+        <ShellContent Title="{x:Static lang:Language.home}" ContentTemplate="{DataTemplate views:HomePage}" Route="home">
+            <ShellContent.Icon>
+                <FontImageSource FontFamily="{StaticResource FontAwesomeSolid}" Glyph="&#xf015;" Size="Subtitle" />
+            </ShellContent.Icon>
+        </ShellContent>
+        <ShellContent Title="{x:Static lang:Language.sell_rentout}" ContentTemplate="{DataTemplate views:PostListType01Page}" Route="ban_chothue">
+            <ShellContent.Icon>
+                <FontImageSource FontFamily="{StaticResource FontAwesomeSolid}" Glyph="&#xf1ad;" Size="Subtitle" />
+            </ShellContent.Icon>
+        </ShellContent>
+        <ShellContent Title="{x:Static lang:Language.place_an_ad}" ContentTemplate="{DataTemplate views:PostItemListPage}">
+            <ShellContent.Icon>
+                <FontImageSource FontFamily="{StaticResource FontAwesomeSolid}" Glyph="&#xf07a;" Size="Subtitle" />
+            </ShellContent.Icon>
+        </ShellContent>
+        <ShellContent Title="{x:Static lang:Language.buy_rent}" ContentTemplate="{DataTemplate views:PostListType23Page}" Route="canmua_thue">
+            <ShellContent.Icon>
+                <FontImageSource FontFamily="{StaticResource FontAwesomeSolid}" Glyph="&#xf1ad;" Size="Subtitle" />
+            </ShellContent.Icon>
+        </ShellContent>
+        <ShellContent Title="{x:Static lang:Language.moi_gioi}" ContentTemplate="{DataTemplate views:AgentPage}" Route="agents">
+            <ShellContent.Icon>
+                <FontImageSource FontFamily="{StaticResource FontAwesomeSolid}" Glyph="&#xf007;" Size="Subtitle" />
+            </ShellContent.Icon>
+        </ShellContent>
+    </FlyoutItem>
+
+    <ShellContent Title="{x:Static lang:Language.du_an}" ContentTemplate="{DataTemplate views:ProjectListPage}" Icon="ic_project.png" />
+
+    <FlyoutItem x:Name="FurnitureFlyoutItem" Title="{x:Static lang:Language.noi_that}" Icon="ic_furniture_noithat.png" Route="noithat">
+        <ShellContent Title="{x:Static lang:Language.home}" Icon="ic_home.png" ContentTemplate="{DataTemplate FurnitureViews:FurnitureHomePage}" />
+        <ShellContent Title="{x:Static lang:Language.noi_that}" Icon="ic_furniture_noithat.png" ContentTemplate="{DataTemplate FurnitureViews:FurnitureProductFilterResultPage}" Route="productlist" />
+        <ShellContent Title="{x:Static lang:Language.san_noi_that}" Icon="ic_liquidation_market.png" ContentTemplate="{DataTemplate FurnitureViews:MarketPage}" />
+        <ShellContent Title="{x:Static lang:Language.khuyen_mai}" Icon="ic_furniture_khuyenmai.png" ContentTemplate="{DataTemplate FurnitureViews:PromotionPage}" Route="promotionlist" />
+        <ShellContent Title="{x:Static lang:Language.quan_ly}" Icon="ic_furniture_manage.png" ContentTemplate="{DataTemplate FurnitureViews:ProductManagementPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem x:Name="LiquidationFlyoutItem" Title="{x:Static lang:Language.thanh_ly}" Icon="ic_liquidation_transaction.png">
+        <ShellContent Title="{x:Static lang:Language.home}" Icon="ic_home.png" ContentTemplate="{DataTemplate LiquidationViews:HomePage}" />
+        <ShellContent Title="{x:Static lang:Language.thanh_ly}" Icon="ic_liquidation_transaction.png" ContentTemplate="{DataTemplate LiquidationViews:ListPage}" Route="LiquidationListPage" />
+        <ShellContent Title="{x:Static lang:Language.cho}" Icon="ic_liquidation_market.png" ContentTemplate="{DataTemplate LiquidationViews:MarketPage}" />
+        <ShellContent Title="{x:Static lang:Language.trong_ngay}" Icon="ic_liquidation_time.png" ContentTemplate="{DataTemplate LiquidationViews:ToDayListPage}" Route="ToDayListPage" />
+        <ShellContent Title="{x:Static lang:Language.ca_nhan}" Icon="ic_account.png" ContentTemplate="{DataTemplate LiquidationViews:AccountPage}" />
+    </FlyoutItem>
+
+    <ShellContent Title="{x:Static lang:Language.tin_nhan}" Icon="ic_chat.png" ContentTemplate="{DataTemplate views:ChatListPage}" />
+
+    <FlyoutItem x:Name="CompanyFlyoutItem" Title="{x:Static lang:Language.hop_tac_kinh_doanh}" Icon="ic_company.png" Route="congty">
+        <Tab x:Name="ListCompanyTab" Title="{x:Static lang:Language.danh_sach_cong_ty}" Icon="ic_company.png">
+            <ShellContent ContentTemplate="{DataTemplate CompanyViews:CompanyListPage}" />
+        </Tab>
+        <Tab Title="{x:Static lang:Language.san_pham}" Icon="ic_product.png">
+            <ShellContent Title="{x:Static lang:Language.du_an}" ContentTemplate="{DataTemplate CompanyViews:AllCompanyProjectListPage}" />
+            <ShellContent Title="{x:Static lang:Language.bat_dong_san}" ContentTemplate="{DataTemplate CompanyViews:AllCompanyPostListPage}" />
+            <ShellContent Title="{x:Static lang:Language.san_pham}" ContentTemplate="{DataTemplate CompanyViews:AllCompanyProductListPage}" />
+        </Tab>
+        <ShellContent Title="{x:Static lang:Language.hop_tac}" Icon="ic_b2b.png" ContentTemplate="{DataTemplate CompanyViews:B2BPage}" />
+        <ShellContent Title="{x:Static lang:Language.goi_vay_s}" Icon="ic_goivay.png" ContentTemplate="{DataTemplate BankViews:LoanListPage}" Route="congty_goivay" />
+        <ShellContent Title="{x:Static lang:Language.moi_gioi}" Icon="ic_account.png" ContentTemplate="{DataTemplate MoiGioiViews:AllListPage}" Route="QuanLyMoiGioi" />
+    </FlyoutItem>
+
+    <MenuItem Text="{x:Static lang:Language.goi_vay_s}" IconImageSource="ic_goivay.png" Clicked="GoiVay_Clicked" />
+
+    <FlyoutItem x:Name="QuanLyCongTyFlyoutItem" Title="{x:Static lang:Language.quan_ly_cong_ty}" Icon="ic_manage.png" Route="quanlycongty" />
+
+    <FlyoutItem x:Name="QuanLyMoiGioiFlyoutItem" Title="{x:Static lang:Language.quan_ly_moi_gioi}" Icon="ic_manage.png" Route="quanlymoigioi" />
+
+    <ShellContent Title="{x:Static lang:Language.gia_dat}" ContentTemplate="{DataTemplate GiaDatViews:GiaDatListPage}" Icon="ic_list.png" />
+
+    <MenuItem Text="{x:Static lang:Language.ngon_ngu}" IconImageSource="ic_language.png" Clicked="ChangeLanguage_Clicked" />
+    <ShellContent Title="{x:Static lang:Language.gioi_thieu}" ContentTemplate="{DataTemplate views:AboutPage}" Icon="ic_info.png" />
+    <ShellContent Title="{x:Static lang:Language.ho_tro}" ContentTemplate="{DataTemplate views:SupportPage}" Icon="ic_support.png" />
+    <ShellContent x:Name="AccountShellContent" Title="{x:Static lang:Language.account}" Icon="ic_account.png"  Route="account"/>
+</Shell>

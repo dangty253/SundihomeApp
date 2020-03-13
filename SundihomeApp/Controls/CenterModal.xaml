@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives" BackgroundColor="#eeeeee" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SundihomeApp.Controls.CenterModal">
+    <ContentView.Content>
+        <telerikPrimitives:RadBorder x:Name="MainContent" Margin="15" VerticalOptions="Center" Padding="0" BackgroundColor="White" CornerRadius="5" BorderThickness="0" BorderColor="#999999">
+            <telerikPrimitives:RadBorder.GestureRecognizers>
+                <TapGestureRecognizer />
+            </telerikPrimitives:RadBorder.GestureRecognizers>
+            <Grid RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Row="0" Orientation="Horizontal" BackgroundColor="{StaticResource MainDarkColor}">
+                    <Label Margin="10,0" MaxLines="1" LineBreakMode="MiddleTruncation" Text="{Binding Title}" TextColor="White" FontSize="16" VerticalOptions="Center" VerticalTextAlignment="Center" FontAttributes="Bold" />
+                    <Button x:Name="BtnClose" Text="&#xf057;" FontSize="20" WidthRequest="20" Padding="0" Margin="10" HeightRequest="20" CornerRadius="10" FontFamily="{StaticResource FontAwesomeRegular}" HorizontalOptions="EndAndExpand" BackgroundColor="Transparent" TextColor="White" Clicked="Hide_Clicked" />
+                </StackLayout>
+                <ContentView Content="{Binding Body}" Grid.Row="1" />
+                <ContentView Content="{Binding Footer}" Grid.Row="2" />
+            </Grid>
+        </telerikPrimitives:RadBorder>
+    </ContentView.Content>
+</ContentView>

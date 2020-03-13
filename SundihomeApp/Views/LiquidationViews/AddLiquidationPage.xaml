@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:converters="clr-namespace:SundihomeApp.Converters" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:controls="clr-namespace:SundihomeApp.Controls" xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives" xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" ios:Page.UseSafeArea="true" x:Class="SundihomeApp.Views.LiquidationViews.AddLiquidationPage" xmlns:lang="clr-namespace:SundihomeApp.Resources">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:NullToHideConverter x:Key="NullToHideConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <Grid AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <ScrollView Grid.Row="0" Padding="0,0,0,70">
+                    <!--content-->
+                    <StackLayout  Spacing="0">
+                        <StackLayout BackgroundColor="{StaticResource MainDarkColor}">
+                            <Label Text="{Static lang:Language.thong_tin_chung}" Margin="10,5" TextColor="White" FontSize="15" />
+                        </StackLayout>
+
+                        <Grid Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <StackLayout Orientation="Horizontal" Grid.Column="0">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TypeThanhLy_Checked" />
+                                </StackLayout.GestureRecognizers>
+                                <telerikPrimitives:RadCheckBox x:Name="CheckBoxThanhLy" IsEnabled="False" IsChecked="True" CheckedColor="{StaticResource MainDarkColor}" />
+                                <Label Text="{Static lang:Language.thanh_ly}" VerticalTextAlignment="Center" FontSize="15" TextColor="Black" />
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Grid.Column="1">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TypeChoTang_Checked" />
+                                </StackLayout.GestureRecognizers>
+                                <telerikPrimitives:RadCheckBox x:Name="CheckBoxChoTang" IsEnabled="False" IsChecked="False" CheckedColor="{StaticResource MainDarkColor}" VerticalOptions="Center" />
+                                <Label Text="{Static lang:Language.cho_tang}" VerticalTextAlignment="Center" FontSize="15" TextColor="Black" />
+                            </StackLayout>
+                        </Grid>
+                        <!--Tình trạng bài đăng-->
+                        <StackLayout x:Name="StackLayoutStatus" IsVisible="false" Orientation="Horizontal" Margin="10,0,10,10" >
+                            <controls:FormLabel>
+                                <controls:FormLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Static lang:Language.tinh_trang}" />
+                                        <Span Text=" : " />
+                                    </FormattedString>
+                                </controls:FormLabel.FormattedText>
+                            </controls:FormLabel>
+                            <Label x:Name="LblStatus" FontSize="15" FontAttributes="Bold" TextColor="DarkGreen" Margin="0,5,0,0"  />
+                        </StackLayout>
+
+                        <!--Danh mục sản phẩm-->
+                        <controls:FormLabelRequired Text="{Static lang:Language.danh_muc_san_pham}" Margin="10,0"/>
+                        <controls:LookUpControl SelectedItem="{Binding LiquidationModel.LiquidationCategory}" Margin="10,0" ItemsSource="{Binding LiquidationCategories}" BottomModal="{x:Reference lookUpModal}" Placeholder="{Static lang:Language.danh_muc_san_pham}" NameDisplay="Name" />
+
+                        <!--Tên sản phẩm-->
+                        <controls:FormLabelRequired Text="{Static lang:Language.ten_san_pham}" Margin="10,10,10,0"/>
+                        <controls:ClearableEntry Placeholder="{Static lang:Language.ten_san_pham}" Margin="10,0" Text="{Binding LiquidationModel.Name}" />
+
+                        <!--Mã sản phẩm-->
+                        <controls:FormLabel Text="{Static lang:Language.ma_san_pham}" Margin="10,10,10,0"/>
+                        <controls:ClearableEntry Placeholder="{Static lang:Language.ma_san_pham}" Margin="10,0" Text="{Binding LiquidationModel.Code}" />
+
+                        <!--Gía thanh lý -->
+                        <StackLayout x:Name="StackLayoutPrice" Margin="10,10,10,0">
+                            <controls:FormLabelRequired Text="{Static lang:Language.gia_thanh_ly}" />
+                            <controls:CurrencyEntry Placeholder="{Static lang:Language.gia}" Text="{Binding LiquidationModel.Price}" MaxValue="50000000000" />
+                        </StackLayout>
+
+                        <!--Mô tả sản phẩm-->
+                        <controls:FormLabel Text="{Static lang:Language.mo_ta}" Margin="10,10,10,0"/>
+                        <Grid Margin="10,0">
+                            <telerikPrimitives:RadBorder BorderColor="LightGray" BorderThickness="1" CornerRadius="4">
+                                <Editor Placeholder="{Static lang:Language.mo_ta}" HorizontalOptions="FillAndExpand" HeightRequest="100" Text="{Binding LiquidationModel.Description}" FontSize="16" />
+                            </telerikPrimitives:RadBorder>
+                            <Button Style="{StaticResource ClearButtonStyle}" VerticalOptions="Start" FontFamily="{StaticResource FontAwesomeSolid}" Clicked="ClearDescription_Clicked" IsVisible="{Binding PostModel.Description,Converter={StaticResource NullToHideConverter}}" />
+                        </Grid>
+
+                        <StackLayout BackgroundColor="{StaticResource MainDarkColor}" Margin="0,10" Padding="10,5">
+                            <Label Text="{Static lang:Language.dia_chi}" TextColor="White" FontSize="15" />
+                        </StackLayout>
+
+                        <!--Tỉnh/thành phố-->
+                        <controls:FormLabelRequired Text="{Static lang:Language.tinh_thanh}" Margin="10,0"/>
+                        <controls:LookUpControl SelectedItem="{Binding LiquidationModel.Province}" Margin="10,0" ItemsSource="{Binding ProvinceList}" BottomModal="{x:Reference lookUpModal}" Placeholder="{Static lang:Language.tinh_thanh}" NameDisplay="Name" SelectedItemChange="Province_Change" />
+
+                        <!--Quận/huyện-->
+                        <controls:FormLabelRequired Text="{Static lang:Language.quan_huyen}" Margin="10,10,10,0"/>
+                        <controls:LookUpControl SelectedItem="{Binding LiquidationModel.District}" Margin="10,0" ItemsSource="{Binding DistrictList}" BottomModal="{x:Reference lookUpModal}" Placeholder="{Static lang:Language.quan_huyen}" NameDisplay="Name" SelectedItemChange="District_Change" />
+
+                        <!--Xã/phường-->
+                        <controls:FormLabelRequired Text="{Static lang:Language.phuong_xa}" Margin="10,10,10,0"/>
+                        <controls:LookUpControl SelectedItem="{Binding LiquidationModel.Ward}" Margin="10,0" ItemsSource="{Binding WardList}" BottomModal="{x:Reference lookUpModal}" Placeholder="{Static lang:Language.phuong_xa}" NameDisplay="Name" />
+
+                        <!-- Đường -->
+                        <controls:FormLabel Text="{Static lang:Language.so_nha_duong}" Margin="10,10,10,0" />
+                        <controls:ClearableEntry Placeholder="{Static lang:Language.so_nha_duong}" Margin="10,0" Text="{Binding LiquidationModel.Street}" />
+
+
+                        <StackLayout BackgroundColor="{StaticResource MainDarkColor}" Margin="0,10" Padding="10,5">
+                            <Label Text="{Static lang:Language.hinh_anh}" TextColor="White" FontSize="15" />
+                        </StackLayout>
+                        <ScrollView Orientation="Horizontal" Margin="10">
+                            <StackLayout Orientation="Horizontal">
+                                <Button Text="&#xf302;" FontFamily="{StaticResource FontAwesomeSolid}" BackgroundColor="White" Padding="15,0" HeightRequest="80" WidthRequest="80" FontSize="17" VerticalOptions="CenterAndExpand" TextColor="Black" BorderWidth="1" BorderColor="Black" Command="{Binding SelectImagesCommand}" />
+                                <StackLayout Orientation="Horizontal" BindableLayout.ItemsSource="{Binding Media}">
+                                    <BindableLayout.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid Margin="5">
+                                                <ffimageloading:CachedImage DownsampleToViewSize="true" HeightRequest="80" WidthRequest="80" Source="{Binding PreviewPath}" Aspect="AspectFill" HorizontalOptions="FillAndExpand" />
+                                                <Button Text="&#xf2ed;" TextColor="#026294" FontSize="14" HorizontalOptions="End" VerticalOptions="Start" BorderWidth="0" BackgroundColor="White" WidthRequest="25" HeightRequest="25" Margin="0,5,5,0" Padding="0" Clicked="Remove_Image" CommandParameter="{Binding}" FontFamily="{StaticResource FontAwesomeSolid}" />
+                                            </Grid>
+                                        </DataTemplate>
+                                    </BindableLayout.ItemTemplate>
+                                </StackLayout>
+                            </StackLayout>
+                        </ScrollView>
+                    </StackLayout>
+                </ScrollView>
+            </Grid>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="End" Spacing="0" AbsoluteLayout.LayoutBounds="0,1,1,64" AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional" Margin="5">
+                <Frame Margin="5" Padding="0" CornerRadius="22">
+                    <Button Text="save" Clicked="Save_Clicked" Style="{StaticResource FLoatButtonStyle}" FontFamily="{StaticResource FontAwesomeSolid}" />
+                </Frame>
+            </StackLayout>
+
+            <controls:BottomModal x:Name="lookUpModal" />
+            <controls:LoadingPopup x:Name="loadingPopup" />
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

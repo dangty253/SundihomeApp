@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives" xmlns:controls="clr-namespace:SundihomeApp.Controls"
+             xmlns:lang="clr-namespace:SundihomeApp.Resources"
+             xmlns:pluginImageCircle="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin" xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" ios:Page.UseSafeArea="True" xmlns:converters="clr-namespace:SundihomeApp.Converters" x:Class="SundihomeApp.Views.CompanyViews.CompanyListPage" Title="{x:Static lang:Language.danh_sach_cong_ty}">
+    <ContentPage.Resources>
+        <converters:CompanyTypeNameConverter x:Key="CompanyTypeNameConverter" />
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <Grid AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <controls:SearchBarFrame Grid.Row="0" Margin="5,5,5,0">
+                    <controls:SearchBar x:Name="searchBar" SearchButtonPressed="Search_Clicked" />
+                </controls:SearchBarFrame>
+                <ScrollView x:Name="ScrollViewFilter" Grid.Row="1" Orientation="Horizontal" BackgroundColor="White" VerticalScrollBarVisibility="Never" HorizontalScrollBarVisibility="Never" Margin="5,0">
+                    <StackLayout x:Name="stListLoaiCongty" Orientation="Horizontal" Spacing="5">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <telerikPrimitives:RadBorder x:Name="FilterBanRadborder" Padding="10,5" BorderColor="Gray" BorderThickness="1" CornerRadius="8" BackgroundColor="White">
+                                    <telerikPrimitives:RadBorder.GestureRecognizers>
+                                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="LoaiConty_Tapped" CommandParameter="{Binding Id}" />
+                                    </telerikPrimitives:RadBorder.GestureRecognizers>
+                                    <Label Text="{Binding Name}" TextColor="#444444" FontSize="14" />
+                                </telerikPrimitives:RadBorder>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
+                </ScrollView>
+
+                <controls:BsdListView x:Name="lvListCompany" Grid.Row="2">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Grid.Column="0" ColumnSpacing="8" Padding="10" BackgroundColor="White" Margin="0,1,0,1">
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer NumberOfTapsRequired="1" CommandParameter="{Binding Id}" Tapped="click_OnCompany_GoDetail" />
+                                    </Grid.GestureRecognizers>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <pluginImageCircle:CircleImage Source="{Binding LogoFull}" Grid.Column="0" HeightRequest="60" WidthRequest="60" HorizontalOptions="Center" VerticalOptions="Center" BorderColor="{StaticResource MainDarkColor}" BorderThickness="1" Aspect="AspectFill" />
+                                    <StackLayout Grid.Column="1">
+                                        <Label Text="{Binding Name}" BackgroundColor="{StaticResource BackGroundText}" FontAttributes="Bold" TextColor="{StaticResource MainDarkColor}" FontSize="16" />
+                                        <Label BackgroundColor="{StaticResource BackGroundText}" TextColor="Black" FontSize="13">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="MST: " />
+                                                    <Span Text="{Binding MST}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label TextColor="#444444" FontSize="13" BackgroundColor="{StaticResource BackGroundText}" Text="{Binding NganhNgheId,Converter={StaticResource CompanyTypeNameConverter}}" />
+                                        <StackLayout Orientation="Horizontal" Spacing="3">
+                                            <Label Text="{StaticResource MapMarker}" TextColor="{StaticResource MainDarkColor}" FontSize="13" Margin="0,2,0,0" VerticalTextAlignment="Start" FontFamily="{StaticResource FontAwesomeSolid}" />
+                                            <Label Text="{Binding Address}" FontSize="13" VerticalTextAlignment="Start" LineBreakMode="TailTruncation" TextColor="#444444" BackgroundColor="{StaticResource BackGroundText}" />
+                                        </StackLayout>
+                                    </StackLayout>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </controls:BsdListView>
+            </Grid>
+            <StackLayout x:Name="stAddCompany" Orientation="Horizontal" HorizontalOptions="End" Spacing="0" AbsoluteLayout.LayoutBounds="0,1,1,64" Margin="5" AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional">
+                <Frame Margin="5" Padding="0" CornerRadius="22">
+                    <Button Text="&#xf067;" FontSize="20" WidthRequest="44" HeightRequest="44" CornerRadius="22" FontFamily="{StaticResource FontAwesomeSolid}" BackgroundColor="{StaticResource MainDarkColor}" TextColor="White" Clicked="click_AddCompany" />
+                </Frame>
+            </StackLayout>
+            <controls:LoadingPopup x:Name="loadingPopup" />
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>
+

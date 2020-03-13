@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:control="clr-namespace:SundihomeApp.Controls"
+    x:Class="SundihomeApp.Views.ReportPage"
+    Title="Phản hồi"
+    BackgroundColor="{StaticResource MainPageBackgroundColor}">
+    <ContentPage.Content>
+        <ScrollView Margin="{OnPlatform Android='0,55,0,0'}">
+            <Grid Margin="20"
+                  RowSpacing="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <!-- Title -->
+                <Frame Grid.Row="0"
+                       HasShadow="False"
+                       Padding="0"
+                       CornerRadius="15"
+                       BorderColor="#e0dbdb"
+                       BackgroundColor="#FFF">
+                    <control:BlankEditor Placeholder="Tiêu đề"
+                                         HeightRequest="40"/>
+                </Frame>
+                <!-- Content -->
+                <Frame Grid.Row="1"
+                       HasShadow="False"
+                       Padding="0"
+                       CornerRadius="15"
+                       BorderColor="#e0dbdb"
+                       BackgroundColor="#FFF">
+                    <control:BlankEditor Placeholder="Nội dung phản hồi..."
+                            HeightRequest="150"/>
+                </Frame>
+                <!-- Submit -->
+                <Button Grid.Row="2"
+                        Style="{StaticResource LightBlueButton}"
+                        Text="GỬI"/>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

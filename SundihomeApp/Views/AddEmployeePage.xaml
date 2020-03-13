@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:lang="clr-namespace:SundihomeApp.Resources" xmlns:controls="clr-namespace:SundihomeApp.Controls" xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives" x:Class="SundihomeApp.Views.AddEmployeePage" Title="{Binding Title}">
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <ScrollView Padding="0,0,0,64" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <StackLayout x:Name="grContentEmployees" Margin="10,5">
+
+                    <!-- so dien thoai-->
+                    <controls:FormLabelRequired Text="{x:Static lang:Language.so_dien_thoai}"/>
+                    <Entry x:Name="enPhone" Placeholder="{x:Static lang:Language.nhap_so_dien_thoai}" FontSize="15" Text="{Binding EmployeeModel.Phone}" Keyboard="Numeric" />
+
+                    <!--ho ten-->
+                    <controls:FormLabelRequired Text="{x:Static lang:Language.ho_ten}" Margin="0,10,0,0"/>
+                    <controls:ClearableEntry x:Name="enFullName" Placeholder="{x:Static lang:Language.ho_ten}" Text="{Binding EmployeeModel.FullName}" />
+
+                    <!--email-->
+                    <controls:FormLabelRequired Text="{x:Static lang:Language.email}" Margin="0,10,0,0"/>
+                    <controls:ClearableEntry x:Name="enEmail" Placeholder="{x:Static lang:Language.nhap_email}" Text="{Binding EmployeeModel.Email}" />
+
+                    <!--Tinh/thanh-->
+                    <controls:FormLabelRequired Text="{x:Static lang:Language.tinh_thanh}" Margin="0,10,0,0"/>
+                    <controls:LookUpControl SelectedItem="{Binding EmployeeModel.Province}" ItemsSource="{Binding  ProvinceList}" BottomModal="{x:Reference lookUpModal}" Placeholder="{x:Static lang:Language.tinh_thanh}" NameDisplay="Name" SelectedItemChange="Province_change" />
+
+                    <!--Quan/Huyen-->
+                    <controls:FormLabelRequired Text="{x:Static lang:Language.quan_huyen}" Margin="0,10,0,0"/>
+                    <controls:LookUpControl SelectedItem="{Binding EmployeeModel.District}" ItemsSource="{Binding DistrictList}" BottomModal="{x:Reference lookUpModal}" NameDisplay="Name" Placeholder="{x:Static lang:Language.quan_huyen}" SelectedItemChange="District_change" />
+
+                    <!--Phuong/xa-->
+                    <controls:FormLabelRequired Text="{x:Static lang:Language.phuong_xa}" Margin="0,10,0,0"/>
+                    <controls:LookUpControl SelectedItem="{Binding EmployeeModel.Ward}" ItemsSource="{Binding WardList}" BottomModal="{x:Reference lookUpModal}" NameDisplay="Name" Placeholder="{x:Static lang:Language.phuong_xa}" />
+
+                    <!--duong -->
+                    <controls:FormLabel Text="{x:Static lang:Language.so_nha_duong}" Margin="0,10,0,0"/>
+                    <controls:ClearableEntry Placeholder="{x:Static lang:Language.so_nha_duong}" Text="{Binding EmployeeModel.Street}" />
+
+                    <!--dia chi-->
+                    <controls:FormLabelRequired Text="{x:Static lang:Language.dia_chi}" Margin="0,10,0,0"/>
+                    <Entry x:Name="enAddress" FontSize="16" TextColor="#000" IsEnabled="False" Placeholder="{x:Static lang:Language.nhap_dia_chi}" Text="{Binding EmployeeModel.Address}" />
+
+                </StackLayout>
+            </ScrollView>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="End" Spacing="0" AbsoluteLayout.LayoutBounds="0,1,1,64" AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional" Margin="5">
+                <Frame Margin="5" Padding="0" CornerRadius="22">
+                    <Button Style="{StaticResource FLoatButtonStyle}" Text="&#xf044;" FontFamily="{StaticResource FontAwesomeRegular}" Clicked="OnClick_AddEmployee" />
+                </Frame>
+            </StackLayout>
+            <controls:BottomModal  x:Name="lookUpModal" />
+            <controls:LoadingPopup x:Name="loadingPopup" />
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

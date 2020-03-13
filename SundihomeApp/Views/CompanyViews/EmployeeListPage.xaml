@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="SundihomeApp.Views.CompanyViews.EmployeeListPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SundihomeApp.Controls"
+    xmlns:converters="clr-namespace:SundihomeApp.Converters"
+    xmlns:lang="clr-namespace:SundihomeApp.Resources"
+    xmlns:pluginImageCircle="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+    xmlns:telerikInput="clr-namespace:Telerik.XamarinForms.Input;assembly=Telerik.XamarinForms.Input"
+    xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives"
+    Title="{x:Static lang:Language.quan_ly_nhan_vien}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:NullToHideConverter x:Key="nullToHideConverters" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <Grid AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <controls:Segment
+                    x:Name="segment"
+                    Grid.Row="0"
+                    OnSelectedIndexChanged="SegmentSelected_Tapped" />
+
+
+                <controls:BsdListView
+                    x:Name="lvDanhSachNhanVien"
+                    Grid.Row="1"
+                    IsVisible="true"
+                    VerticalOptions="FillAndExpand">
+                    <controls:BsdListView.Header>
+                        <StackLayout Padding="5,0,5,5" BackgroundColor="#fff">
+                            <Frame
+                                Padding="0"
+                                BorderColor="#aaaaaa"
+                                CornerRadius="8"
+                                HasShadow="False"
+                                HeightRequest="35">
+                                <SearchBar
+                                    x:Name="searchBar"
+                                    BackgroundColor="White"
+                                    FontSize="14"
+                                    Placeholder="{x:Static lang:Language.tim_kiem}"
+                                    SearchButtonPressed="Search_Pressed"
+                                    TextChanged="Search_TextChanged"
+                                    TextColor="#444444" />
+                            </Frame>
+                        </StackLayout>
+                    </controls:BsdListView.Header>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid
+                                    x:Name="grItemEmployee"
+                                    Margin="0,1"
+                                    Padding="10,5"
+                                    BackgroundColor="#fff"
+                                    ColumnSpacing="10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="70" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="25" />
+                                    </Grid.ColumnDefinitions>
+                                    <pluginImageCircle:CircleImage
+                                        Grid.Column="0"
+                                        Aspect="AspectFill"
+                                        HeightRequest="70"
+                                        Source="{Binding AvatarFullUrl}"
+                                        VerticalOptions="Center" />
+                                    <StackLayout Grid.Column="1" VerticalOptions="Center">
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="16"
+                                            Text="{Binding FullName}"
+                                            TextColor="{StaticResource MainDarkColor}" />
+                                        <Label
+                                            FontSize="14"
+                                            Text="{Binding Email}"
+                                            TextColor="#444444" />
+                                        <Label
+                                            FontSize="14"
+                                            Text="{Binding Phone}"
+                                            TextColor="#444444" />
+                                        <Label
+                                            FontSize="14"
+                                            LineBreakMode="TailTruncation"
+                                            Text="{Binding Address}"
+                                            TextColor="#444444" />
+                                    </StackLayout>
+                                    <Button
+                                        x:Name="btnMoreAction"
+                                        Grid.Column="2"
+                                        Padding="0"
+                                        BackgroundColor="transparent"
+                                        Clicked="MoreAction_Clicked"
+                                        CommandParameter="{Binding}"
+                                        FontFamily="{StaticResource FontAwesomeSolid}"
+                                        FontSize="16"
+                                        HeightRequest="50"
+                                        Text="&#xf142;"
+                                        TextColor="#63636D"
+                                        VerticalOptions="Center"
+                                        WidthRequest="25" />
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    <controls:BsdListView.Footer>
+                        <StackLayout BackgroundColor="#eee" HeightRequest="64" />
+                    </controls:BsdListView.Footer>
+                </controls:BsdListView>
+                <controls:BsdListView
+                    x:Name="lvInviteUser"
+                    Grid.Row="1"
+                    BackgroundColor="#eeeeee"
+                    IsVisible="false"
+                    VerticalOptions="FillAndExpand">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid
+                                    Margin="0,1,0,1"
+                                    Padding="0,5"
+                                    BackgroundColor="White"
+                                    ColumnSpacing="10">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <StackLayout x:Name="stItemInviteUser" Margin="10">
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="16"
+                                            IsVisible="{Binding User, Converter={StaticResource nullToHideConverters}}"
+                                            Text="{Binding User.FullName}"
+                                            TextColor="{StaticResource MainDarkColor}" />
+                                        <Label
+                                            BackgroundColor="{StaticResource BackGroundText}"
+                                            FontSize="15"
+                                            Text="{Binding PhoneNumber}"
+                                            TextColor="#000" />
+                                    </StackLayout>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </controls:BsdListView>
+                <controls:BsdListView
+                    x:Name="lvChoXetDuyet"
+                    Grid.Row="1"
+                    IsVisible="false"
+                    VerticalOptions="FillAndExpand">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid
+                                    Margin="0,1"
+                                    Padding="5"
+                                    BackgroundColor="White"
+                                    ColumnSpacing="10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="70" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <pluginImageCircle:CircleImage
+                                        Grid.Column="0"
+                                        Aspect="AspectFill"
+                                        HeightRequest="70"
+                                        Source="{Binding User.AvatarFullUrl}"
+                                        VerticalOptions="Center" />
+                                    <StackLayout Grid.Column="1" VerticalOptions="Center">
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="16"
+                                            Text="{Binding User.FullName}"
+                                            TextColor="{StaticResource MainDarkColor}" />
+                                        <Label
+                                            FontSize="14"
+                                            Text="{Binding User.Email}"
+                                            TextColor="#444444" />
+                                        <Label
+                                            FontSize="14"
+                                            Text="{Binding User.Phone}"
+                                            TextColor="#444444" />
+                                        <Label
+                                            FontSize="14"
+                                            Text="{Binding User.Address}"
+                                            TextColor="#444444" />
+                                    </StackLayout>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </controls:BsdListView>
+            </Grid>
+            <StackLayout
+                Margin="5"
+                AbsoluteLayout.LayoutBounds="0,1,1,64"
+                AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional"
+                HorizontalOptions="End"
+                Orientation="Horizontal"
+                Spacing="0">
+                <Frame
+                    Margin="5"
+                    Padding="0"
+                    CornerRadius="22">
+                    <Button
+                        BackgroundColor="{StaticResource MainDarkColor}"
+                        Clicked="AddEmployee_Clicked"
+                        CornerRadius="22"
+                        FontFamily="{StaticResource FontAwesomeSolid}"
+                        FontSize="20"
+                        HeightRequest="44"
+                        Text="&#xf067;"
+                        TextColor="White"
+                        WidthRequest="44" />
+                </Frame>
+            </StackLayout>
+
+            <ContentView
+                x:Name="ModalPopup"
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+                IsVisible="false">
+                <ContentView.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="CloseModal_Clicked" />
+                </ContentView.GestureRecognizers>
+                <telerikPrimitives:RadBorder
+                    Margin="30"
+                    Padding="20"
+                    BackgroundColor="#fff"
+                    CornerRadius="10"
+                    VerticalOptions="Center">
+                    <telerikPrimitives:RadBorder.GestureRecognizers>
+                        <TapGestureRecognizer />
+                    </telerikPrimitives:RadBorder.GestureRecognizers>
+                    <Grid RowSpacing="20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="45" />
+                            <RowDefinition Height="45" />
+                        </Grid.RowDefinitions>
+                        <controls:ClearableEntry
+                            x:Name="enNumPhone"
+                            Grid.Row="0"
+                            EntryKeyboard="Numeric"
+                            Placeholder="{x:Static lang:Language.nhap_so_dien_thoai}" />
+                        <Button
+                            x:Name="btnSendOPT"
+                            Grid.Row="1"
+                            BackgroundColor="{StaticResource MainDarkColor}"
+                            Clicked="BtnSendOPT_Clicked"
+                            CornerRadius="10"
+                            HorizontalOptions="FillAndExpand"
+                            Text="{x:Static lang:Language.gui_ma_opt}"
+                            TextColor="#fff" />
+                    </Grid>
+                </telerikPrimitives:RadBorder>
+
+            </ContentView>
+
+            <controls:LoadingPopup x:Name="loadingPopup" />
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

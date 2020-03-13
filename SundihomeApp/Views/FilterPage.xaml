@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:lang="clr-namespace:SundihomeApp.Resources" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives" xmlns:telerikInput="clr-namespace:Telerik.XamarinForms.Input;assembly=Telerik.XamarinForms.Input" xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" ios:Page.UseSafeArea="true" xmlns:controls="clr-namespace:SundihomeApp.Controls" xmlns:converters="clr-namespace:SundihomeApp.Converters" BackgroundColor="{StaticResource MainPageBackgroundColor}" Title="{x:Static lang:Language.tim_kiem}" x:Class="SundihomeApp.Views.FilterPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:NullToHideConverter x:Key="NullToHideConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <StackLayout Spacing="10" Margin="10">
+                    <!--Loại tin-->
+                    <controls:FormLabel Text="{x:Static lang:Language.loai_hinh}" />
+                    <telerikInput:RadSegmentedControl x:Name="segmentPostType" VerticalOptions="Start" SegmentTextColor="{StaticResource MainDarkColor}" SegmentBackgroundColor="White" SelectedSegmentTextColor="White" SelectedSegmentBackgroundColor="{StaticResource MainDarkColor}" />
+
+                    <!--từ khoá-->
+                    <controls:FormLabel Text="{x:Static lang:Language.tu_khoa}" Margin="0,0,0,-5" />
+                    <controls:ClearableEntry x:Name="EntryTitle" Placeholder="{x:Static lang:Language.tu_khoa}" Text="{Binding Keyword}" />
+
+                    <!--Dự án-->
+                    <controls:FormLabel Text="{x:Static lang:Language.du_an}" Margin="0,0,0,-5" />
+                    <controls:LookUpControl SelectedItem="{Binding Project}" ItemsSource="{Binding ProjectList}" BottomModal="{x:Reference BottomModalLookup}" Placeholder="{x:Static lang:Language.du_an}" NameDisplay="Name" />
+
+                    <!--Loại bất động sản-->
+                    <controls:FormLabel Text="{x:Static lang:Language.loai_bat_dong_san}" Margin="0,0,0,-5" />
+                    <controls:LookUpControl SelectedItem="{Binding LoaiBatDongSan}" ItemsSource="{Binding LoaiBatDongSanList}" BottomModal="{x:Reference BottomModalLookup}" Placeholder="{x:Static lang:Language.loai_bat_dong_san}" NameDisplay="Name" />
+
+                    <!--Tỉnh/thành phố-->
+                    <controls:FormLabel Text="{x:Static lang:Language.province}" Margin="0,0,0,-5" />
+                    <controls:LookUpControl SelectedItem="{Binding Province}" ItemsSource="{Binding ProvinceList}" BottomModal="{x:Reference BottomModalLookup}" Placeholder="{x:Static lang:Language.province}" NameDisplay="Name" SelectedItemChange="OnProvice_Change" />
+
+                    <!--Quận/huyện-->
+                    <controls:FormLabel Text="{x:Static lang:Language.district}" Margin="0,0,0,-5" />
+                    <controls:LookUpControl x:Name="lookUpDistrict" SelectedItem="{Binding District}" ItemsSource="{Binding DistrictList}" BottomModal="{x:Reference BottomModalLookup}" Placeholder="{x:Static lang:Language.district}" NameDisplay="Name" SelectedItemChange="OnDistrict_Change" />
+
+                    <!--Xã/phường-->
+                    <controls:FormLabel Text="{x:Static lang:Language.ward}" Margin="0,0,0,-5" />
+                    <controls:LookUpControl SelectedItem="{Binding Ward}" ItemsSource="{Binding WardList}" BottomModal="{x:Reference BottomModalLookup}" Placeholder="{x:Static lang:Language.ward}" NameDisplay="Name" />
+
+                    <!--Diện tích -->
+                    <controls:FormLabel Text="{x:Static lang:Language.dien_tich}" Margin="0,0,0,-5" />
+                    <controls:LookUpControl x:Name="AreaLookUp" SelectedItem="{Binding Area}" ItemsSource="{Binding AreaOptions}" BottomModal="{x:Reference BottomModalLookup}" Placeholder="{x:Static lang:Language.dien_tich}" NameDisplay="Name" />
+
+                    <Grid ColumnSpacing="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <controls:FormLabel Grid.Column="0" Grid.Row="0" Text="{x:Static lang:Language.so_phong_tam}" />
+                        <controls:FormLabel Grid.Column="1" Grid.Row="0" Text="{x:Static lang:Language.so_phong_ngu}" />
+
+                        <controls:PlusMinusNumber Grid.Column="0" Grid.Row="1" Value="{Binding SoPhongTam}" HeightRequest="{Binding Path=Height, Source={x:Reference AreaLookUp}}" />
+                        <controls:PlusMinusNumber Grid.Column="1" Grid.Row="1" Value="{Binding SoPhongNgu}" HeightRequest="{Binding Path=Height, Source={x:Reference AreaLookUp}}" />
+                    </Grid>
+
+                    <!--Giá-->
+                    <controls:FormLabel Text="Giá" Margin="0,0,0,-5" />
+                    <Grid ColumnSpacing="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <controls:LookUpControl Grid.Column="0" SelectedItem="{Binding PriceFrom}" ItemsSource="{Binding PriceOptions}" BottomModal="{x:Reference BottomModalLookup}" Placeholder="{x:Static lang:Language.gia_tien_tu}" NameDisplay="Name" />
+                        <controls:LookUpControl Grid.Column="1" SelectedItem="{Binding PriceTo}" ItemsSource="{Binding PriceOptions}" BottomModal="{x:Reference BottomModalLookup}" Placeholder="{x:Static lang:Language.gia_tien_den}" NameDisplay="Name" />
+                    </Grid>
+
+
+                </StackLayout>
+            </ScrollView>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="End" Spacing="0" AbsoluteLayout.LayoutBounds="0,1,1,64" AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional" Margin="5">
+                <Frame Margin="5" Padding="0" CornerRadius="22">
+                    <Button Text="&#xf021;" FontSize="20" WidthRequest="44" HeightRequest="44" CornerRadius="22" FontFamily="{StaticResource FontAwesomeSolid}" BackgroundColor="White" TextColor="{StaticResource MainDarkColor}" Clicked="ResetForm_Clicked" />
+                </Frame>
+                <Frame Margin="5" Padding="0" CornerRadius="22">
+                    <Button Text="&#xf002;" FontSize="20" WidthRequest="44" HeightRequest="44" CornerRadius="22" FontFamily="{StaticResource FontAwesomeSolid}" BackgroundColor="White" TextColor="{StaticResource MainDarkColor}" Clicked="Filter_Clicked" />
+                </Frame>
+                <Frame Margin="5" Padding="0" CornerRadius="22">
+                    <Button Text="&#xf3c5;" FontSize="20" WidthRequest="44" HeightRequest="44" CornerRadius="22" FontFamily="{StaticResource FontAwesomeSolid}" BackgroundColor="{StaticResource MainDarkColor}" TextColor="White" Clicked="GoToMap_Clicked" />
+                </Frame>
+            </StackLayout>
+
+            <controls:BottomModal x:Name="BottomModalLookup" />
+            <controls:LoadingPopup x:Name="loadingPopup" />
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

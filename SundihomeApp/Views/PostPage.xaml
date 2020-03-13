@@ -1,0 +1,369 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:lang="clr-namespace:SundihomeApp.Resources"
+             xmlns:telerikInput="clr-namespace:Telerik.XamarinForms.Input;assembly=Telerik.XamarinForms.Input"
+             xmlns:telerikDataControls="clr-namespace:Telerik.XamarinForms.DataControls;assembly=Telerik.XamarinForms.DataControls"
+             xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"   xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:controls="clr-namespace:SundihomeApp.Controls" xmlns:converters="clr-namespace:SundihomeApp.Converters" BackgroundColor="White" Title="{x:Static lang:Language.dang_tin}" x:Name="wrap" xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" ios:Page.UseSafeArea="true" x:Class="SundihomeApp.Views.PostPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:BoolToBoolConverter x:Key="BoolToBoolConverter" />
+            <converters:NullToHideConverter x:Key="NullToHideConverter" />
+            <ControlTemplate x:Key="HeaderCommitmentDate" >
+                <Label Text="{TemplateBinding HeaderLabelText}" FontSize="18" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontAttributes="Bold" TextColor="White" BackgroundColor="{StaticResource MainDarkColor}" />
+            </ControlTemplate>
+            <ControlTemplate x:Key="DisplayCommitmentDate">
+                <Label Text="{TemplateBinding DisplayString}" 
+                       FontSize="15"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Start">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{TemplateBinding ToggleCommand}" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </ControlTemplate>
+            <Style TargetType="telerikInput:PickerPopupHeaderView" x:Key="headerStyle">
+                <Setter Property="HeightRequest" Value="30"/>
+                <Setter Property="Margin" Value="0"/>
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+            </Style>
+
+            <Style TargetType="telerikDataControls:RadSpinner" x:Key="spinnerStyle">
+                <Setter Property="ItemStyle">
+                    <Setter.Value>
+                        <Style TargetType="telerikDataControls:SpinnerItemView">
+                            <Setter Property="TextColor" Value="#4A4949"/>
+                        </Style>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="SelectedItemStyle">
+                    <Setter.Value>
+                        <Style TargetType="telerikDataControls:SpinnerItemView">
+                            <Setter Property="TextColor" Value="Black"/>
+                            <Setter Property="FontAttributes" Value="Bold"/>
+                        </Style>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <AbsoluteLayout BackgroundColor="White">
+            <!--step 1-->
+            <ScrollView x:Name="Step1" IsVisible="true" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Padding="0,0,0,70">
+                <StackLayout Spacing="5" Margin="10,5">
+                    <StackLayout Padding="0,5" Margin="-10,-5,-10,5" BackgroundColor="{StaticResource MainDarkColor}">
+                        <Label Margin="15,0" Text="{x:Static lang:Language.thong_tin_co_ban}" TextColor="White" FontSize="15" VerticalTextAlignment="Center" />
+                    </StackLayout>
+
+                    <controls:FormLabelRequired Text="{x:Static lang:Language.loai_hinh}" />
+                    <telerikInput:RadSegmentedControl x:Name="SegmentedLoaiHinh" VerticalOptions="Start" SegmentTextColor="{StaticResource MainDarkColor}" SegmentBackgroundColor="White" SelectedSegmentTextColor="White" SelectedIndex="{Binding PostModel.PostType}" SelectedSegmentBackgroundColor="{StaticResource MainDarkColor}" SelectionChanged="LoaiHinh_Change" />
+
+                    <!--Loai bat dong san-->
+                    <controls:FormLabelRequired Text="{x:Static lang:Language.loai_bat_dong_san}" Margin="0,10,0,0" />
+                    <controls:LookUpControl SelectedItem="{Binding PostModel.LoaiBatDongSan}" ItemsSource="{Binding LoaiBatDongSanList}" BottomModal="{x:Reference BottomModalLookup}" Placeholder="{x:Static lang:Language.loai_bat_dong_san}" NameDisplay="Name" SelectedItemChange="LoaiBatDongSan_Change" />
+
+                    <!--Tình trạng pháp lý-->
+                    <controls:FormLabel Text="{x:Static lang:Language.tinh_trang_phap_ly}" Margin="0,10,0,0" />
+                    <controls:LookUpControl SelectedItem="{Binding PostModel.TinhTrangPhapLy}" ItemsSource="{Binding TinhTrangPhaplyList}" BottomModal="{x:Reference BottomModalLookup}" Placeholder="{x:Static lang:Language.tinh_trang_phap_ly}" NameDisplay="Name" />
+
+                    <!--Tỉnh/thành phố-->
+                    <controls:FormLabelRequired Text="{x:Static lang:Language.tinh_thanh}" Margin="0,10,0,0" />
+                    <controls:LookUpControl SelectedItem="{Binding PostModel.Province}" ItemsSource="{Binding ProvinceList}" BottomModal="{x:Reference BottomModalLookup}" Placeholder="{x:Static lang:Language.tinh_thanh}" NameDisplay="Name" SelectedItemChange="Province_Change" />
+
+                    <!--Quận/huyện-->
+                    <controls:FormLabelRequired Text="{x:Static lang:Language.quan_huyen}" Margin="0,10,0,0" />
+                    <controls:LookUpControl SelectedItem="{Binding PostModel.District}" ItemsSource="{Binding DistrictList}" BottomModal="{x:Reference BottomModalLookup}" Placeholder="{x:Static lang:Language.quan_huyen}" NameDisplay="Name" SelectedItemChange="District_Change" />
+
+                    <!--Xã/phường-->
+                    <controls:FormLabelRequired Text="{x:Static lang:Language.phuong_xa}" Margin="0,10,0,0" />
+                    <controls:LookUpControl SelectedItem="{Binding PostModel.Ward}" ItemsSource="{Binding WardList}" BottomModal="{x:Reference BottomModalLookup}" Placeholder="{x:Static lang:Language.phuong_xa}" NameDisplay="Name" />
+
+                    <!--Dduong -->
+                    <controls:FormLabel Text="{x:Static lang:Language.so_nha_duong}" Margin="0,10,0,0" />
+                    <controls:ClearableEntry Placeholder="{x:Static lang:Language.so_nha_duong}" Text="{Binding PostModel.Street}" />
+
+                    <!--Địa chỉ-->
+                    <controls:FormLabelRequired Text="{x:Static lang:Language.dia_chi}" Margin="0,5,0,0" />
+                    <Label FontSize="16" TextColor="#333333" Text="{Binding PostModel.Address}" />
+
+                    <!--Dự án-->
+                    <controls:FormLabel Text="{x:Static lang:Language.du_an}" Margin="0,10,0,0" />
+                    <controls:LookUpControl SelectedItem="{Binding PostModel.Project}" ItemsSource="{Binding ProjectList}" BottomModal="{x:Reference BottomModalLookup}" Placeholder="{x:Static lang:Language.du_an}" NameDisplay="Name" />
+                </StackLayout>
+            </ScrollView>
+
+            <!--step 2-->
+            <ScrollView x:Name="Step2" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" IsVisible="false" Padding="0,0,0,70">
+                <!--Step 2-->
+                <StackLayout Spacing="5" Margin="10,5">
+                    <StackLayout Padding="0,5" Margin="-10,-5,-10,0" BackgroundColor="{StaticResource MainDarkColor}">
+                        <Label Margin="15,0" Text="{x:Static lang:Language.thong_tin_chi_tiet}" TextColor="White" FontSize="15" />
+                    </StackLayout>
+                    <!--Diện tích-->
+                    <StackLayout Orientation="Horizontal">
+                        <controls:FormLabelRequired Text="{x:Static lang:Language.dien_tich_m2}" VerticalOptions="Center" />
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="EndAndExpand">
+                            <Label Text="{x:Static lang:Language.khoang_dien_tich}" FontSize="14" TextColor="#444444" VerticalTextAlignment="Center" />
+                            <Switch x:Name="SwitchAreaRange" IsToggled="{Binding PostModel.IsAreaRange}" VerticalOptions="Center" />
+                        </StackLayout>
+                    </StackLayout>
+
+                    <controls:DecimalEntry x:Name="EntryAreaFrom" Placeholder="{x:Static lang:Language.dien_tich_tu}" Text="{Binding PostModel.AreaFromText}" />
+
+                    <StackLayout IsVisible="{Binding Path=IsToggled,Source={x:Reference SwitchAreaRange}}">
+                        <controls:FormLabelRequired Text="{x:Static lang:Language.dien_tich_den}" Margin="0,5,0,0" />
+                        <controls:DecimalEntry x:Name="EntryAreaTo" Placeholder="{x:Static lang:Language.dien_tich_den}" Text="{Binding PostModel.AreaToText}" />
+                    </StackLayout>
+
+                    <!--Giá tiền-->
+                    <StackLayout Margin="0,10,0,0">
+                        <StackLayout Orientation="Horizontal">
+                            <controls:FormLabelRequired Text="{x:Static lang:Language.gia_tien}" VerticalOptions="Center" />
+                            <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                                <Label Text="{x:Static lang:Language.gia_thoa_thuan}" FontSize="14" TextColor="#444444" VerticalTextAlignment="Center" />
+                                <Switch x:Name="SwitchIsNegotiate" IsToggled="{Binding PostModel.IsNegotiate}" VerticalOptions="Center" />
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="EndAndExpand" IsVisible="{Binding Path=IsToggled,Source={x:Reference SwitchIsNegotiate},Converter={StaticResource BoolToBoolConverter}}">
+                                <Label Text="{x:Static lang:Language.khoang_gia}" FontSize="14" TextColor="#444444" VerticalTextAlignment="Center" />
+                                <Switch x:Name="SwitchIsPriceRange" IsToggled="{Binding PostModel.IsPriceRange}" VerticalOptions="Center" />
+                            </StackLayout>
+                        </StackLayout>
+
+                        <!--hien thi khi khong phai la thoa thuan-->
+                        <StackLayout IsVisible="{Binding Path=IsToggled,Source={x:Reference SwitchIsNegotiate},Converter={StaticResource BoolToBoolConverter}}">
+                            <Grid IsVisible="{Binding Path=IsToggled,Source={x:Reference SwitchIsPriceRange},Converter={StaticResource BoolToBoolConverter}}">
+                                <Entry Placeholder="{x:Static lang:Language.gia_tien_tu}" Text="{Binding PostModel.PriceFromText}" HorizontalOptions="FillAndExpand" FontSize="16" />
+                                <StackLayout VerticalOptions="Fill" HorizontalOptions="Fill">
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="PriceFromPick_Clicked" />
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
+                            </Grid>
+                            <Grid IsVisible="{Binding Path=IsToggled,Source={x:Reference SwitchIsPriceRange}}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Grid Grid.Column="0">
+                                    <Entry Placeholder="{x:Static lang:Language.gia_tien_tu}" Text="{Binding PostModel.PriceFromText}" HorizontalOptions="FillAndExpand" FontSize="16" />
+                                    <StackLayout VerticalOptions="Fill" HorizontalOptions="Fill">
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="PriceFromPick_Clicked" />
+                                        </StackLayout.GestureRecognizers>
+                                    </StackLayout>
+                                </Grid>
+
+                                <Label Text="{x:Static lang:Language.den}" Grid.Column="1" VerticalTextAlignment="Center" FontSize="12" TextColor="#444444" />
+                                <Grid Grid.Column="2">
+                                    <Entry Placeholder="{x:Static lang:Language.gia_tien_den}" Text="{Binding PostModel.PriceToText}" HorizontalOptions="FillAndExpand" FontSize="16" />
+                                    <StackLayout VerticalOptions="Fill" HorizontalOptions="Fill">
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="PriceToPick_Clicked" />
+                                        </StackLayout.GestureRecognizers>
+                                    </StackLayout>
+                                </Grid>
+                            </Grid>
+                        </StackLayout>
+                    </StackLayout>
+
+                    <!--Tầng-->
+                    <StackLayout IsVisible="{Binding ShowTang}" Margin="0,5,0,0">
+                        <controls:FormLabel Text="{x:Static lang:Language.tang}" />
+                        <controls:ClearableEntry Placeholder="{x:Static lang:Language.tang}" Text="{Binding PostModel.Tang}" EntryKeyboard="Numeric" />
+                    </StackLayout>
+
+                    <!--Mặt tiền-->
+                    <controls:FormLabel Text="{x:Static lang:Language.mat_tien_m2}" Margin="0,10,0,0" />
+                    <controls:DecimalEntry x:Name="EntryMatTien" Placeholder="{x:Static lang:Language.mat_tien_m2}" Text="{Binding PostModel.MatTienFormatText}" />
+
+                    <!--Đường vào-->
+                    <controls:FormLabel Text="{x:Static lang:Language.duong_vao_m2}" Margin="0,10,0,0" />
+                    <controls:DecimalEntry x:Name="EntryDuongVao" Placeholder="{x:Static lang:Language.duong_vao_m2}" Text="{Binding PostModel.DuongVaoFormatText}" />
+
+                    <!--Số tầng-->
+                    <StackLayout IsVisible="{Binding ShowSoTang}" Margin="0,10,0,0">
+                        <controls:FormLabel Text="{x:Static lang:Language.so_tang}" />
+                        <controls:ClearableEntry Placeholder="{x:Static lang:Language.so_tang}" Text="{Binding PostModel.NumOfFloor}" EntryKeyboard="Numeric" />
+                    </StackLayout>
+
+                    <!--Chiều sâu-->
+                    <StackLayout IsVisible="{Binding ShowChieuSau}" Margin="0,10,0,0">
+                        <controls:FormLabel Text="{x:Static lang:Language.chieu_sau}" />
+                        <controls:DecimalEntry x:Name="EntryChieuSau" Placeholder="{x:Static lang:Language.chieu_sau}" Text="{Binding PostModel.ChieuSauFormatText}" />
+                    </StackLayout>
+
+                    <!--Số phòng ngủ-->
+                    <StackLayout IsVisible="{Binding ShowBedroom}" Margin="0,10,0,0">
+                        <controls:FormLabel Text="{x:Static lang:Language.so_phong_ngu}" />
+                        <telerikInput:RadSegmentedControl x:Name="SegmentSoPhongNgu" VerticalOptions="Start" SegmentTextColor="{StaticResource MainDarkColor}" SegmentBackgroundColor="White" SelectedSegmentTextColor="White" SelectedSegmentBackgroundColor="{StaticResource MainDarkColor}">
+                            <telerikInput:RadSegmentedControl.ItemsSource>
+                                <x:Array Type="{x:Type x:Int16}">
+                                    <x:Int16>1</x:Int16>
+                                    <x:Int16>2</x:Int16>
+                                    <x:Int16>3</x:Int16>
+                                    <x:Int16>4</x:Int16>
+                                    <x:Int16>5</x:Int16>
+                                    <x:Int16>6</x:Int16>
+                                    <x:Int16>7</x:Int16>
+                                    <x:Int16>8</x:Int16>
+                                </x:Array>
+                            </telerikInput:RadSegmentedControl.ItemsSource>
+                        </telerikInput:RadSegmentedControl>
+                    </StackLayout>
+
+                    <!--Số phòng tắm-->
+                    <StackLayout IsVisible="{Binding ShowBathroom}" Margin="0,10,0,0">
+                        <controls:FormLabel Text="{x:Static lang:Language.so_phong_tam}" />
+                        <telerikInput:RadSegmentedControl x:Name="SegmentSoPhongTam" VerticalOptions="Start" SegmentTextColor="{StaticResource MainDarkColor}" SegmentBackgroundColor="White" SelectedSegmentTextColor="White" SelectedSegmentBackgroundColor="{StaticResource MainDarkColor}">
+                            <telerikInput:RadSegmentedControl.ItemsSource>
+                                <x:Array Type="{x:Type x:Int16}">
+                                    <x:Int16>1</x:Int16>
+                                    <x:Int16>2</x:Int16>
+                                    <x:Int16>3</x:Int16>
+                                    <x:Int16>4</x:Int16>
+                                    <x:Int16>5</x:Int16>
+                                    <x:Int16>6</x:Int16>
+                                    <x:Int16>7</x:Int16>
+                                    <x:Int16>8</x:Int16>
+                                </x:Array>
+                            </telerikInput:RadSegmentedControl.ItemsSource>
+                        </telerikInput:RadSegmentedControl>
+                    </StackLayout>
+
+                    <!--Hướng-->
+                    <StackLayout x:Name="PickerHuongNha" Margin="0,10,0,0">
+                        <controls:FormLabel Text="{x:Static lang:Language.huong}" />
+                        <controls:LookUpControl SelectedItem="{Binding PostModel.Huong}" ItemsSource="{Binding HuongList}" BottomModal="{x:Reference BottomModalLookup}" Placeholder="{x:Static lang:Language.huong}" NameDisplay="Name" />
+                    </StackLayout>
+
+                    <!--Noi that tien nghi-->
+                    <StackLayout IsVisible="{Binding Showutilities}" Margin="0,10,0,0">
+                        <controls:FormLabel Text="{x:Static lang:Language.noi_that_tien_nghi}" />
+                        <controls:LookUpMultipleOptions ItemsSource="{Binding DanhSachTienIchDuAn}" SelectedIds="{Binding SelectedUtitlitesId}" CenterModal="{x:Reference MultipleLookUpModal}" Placeholder="{x:Static lang:Language.noi_that_tien_nghi}" />
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+
+            <!--step 3-->
+            <ScrollView x:Name="Step3" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" IsVisible="false" Padding="0,0,0,70">
+                <!--Step3-->
+                <StackLayout Spacing="5" Margin="10,5">
+                    <StackLayout Padding="0,5" Margin="-10,-5,-10,5" BackgroundColor="{StaticResource MainDarkColor}">
+                        <Label Margin="15,0" Text="{x:Static lang:Language.tieu_de_noi_dung}" TextColor="White" FontSize="15" />
+                    </StackLayout>
+                    <!--Tiêu đề tin đăng-->
+                    <controls:FormLabelRequired Text="{x:Static lang:Language.tieu_de}" />
+                    <controls:ClearableEntry Placeholder="{x:Static lang:Language.tieu_de}" Text="{Binding PostModel.Title}" />
+
+                    <!--Mô tả bất động sản-->
+                    <controls:FormLabelRequired Text="{x:Static lang:Language.mo_ta}" Margin="0,10,0,0" />
+                    <Grid>
+                        <telerikPrimitives:RadBorder BorderColor="#eeeeee" BorderThickness="1">
+                            <Editor Placeholder="{x:Static lang:Language.mo_ta}" HorizontalOptions="FillAndExpand" HeightRequest="200" Text="{Binding PostModel.Description}" FontSize="16" />
+                        </telerikPrimitives:RadBorder>
+                        <Button Style="{StaticResource ClearButtonStyle}" VerticalOptions="Start" FontFamily="{StaticResource FontAwesomeSolid}" Clicked="ClearDescription_Clicked" IsVisible="{Binding PostModel.Description,Converter={StaticResource NullToHideConverter}}" />
+                    </Grid>
+
+                    <StackLayout x:Name="StackImages">
+                        <StackLayout Grid.Row="0" Padding="10,5" Margin="-10,10,-10,10" BackgroundColor="{StaticResource MainDarkColor}">
+                            <Label Text="{x:Static lang:Language.hinh_anh_bat_dong_san}" TextColor="White" FontSize="15" />
+                        </StackLayout>
+                        <ScrollView Orientation="Horizontal">
+                            <StackLayout Orientation="Horizontal">
+                                <Button Text="&#xf302;" FontFamily="{StaticResource FontAwesomeSolid}" BackgroundColor="White" Padding="15,0" HeightRequest="80" WidthRequest="80" FontSize="17" VerticalOptions="CenterAndExpand" TextColor="Black" BorderWidth="1" BorderColor="Black" Command="{Binding SelectImagesCommand}" />
+                                <StackLayout Orientation="Horizontal" BindableLayout.ItemsSource="{Binding Media}">
+                                    <BindableLayout.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid Margin="5">
+                                                <ffimageloading:CachedImage DownsampleToViewSize="true" HeightRequest="80" WidthRequest="80" Source="{Binding PreviewPath}" Aspect="AspectFill" HorizontalOptions="FillAndExpand" />
+                                                <Button Text="&#xf2ed;" TextColor="#026294" FontSize="14" HorizontalOptions="End" VerticalOptions="Start" BorderWidth="0" BackgroundColor="White" WidthRequest="25" HeightRequest="25" Margin="0,5,5,0" Padding="0" Clicked="Remove_Image" CommandParameter="{Binding}" FontFamily="{StaticResource FontAwesomeSolid}" />
+                                            </Grid>
+                                        </DataTemplate>
+                                    </BindableLayout.ItemTemplate>
+                                </StackLayout>
+                            </StackLayout>
+                        </ScrollView>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+
+            <!--Step4-->
+            <ScrollView x:Name="Step4" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" BackgroundColor="White" IsVisible="false" Padding="0,0,0,70">
+                <StackLayout Margin="10,5" Spacing="5">
+                    <StackLayout Grid.Row="0" Padding="0,5" Margin="-10,-5,-10,5" BackgroundColor="{StaticResource MainDarkColor}">
+                        <Label Margin="15,0" Text="{x:Static lang:Language.thong_tin_bo_sung}" TextColor="White" FontSize="15" />
+                    </StackLayout>
+                    <StackLayout x:Name="StackCamket">
+                        <StackLayout Orientation="Horizontal">
+                            <controls:FormLabel Text="{x:Static lang:Language.cam_ket}" VerticalTextAlignment="Center" />
+                            <Switch x:Name="SwitchCamket" VerticalOptions="Center" IsToggled="{Binding PostModel.IsCommitment}" Toggled="SwichCamKet_Togged" />
+                        </StackLayout>
+
+                        <StackLayout IsVisible="{Binding PostModel.IsCommitment}">
+                            <controls:FormLabelRequired Text="{x:Static lang:Language.tu_ngay}" Margin="0,10,0,0" />
+                            <telerikInput:RadDateTimePicker x:Name="radDateTimePicker_From"  DisplayStringFormat="dd/MM/yyyy"  DisplayTemplate="{StaticResource DisplayCommitmentDate}" SelectedDate="{Binding PostModel.CommitmentDateFrom}" SpinnerFormatString="dd/MM/yyyy" SpinnerStyle="{StaticResource spinnerStyle}" Placeholder="{x:Static lang:Language.tu_ngay}">
+                                <telerikInput:RadDateTimePicker.SelectorSettings>
+                                    <telerikInput:PickerPopupSelectorSettings HeaderTemplate="{StaticResource HeaderCommitmentDate}" HeaderLabelText="{x:Static lang:Language.ngay_cam_ket}" HeaderStyle="{StaticResource headerStyle}" />
+                                </telerikInput:RadDateTimePicker.SelectorSettings>
+                            </telerikInput:RadDateTimePicker>
+                        </StackLayout>
+
+                        <StackLayout IsVisible="{Binding PostModel.IsCommitment}">
+                            <controls:FormLabelRequired Text="{x:Static lang:Language.den_ngay}" Margin="0,10,0,0" />
+                            <telerikInput:RadDateTimePicker x:Name="radDateTimePicker_To" DisplayStringFormat="dd/MM/yyyy" DisplayTemplate="{StaticResource DisplayCommitmentDate}" SelectedDate="{Binding PostModel.CommitmentDateTo}" SpinnerFormatString="dd/MM/yyyy" SpinnerStyle="{StaticResource spinnerStyle}" Placeholder="{x:Static lang:Language.den_ngay}">
+                                <telerikInput:RadDateTimePicker.SelectorSettings>
+                                    <telerikInput:PickerPopupSelectorSettings HeaderTemplate="{StaticResource HeaderCommitmentDate}" HeaderLabelText="{x:Static lang:Language.ngay_cam_ket}" HeaderStyle="{StaticResource headerStyle}" />
+                                </telerikInput:RadDateTimePicker.SelectorSettings>
+                            </telerikInput:RadDateTimePicker>
+                        </StackLayout>
+                        
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="0" Padding="10,5" Margin="-10,10,-10,10" BackgroundColor="{StaticResource MainDarkColor}">
+                        <Label Text="{x:Static lang:Language.thong_tin_chu_bat_dong_san}" TextColor="White" FontSize="15" />
+                    </StackLayout>
+                    <controls:FormLabel Text="{x:Static lang:Language.ho_ten}" />
+                    <controls:ClearableEntry Placeholder="{x:Static lang:Language.ho_ten}" Text="{Binding PostModel.OwnerFullName}" />
+
+                    <controls:FormLabel Text="{x:Static lang:Language.sdt}" Margin="0,10,0,0" />
+                    <controls:ClearableEntry Placeholder="{x:Static lang:Language.sdt}" Text="{Binding PostModel.OwnerPhone}" />
+
+                    <controls:FormLabel Text="{x:Static lang:Language.dia_chi}" Margin="0,10,0,0" />
+                    <controls:ClearableEntry Placeholder="{x:Static lang:Language.dia_chi}" Text="{Binding PostModel.OwnerAddress}" />
+
+                    <controls:FormLabel Text="{x:Static lang:Language.gia_chu_so_huu}" Margin="0,10,0,0"/>
+                    <controls:CurrencyEntry x:Name="EntryPrice"
+                                                MaxValue="9000000000000" Text="{Binding PostModel.OwnerPrice}"
+                                                HorizontalOptions="FillAndExpand" Placeholder="{x:Static lang:Language.gia_chu_so_huu}"  />
+                    <controls:FormLabel Text="{x:Static lang:Language.mo_ta}" Margin="0,10,0,0" />
+                    <telerikPrimitives:RadBorder BorderColor="#eeeeee" BorderThickness="1">
+                        <Editor Placeholder="{x:Static lang:Language.mo_ta}" HorizontalOptions="FillAndExpand" HeightRequest="150" Text="{Binding PostModel.OwnerDescription}" FontSize="16" />
+                    </telerikPrimitives:RadBorder>
+                </StackLayout>
+            </ScrollView>
+
+            <StackLayout x:Name="gridBtn" Orientation="Horizontal" HorizontalOptions="Fill" Spacing="0" AbsoluteLayout.LayoutBounds="0,1,1,64" AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional" Margin="5">
+                <Frame x:Name="BackBtn" Margin="5" Padding="0" IsVisible="false" HorizontalOptions="StartAndExpand" CornerRadius="22">
+                    <Button Text="&#xf060;" FontSize="20" WidthRequest="44" HeightRequest="44" CornerRadius="22" FontFamily="{StaticResource FontAwesomeSolid}" BackgroundColor="{StaticResource MainDarkColor}" Clicked="Back_Clicked" TextColor="White" />
+                </Frame>
+                <Frame Margin="5" Padding="0" BackgroundColor="White" BorderColor="Gray" HorizontalOptions="EndAndExpand" CornerRadius="22">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Next_Clicked" />
+                    </Frame.GestureRecognizers>
+                    <StackLayout Orientation="Horizontal" Padding="10,0,0,0">
+                        <Label Text="{Binding NextTitle}" FontSize="12" TextColor="{StaticResource MainDarkColor}" VerticalTextAlignment="Center" />
+                        <Button Text="&#xf061;" FontSize="20" WidthRequest="44" HeightRequest="44" CornerRadius="22" FontFamily="{StaticResource FontAwesomeSolid}" BackgroundColor="{StaticResource MainDarkColor}" Clicked="Next_Clicked" TextColor="White" />
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+
+            <controls:BottomModal x:Name="BottomModalLookup" />
+            <controls:CenterModal x:Name="MultipleLookUpModal" />
+            <controls:LoadingPopup x:Name="loadingPopup" />
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" x:Class="SundihomeApp.Controls.LoadingPopup">
+    <ContentView.Content>
+        <ActivityIndicator WidthRequest="40" IsRunning="True" Color="white" VerticalOptions="Center" HorizontalOptions="Center" />
+    </ContentView.Content>
+</ContentView>

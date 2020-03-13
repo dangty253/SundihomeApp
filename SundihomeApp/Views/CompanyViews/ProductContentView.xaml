@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives"
+             xmlns:lang="clr-namespace:SundihomeApp.Resources"
+             x:Class="SundihomeApp.Views.CompanyViews.ProductContentView">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <!--RadBorder Categories Style-->
+            <Style x:Key="RadBorderCategories" TargetType="telerikPrimitives:RadBorder">
+                <Setter Property="Margin" Value="0,0,0,0" />
+                <Setter Property="Padding" Value="10,7" />
+                <Setter Property="BorderColor" Value="Gray" />
+                <Setter Property="BorderThickness" Value="1" />
+                <Setter Property="CornerRadius" Value="5" />
+                <Setter Property="BackgroundColor" Value="White" />
+            </Style>
+            <!--Category style-->
+            <Style x:Key="Category" TargetType="Label">
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontAttributes" Value="None" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+            </Style>
+
+            <Style x:Key="FilterButtonStyle" TargetType="Button">
+                <Setter Property="Text" Value="{StaticResource Filter}" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="CornerRadius" Value="10" />
+                <Setter Property="BackgroundColor" Value="{StaticResource MainDarkColor}" />
+                <Setter Property="HeightRequest" Value="35" />
+                <Setter Property="WidthRequest" Value="35" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <AbsoluteLayout>
+            <Grid AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Margin="0,5,0,0" RowSpacing="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Grid x:Name="Segment" ColumnSpacing="0" Margin="10,0" Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <telerikPrimitives:RadBorder Grid.Column="0" BackgroundColor="#dadada" BorderColor="#c3c3c3" CornerRadius="8,0,0,8" BorderThickness="1,1,0,1">
+                        <telerikPrimitives:RadBorder.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="SegmentSelected_Tapped" CommandParameter="0" />
+                        </telerikPrimitives:RadBorder.GestureRecognizers>
+                        <Label Text="{x:Static lang:Language.du_an}" Margin="10,5" HorizontalTextAlignment="Center" TextColor="#333333" FontSize="14" LineBreakMode="TailTruncation" MaxLines="1" />
+                    </telerikPrimitives:RadBorder>
+                    <telerikPrimitives:RadBorder Grid.Column="1" BackgroundColor="White" BorderColor="#c3c3c3" CornerRadius="0" BorderThickness="1">
+                        <telerikPrimitives:RadBorder.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="SegmentSelected_Tapped" CommandParameter="1" />
+                        </telerikPrimitives:RadBorder.GestureRecognizers>
+                        <Label Text="{x:Static lang:Language.bat_dong_san}" Margin="10,5" HorizontalTextAlignment="Center" TextColor="#333333" FontSize="14" LineBreakMode="TailTruncation" MaxLines="1" />
+                    </telerikPrimitives:RadBorder>
+                    <telerikPrimitives:RadBorder Grid.Column="2" BackgroundColor="White" BorderColor="#c3c3c3" CornerRadius="0,8,8,0" BorderThickness="0,1,1,1">
+                        <telerikPrimitives:RadBorder.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="SegmentSelected_Tapped" CommandParameter="2" />
+                        </telerikPrimitives:RadBorder.GestureRecognizers>
+                        <Label Text="{x:Static lang:Language.san_pham}" Margin="10,5" HorizontalTextAlignment="Center" TextColor="#333333" FontSize="14" LineBreakMode="TailTruncation" MaxLines="1" />
+                    </telerikPrimitives:RadBorder>
+                </Grid>
+                <ContentView x:Name="ProjectContentView" Grid.Row="1" />
+                <ContentView x:Name="ListBatDongSanContentView" Grid.Row="1" IsVisible="false" />
+                <ContentView x:Name="ProductContentViews" Grid.Row="1" IsVisible="false" />
+            </Grid>
+        </AbsoluteLayout>
+    </ContentView.Content>
+</ContentView>

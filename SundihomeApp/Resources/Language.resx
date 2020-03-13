@@ -1,0 +1,2809 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>2.0</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <!-- common-->
+    <data name="tieng_viet">
+        <value>Tiếng Việt</value>
+    </data>
+    <data name="tieng_anh">
+        <value>Tiếng Anh</value>
+    </data>
+    <data name="thong_bao">
+        <value>Thông báo</value>
+    </data>
+    <data name="dong_y">
+        <value>Đồng ý</value>
+    </data>
+    <data name="huy">
+        <value>Huỷ</value>
+    </data>
+    <data name="dong">
+        <value>Đóng</value>
+    </data>
+    <data name="tat_ca">
+        <value>Tất cả</value>
+    </data>
+    <data name="gui">
+        <value>Gửi</value>
+    </data>
+    <data name="binh_luan">
+        <value>Bình luận</value>
+    </data>
+    <data name="theo_doi">
+        <value>Theo dõi</value>
+    </data>
+    <data name="chia_se">
+        <value>Chia sẻ</value>
+    </data>
+    <data name="tim_kiem">
+        <value>Tìm kiếm</value>
+    </data>
+    <!--menu trai-->
+    <data name="bat_dong_san">
+        <value>Bất động sản</value>
+    </data>
+    <data name="tin_nhan">
+        <value>Tin nhắn</value>
+    </data>
+    <data name="cong_ty">
+        <value>Công ty</value>
+    </data>
+    <data name="danh_sach_cong_ty">
+        <value>Công ty</value>
+    </data>
+    <data name="quan_ly_cong_ty">
+        <value>Quản lý công ty</value>
+    </data>
+    <data name="quan_ly_moi_gioi">
+        <value>Quản lý môi giới</value>
+    </data>
+    <data name="ngon_ngu">
+        <value>Ngôn ngữ</value>
+    </data>
+    <data name="gioi_thieu">
+        <value>Giới thiệu</value>
+    </data>
+    <data name="ho_tro">
+        <value>Hỗ trợ</value>
+    </data>
+    <data name="dang_xuat">
+        <value>Đăng xuất</value>
+    </data>
+    <data name="ban_co_chac_chan_muon_dang_xuat">
+        <value>Bạn có chắc chắn muốn đăng xuất khỏi Sundihome?</value>
+    </data>
+    <data name="chon_ngon_ngu">
+        <value>Chọn ngôn ngữ</value>
+    </data>
+    <!-- Tab BatDongSan-->
+    <data name="home">
+        <value>Trang chủ</value>
+    </data>
+    <data name="sell_rentout">
+        <value>Bán/thuê</value>
+    </data>
+    <data name="place_an_ad">
+        <value>Sàn</value>
+    </data>
+    <data name="buy_rent">
+        <value>Mua/Thuê</value>
+    </data>
+    <data name="account">
+        <value>Tài khoản</value>
+    </data>
+    <!-- Views/HomePage-->
+    <data name="search_placeholder">
+        <value>Tìm kiếm bất động sản...</value>
+    </data>
+    <data name="see_all">
+        <value>Xem tất cả</value>
+    </data>
+    <data name="bat_dong_san_ban_cho_thue">
+        <value>Bất động sản bán - cho thuê</value>
+    </data>
+    <data name="canmua_thue">
+        <value>Cần mua - thuê</value>
+    </data>
+    <data name="thanh_ly">
+        <value>Thanh lý</value>
+    </data>
+    <data name="du_an">
+        <value>Dự án</value>
+    </data>
+    <data name="noi_that">
+        <value>Nội thất</value>
+    </data>
+    <data name="dang_ban">
+        <value>Đăng bán</value>
+    </data>
+    <data name="dang_mua">
+        <value>Đăng mua</value>
+    </data>
+    <!--post list type 0 - 1-->
+    <data name="can_ban">
+        <value>Cần bán</value>
+    </data>
+    <data name="can_mua">
+        <value>Cần mua</value>
+    </data>
+    <data name="can_thue">
+        <value>Cần thuê</value>
+    </data>
+    <!--PostPage-->
+    <data name="ngay_cam_ket">
+        <value>Ngày cam kết</value>
+    </data>
+    <data name="vui_long_chon_ngay_cam_ket">
+        <value>Vui lòng chọn ngày cam kết</value>
+    </data>
+    <data name="ngay_cam_ket_khong_dung_vui_long_thu_lai">
+        <value>Ngày cam kết không đúng. Vui lòng thử lại</value>
+    </data>
+    <data name="gia_chu_so_huu">
+        <value>Giá chủ sở hữu</value>
+    </data>
+    <data name="huong_tay">
+        <value>Tây</value>
+    </data>
+    <data name="huong_dong">
+        <value>Đông</value>
+    </data>
+    <data name="huong_nam">
+        <value>Nam</value>
+    </data>
+    <data name="huong_bac">
+        <value>Bắc</value>
+    </data>
+    <data name="huong_dong_bac">
+        <value>Đông bắc</value>
+    </data>
+    <data name="huong_tay_bac">
+        <value>Tây bắc</value>
+    </data>
+    <data name="huong_dong_nam">
+        <value>Đông nam</value>
+    </data>
+    <data name="huong_tay_nam">
+        <value>Tây nam</value>
+    </data>
+    <data name="can_ho">
+        <value>Căn hộ</value>
+    </data>
+    <data name="can_ho_dich_vu">
+        <value>Căn hộ dịch vụ</value>
+    </data>
+    <data name="nha_rieng">
+        <value>Nhà riêng</value>
+    </data>
+    <data name="nha_mat_pho_shophouse">
+        <value>Nhà mặt phố, shophouse</value>
+    </data>
+    <data name="nha_biet_thu_lien_ke">
+        <value>Nhà biệt thự, liền kề</value>
+    </data>
+    <data name="nha_tro_phong_tro">
+        <value>Nhà trọ, phòng trọ</value>
+    </data>
+    <data name="van_phong">
+        <value>Văn phòng</value>
+    </data>
+    <data name="cua_hang_mat_hang_ban_le">
+        <value>Cửa hàng, mặt bằng bán lẻ</value>
+    </data>
+    <data name="dat_nha_xuong_kho_bai">
+        <value>Đất, nhà xưởng, kho bãi</value>
+    </data>
+    <data name="dat">
+        <value>Đất</value>
+    </data>
+    <data name="bat_dong_san_khac">
+        <value>Bất động sản khác</value>
+    </data>
+    <data name="so_do">
+        <value>Sổ đỏ</value>
+    </data>
+    <data name="so_hong">
+        <value>Sổ hồng</value>
+    </data>
+    <data name="giay_phep_xay_dung">
+        <value>Giấy phép xây dựng </value>
+    </data>
+    <data name="giay_phep_kinh_doanh">
+        <value>Giấy phép kinh doanh </value>
+    </data>
+    <data name="chua_xac_dinh">
+        <value>Chưa xác định</value>
+    </data>
+    <data name="moi_bai_dang_phai_tu_it_nhat_x_tieng">
+        <value>Mỗi bài đăng từ tin đăng phải cách 2 tiếng! Vui lòng thử lại.</value>
+    </data>
+    <data name="dang_tin">
+        <value>Đăng tin</value>
+    </data>
+    <data name="vui_long_chon_toi_da_9_anh">
+        <value>Vui lòng chọn tối đa 9 ảnh</value>
+    </data>
+    <data name="vui_long_nhap_noi_dung">
+        <value>Vui lòng nhập nội dung</value>
+    </data>
+    <data name="don_vi">
+        <value>Đơn vị</value>
+    </data>
+    <data name="vui_long_nhap_don_vi_hop_le">
+        <value>Vui lòng nhập đơn vị hợp lệ</value>
+    </data>
+    <data name="tin_nay_da_duoc_share_roi">
+        <value>Tin này đã được chia sẻ cho công ty rồi</value>
+    </data>
+    <data name="chia_se_cho_cong_ty">
+        <value>Chia sẻ cho công ty</value>
+    </data>
+    <data name="dang_san">
+        <value>Đăng sàn</value>
+    </data>
+    <data name="vui_long_chon_loai_bat_dong_san">
+        <value>Vui lòng chọn loại bất động sản</value>
+    </data>
+    <data name="vui_long_nhap_dien_tich">
+        <value>Vui lòng nhập diện tích</value>
+    </data>
+    <data name="vui_long_nhap_gia">
+        <value>Vui lòng nhập giá</value>
+    </data>
+    <data name="vui_long_nhap_tieu_de">
+        <value>Vui lòng nhập tiêu đề</value>
+    </data>
+    <data name="ban_phai_cung_cap_toi_thieu_3_hinh_anh_ve_bat_dong_san">
+        <value>Bạn phải cung cấp tối thiểu 3 hình ảnh về bất động sản</value>
+    </data>
+    <data name="dia_chi_khong_tim_thay_tren_ban_do">
+        <value>Địa chỉ không tìm thấy trên bản đồ, Vui lòng nhập lại địa chỉ</value>
+    </data>
+    <data name="hinh_anh_vuot_qua_dung_luong">
+        <value>Hình ảnh vượt quá dung lương. Vui lòng thử lại</value>
+    </data>
+    <data name="luu_thanh_cong">
+        <value>Lưu thành công</value>
+    </data>
+    <data name="khong_the_luu_bai_dang">
+        <value>Không thể lưu bài đăng, vui lòng thử lại.
+        </value>
+    </data>
+    <data name="ban_co_chac_chan_muon_xoa_khong">
+        <value>Bạn có chắc chắn muốn xoá không?
+        </value>
+    </data>
+    <data name="chia_se_thanh_cong">
+        <value>Chia sẻ thành công</value>
+    </data>
+    <data name="mo_ta_va_hinh_anh">
+        <value>Mô tả và hình ảnh</value>
+    </data>
+    <data name="sundihome_can_truy_cap_vao_thu_vien_de_lay_hinh_bds_cua_ban">
+        <value>Sundihome cần truy cập vào thư viện hình ảnh để lấy hình bất động sản của bạn</value>
+    </data>
+    <data name="sundihome_can_truy_cap_vao_may_anh_de_chup_hinh_bds">
+        <value>Sundihome cần truy cập vào máy ảnh để chụp hình bất động sản</value>
+    </data>
+    <data name="loai_hinh">
+        <value>Loại hình</value>
+    </data>
+    <data name="loai_bat_dong_san">
+        <value>Loại bất động sản</value>
+    </data>
+    <data name="tinh_trang_phap_ly">
+        <value>Tình trạng pháp lý</value>
+    </data>
+    <data name="dien_tich_m2">
+        <value>Diện tích (m2)</value>
+    </data>
+    <data name="tang">
+        <value>Tầng</value>
+    </data>
+    <data name="mat_tien_m2">
+        <value>Mặt tiền (m)</value>
+    </data>
+    <data name="duong_vao_m2">
+        <value>Đường vào (m)</value>
+    </data>
+    <data name="chieu_sau">
+        <value>Chiều sâu</value>
+    </data>
+    <data name="phong_ngu">
+        <value>phòng ngủ</value>
+    </data>
+    <data name="so_phong_ngu">
+        <value>Số phòng ngủ</value>
+    </data>
+    <data name="phong_tam">
+        <value>phòng tắm</value>
+    </data>
+    <data name="so_phong_tam">
+        <value>Số phòng tắm</value>
+    </data>
+    <data name="huong">
+        <value>Hướng</value>
+    </data>
+    <data name="tieu_de_noi_dung">
+        <value>Tiêu đề - nội dung</value>
+    </data>
+    <data name="hinh_anh_bat_dong_san">
+        <value>Hình ảnh bất động sản</value>
+    </data>
+    <data name="tu_ngay">
+        <value>Từ ngày</value>
+    </data>
+    <data name="den_ngay">
+        <value>Đến ngày</value>
+    </data>
+    <data name="thong_tin_chu_bat_dong_san">
+        <value>Thông tin chủ bất động sản (Thông tin này bảo mật cho riêng bạn)</value>
+    </data>
+    <!--LoginPage-->
+    <data name="otp_khong_dung_vui_long_nhap_lai">
+        <value>OTP không đúng, vui lòng nhập lại</value>
+    </data>
+    <data name="loi_he_thong_vui_long_thu_lai">
+        <value>"Error. Please try again</value>
+    </data>
+    <data name="dang_nhap">
+        <value>Đăng nhập</value>
+    </data>
+    <data name="dang_ky">
+        <value>Đăng ký</value>
+    </data>
+    <data name="ho_ten">
+        <value>Họ tên</value>
+    </data>
+    <data name="sdt">
+        <value>Số điện thoại</value>
+    </data>
+    <data name="sdt_moi_required">
+        <value>Số điện thoại mới (*)</value>
+    </data>
+    <data name="sdt_rquired">
+        <value>Số điện thoại (*)</value>
+    </data>
+    <data name="email_sdt_rquired">
+        <value>Email/Số điện thoại (*)</value>
+    </data>
+    <data name="mat_khau">
+        <value>Mật khẩu</value>
+    </data>
+    <data name="vui_long_nhap_mat_khau">
+        <value>Vui lòng nhập mật khẩu</value>
+    </data>
+    <data name="mat_khau_required">
+        <value>Mật khẩu (*)</value>
+    </data>
+    <data name="quen_mat_khau">
+        <value>Quên mật khẩu</value>
+    </data>
+    <data name="nhap_lai_mat_khau_rquired">
+        <value>Nhập lại mật khẩu (*)</value>
+    </data>
+    <data name="hoac_dang_nhap_voi">
+        <value>Hoặc đăng nhập với</value>
+    </data>
+    <data name="email_khong_hop_le">
+        <value>Email không hợp lệ</value>
+    </data>
+    <data name="sdt_khong_hop_le">
+        <value>Số điện thoại không hợp lệ</value>
+    </data>
+    <data name="email_sdt_khong_hop_le">
+        <value>Email/số điện thoại không hợp lệ</value>
+    </data>
+    <data name="mat_khau_so_ky_tu">
+        <value>Mật khẩu phải bao gồm ít nhất 6 ký tự</value>
+    </data>
+    <data name="xac_nhan_mat_khau_khong_dung">
+        <value>Xác nhận mật khẩu không hợp lệ</value>
+    </data>
+    <data name="doi_mat_khau_thanh_cong">
+        <value>Đổi mật khẩu thành công</value>
+    </data>
+    <data name="vui_long_nhap_otp">
+        <value>Vui lòng nhập OTP được gửi về SĐT đăng ký để hoàn tất đăng ký tài khoản!</value>
+    </data>
+    <data name="vui_long_nhap_otp_doi_mat_khau">
+        <value>Vui lòng nhập OTP được gửi về SĐT đăng ký để tiếp tục đổi mật khẩu!</value>
+    </data>
+    <data name="la_ma_xac_thuc_cua_ban">
+        <value>là mã xác thực tài khoản sundihome của bạn</value>
+    </data>
+    <data name="otp_khong_hop_le">
+        <value>Mã OTP không hợp lệ</value>
+    </data>
+    <data name="xac_thuc_tai_khoan">
+        <value>Xác thực tài khoản</value>
+    </data>
+    <data name="email_da_ton_tai">
+        <value>Email đã tồn tại</value>
+    </data>
+    <data name="sdt_da_ton_tai">
+        <value>Số điện thoại đã tồn tại</value>
+    </data>
+    <data name="doi_sdt">
+        <value>Đổi số điện thoại</value>
+    </data>
+    <data name="doi_email">
+        <value>Đổi email</value>
+    </data>
+    <data name="doi_mat_khau">
+        <value>Đổi mật khẩu</value>
+    </data>
+    <data name="mat_khau_moi_required">
+        <value>Mật khẩu mới (*)</value>
+    </data>
+    <data name="xac_nhan_mat_khau_moi_required">
+        <value>Xác nhận mật khẩu mới (*)</value>
+    </data>
+    <data name="email_moi_required">
+        <value>Emai mới (*)</value>
+    </data>
+    <data name="chua_nhan_duoc_otp">
+        <value>Chưa nhận được OTP</value>
+    </data>
+    <data name="gui_lai">
+        <value>Gửi lại</value>
+    </data>
+    <data name="nhap_lai">
+        <value>Nhập lại</value>
+    </data>
+    <data name="dang_ky_thanh_cong">
+        <value>Đăng ký thành công</value>
+    </data>
+    <data name="dang_ky_that_bai_thu_lai">
+        <value>Đăng ký thât bại, vui lòng thử lại</value>
+    </data>
+    <data name="khong_tim_thay_tai_khoan">
+        <value>Tài khoản hoặc mật khẩu không đúng</value>
+    </data>
+    <!-- AccountPage-->
+    <data name="lien_ket_facebook_thanh_cong">
+        <value>Liên kết Facebook thành công!</value>
+    </data>
+    <data name="lien_ket_zalo_thanh_cong">
+        <value>Liên kết Zalo thành công!</value>
+    </data>
+    <data name="lien_ket_google_thanh_cong">
+        <value>Liên kết Google thành công!</value>
+    </data>
+    <data name="loi_xac_thuc">
+        <value>Lỗi xác thực</value>
+    </data>
+    <data name="khong_the_huy_lien_ket">
+        <value>Không thể huỷ liên kết</value>
+    </data>
+    <data name="ban_co_chac_chan_muon_huy_lien_ket_khong">
+        <value>Bạn có chắc chắn muốn huỷ liên kết không?</value>
+    </data>
+    <data name="lien_ket_mxh">
+        <value>Liên kết MXH</value>
+    </data>
+    <data name="tin_da_dang">
+        <value>Tin đã đăng</value>
+    </data>
+    <data name="lich">
+        <value>Lịch</value>
+    </data>
+    <data name="tin_da_luu">
+        <value>Tin đã lưu</value>
+    </data>
+    <data name="nguoi_theo_doi">
+        <value>Người theo dõi</value>
+    </data>
+    <data name="dang_theo_doi">
+        <value>Đang theo dõi</value>
+    </data>
+    <data name="moi_gioi">
+        <value>Môi giới</value>
+    </data>
+    <data name="xem_thong_tin">
+        <value>Xem thông tin</value>
+    </data>
+    <data name="dang_ky_moi_gioi">
+        <value>Đăng ký môi giới</value>
+    </data>
+    <data name="dang_ky_cong_ty">
+        <value>Đăng ký công ty</value>
+    </data>
+    <data name="dang_ky_nhan_vien">
+        <value>Đăng ký nhân viên</value>
+    </data>
+    <data name="vui_long_nhap_so_dien_thoai">
+        <value>Vui lòng nhập số điện thoại</value>
+    </data>
+    <data name="nhap_ma_otp">
+        <value>Nhập mã OTP</value>
+    </data>
+    <data name="ngay_sinh">
+        <value>Ngày sinh</value>
+    </data>
+    <data name="gioi_tinh">
+        <value>Giới tính</value>
+    </data>
+    <data name="dia_chi">
+        <value>Địa chỉ</value>
+    </data>
+    <data name="province">
+        <value>Tỉnh/Thành phố</value>
+    </data>
+    <data name="district">
+        <value>Quận/Huyện</value>
+    </data>
+    <data name="ward">
+        <value>Phường/Xã</value>
+    </data>
+    <data name="street">
+        <value>Số nhà/đường</value>
+    </data>
+    <data name="chon_hinh_dai_dien">
+        <value>Chọn ảnh đại diện</value>
+    </data>
+    <data name="may_anh">
+        <value>Máy ảnh</value>
+    </data>
+    <data name="thu_vien_anh">
+        <value>Thư viện ảnh</value>
+    </data>
+    <data name="quyen_truy_cap_may_anh">
+        <value>Quyền truy cập máy ảnh</value>
+    </data>
+    <data name="quyen_truy_cap_thu_vien">
+        <value>Quyền truy cập thư viện</value>
+    </data>
+    <data name="sundihome_can_quyen_truy_cap_vao_may_anh_anh_dai_dien">
+        <value>Sundihome cần truy cập máy ảnh để chụp ảnh đại diện</value>
+    </data>
+    <data name="sundihome_can_quyen_truy_cap_vao_thu_vien_anh_dai_dien">
+        <value>Sundihome cần truy cập vào thư viện hình ảnh để đặt ảnh đại diện</value>
+    </data>
+    <data name="quyen_truy_cap_bi_tu_choi">
+        <value>Quyền truy cập bị từ chối</value>
+    </data>
+    <data name="khong_the_truy_cap_vao_thu_vien_anh">
+        <value>Không thể truy cập vào thư viện ảnh</value>
+    </data>
+    <data name="may_anh_khong_kha_dung">
+        <value>Máy ảnh không khả dụng</value>
+    </data>
+    <data name="cap_nhat_anh_dai_dien_thanh_cong">
+        <value>Cập nhật ảnh đại diện thành công!</value>
+    </data>
+    <data name="khong_cap_nhat_duoc_anh_dai_dien">
+        <value>Không cập nhật được ảnh đại diện.</value>
+    </data>
+    <data name="vui_long_nhap_ho_ten">
+        <value>Vui lòng nhập họ tên.</value>
+    </data>
+    <data name="cap_nhat_thong_tin_thanh_cong">
+        <value>Cập nhật thông tin thành công!</value>
+    </data>
+    <data name="mat_khau_khong_dung">
+        <value>Mật khẩu không đúng</value>
+    </data>
+    <data name="cap_nhat_mat_khau_thanh_cong">
+        <value>Cập nhật mật khẩu thànhcông </value>
+    </data>
+    <data name="cap_nhat_mat_khau_thanh_cong">
+        <value>Cập nhật mật khẩu thànhcông </value>
+    </data>
+    <data name="vui_long_nhap_email">
+        <value>Vui lòng nhập Email</value>
+    </data>
+    <data name="email_khong_hop_le">
+        <value>Email không hợp lệ</value>
+    </data>
+    <data name="cap_nhat_email_thanh_cong">
+        <value>Cập nhật email thành công</value>
+    </data>
+    <data name="cap_nhat_sdt_thanh_cong">
+        <value>Cập nhật số điện thoại thành công</value>
+    </data>
+    <data name="goi_vay">
+        <value>Gói vay</value>
+    </data>
+    <data name="ngan_hang">
+        <value>Ngân hàng</value>
+    </data>
+    <data name="dang_ky_nhan_vien_ngan_hang">
+        <value>Đăng ký nhân viên ngân hàng</value>
+    </data>
+    <!--Views/PostListItemPage-->
+    <data name="san_bat_dong_san">
+        <value>Sàn bất động sản</value>
+    </data>
+    <!--Views/UserProfilePage-->
+    <data name="thong_tin_ca_nhan">
+        <value>Thông tin cá nhân</value>
+    </data>
+    <data name="ngay_tham_gia">
+        <value>Ngày tham gia</value>
+    </data>
+    <data name="huy_theo_doi">
+        <value>Huỷ theo dõi</value>
+    </data>
+    <data name="nam">
+        <value>Nam</value>
+    </data>
+    <data name="nu">
+        <value>Nữ</value>
+    </data>
+    <!-- AddProjectPage-->
+    <data name="thong_tin_co_ban">
+        <value>Thông tin cơ bản</value>
+    </data>
+    <data name="dang_tin_du_an">
+        <value>Đăng tin dự án</value>
+    </data>
+    <data name="tieu_de_du_an">
+        <value>Tiêu đề dự án</value>
+    </data>
+    <data name="nhap_tieu_de_du_an">
+        <value>Nhập tiêu đề dự án</value>
+    </data>
+    <data name="loai_du_an">
+        <value>Loại dự án</value>
+    </data>
+    <data name="chon_loai_du_an">
+        <value>Chọn loại dự án</value>
+    </data>
+    <data name="trang_thai">
+        <value>Trạng thái</value>
+    </data>
+    <data name="chon_trang_thai">
+        <value>Chọn trạng thái</value>
+    </data>
+    <data name="gia_tien">
+        <value>Giá tiền</value>
+    </data>
+    <data name="gia_thoa_thuan">
+        <value>Giá thoả thuận</value>
+    </data>
+    <data name="khoang_gia">
+        <value>Khoảng giá</value>
+    </data>
+    <data name="gia_tien_tu">
+        <value>Giá tiền từ</value>
+    </data>
+    <data name="gia_tien_den">
+        <value>Giá tiền đến</value>
+    </data>
+    <data name="tinh_thanh">
+        <value>Tỉnh/thành phố</value>
+    </data>
+    <data name="quan_huyen">
+        <value>Quận/huyện</value>
+    </data>
+    <data name="phuong_xa">
+        <value>Phường/xã</value>
+    </data>
+    <data name="so_nha_duong">
+        <value>Số nhà/đường</value>
+    </data>
+    <data name="thong_tin_chi_tiet">
+        <value>Thông tin chi tiết</value>
+    </data>
+    <data name="chu_dau_tu">
+        <value>Chủ đầu tư</value>
+    </data>
+    <data name="don_vi_thiet_ke_thi_cong">
+        <value>Đơn vị thiết kế thi công</value>
+    </data>
+    <data name="phan_khu_du_an">
+        <value>Phân khu dự án</value>
+    </data>
+    <data name="tong_so_von_dau_tu">
+        <value>Tổng số vốn đầu tư</value>
+    </data>
+    <data name="so_luong_san_pham">
+        <value>Số lượng sản phẩm</value>
+    </data>
+    <data name="so_luong_toa_nha">
+        <value>Số lượng toà nhà</value>
+    </data>
+    <data name="mat_do_xay_dung">
+        <value>Mật độ xây dựng</value>
+    </data>
+    <data name="so_thang_may">
+        <value>Số thang máy</value>
+    </data>
+    <data name="so_tang">
+        <value>Số tầng</value>
+    </data>
+    <data name="tang_ham">
+        <value>Tầng hầm</value>
+    </data>
+    <data name="dien_tich_san_trung_binh">
+        <value>Diện tích sàn trung bình</value>
+    </data>
+    <data name="khoang_dien_tich">
+        <value>Khoảng diện tích</value>
+    </data>
+    <data name="dien_tich">
+        <value>Diện tích</value>
+    </data>
+    <data name="dien_tich_tu">
+        <value>Diện tích từ</value>
+    </data>
+    <data name="dien_tich_den">
+        <value>Diện tích đến</value>
+    </data>
+    <data name="dien_tich_xay_dung">
+        <value>Diện tích xây dựng</value>
+    </data>
+    <data name="dien_tich_cay_xanh">
+        <value>Diện tích cây xanh</value>
+    </data>
+    <data name="dien_tich_khu_dat">
+        <value>Diện tích khu đất</value>
+    </data>
+    <data name="tong_dien_tich_san">
+        <value>Tổng diện tích sàn</value>
+    </data>
+    <data name="thoi_gian_mo_ban">
+        <value>Thời gian mở bán </value>
+    </data>
+    <data name="thoi_gian_ban_giao">
+        <value>Thời gian bàn giao </value>
+    </data>
+    <data name="nam_khoi_cong">
+        <value>Năm khởi công </value>
+    </data>
+    <data name="nam_hoan_thanh">
+        <value>Năm hoàn thành</value>
+    </data>
+    <data name="noi_that_tien_nghi">
+        <value>Nội thất tiện nghi</value>
+    </data>
+    <data name="tien_ich_noi_khu">
+        <value>Tiện ích nội khu</value>
+    </data>
+    <data name="tien_ich_ngoai_khu">
+        <value>Tiện ích ngoại khu</value>
+    </data>
+    <data name="da_chon">
+        <value>Đã chọn:</value>
+    </data>
+    <data name="co_so_vat_chat">
+        <value>Cơ sở vật chất</value>
+    </data>
+    <data name="mo_ta">
+        <value>Mô tả </value>
+    </data>
+    <data name="chon_hinh_anh">
+        <value>Chọn hình ảnh</value>
+    </data>
+    <data name="thong_tin_bo_sung">
+        <value>Thông tin bổ sung</value>
+    </data>
+    <data name="nhat_ky_du_an">
+        <value>Nhật ký dự án</value>
+    </data>
+    <data name="them_ghi_nhan">
+        <value>Thêm ghi nhận</value>
+    </data>
+    <data name="xac_nhan">
+        <value>Xác nhận</value>
+    </data>
+    <data name="tieu_de">
+        <value>Tiêu đề</value>
+    </data>
+    <data name="thoi_gian">
+        <value>Thời gian</value>
+    </data>
+    <data name="noi_dung">
+        <value>Nội dung</value>
+    </data>
+    <data name="huy">
+        <value>Hủy</value>
+    </data>
+    <data name="luu">
+        <value>Lưu</value>
+    </data>
+    <data name="xoa">
+        <value>Xoá</value>
+    </data>
+    <data name="vui_long_nhap_tieu_de_du_an">
+        <value>Vui lòng nhập tiêu đề dự án</value>
+    </data>
+    <data name="vui_long_chon_trang_thai">
+        <value>Vui lòng chọn trạng thái</value>
+    </data>
+    <data name="vui_long_nhap_khoang_gia">
+        <value>Vui lòng nhập khoảng giá</value>
+    </data>
+    <data name="vui_long_chon_tinh_thanh">
+        <value>Vui lòng chọn Tỉnh/thành</value>
+    </data>
+    <data name="vui_long_chon_quan_huyen">
+        <value>Vui lòng chọn Quận/huyện</value>
+    </data>
+    <data name="vui_long_chon_phuong_xa">
+        <value>Vui lòng chọn Phường/xã</value>
+    </data>
+    <data name="vui_long_nhap_mo_ta">
+        <value>Vui lòng nhập mô tả</value>
+    </data>
+    <data name="vui_long_chon_hinh">
+        <value>Vui lòng chọn hình</value>
+    </data>
+    <data name="vui_long_nhap_tieu_de_nhat_ky">
+        <value>Vui lòng nhập tiêu đề nhật ký</value>
+    </data>
+    <data name="vui_long_nhap_noi_dung_nhat_ky">
+        <value>Vui lòng nhập nội dung nhật ký</value>
+    </data>
+    <data name="them_nhat_ky_thanh_cong">
+        <value>Thêm nhật ký thành công</value>
+    </data>
+    <data name="vui_long_nhap_day_du_thong_tin_dien_tich_san">
+        <value>Vui lòng nhập đầy đủ thông tin diện tích sàn</value>
+    </data>
+    <data name="vui_long_nhap_day_du_thong_tin_dien_tich_cay_xanh">
+        <value>Vui lòng nhập đầy đủ thông tin diện tích cây xanh</value>
+    </data>
+    <data name="vui_long_nhap_day_du_thong_tin_dien_tich_khu_dat">
+        <value>Vui lòng nhập đầy đủ thông tin diện tích khu đất</value>
+    </data>
+    <data name="vui_long_nhap_day_du_thong_tin_dien_tich_xay_dung">
+        <value>Vui lòng nhập đầy đủ thông tin diện tích xây dựng</value>
+    </data>
+    <data name="mat_do_xay_dung_khong_dung_vui_long_nhap_lai">
+        <value>Mật độ xây dựng không đúng. Vui lòng nhập lại</value>
+    </data>
+    <data name="chon_it_nhat_3_hinh">
+        <value>Chọn ít nhất 3 hình</value>
+    </data>
+    <data name="dia_chi_khong_thay_tren_ban_do_vui_long_nhap_lai">
+        <value>Địa chỉ không tìm thấy trên bản đồ, Vui lòng nhập lại địa chỉ</value>
+    </data>
+    <data name="vui_long_upload_toi_da_8_hinh_anh_bat_dong_san">
+        <value>Vui lòng upload tối đa 8 hình ảnh bất động sản</value>
+    </data>
+    <data name="hinh_anh_vuot_qua_dung_luong_vui_long_thu_lai">
+        <value>Hình ảnh vượt quá dung lương. Vui lòng thử lại</value>
+    </data>
+    <data name="ban_co_muon_bo_sung_nhat_ky_du_an_khong">
+        <value>Bạn có muốn bổ sung nhật ký dự án không?</value>
+    </data>
+    <data name="khong_the_luu_du_an_vui_long_thu_lai">
+        <value>Không thể lưu dự án, vui lòng thử lại</value>
+    </data>
+    <data name="ban_co_chac_chan_muon_xoa_du_an_nay_khong">
+        <value>Bạn có chắc chắn muốn xoá dự án này không</value>
+    </data>
+    <data name="xoa_khong_thanh_cong">
+        <value>Xóa không thành công</value>
+    </data>
+    <data name="ban_co_chac_chan_muon_xoa_nhat_ky_nay_khong">
+        <value>Bạn có chắc chắn muốn xoá nhật ký này không?</value>
+    </data>
+    <data name="them_ghi_nhan_thanh_cong">
+        <value>Thêm ghi nhận thành công</value>
+    </data>
+    <data name="xem_them">
+        <value>Xem Thêm</value>
+    </data>
+    <data name="them_su_kien">
+        <value>Thêm sự kiện</value>
+    </data>
+    <!-- BDSUtilities.cs -->
+    <data name="khu_vuc_de_xe_may">
+        <value>Khu vực để xe máy</value>
+    </data>
+    <data name="khu_vuc_de_o_to">
+        <value>Khu vực để ô tô</value>
+    </data>
+    <data name="khuon_vien_cay_xanh">
+        <value>Khuôn viên cây xanh</value>
+    </data>
+    <data name="ghe_cong_cong">
+        <value>Ghế công cộng</value>
+    </data>
+    <data name="he_thong_dien_du_phong">
+        <value>Hệ thống điện dự phòng</value>
+    </data>
+    <data name="he_thong_dieu_hoa_tong">
+        <value>Hệ thống điều hòa tổng</value>
+    </data>
+    <data name="lam_dep_spa">
+        <value>Làm đẹp - spa</value>
+    </data>
+    <data name="khu_vui_choi_tre_em">
+        <value>Khu vui chơi trẻ em</value>
+    </data>
+    <data name="hop_thu_dan_cu">
+        <value>Hộp thư dân cư</value>
+    </data>
+    <data name="ho_nuoc">
+        <value>Hồ nước</value>
+    </data>
+    <data name="khu_tam_linh">
+        <value>Khu tâm linh </value>
+    </data>
+    <data name="Smarthome">
+        <value>Smarthome</value>
+    </data>
+    <data name="nha_cong_dong">
+        <value>Nhà cộng đồng </value>
+    </data>
+    <data name="khu_thu_gian_cho_nguoi_cao_tuoi">
+        <value>Khu thư giãn cho người cao tuổi</value>
+    </data>
+    <data name="cong_vien">
+        <value>Công viên</value>
+    </data>
+    <data name="khu_to_chuc_su_kien">
+        <value>Khu tổ chức sự kiện</value>
+    </data>
+    <data name="rap_chieu_phim">
+        <value>Rạp chiếu phim </value>
+    </data>
+    <data name="Bar">
+        <value>Bar</value>
+    </data>
+    <data name="Karaoke">
+        <value>Karaoke</value>
+    </data>
+    <data name="tu_bep">
+        <value>Tủ bếp </value>
+    </data>
+    <data name="bon_tam">
+        <value>Bồn tắm</value>
+    </data>
+    <data name="bon_rua_mat">
+        <value>Bồn rửa mặt </value>
+    </data>
+    <data name="binh_nong_lanh">
+        <value>Bình nóng lạnh</value>
+    </data>
+    <data name="may_hut_bui">
+        <value>Máy hút bụi</value>
+    </data>
+    <data name="ban_an">
+        <value>Bàn ăn</value>
+    </data>
+    <data name="ke_tivi">
+        <value>Kệ tivi</value>
+    </data>
+    <data name="tu_trang_tri">
+        <value>Tủ trang trí</value>
+    </data>
+    <data name="giuong_ngu">
+        <value>Giường ngủ</value>
+    </data>
+    <data name="ban_phan">
+        <value>Bàn phấn </value>
+    </data>
+    <data name="tu_quan_ao">
+        <value>Tủ quần áo </value>
+    </data>
+    <data name="voi_hoa_sen">
+        <value>Vòi hoa sen</value>
+    </data>
+    <data name="bo_bien">
+        <value>Bờ biển</value>
+    </data>
+    <data name="phong_xong_hoi">
+        <value>Phòng xông hơi</value>
+    </data>
+    <data name="sofa_phong_khach">
+        <value>Sofa phòng khách </value>
+    </data>
+    <data name="ban_tra">
+        <value>Bàn trà</value>
+    </data>
+    <data name="dem">
+        <value>Đệm </value>
+    </data>
+    <data name="tran_tha">
+        <value>Trần thả</value>
+    </data>
+    <data name="dieu_hoa">
+        <value>Điều hòa</value>
+    </data>
+    <data name="Internet">
+        <value>Internet</value>
+    </data>
+    <data name="thiet_bi_bao_chay">
+        <value>Thiết bị báo cháy</value>
+    </data>
+    <data name="truyen_hinh_cap">
+        <value>Truyền hình cáp </value>
+    </data>
+    <data name="bep_gas_dien">
+        <value>Bếp gas/điện</value>
+    </data>
+    <data name="vuon_treo_tren_cao">
+        <value>Vườn treo trên cao</value>
+    </data>
+    <data name="xe_bus">
+        <value>Xe bus đưa đón </value>
+    </data>
+    <data name="cong_vien_nuoc">
+        <value>Công viên nước</value>
+    </data>
+    <data name="he_thong_gas_tong">
+        <value>Hệ thống gas tổng</value>
+    </data>
+    <data name="dai_phun_nuoc">
+        <value>Đài phun nước</value>
+    </data>
+    <data name="quang_truong">
+        <value>Quảng trường </value>
+    </data>
+    <data name="ben_du_thuyen">
+        <value>Bến du thuyền</value>
+    </data>
+    <data name="thu_vien">
+        <value>Thư viện </value>
+    </data>
+    <data name="Casino">
+        <value>Casino</value>
+    </data>
+    <data name="tu_am_tuong">
+        <value>Tủ âm tường</value>
+    </data>
+    <data name="tu_lanh">
+        <value>Tủ lạnh</value>
+    </data>
+    <data name="san_truot_bang">
+        <value>Sân trượt băng</value>
+    </data>
+    <data name="Tivi">
+        <value>Tivi</value>
+    </data>
+    <data name="may_giat">
+        <value>Máy giặt</value>
+    </data>
+    <data name="lo_vi_song">
+        <value>Lò vi sóng</value>
+    </data>
+    <data name="may_rua_bat">
+        <value>Máy rửa bát</value>
+    </data>
+    <data name="may_phat_dien">
+        <value>Máy phát điện</value>
+    </data>
+    <data name="dieu_hoa_am_tran">
+        <value>Điều hòa âm trần </value>
+    </data>
+    <data name="he_thong_chong_trom">
+        <value>Hệ thống chống trộm </value>
+    </data>
+    <data name="may_say_quan_ao">
+        <value>Máy sấy quần áo</value>
+    </data>
+    <data name="dai_quan_sat">
+        <value>Đài quan sát</value>
+    </data>
+    <data name="ban_lam_viec">
+        <value>Bàn làm việc</value>
+    </data>
+    <data name="tu_giay">
+        <value>Tủ giày</value>
+    </data>
+    <data name="may_chieu">
+        <value>Máy chiếu</value>
+    </data>
+    <data name="may_in">
+        <value>Máy in</value>
+    </data>
+    <data name="tu_tai_lieu">
+        <value>Tủ tài liệu</value>
+    </data>
+    <data name="tap_dau_giuong">
+        <value>Tab đầu giường</value>
+    </data>
+    <data name="le_tan">
+        <value>Lễ tân </value>
+    </data>
+    <data name="an_ninh_bao_ve">
+        <value>An ninh bảo vệ </value>
+    </data>
+    <data name="don_ve_sinh">
+        <value>Dọn vệ sinh </value>
+    </data>
+    <data name="the_dan_cu">
+        <value>Thẻ dân cư </value>
+    </data>
+    <data name="camera_giam_sat">
+        <value>Camera giám sát</value>
+    </data>
+    <data name="nha_hang">
+        <value>Nhà hàng</value>
+    </data>
+    <data name="sieu_thi">
+        <value>Siêu thị</value>
+    </data>
+    <data name="coffee_shop">
+        <value>Coffee shop</value>
+    </data>
+    <data name="trung_tam_thuong_mai">
+        <value>Trung tâm thương mại</value>
+    </data>
+    <data name="ATM">
+        <value>ATM</value>
+    </data>
+    <data name="be_boi_ngoai_troi">
+        <value>Bể bơi ngoài trời</value>
+    </data>
+    <data name="phong_cho">
+        <value>Phòng (sảnh) chờ</value>
+    </data>
+    <data name="truong_mam_non">
+        <value>Trường mầm non</value>
+    </data>
+    <data name="truong_hoc_cap_1_2_3">
+        <value>Trường học cấp 1-2-3</value>
+    </data>
+    <data name="benh_vien_phong_kham">
+        <value>Bệnh viện, phòng khám</value>
+    </data>
+    <data name="shop_thoi_trang">
+        <value>Shop thời trang </value>
+    </data>
+    <data name="hieu_giat_la">
+        <value>Hiệu giặt là </value>
+    </data>
+    <data name="be_boi_trong_nha">
+        <value>Bể bơi trong nhà </value>
+    </data>
+    <data name="be_boi_4_mua">
+        <value>Bể bơi bốn mùa</value>
+    </data>
+    <data name="san_tennis">
+        <value>Sân tennis</value>
+    </data>
+    <data name="san_cau_long">
+        <value>Sân cầu lông</value>
+    </data>
+    <data name="fitness">
+        <value>Fitness</value>
+    </data>
+    <data name="ngan_hang">
+        <value>Ngân hàng </value>
+    </data>
+    <data name="BBQ">
+        <value>BBQ</value>
+    </data>
+    <data name="san_tap_golf">
+        <value>Sân tập golf</value>
+    </data>
+    <data name="san_golf">
+        <value>Sân golf</value>
+    </data>
+    <data name="nha_thuoc">
+        <value>Nhà thuốc, quầy thuốc</value>
+    </data>
+    <data name="cua_hang_hoa_tuoi">
+        <value>Cửa hàng hoa tươi</value>
+    </data>
+    <data name="cho">
+        <value>Chợ </value>
+    </data>
+    <data name="san_da_bong_mini">
+        <value>Sân bóng đá mini </value>
+    </data>
+    <data name="khu_vuc_choi_bong_ban">
+        <value>Khu vực chơi bóng bàn </value>
+    </data>
+    <data name="khu_vuc_choi_bi_a">
+        <value>Khu vực chơi bi-a</value>
+    </data>
+    <data name="san_bong_ro">
+        <value>Sân bóng rổ</value>
+    </data>
+    <data name="bon_cau">
+        <value>Bồn cầu</value>
+    </data>
+    <!--LoaiBatDongSanModel.cs-->
+    <data name="cao_oc_van_phong">
+        <value>Cao ốc văn phòng</value>
+    </data>
+    <data name="biet_thu">
+        <value>Biệt thự</value>
+    </data>
+    <data name="can_ho_cao_cap">
+        <value>Căn hộ cao cấp</value>
+    </data>
+    <data name="can_ho_chung_cu">
+        <value>Căn hộ chung cư</value>
+    </data>
+    <data name="du_lich_nghi_duong">
+        <value>Du lịch nghỉ dưỡng</value>
+    </data>
+    <data name="dat_phan_lo">
+        <value>Đất phân lô</value>
+    </data>
+    <data name="do_thi_moi">
+        <value>Đô thị mới</value>
+    </data>
+    <data name="khu_cong_nghiep">
+        <value>Khu công nghiệp</value>
+    </data>
+    <data name="khu_dan_cu">
+        <value>Khu dân cư</value>
+    </data>
+    <data name="nha_o_xa_hoi">
+        <value>Nhà ở xã hội</value>
+    </data>
+    <data name="phuc_hop">
+        <value>Phức hợp</value>
+    </data>
+    <data name="khac">
+        <value>Khác</value>
+    </data>
+    <!--ProjectListPage-->
+    <data name="du_an_cua_toi">
+        <value>Dự án của tôi</value>
+    </data>
+    <!--ProjectStatusModel-->
+    <data name="dang_mo_ban">
+        <value>Đang mở bán</value>
+    </data>
+    <data name="dang_ban_giao">
+        <value>Đang bàn giao</value>
+    </data>
+    <data name="sap_mo_ban">
+        <value>Sắp mở bán</value>
+    </data>
+    <!--ProjectDitailPage-->
+    <data name="gioi_thieu_du_an">
+        <value>Giới thiệu</value>
+    </data>
+    <data name="tong_quan_du_an">
+        <value>Tổng quan dự án</value>
+    </data>
+    <data name="bat_dong_san_thuoc_du_an">
+        <value>Bất động sản thuộc dự án</value>
+    </data>
+    <data name="mua_ban">
+        <value>Mua Bán</value>
+    </data>
+    <data name="cho_thue">
+        <value>Cho Thuê</value>
+    </data>
+    <data name="tien_ich_du_an">
+        <value>Tiện ích dự án</value>
+    </data>
+    <data name="thong_tin_lien_he">
+        <value>Thông tin liên hệ</value>
+    </data>
+    <!--PostDetailPage-->
+    <data name="thoi_gian_cam_ket">
+        <value>Thời gian cam kết</value>
+    </data>
+    <data name="bai_dang_nay_da_duoc_them_vao_binh_luan_roi">
+        <value>Bài đăng này đã thêm vào bình luận rồi.</value>
+    </data>
+    <data name="nhap_binh_luan_hoac_chon_tin_dang_de_gui_binh_luan">
+        <value>Nhập bình luận hoặc chọn tin đăng để gửi bình luận</value>
+    </data>
+    <data name="tong_quan_bat_dong_san">
+        <value>Tổng quan bất động sản</value>
+    </data>
+    <data name="thuoc_du_an">
+        <value>Thuộc dự án</value>
+    </data>
+    <data name="tien_do">
+        <value>Tiến Độ: </value>
+    </data>
+    <data name="bat_dong_san_cung_du_an">
+        <value>Bất động sản cùng dự án</value>
+    </data>
+    <data name="xem_tat_ca">
+        <value>Xem tất cả</value>
+    </data>
+    <data name="binh_luan">
+        <value>Bình luận</value>
+    </data>
+    <data name="gui_tin_dang_binh_luan">
+        <value>Gửi tin đăng bình luận</value>
+    </data>
+    <data name="bai_dang_khong_ton_tai_hoac_da_xoa">
+        <value>Bài đăng không tồn tại hoặc đã xoá</value>
+    </data>
+    <data name="theo_doi_bai_dang">
+        <value>Theo dõi bài đăng</value>
+    </data>
+    <data name="goi_dien">
+        <value>Gọi điện</value>
+    </data>
+    <data name="chat">
+        <value>Chat</value>
+    </data>
+    <data name="nhan_tin">
+        <value>Nhắn tin</value>
+    </data>
+    <data name="dat_lich_hem">
+        <value>Đặt lịch hẹn</value>
+    </data>
+    <data name="khong_the_thuc_hien_chuc_nang_nay">
+        <value>Không thể thực hiện chức năng này</value>
+    </data>
+    <data name="bo_theo_doi_bai_dang">
+        <value>Bỏ theo dõi bài đăng</value>
+    </data>
+    <data name="dang_theo_doi_tin_dang_cua_ban">
+        <value>đang theo dõi tin đăng của bạn</value>
+    </data>
+    <!--CategoryList-->
+    <data name="binh_hoa_bat_dia_trang_tri">
+        <value>Bình hoa, bát đĩa trang trí</value>
+    </data>
+    <data name="tham_trai_san">
+        <value>Thảm trải sàn</value>
+    </data>
+    <data name="tu_ruou">
+        <value>Tủ rượu</value>
+    </data>
+    <data name="ke_tivi_phong_khach">
+        <value>Kệ tivi phòng khách</value>
+    </data>
+    <data name="phong_khach">
+        <value>Phòng khách</value>
+    </data>
+    <data name="phong_an">
+        <value>Phòng ăn</value>
+    </data>
+    <data name="ban_tra">
+        <value>Bàn trà</value>
+    </data>
+    <data name="tab_dau_giuong">
+        <value>Tab đầu giường</value>
+    </data>
+    <data name="bo_ban_ghe_phong_ngu">
+        <value>Bộ bàn ghế phòng ngủ</value>
+    </data>
+    <data name="tranh_trang_tri">
+        <value>Tranh trang trí</value>
+    </data>
+    <data name="ban_tu_lam_viec">
+        <value>Bàn - tủ làm việc</value>
+    </data>
+    <data name="phong_lam_viec">
+        <value>Phòng làm việc</value>
+    </data>
+    <data name="ghe_thu_gian">
+        <value>Ghế thư giãn</value>
+    </data>
+    <data name="ban_ghe">
+        <value>Bàn ghế</value>
+    </data>
+    <data name="quay_bar">
+        <value>Quầy bar</value>
+    </data>
+    <data name="cay_canh">
+        <value>Cây cảnh</value>
+    </data>
+    <data name="guong_trang_diem">
+        <value>Gương trang điểm</value>
+    </data>
+    <data name="ke_tivi">
+        <value>Kệ - tivi</value>
+    </data>
+    <data name="ke_treo_tuong">
+        <value>Kệ treo tường</value>
+    </data>
+    <data name="sofa_thong_minh">
+        <value>SOFA thông minh</value>
+    </data>
+    <data name="ghe_quy_phi">
+        <value>Ghế quý phi</value>
+    </data>
+    <data name="bo_phong_ngu_dong_bo">
+        <value>Bộ phòng ngủ đồng bộ</value>
+    </data>
+    <data name="ban_tra_phong_khach">
+        <value>Bàn trà phòng khách</value>
+    </data>
+    <data name="tu_ly_tu_ruou">
+        <value>Tủ ly, tủ rượu</value>
+    </data>
+    <data name="tu_giay_tu_trang_tri">
+        <value>Tủ giày, tủ trang trí</value>
+    </data>
+    <data name="giuong_da_nang">
+        <value>Giường đa năng</value>
+    </data>
+    <data name="phu_kien_trang_tri">
+        <value>Phụ kiện trang trí</value>
+    </data>
+    <data name="ban_trang_diem">
+        <value>Bàn trang điểm</value>
+    </data>
+    <data name="ban_ghe_phong_an">
+        <value>Bàn ghế phòng ăn</value>
+    </data>
+    <data name="phong_ngu">
+        <value>Phòng ngủ</value>
+    </data>
+    <data name="lo_suoi">
+        <value>Lò sưởi</value>
+    </data>
+    <data name="thong_minh">
+        <value>Thông minh</value>
+    </data>
+    <data name="sofa_phong_khach">
+        <value>Sofa phòng khách</value>
+    </data>
+    <data name="tu_quan_ao">
+        <value>Tủ quần áo</value>
+    </data>
+    <data name="xe_day_do_an">
+        <value>Xe đẩy đồ ăn</value>
+    </data>
+    <data name="bo_giuong_ngu">
+        <value>Bộ giường ngủ</value>
+    </data>
+    <!--AddFurniturePostItemPage-->
+    <data name="nhap_noi_dung">
+        <value>Nhập nội dung</value>
+    </data>
+    <data name="thong_tin_bo_sung">
+        <value>Thông tin bổ sung</value>
+    </data>
+    <data name="nhap_gia">
+        <value>Nhập giá</value>
+    </data>
+    <data name="nhap_dia_chi">
+        <value>Nhập địa chỉ</value>
+    </data>
+    <data name="nhom_danh_muc">
+        <value>Nhóm danh mục</value>
+    </data>
+    <data name="loi_load_danh_muc">
+        <value>Lỗi load danh mục</value>
+    </data>
+    <data name="vui_long_nhap_mo_ta_bai_dang">
+        <value>Vui lòng nhập mô tả bài đăng</value>
+    </data>
+    <data name="vui_long_chon_toi_da_5_bsd">
+        <value>Vui lòng chọn tối đa 5 bất động sản</value>
+    </data>
+    <data name="loi_upload_hinh_anh_vui_long_thu_lai">
+        <value>Lỗi upload hình ảnh, vui lòng thử lại</value>
+    </data>
+    <data name="nhom_noi_that">
+        <value>Nhóm nội thất</value>
+    </data>
+    <data name="loai_noi_that">
+        <value>Loại nội thất</value>
+    </data>
+    <data name="tieu_de_tin_dang">
+        <value>Tiêu đề tin đăng</value>
+    </data>
+    <data name="gia_san_pham">
+        <value>Giá sản phẩm</value>
+    </data>
+    <data name="tinh_trang">
+        <value>Tình trạng</value>
+    </data>
+    <data name="moi">
+        <value>Mới</value>
+    </data>
+    <data name="da_qua_su_dung">
+        <value>Đã qua sử dụng</value>
+    </data>
+    <data name="khuyen_mai">
+        <value>Khuyến mãi</value>
+    </data>
+    <data name="thoi_gian_khuyen_mai">
+        <value>Thời gian khuyến mãi</value>
+    </data>
+    <data name="gia_giam">
+        <value>Giá giảm</value>
+    </data>
+    <data name="ma_san_pham">
+        <value>Mã sản phẩm</value>
+    </data>
+    <data name="xuat_xu">
+        <value>Xuất xứ</value>
+    </data>
+    <data name="bao_hanh">
+        <value>Bảo hành</value>
+    </data>
+    <data name="thoi_gian_bao_hanh">
+        <value>Thời gian bảo hành (tháng)</value>
+    </data>
+    <data name="mo_ta_san_pham">
+        <value>Mô tả sản phẩm</value>
+    </data>
+    <data name="ca_nhan">
+        <value>Cá nhân</value>
+    </data>
+    <data name="hinh_anh">
+        <value>Hình ảnh</value>
+    </data>
+    <data name="them_anh_san_pham">
+        <value>Thêm ảnh sản phẩm</value>
+    </data>
+    <data name="kich_thuoc_toi_thieu_300x300">
+        <value>Kích thước tối thiếu 300 x 300px</value>
+    </data>
+    <data name="chon_nhom_danh_muc">
+        <value>Chọn nhóm danh mục</value>
+    </data>
+    <data name="chon_danh_muc">
+        <value>Chọn danh mục</value>
+    </data>
+    <data name="nhap_ten_noi_that">
+        <value>Nhập tên nội thất</value>
+    </data>
+    <data name="nhap_gia_san_pham">
+        <value>Nhập giá sản phẩm</value>
+    </data>
+    <data name="chon_dia_chi">
+        <value>Chọn địa chỉ</value>
+    </data>
+    <data name="chon_hinh_anh_cho_san_pham">
+        <value>Chọn hình ảnh cho sản phẩm</value>
+    </data>
+    <data name="khong_the_upload_hinh_anh">
+        <value>Không thể upload hình ảnh</value>
+    </data>
+    <data name="luu_san_pham_thanh_cong">
+        <value>Lưu sản phẩm thành công</value>
+    </data>
+    <data name="loi">
+        <value>Lỗi</value>
+    </data>
+    <!--FurnitureCategoryPage-->
+    <data name="danh_muc">
+        <value>Danh mục</value>
+    </data>
+    <!--FurnitureHomePage-->
+    <data name="boi">
+        <value>Bởi </value>
+    </data>
+    <data name="quang_cao_san_pham">
+        <value>Quảng cáo sản phẩm</value>
+    </data>
+    <data name="san_pham_moi">
+        <value>Sản phẩm mới</value>
+    </data>
+    <data name="san_pham_khuyen_mai">
+        <value>Sản phẩm khuyến mãi</value>
+    </data>
+    <!--FurniturePostItemDetailPage-->
+    <data name="nhap_tu_khoa_tim_kiem">
+        <value>Nhập từ khoá tìm kiếm</value>
+    </data>
+    <data name="chon_san_pham">
+        <value>Chọn sản phẩm</value>
+    </data>
+    <data name="xem_them_binh_luan">
+        <value>Xem thêm bình luận</value>
+    </data>
+    <data name="viet_binh_luan">
+        <value>Viết bình luận</value>
+    </data>
+    <data name="vui_long_chon_toi_da_5_san_pham">
+        <value>Vui lòng chọn tối đa 5 sản phẩm!</value>
+    </data>
+    <data name="san_pham_nay_da_them_vao_binh_luan_roi">
+        <value>Sản phẩm này đã thêm vào bình luận rồi.</value>
+    </data>
+    <data name="nhap_binh_luan_hoac_chon_tin_dang_de_gui_binh_luan">
+        <value>Nhập bình luận hoặc chọn tin đăng để gửi bình luận!</value>
+    </data>
+    <data name="da_binh_luan_trong_bai_viet">
+        <value> đã bình luận trong một bài viết!</value>
+    </data>
+    <data name="co_loi_khi_gui_thong_bao">
+        <value>Có lỗi khi gửi thông báo</value>
+    </data>
+    <data name="thong_tin_ca_nhan">
+        <value>Thông tin cá nhân</value>
+    </data>
+    <data name="xoa_bai_dang">
+        <value>Xoá bài đăng</value>
+    </data>
+    <data name="tuy_chon">
+        <value>Tuỳ chọn</value>
+    </data>
+    <data name="xac_nhan_xoa">
+        <value>Xác nhận xoá</value>
+    </data>
+    <data name="ban_co_chac_chan_muon_xoa_tin_dang_nay_khong">
+        <value>Bạn có chắc chắn muốn xoá tin đăng này không?</value>
+    </data>
+    <!--FurnitureProductFiltePage-->
+    <data name="loc_noi_that">
+        <value>Lọc nội thất</value>
+    </data>
+    <data name="tu_khoa">
+        <value>Từ khoá</value>
+    </data>
+    <data name="ket_qua_tim_kiem">
+        <value>Kết quả tìm kiếm</value>
+    </data>
+    <!--FurnitureProductFilterResultPage-->
+    <data name="ket_qua_loc">
+        <value>Kết quả lọc</value>
+    </data>
+    <data name="san_pham">
+        <value>Sản phẩm</value>
+    </data>
+    <!--MarketPage-->
+    <data name="cho_noi_that">
+        <value>Chợ nội thất</value>
+    </data>
+    <data name="khong_the_thuc_hien_chuc_nang_nay">
+        <value>Không thể thực hiện chức năng này.</value>
+    </data>
+    <data name="xem_chi_tiet">
+        <value>Xem chi tiết</value>
+    </data>
+    <!--MyproductListPage-->
+    <data name="san_pham_cua_toi">
+        <value>Sản phẩm của tôi</value>
+    </data>
+    <data name="them_san_pham">
+        <value>Thêm sản phẩm</value>
+    </data>
+    <!--MyPromotionListPage-->
+    <data name="san_pham_khuyen_mai_cua_toi">
+        <value>Sản phẩm khuyến mãi của tôi</value>
+    </data>
+    <!--ProductDetailPage-->
+    <data name="dang_ban_status">
+        <value>Đang bán</value>
+    </data>
+    <data name="chi_tiet_san_pham">
+        <value>Chi tiết sản phẩm</value>
+    </data>
+    <data name="loai_san_pham">
+        <value>Loại sản phẩm</value>
+    </data>
+    <data name="nguoi_dang_ban">
+        <value>Người đăng bán</value>
+    </data>
+    <data name="ngay_dang">
+        <value>Ngày đăng</value>
+    </data>
+    <data name="chinh_sua">
+        <value>Chỉnh sửa</value>
+    </data>
+    <data name="ngung_ban">
+        <value>Ngừng bán</value>
+    </data>
+    <data name="cap_nhat_thanh_cong">
+        <value>Cập nhật thành công</value>
+    </data>
+    <data name="cap_nhat_that_bai">
+        <value>Cập nhật thất bại</value>
+    </data>
+    <data name="cap_nhat_san_pham">
+        <value>Cập nhật sản phẩm</value>
+    </data>
+    <data name="khong_tim_thay_san_pham">
+        <value>Không tìm thấy sản phẩm</value>
+    </data>
+    <!--ProductManagementPage-->
+    <data name="quan_ly">
+        <value>Quản lý</value>
+    </data>
+    <data name="xem_thong_tin_ca_nhan">
+        <value>Xem thông tin cá nhân</value>
+    </data>
+    <data name="quan_ly_san_pham">
+        <value>Quản lý sản phẩm</value>
+    </data>
+    <data name="quan_ly_khuyen_mai">
+        <value>Quản lý khuyến mãi</value>
+    </data>
+    <data name="don_dat_hang">
+        <value>Đơn đặt hàng</value>
+    </data>
+    <data name="don_mua_hang">
+        <value>Đơn mua hàng</value>
+    </data>
+    <data name="dang_nhap_dang_ky">
+        <value>Đăng nhập/Đăng ký</value>
+    </data>
+    <data name="click_de_dang_nhap_dang_ky">
+        <value>Click để đăng nhập/đăng ký</value>
+    </data>
+    <data name="vui_long_dang_nhap">
+        <value>Vui lòng đăng nhập/đăng ký để thực hiện chức năng này.</value>
+    </data>
+    <data name="vui_long_dang_nha_dang_ky_de_thuc_hien_chuc_nang_nay">
+        <value>Vui lòng đăng nhập/đăng ký để thực hiện chức năng này.</value>
+    </data>
+    <data name="chon_noi_that_muon_khuyen_mai">
+        <value>Chọn nội thất muốn khuyến mãi</value>
+    </data>
+    <data name="cap_nhat_khuyen_mai">
+        <value>Cập nhật khuyến mãi</value>
+    </data>
+    <!--PromotionPage-->
+    <data name="them_moi_san_pham">
+        <value>Thêm mới sản phẩm</value>
+    </data>
+    <data name="chon_tu_san_pham_noi_that">
+        <value>Chọn từ sản phẩm nội thất</value>
+    </data>
+    <data name="vui_long_nhap_gia_giam">
+        <value>Vui lòng nhập giá giảm</value>
+    </data>
+    <data name="den">
+        <value> đến </value>
+    </data>
+    <data name="tu">
+        <value>từ</value>
+    </data>
+    <!--AppShell - Furniture-->
+    <data name="cho">
+        <value>Chợ</value>
+    </data>
+    <!--AccountPage-->
+    <data name="tai_khoan">
+        <value>Tài khoản</value>
+    </data>
+    <data name="san_pham_trong_ngay">
+        <value>Sản phẩm trong ngày</value>
+    </data>
+    <!--AddLiquidationPage-->
+    <data name="noi_that_gia_dinh">
+        <value>Nội thất gia đình</value>
+    </data>
+    <data name="ngoai_that_san_vuon">
+        <value>Ngoại thất, sân vườn</value>
+    </data>
+    <data name="do_gia_dung">
+        <value>Đồ gia dụng</value>
+    </data>
+    <data name="noi_that_van_phong">
+        <value>Nội thất văn phòng</value>
+    </data>
+    <data name="xe_co">
+        <value>Xe cộ</value>
+    </data>
+    <data name="thoi_trang">
+        <value>Thời trang</value>
+    </data>
+    <data name="do_my_nghe">
+        <value>Đồ mỹ nghệ</value>
+    </data>
+    <data name="dien_tu_dien_may">
+        <value>Điện tử &amp; điện máy</value>
+    </data>
+    <data name="the_thao">
+        <value>Thể thao</value>
+    </data>
+    <data name="vat_nuoi_cay_canh">
+        <value>Vật nuôi, cây cảnh</value>
+    </data>
+    <data name="sach_bao">
+        <value>Sách, báo</value>
+    </data>
+    <data name="tre_em">
+        <value>Trẻ em</value>
+    </data>
+    <data name="khac">
+        <value>Khác</value>
+    </data>
+    <data name="cho_tang">
+        <value>Cho tặng</value>
+    </data>
+    <data name="ten_san_pham">
+        <value>Tên sản phẩm</value>
+    </data>
+    <data name="gia_thanh_ly">
+        <value>Giá thanh lý</value>
+    </data>
+    <data name="gia">
+        <value>Giá</value>
+    </data>
+    <data name="dang_thanh_ly">
+        <value>Đăng thanh lý</value>
+    </data>
+    <data name="xoa_thanh_cong">
+        <value>Xoá thành công</value>
+    </data>
+    <data name="loi_khong_the_xoa_san_pham">
+        <value>Lỗi không thể xoá sản phẩm</value>
+    </data>
+    <data name="vui_long_chon_danh_muc_san_pham">
+        <value>Vui lòng chọn danh mục sản phẩm</value>
+    </data>
+    <data name="vui_long_nhap_ten_san_pham">
+        <value>Vui lòng nhập tên sản phẩm</value>
+    </data>
+    <data name="vui_long_nhap_gia_thanh_ly">
+        <value>Vui lòng nhập giá thanh lý</value>
+    </data>
+    <data name="vui_long_cung_cap_thong_tin_dia_chi">
+        <value>Vui lòng cung cấp thông tin địa chỉ</value>
+    </data>
+    <data name="vui_long_chon_hinh_anh_san_pham">
+        <value>Vui lòng chọn hình ảnh sản phẩm</value>
+    </data>
+    <data name="hinh_anh_vuot_qua_dung_luong_vui_long_thu_lai">
+        <value>Hình ảnh vượt quá dung lương. Vui lòng thử lại</value>
+    </data>
+    <data name="khong_the_luu_san_pham_vui_long_thu_lai">
+        <value>Không thể lưu sản phẩm, vui lòng thử lại</value>
+    </data>
+    <data name="danh_muc_san_pham">
+        <value>Danh mục sản phẩm</value>
+    </data>
+    <!--AddPostItemPage-->
+    <data name="nhap_tieu_de">
+        <value>Nhập tiêu đề</value>
+    </data>
+    <data name="dia_chi_cua_toi">
+        <value>Địa chỉ của tôi</value>
+    </data>
+    <data name="vui_long_nhap_tieu_de_bai_dang">
+        <value>Vui lòng nhập tiêu đề bài đăng</value>
+    </data>
+    <!--AddToDayPage-->
+    <data name="gia_cu">
+        <value>Giá cũ</value>
+    </data>
+    <data name="gia_thanh_ly_trong_ngay">
+        <value>Giá thanh lý trong ngày</value>
+    </data>
+    <data name="dang_thanh_ly_trong_ngay">
+        <value>Đăng thanh lý trong ngày</value>
+    </data>
+    <data name="dang_lai">
+        <value>Đăng lại</value>
+    </data>
+    <data name="dang_thanh_cong">
+        <value>Đăng thành công</value>
+    </data>
+    <data name="loi_vui_long_thu_lai">
+        <value>Lỗi vui lòng thử lại</value>
+    </data>
+    <data name="vui_long_cung_cap_thong_tin_gia_thanh_ly_trong_ngay">
+        <value>Vui lòng cung cấp thông tin giá thanh lý trong ngày</value>
+    </data>
+    <data name="thanh_ly_trong_ngay">
+        <value>Thanh lý trong ngày</value>
+    </data>
+    <data name="vui_long_dang_nhap_dang_ky_de_duoc_dang_san_pham">
+        <value>Vui lòng đăng nhập/đăng ký để được đăng sản phẩm</value>
+    </data>
+    <data name="thong_tin_chung">
+        <value>Thông tin chung</value>
+    </data>
+    <!--LiquidationDetailPage-->
+    <data name="nhom_san_pham">
+        <value>Nhóm sản phẩm</value>
+    </data>
+    <data name="khong_tim_thay_bai_dang">
+        <value>Không tìm thấy bài đăng</value>
+    </data>
+    <data name="chuc_nang_dang_hoan_thien_vui_long_quay_lai_sau">
+        <value>Chức năng đang hoàn thiện. Vui lòng quay lại sau</value>
+    </data>
+    <!--MarketPage-->
+    <data name="cho_thanh_ly">
+        <value>Chợ thanh lý</value>
+    </data>
+    <data name="can_thanh_ly">
+        <value>Cần thanh lý</value>
+    </data>
+    <!--MyliquitionListPage-->
+    <data name="da_ban">
+        <value>Đã bán</value>
+    </data>
+    <data name="da_dat_hang">
+        <value>Đã đặt hàng</value>
+    </data>
+    <!--MyToDayListPage-->
+    <data name="het_han">
+        <value>Hết hạn</value>
+    </data>
+    <data name="dang_san_pham_trong_ngay">
+        <value>Đăng sản phẩm trong ngày</value>
+    </data>
+    <data name="chon_tu_san_pham_thanh_ly">
+        <value>Chọn từ sản phẩm thanh lý</value>
+    </data>
+    <!--PickerLiquitionPage-->
+    <data name="chon_tin_thanh_ly">
+        <value>Chọn tin thanh lý</value>
+    </data>
+    <data name="nhap_gia_thanh_ly">
+        <value>Nhập giá thanh lý</value>
+    </data>
+    <data name="nhap_gia_thanh_ly_san_pham">
+        <value>Nhập giá thanh lý sản phẩm</value>
+    </data>
+    <data name="vui_long_nhap_gia_thanh_ly_trong_ngay">
+        <value>Vui lòng nhập giá thanh lý trong ngày</value>
+    </data>
+    <data name="loi_hinh_anh_vui_long_thu_lai_sau">
+        <value>Lỗi hình ảnh, vui lòng thử lại</value>
+    </data>
+    <data name="dang_tin_thanh_ly_thanh_cong">
+        <value>Đăng tin thanh lý thành công</value>
+    </data>
+    <data name="loi_dang_tin_thanh_ly_vui_long_thu_lai">
+        <value>Lỗi đăng tin thanh lý, vui lòng thử lại</value>
+    </data>
+    <!--ToDayDetailPage-->
+    <data name="dang_lai_tin">
+        <value>Đăng lại tin</value>
+    </data>
+    <data name="trong_ngay">
+        <value>Trong ngày</value>
+    </data>
+    <!--BankViews/AddLoanView-->
+    <data name="ten_goi_vay">
+        <value>Tên gói vay</value>
+    </data>
+    <data name="thoi_han_toi_da">
+        <value>Thời hạn tối đa</value>
+    </data>
+    <data name="lai_suat">
+        <value>Lãi suất</value>
+    </data>
+    <data name="muc_vay_toi_da">
+        <value>Mức vay tối đa</value>
+    </data>
+    <data name="dieu_kien_vay">
+        <value>Điều kiện vay</value>
+    </data>
+    <data name="vui_long_nhap_ten_goi_vay">
+        <value>Vui lòng nhập tên gói vay</value>
+    </data>
+    <data name="vui_long_nhap_dieu_kien_vay">
+        <value>Vui lòng nhập điều kiện vay</value>
+    </data>
+    <data name="vui_long_chon_thoi_han_vay_toi_da">
+        <value>Vui lòng chọn thời hạn vay tối đa</value>
+    </data>
+    <data name="sundihome_can_truy_cap_vao_thu_vien_de_lay_hinh_anh_goi_vay">
+        <value>Sundihome cần truy cập vào thư viện hình ảnh để lấy hình gói vay</value>
+    </data>
+    <data name="sundihome_can_truy_cap_vao_may_anh_de_chup_hinh_goi_vay">
+        <value>Sundihome cần truy cập vào máy ảnh để chụp hình gói vay</value>
+    </data>
+    <data name="year">
+        <value>Năm</value>
+    </data>
+    <data name="month">
+        <value>Tháng</value>
+    </data>
+    <data name="vui_long_chon_ngan_hang">
+        <value>Vui lòng chọn ngân hàng</value>
+    </data>
+    <!-- BankViews/DangKyNhanVienNganHangView-->
+    <data name="thong_tin_goi_vay">
+        <value>Thông tin gói vay</value>
+    </data>
+    <data name="nhan_vien_tu_van">
+        <value>Nhân viên tư vấn</value>
+    </data>
+    <!-- BankViews/GoiVayDetailPage-->
+    <data name="dang_goi_vay">
+        <value>Đăng gói vay</value>
+    </data>
+    <data name="vui_long_dang_ky_nhan_vien_ngan_hang_de_dang_goi_vay">
+        <value>Vui lòng đăng ký nhân viên ngân hàng để đăng gói vay</value>
+    </data>
+    <!-- BankViews/LoadListPage-->
+    <data name="goi_vay_s">
+        <value>Gói vay</value>
+    </data>
+    <data name="danh_sach_goi_vay">
+        <value>Danh sách gói vay</value>
+    </data>
+    <data name="goi_vay_cua_toi">
+        <value>Gói vay của tôi</value>
+    </data>
+    <!--BankViews/CalculatorPage-->
+    <data name="goc_co_dinh_lai_giam_dan">
+        <value>Gốc cố định, dư nợ giảm dần</value>
+    </data>
+    <data name="lai_va_goc_co_dinh">
+        <value>Lãi và gốc cố định</value>
+    </data>
+    <data name="so_tien_vay">
+        <value>Số tiền vay</value>
+    </data>
+    <data name="thoi_han_vay">
+        <value>Thời hạn vay</value>
+    </data>
+    <data name="lai_suat_noi">
+        <value>Lãi suất nổi</value>
+    </data>
+    <data name="thoi_han_co_dinh">
+        <value>Thời hạn cố định</value>
+    </data>
+    <data name="lai_suat_trung_binh_sau_thoi_gian_co_dinh">
+        <value>Lãi suất trung bình (Sau thời gian cố định)</value>
+    </data>
+    <data name="ket_qua">
+        <value>Kết quả</value>
+    </data>
+    <data name="so_tien_phai_tra_hang_thang">
+        <value>Số tiền phải trả hàng tháng</value>
+    </data>
+    <data name="tong_so_tien_lai">
+        <value>Tổng số tiền lãi</value>
+    </data>
+    <data name="tong_so_tien_phai_tra">
+        <value>Tổng số tiền phải trả</value>
+    </data>
+    <data name="giai_doan">
+        <value>Thời gian</value>
+    </data>
+    <data name="lai">
+        <value>Lãi</value>
+    </data>
+    <data name="so_tien_phai_tra">
+        <value>Số tiền phải trả</value>
+    </data>
+    <data name="so_goc_con_lai">
+        <value>Số gốc còn lại</value>
+    </data>
+    <data name="tinh_tien_vay">
+        <value>Tính tiền vay</value>
+    </data>
+    <data name="phuong_thuc_tra_lai">
+        <value>Phương thức trả lãi</value>
+    </data>
+    <data name="khu_vuc_tu_van">
+        <value>Khu vực tư vấn</value>
+    </data>
+    <data name="vui_long_nhap_so_tien_vay">
+        <value>Vui lòng nhập số tiền vay</value>
+    </data>
+    <data name="vui_long_nhap_lai_suat">
+        <value>Vui lòng nhập lãi suất</value>
+    </data>
+    <data name="vui_long_nhap_thoi_han_vay">
+        <value>Vui lòng nhập thời hạn vay</value>
+    </data>
+    <data name="vui_long_chon_thoi_gian_co_dinh">
+        <value>VUi lòng chọn thời gian cố định</value>
+    </data>
+    <data name="thoi_han_co_dinh_khong_the_vuot_qua_thoi_han_vay">
+        <value>Thời hạn cố định không thể vượt quá thời hạn vay</value>
+    </data>
+    <data name="vui_long_nhap_lai_suat_trung_binh">
+        <value>Vui lòng nhập lãi suất trung bình</value>
+    </data>
+    <!-- ChatListPage-->
+    <data name="danh_sach_tin_nhan">
+        <value>Danh sách tin nhắn</value>
+    </data>
+    <data name="chon_bat_dong_san">
+        <value>Chọn bất động sản</value>
+    </data>
+    <data name="tin_nhan_bat_dong_san">
+        <value>Tin nhắn bất động sản</value>
+    </data>
+    <data name="tin_nhan_noi_that">
+        <value>Tin nhắn nội thất</value>
+    </data>
+    <data name="tin_nhan_thanh_ly">
+        <value>Tin nhắn thanh lý</value>
+    </data>
+    <data name="gui_yeu_cau_ho_tro_qua_facebook_zalo_viber">
+        <value>Gửi yêu cầu hỗ trợ qua Facebook, Viber hoặc Zalo</value>
+    </data>
+    <data name="nhap_noi_dung_tin_nhan">
+        <value>Nhập nội dung tin nhắn...</value>
+    </data>
+    <!--AboutPage-->
+    <data name="about_1">
+        <value>Giới thiệu Sundihome</value>
+    </data>
+    <data name="about_2">
+        <value>Sundihome, ứng dụng bạn tìm mua thuê và các dịch vụ cho ngôi nhà của bạn với các đối tác cung cấp nhằm mang lại cho bạn một tình yêu thực sự với căn nhà của mình cùng với gia đình bạn.</value>
+    </data>
+    <data name="about_3">
+        <value>Với mong ước mang lại niềm hạnh phúc trong ngôi nhà của bạn, Sundihome sẽ mang lại cho bạn các tính năng có giá trị đích thực cho cuộc sống của bạn, gia đình bạn và những người thân trong gia đình bạn.</value>
+    </data>
+    <data name="about_4">
+        <value>Family in your mind sẽ đi cùng với bạn, phát triển các ước mơ của gia đình bạn cùng với chính ước mơ của Sundihome</value>
+    </data>
+    <data name="about_5">
+        <value>Đơn giản, hãy tải Sundihome, trải nghiệm và giới thiệu cho những người thân trong gia đình, bạn bè cùng sử dụng.</value>
+    </data>
+    <!--CompanyView/AllCompanyPostListListPage-->
+    <data name="danh_sach_bat_dong_san">
+        <value>Danh sách bất động sản</value>
+    </data>
+    <!--CompanyView/AllCompanyProductListListPage-->
+    <data name="danh_sach_san_pham">
+        <value>Danh sách sản phẩm</value>
+    </data>
+    <!--CompanyView/B2BAddPage-->
+    <data name="thoa_thuan">
+        <value>Thoả thuận</value>
+    </data>
+    <!--CompanyView/B2BDetailPage-->
+    <data name="chon_bat_dong_san">
+        <value>Chọn bất động sản</value>
+    </data>
+    <data name="thong_tin_cong_ty">
+        <value>Thông tin công ty</value>
+    </data>
+    <!--CompanyView/B2BPage-->
+    <data name="san_b2b">
+        <value>Sàn B2B</value>
+    </data>
+    <data name="hop_tac">
+        <value>Hợp tác</value>
+    </data>
+    <data name="cung_cap">
+        <value>Cung cấp</value>
+    </data>
+    <data name="xem_thong_tin_cong_ty">
+        <value>Xem thông tin công ty</value>
+    </data>
+    <data name="sundihome_chat">
+        <value>Sundihome chat</value>
+    </data>
+    <!--CompanyView/CompanyInfoContentView-->
+    <data name="ban_da_gui_ho_so_den_cong_ty_va_dang_cho_xet_duyet_vui_long_doi">
+        <value>Bạn đã gửi hồ sơ đến công ty và đang chờ xét duyệt, vui lòng đợi.</value>
+    </data>
+    <data name="loai_cong_ty">
+        <value>Loại công ty</value>
+    </data>
+    <data name="ma_so_thue">
+        <value>Mã số thuế</value>
+    </data>
+    <data name="doi_ngu_nhan_vien">
+        <value>Đội ngũ nhân viên</value>
+    </data>
+    <data name="lich_su_phat_trien">
+        <value>Lịch sử phát triển</value>
+    </data>
+    <data name="thanh_tuu_dat_duoc">
+        <value>Thành tựu đạt được</value>
+    </data>
+    <!--CompanyView/CompanyListPage-->
+    <data name="vui_long_dang_nhap_dang_ky_de_tao_cong_ty">
+        <value>Vui lòng đăng nhập/đăng ký để tạo công ty</value>
+    </data>
+    <data name="vui_long_nhap_tu_khoa">
+        <value>Vui lòng nhập từ khóa</value>
+    </data>
+    <!--CompanyView/CompanyProfileDetailPage-->
+    <data name="thong_tin">
+        <value>Thông tin</value>
+    </data>
+    <data name="tu_choi">
+        <value>từ chối</value>
+    </data>
+    <data name="ban_co_chac_chan_muon_gui_ho_so_dang_nhan_vien_cho_cong_ty">
+        <value>Bạn có chắc chắn muốn gửi hồ sơ đăng ký nhân viên cho công ty</value>
+    </data>
+    <data name="vui_long_dang_nhap_de_gui_ho_so_dang_ky_nhan_vien">
+        <value>Vui lòng đăng nhập để gửi hồ sơ đăng ký nhân viên</value>
+    </data>
+    <data name="dang_ky_nhan_vien_thanh_cong">
+        <value>Đăng ký nhân viên thành công</value>
+    </data>
+    <data name="de_dang_ky_nha_vien_ban_phai_dang_ky_moi_gioi_truoc_ban_muon_dang_ky_moi_gioi_khong">
+        <value>Để đăng ký nhân viên bạn phải đăng ký môi giới trước, bạn có muốn đăng ký môi giới không?</value>
+    </data>
+    <!--CompanyView/DangKyCongtyButtonPage-->
+    <data name="dang_ky_cong_ty">
+        <value>Đăng ký công ty</value>
+    </data>
+    <!--CompanyView/EmployeeListPage-->
+    <data name="quan_ly_nhan_vien">
+        <value>Quản lý nhân viên</value>
+    </data>
+    <data name="nhan_vien">
+        <value>Nhân viên</value>
+    </data>
+    <data name="cho_xac_nhan">
+        <value>Chờ xác nhận</value>
+    </data>
+    <data name="cho_xet_duyet">
+        <value>Chờ xét duyệt</value>
+    </data>
+    <data name="nhap_so_dien_thoai">
+        <value>Nhập số điện thoại</value>
+    </data>
+    <data name="gui_ma_opt">
+        <value>Gửi mã OPT</value>
+    </data>
+    <data name="xoa_nhan_vien_thanh_cong">
+        <value>Xóa nhân viên thành công</value>
+    </data>
+    <data name="ban_co_chac_chan_muon_xoa_nhan_vien_nay_khong">
+        <value>Bạn có chắc chắn muốn xoá nhân viên này không?</value>
+    </data>
+    <data name="xoa_nhan_vien">
+        <value>Xóa nhân viên</value>
+    </data>
+    <data name="cap_nhat_nhan_vien">
+        <value>Cập nhật nhân viên</value>
+    </data>
+    <data name="gui_ma_thanh_cong">
+        <value>Gửi mã thành công</value>
+    </data>
+    <data name="khong">
+        <value>Không</value>
+    </data>
+    <data name="co">
+        <value>Có</value>
+    </data>
+    <data name="so_dien_thoai_nay_da_gui_ma_opt_ban_co_muon_tiep_tuc">
+        <value>Số điện thoại này bạn đã gửi mã OPT. Bạn có muốn tiếp tục?</value>
+    </data>
+    <data name="nhan_vien_da_co_trong_cong_ty">
+        <value>Nhân viên đã có trong công ty</value>
+    </data>
+    <data name="so_dien_thoai_khong_dung">
+        <value>Số điện thoại không đúng</value>
+    </data>
+    <data name="gui_ma_moi">
+        <value>Gửi mã mời</value>
+    </data>
+    <data name="them_moi_nhan_vien">
+        <value>Thêm mới nhân viên</value>
+    </data>
+    <data name="thanh_cong">
+        <value>Thành công</value>
+    </data>
+    <data name="ban_da_tro_thanh_nhan_vien_cong_ty">
+        <value>Bạn đã trở thành nhân viên công ty</value>
+    </data>
+    <data name="duyet_thanh_cong">
+        <value>Duyệt thành công</value>
+    </data>
+    <data name="duyet">
+        <value>Duyệt</value>
+    </data>
+    <data name="khong_duyet">
+        <value>Không duyệt</value>
+    </data>
+    <data name="xem_thong_tin_moi_gioi">
+        <value>Xem thông tin môi giới</value>
+    </data>
+    <!--CompanyView/InternalAddPage-->
+    <data name="bat_dong_san_dinh_kem">
+        <value>Bất động sản đính kèm</value>
+    </data>
+    <data name="dang_bai">
+        <value>Đăng bài</value>
+    </data>
+    <data name="cua_toi">
+        <value>Của tôi</value>
+    </data>
+    <data name="cong_ty">
+        <value>Công ty</value>
+    </data>
+    <!--CompanyView/InternalPage-->
+    <data name="noi_bo">
+        <value>Nội bộ</value>
+    </data>
+    <!--CompanyView/QuanLyCongTyViews/FilterCompanuPostListView-->
+    <data name="xem_thong_tin_chi_tiet">
+        <value>Xem thông tin chi tiết</value>
+    </data>
+    <data name="dua_vao_gio_chung">
+        <value>Đưa vào giỏ chung</value>
+    </data>
+    <data name="dua_vao_gio_chung_thanh_cong">
+        <value>Đưa vào giỏ chung thành công</value>
+    </data>
+    <!--CompanyView/QuanLyCongTyViews/HomePage-->
+    <data name="trang_chu">
+        <value>Trang chủ</value>
+    </data>
+    <data name="bat_dong_san_ban_moi">
+        <value>Bất động sản bán mới</value>
+    </data>
+    <data name="nhu_cau_khach_hang">
+        <value>Nhu cầu khách hàng</value>
+    </data>
+    <data name="khu_vuc">
+        <value>Khu vực</value>
+    </data>
+    <!--CompanyView/QuanLyCongTyViews/PostListContentView-->
+    <data name="cho_duyet">
+        <value>Chờ duyệt</value>
+    </data>
+    <data name="cam_ket">
+        <value>Cam kết</value>
+    </data>
+    <data name="gio_chung">
+        <value>Giỏ chung</value>
+    </data>
+    <!--ViewModel/CompanyViewModels/B2BAddPageViewModel-->
+    <data name="khong_the_chup_anh_vui_long_thu_lai_sau">
+        <value>Không thể chụp ảnh, vui lòng thử lại sau.</value>
+    </data>
+    <!--Appshel-quanlycongty-->
+    <data name="khach_hang">
+        <value>Khách hàng</value>
+    </data>
+    <!--AddEmployeePage-->
+    <data name="so_dien_thoai">
+        <value>Số điện thoại</value>
+    </data>
+    <data name="email">
+        <value>Email</value>
+    </data>
+    <data name="nhap_email">
+        <value>Nhập email</value>
+    </data>
+    <data name="them_nhan_vien">
+        <value>Thêm nhân viên</value>
+    </data>
+    <data name="luu_nhan_vien">
+        <value>Lưu nhân viên</value>
+    </data>
+    <data name="so_dien_thoai_khong_hop_le_vui_long_kiem_tra_lai">
+        <value>Số điện thoại không hợp lệ. Vui lòng kiểm tra lại.</value>
+    </data>
+    <data name="them_nhan_vien_thanh_cong">
+        <value>Thêm nhân viên thành công</value>
+    </data>
+    <data name="so_dien_thoai_nay_da_co_tren_he_thong_ban_co_muon_gui_ma_moi_toi_so_dien_thoai_nay_khong">
+        <value>Số điện thoại này đã có trên hệ thống, bạn có muốn gửi mã mời tới số điện thoại này không ?</value>
+    </data>
+    <data name="ban_khong_the_cap_nhat">
+        <value>Bạn không thể cập nhật</value>
+    </data>
+    <data name="cap_nhat_nhan_vien_thanh_cong">
+        <value>Cập nhật nhân viên thành công</value>
+    </data>
+    <!--AddCompanyPage-->
+    <data name="ten_cong_ty">
+        <value>Tên công ty</value>
+    </data>
+    <data name="ten_rut_gon">
+        <value>Tên rút gọn</value>
+    </data>
+    <data name="ten_tieng_anh">
+        <value>Tên tiếng anh</value>
+    </data>
+    <data name="slogan">
+        <value>Slogan</value>
+    </data>
+    <data name="logo">
+        <value>Logo</value>
+    </data>
+    <data name="chon_logo">
+        <value>Choose logo</value>
+    </data>
+    <data name="them_thanh_tuu">
+        <value>Thêm thành tựu</value>
+    </data>
+    <data name="nhan_vien_tieu_bieu">
+        <value>Nhân viên tiêu biểu</value>
+    </data>
+    <data name="cap_nhat_cong_ty">
+        <value>Cập nhật công ty</value>
+    </data>
+    <data name="vui_long_chon_thoi_gian">
+        <value>Vui lòng chọn thời gian</value>
+    </data>
+    <data name="luu_y_ban_co_chac_chan_muon_xoa_lich_su_phat_trien_nay_khong">
+        <value>Lưu ý.Bạn có chắc chắn muốn xoá lịch sử phát triển này không?</value>
+    </data>
+    <data name="luu_y_ban_co_chac_chan_muon_xoa_thanh_tuu_dat_duoc_nay_khong">
+        <value>Lưu ý.Bạn có chắc chắn muốn xoá lịch sử phát triển này không?</value>
+    </data>
+    <data name="khong_the_cap_nhat_cong_ty_vui_long_thu_lai">
+        <value>Không thể cập nhật công ty, vui lòng thử lại.</value>
+    </data>
+    <data name="khong_the_luu_cong_ty_vui_long_thu_lai">
+        <value>Không thể lưu công ty, vui lòng thử lại.</value>
+    </data>
+    <data name="cong_ty_cua_ban_da_duoc_luu_thanh_cong">
+        <value>Công ty của bạn đã được lưu thành công</value>
+    </data>
+    <data name="ban_co_muon_bo_sung_thong_tin_khong">
+        <value>Bạn có muốn bổ sung thông tin không?</value>
+    </data>
+    <data name="vui_long_chon_logo">
+        <value>Vui lòng chọn logo</value>
+    </data>
+    <data name="vui_long_chon_loai_cong_ty">
+        <value>Vui lòng chọn loại công ty</value>
+    </data>
+    <data name="ma_so_thue_chua_dung_vui_long_kiem_tra_lai">
+        <value>Mã số thuế chưa đúng. Vui lòng kiểm tra lại.</value>
+    </data>
+    <data name="vui_long_nhap_ma_so_thue">
+        <value>Vui lòng nhập mã số thuế</value>
+    </data>
+    <data name="vui_long_nhap_ten_rut_gon">
+        <value>Vui lòng nhập tên rút gọn</value>
+    </data>
+    <data name="vui_long_nhap_ten_cong_ty">
+        <value>Vui lòng nhập tên công ty</value>
+    </data>
+    <data name="xoa_khong_kha_dung">
+        <value>Xóa không khả dụng</value>
+    </data>
+    <!--LoaiCongTyModel-->
+    <data name="dau_tu_du_an">
+        <value>Đầu tư dự án</value>
+    </data>
+    <data name="vat_lieu_xay_dung">
+        <value>Vật liệu xây dựng </value>
+    </data>
+    <data name="trang_tri_noi_that">
+        <value>Trang trí nội thất</value>
+    </data>
+    <data name="thiet_ke_kien_truc">
+        <value>Thiết kế kiến trúc</value>
+    </data>
+    <data name="thi_cong_xay_dung">
+        <value>Thi công xây dựng </value>
+    </data>
+    <data name="tai_chinh">
+        <value>Tài chính </value>
+    </data>
+    <data name="phap_ly">
+        <value>Pháp lý</value>
+    </data>
+    <data name="sua_chua">
+        <value>Sửa chữa</value>
+    </data>
+    <data name="van_chuyen">
+        <value>Vận chuyển</value>
+    </data>
+    <data name="moi_gioi_dia_oc">
+        <value>Môi giới địa ốc</value>
+    </data>
+    <!--AddFurniturePostItemPageViewModel-->
+    <data name="chup_hinh">
+        <value>Chụp hình</value>
+    </data>
+    <data name="quyen_truy_cap_hinh_anh">
+        <value>Quyền truy cập hình ảnh</value>
+    </data>
+    <data name="khong_the_chup_hinh_vui_long_thu_lai_sau">
+        <value>Không thể chụp ảnh, vui lòng thử lại sau</value>
+    </data>
+    <!--AddProductPageViewModel-->
+    <data name="Sundihome_can_truy_cap_vao_thu_vien_hinh_anh_de_lay_hinh_san_pham_cua_ban">
+        <value>Sundihome cần truy cập vào thư viện hình ảnh để lấy hình sản phẩm của bạn</value>
+    </data>
+    <data name="Sundihome_can_truy_cap_vao_may_anh_de_chup_hinh_san_pham">
+        <value>Sundihome cần truy cập vào máy ảnh để chụp hình sản phẩm</value>
+    </data>
+    <!--ProductDetailPageViewModel-->
+    <data name="ban_co_chac_chan_muon_xoa_san_pham_nay_khong">
+        <value>Bạn có chắc chắn muốn xoá sản phẩm này không?</value>
+    </data>
+    <data name="xoa_that_bai">
+        <value>Xoá thất bại</value>
+    </data>
+    <!--MoiGioiView/AddContactNeedContent-->
+    <data name="loai_hinh_bat_dong_san">
+        <value>Loại hình bất động sản</value>
+    </data>
+    <data name="sua_thong_tin_nhu_cau">
+        <value>Sửa thông tin nhu cầu</value>
+    </data>
+    <data name="them_nhu_cau_khach_hang">
+        <value>Thêm nhu cầu khách hàng</value>
+    </data>
+    <data name="vui_long_chon_loai_hinh_bat_dong_san">
+        <value>Vui lòng chọn loại hình bất động sản</value>
+    </data>
+    <data name="vui_long_nhap_ten_du_an">
+        <value>Vui lòng nhập tên dự án</value>
+    </data>
+    <data name="them_nhu_cau_thanh_cong">
+        <value>Thêm nhu cầu thành công</value>
+    </data>
+    <data name="sua_thanh_cong">
+        <value>Sửa thành công</value>
+    </data>
+    <data name="luu_y_ban_co_chac_chan_muon_xoa_nhu_cau_nay_khong">
+        <value>Lưu ý.Bạn có chắc chắn muốn xoá  nhu cầu này không?</value>
+    </data>
+    <data name="nhap_ten">
+        <value>Nhập tên</value>
+    </data>
+    <!--MoiGioiView/AllListPage-->
+    <data name="vui_long_dang_nhap_de_dang_ky_moi_gioi">
+        <value>Vui lòng đăng nhập để đăng ký môi giới</value>
+    </data>
+    <data name="ban_dang_la_moi_gioi">
+        <value>Bạn đang là môi giới!</value>
+    </data>
+    <!--MoiGioiView/ContactDetailContentPage-->
+    <data name="dau_tu">
+        <value>Đầu tư</value>
+    </data>
+    <data name="da_mua">
+        <value>Đã mua</value>
+    </data>
+    <data name="vui_long_nhap_ten_khach_hang">
+        <value>Vui lòng nhập tên khách hàng</value>
+    </data>
+    <data name="vui_long_chon_nhom_khach_hang">
+        <value>Vui lòng chọn nhóm khách hàng</value>
+    </data>
+    <data name="cap_nhat_thong_tin_khach_hang_that_bai">
+        <value>Cập nhật thông tin khách hàng thất bại</value>
+    </data>
+    <data name="nhom_khach_hang">
+        <value>Nhóm khách hàng</value>
+    </data>
+    <data name="cap_nhat_khach_hang">
+        <value>Cập nhật khách hàng</value>
+    </data>
+    <!--MoiGioiView/ContactDetailPage-->
+    <data name="bsd_quan_tam">
+        <value>BĐS quan tâm</value>
+    </data>
+    <data name="khong_tim_thay_khach_hang">
+        <value>Không tìm thấy khách hàng</value>
+    </data>
+    <data name="thong_tin_khach_hang">
+        <value>Thông tin khách hàng</value>
+    </data>
+    <!--MoiGioiView/ContactListPage-->
+    <data name="danh_sach_khach_hang">
+        <value>Danh sách khách hàng</value>
+    </data>
+    <data name="them_khach_hang">
+        <value>Thêm khách hàng</value>
+    </data>
+    <data name="them_khach_hang_thanh_cong">
+        <value>Thêm khách hàng thành công</value>
+    </data>
+    <data name="luu_y_ban_co_chac_chan_muon_xoa_khach_hang_nay_khong">
+        <value>Lưu ý.Bạn có chắc chắn muốn xoá khách hàng này không?</value>
+    </data>
+    <data name="xoa_khach_hang_thanh_cong">
+        <value>Xóa khách hàng thành công</value>
+    </data>
+    <data name="xoa_khach_hang_that_bai">
+        <value>Xóa khách hàng thất bại</value>
+    </data>
+    <data name="nhu_cau">
+        <value>Nhu cầu</value>
+    </data>
+    <data name="ten_khach_hang">
+        <value>Tên khách hàng</value>
+    </data>
+    <!--MoiGioiView/ContactPostCareContent-->
+    <data name="ngay_tao_tao_khach_hang">
+        <value>Ngày tạo khách hàng</value>
+    </data>
+    <data name="do_uu_tien">
+        <value>Độ ưu tiên</value>
+    </data>
+    <data name="ngan_sach_du_kien">
+        <value>Ngân sách dự kiến</value>
+    </data>
+    <data name="danh_gia_kha_nang">
+        <value>Đánh giá khả năng</value>
+    </data>
+    <data name="nhap_ngan_sach">
+        <value>Nhập ngân sách</value>
+    </data>
+    <data name="vui_long_chon_do_uu_tien">
+        <value>Vui lòng chọn độ ưu tiên</value>
+    </data>
+    <data name="xem_thong_tin_chi_tiet">
+        <value>Xem thông tin chi tiết</value>
+    </data>
+    <data name="xoa_bds_quan_tam_that_bai">
+        <value>Xóa BĐS quan tâm thất bại</value>
+    </data>
+    <data name="chon_bat_dong_san">
+        <value>Chọn bất động sản</value>
+    </data>
+    <!--MoiGioiView/DangKyMoiGioiContentView-->
+    <data name="kinh_nghiem">
+        <value>Kinh nghiệm</value>
+    </data>
+    <data name="loai_hinh_moi_gioi">
+        <value>Loại hình môi giới</value>
+    </data>
+    <data name="cap_nhat">
+        <value>Cập nhật</value>
+    </data>
+    <data name="ban_co_chac_chan_muon_huy_khong">
+        <value>Bạn có chắc chắn muốn huỷ không?</value>
+    </data>
+    <data name="tiep_tuc">
+        <value>Tiếp tục</value>
+    </data>
+    <data name="vui_long_chon_kinh_nghiem">
+        <value>Vui lòng chọn kinh nghiệm</value>
+    </data>
+    <data name="vui_long_chon_loai_hinh_moi_gioi">
+        <value>Vui lòng chọn loại hình môi giới</value>
+    </data>
+    <data name="vui_long_chon_khu_vuc_hoat_dong">
+        <value>Vui lòng chọn khu vực hoạt động</value>
+    </data>
+    <data name="dang_ky_moi_gioi_thanh_cong">
+        <value>Đăng ký môi giới thành công!</value>
+    </data>
+    <data name="cap_nhat_moi_gioi_thanh_cong">
+        <value>Câp nhật môi giới thành công!</value>
+    </data>
+    <!--MoiGioiView/EmployeePostListView-->
+    <data name="cam_ket">
+        <value>Cam kết</value>
+    </data>
+    <!--MoiGioiView/HomePage-->
+    <data name="cong_viec_moi">
+        <value>Công việc mới</value>
+    </data>
+    <data name="nhu_cau_khach_hang">
+        <value>Nhu cầu khách hàng</value>
+    </data>
+    <data name="khu_vuc">
+        <value>Khu vực</value>
+    </data>
+    <!--MoiGioiView/PostListPage-->
+    <data name="gio_hang">
+        <value>Giỏ hàng</value>
+    </data>
+    <data name="cua_toi">
+        <value>Của tôi</value>
+    </data>
+    <data name="thong_tin_moi_gioi">
+        <value>Thông tin môi giới</value>
+    </data>
+    <!--MoiGioiView/ThongTinMoiGioiPage-->
+    <data name="khu_vuc_hoat_dong">
+        <value>Khu vực hoạt động</value>
+    </data>
+    <data name="cap_nhat_thong_tin_moi_gioi">
+        <value>Cập nhật thông tin môi giới</value>
+    </data>
+    <data name="tu_nam">
+        <value>Từ năm</value>
+    </data>
+    <data name="tham_gia_ngay">
+        <value>Tham gia ngày</value>
+    </data>
+    <data name="ban_chac_chan_muon_huy_theo_doi">
+        <value>Bạn chắc chắn muốn huỷ theo dõi?</value>
+    </data>
+    <data name="chon_anh_chung_chi">
+        <value>Chọn ảnh chứng chỉ</value>
+    </data>
+    <data name="sundihome_can_truy_cap_vao_may_anh_de_chup_hinh_anh_chung_chi">
+        <value>Sundihome cần truy cập vào máy ảnh để chụp hình ảnh chứng chỉ</value>
+    </data>
+    <data name="sundihome_can_truy_cap_vao_may_anh_de_chon_hinh_anh_chung_chi">
+        <value>Sundihome cần truy cập vào máy ảnh để chọn hình ảnh chứng chỉ</value>
+    </data>
+    <data name="thong_tin">
+        <value>Thông tin</value>
+    </data>
+    <!--QuanLyMoiGioiViews/AddTaskPage-->
+    <data name="them_cong_viec">
+        <value>Thêm công việc</value>
+    </data>
+    <data name="tieu_de_cong_viec">
+        <value>Tiêu đề công việc</value>
+    </data>
+    <data name="ngay">
+        <value>Ngày</value>
+    </data>
+    <data name="gio">
+        <value>Giờ</value>
+    </data>
+    <data name="thuc_hien">
+        <value>Thực hiện</value>
+    </data>
+    <data name="vui_long_chon_khach_hang">
+        <value>Vui lòng chọn khách hàng!</value>
+    </data>
+    <data name="thoi_gian_khong_hop_le">
+        <value>Thời gian không hợp lệ!</value>
+    </data>
+    <data name="cap_nhat_cong_viec_thanh_cong">
+        <value>Cập nhật công việc thành công!</value>
+    </data>
+    <data name="cap_nhat_cong_viec_khong_thanh_cong">
+        <value>Cập nhật công việc không thành công!</value>
+    </data>
+    <data name="them_cong_viec_thanh_cong">
+        <value>Thêm công việc thành công!</value>
+    </data>
+    <data name="them_cong_viec_that_bai">
+        <value>Thêm công việc thất bại!</value>
+    </data>
+    <!--QuanLyMoiGioiViews/TaskDetailPage-->
+    <data name="ban_co_chac_muon_xoa_cong_viec_nay_khong">
+        <value>Bạn chắc chắn muốn xoá công việc này không?</value>
+    </data>
+    <data name="da_hoan_thanh">
+        <value>Đã hoàn thành</value>
+    </data>
+    <data name="khach_hang">
+        <value>Khách hàng</value>
+    </data>
+    <!--QuanLyMoiGioiViews/TaskListPage-->
+    <data name="cong_viec">
+        <value>Công việc</value>
+    </data>
+    <data name="da_dong">
+        <value>Đã đóng</value>
+    </data>
+    <!--MoiGioiViewModels/AddContactNeedContentViewModel-->
+    <data name="xoa_nhu_cau_thanh_cong">
+        <value>Xóa nhu cầu thành công</value>
+    </data>
+    <data name="xoa_nhu_cau_that_bai">
+        <value>Xóa nhu cầu thất bại</value>
+    </data>
+    <!--MoiGioiViewModels/DangKyMoiGoiContentViewModel-->
+    <data name="can_ho_chung_cu">
+        <value>Căn hộ, chung cư</value>
+    </data>
+    <data name="nha_pho">
+        <value>Nhà phố</value>
+    </data>
+    <data name="dat_nen">
+        <value>Đất nền</value>
+    </data>
+    <data name="bat_dong_san_nghi_duong">
+        <value>Bất động sản nghỉ dưỡng</value>
+    </data>
+    <data name="phong_tro_cho_thue">
+        <value>Phòng trọ, cho thuê</value>
+    </data>
+    <data name="nha_xuong">
+        <value>Nhà xưởng</value>
+    </data>
+    <data name="hoa_vien_nghia_trang">
+        <value>Hoa viên nghĩa trang</value>
+    </data>
+    <data name="hop_tac_kinh_doanh">
+        <value>Hợp tác kinh doanh</value>
+    </data>
+    <data name="hop_tac">
+        <value>Hợp tác</value>
+    </data>
+    <!--OwnerPage-->
+    <data name="thong_tin_chu_so_huu">
+        <value>Thông tin chủ sở hữu</value>
+    </data>
+    <data name="chu">
+        <value>Chủ sở hữu</value>
+    </data>
+    <data name="khong_co_sdt_cua_chu_so_huu_vui_long_thu_lai">
+        <value>Không có số điện thoại của chủ sở hữu.Vui lòng thử lại</value>
+    </data>
+    <!-- DangKy -->
+    <data name="gioi_thieu_khi_dang_ky_moi_gioi">
+        <value>Đăng ký trở thành môi giới - bạn quản lý khách hàng, quản lý công việc, Sundihome giới thiệu bạn với nhà đầu tư và Khách hàng, bạn có thể đăng ký để tham gia trờ thành thành viên của các công ty trong hệ thống Sundihome</value>
+    </data>
+    <data name="gioi_thieu_khi_dang_ky_cong_ty">
+        <value>Đăng ký công ty của bạn với Sundihome - bạn dễ dàng phát triển sale team, mở rộng kinh doanh, quản lý và chia sẻ rổ hàng hiệu quả nhất</value>
+    </data>
+    <data name="san_noi_that">
+        <value>Sàn nội thất</value>
+    </data>
+     <data name="gia_dat">
+        <value>Giá đất</value>
+    </data>
+</root>
