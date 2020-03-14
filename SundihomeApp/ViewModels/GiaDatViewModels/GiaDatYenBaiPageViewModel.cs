@@ -10,7 +10,7 @@ using SundihomeApi.Entities.GiaDat;
 
 namespace SundihomeApp.ViewModels.GiaDatViewModels
 {
-    public class GiaDatYenBaiPageViewModel : BaseViewModel
+    public class GiaDatBacKanPageViewModel : BaseViewModel
     {
         public ObservableCollection<District> Districts { get; set; }
         public ObservableCollection<GiaDat_YenBai_Duong> Streets { get; set; }
@@ -24,7 +24,7 @@ namespace SundihomeApp.ViewModels.GiaDatViewModels
 
         private GiaDat_YenBai_DoanDuong _streetDistance;
         public GiaDat_YenBai_DoanDuong StreetDistance { get => _streetDistance; set { this._streetDistance = value; OnPropertyChanged(nameof(StreetDistance)); } }
-        public GiaDatYenBaiPageViewModel()
+        public GiaDatBacKanPageViewModel()
         {
             Districts = new ObservableCollection<District>();
             Streets = new ObservableCollection<GiaDat_YenBai_Duong>();

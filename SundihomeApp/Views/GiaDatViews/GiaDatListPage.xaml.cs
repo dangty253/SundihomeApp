@@ -40,9 +40,14 @@ namespace SundihomeApp.Views.GiaDatViews
         {
             await Navigation.PushAsync(new GiaDatYenBaiPage());
         }
-        private async void SonLa_Clicked(object senderrr, EventArgs e)
+        private async void SonLa_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new GiaDatSonLaPage());
+        }
+        private async void BacKan_Clicked(object sender,EventArgs e)
+        {
+            await Navigation.PushAsync(new GiaDatBacKanPage());
+
         }
     }
 }

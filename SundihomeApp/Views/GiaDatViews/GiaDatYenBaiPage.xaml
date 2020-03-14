@@ -61,6 +61,25 @@
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
+                    <StackLayout IsVisible="{Binding Street, Converter={StaticResource NullToHideConverter}}">
+                        <Label Margin="0,10,0,0" IsVisible="{Binding Street.VT1, Converter={StaticResource NullToHideConverter}}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span
+                                        FontAttributes="Bold"
+                                        FontSize="17"
+                                        Text="Giá đất ví trí 1 : "
+                                        TextColor="#444444" />
+                                    <Span
+                                        FontAttributes="Bold"
+                                        FontSize="17"
+                                        Text="{Binding Street.VT1, Converter={StaticResource GiaDatPriceConverter}}"
+                                        TextColor="{StaticResource MainDarkColor}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+
                 </StackLayout>
             </ScrollView>
             <controls:BottomModal x:Name="lookUpModal" />

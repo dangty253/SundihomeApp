@@ -29,6 +29,7 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Button
                     Grid.Column="0"
@@ -107,6 +108,16 @@
                     BorderWidth="1"
                     Clicked="SonLa_Clicked"
                     Text="Son La"
+                    TextColor="{StaticResource MainDarkColor}" />
+                <Button
+                    Grid.Row="4"
+                    Grid.Column="0"
+                    Padding="10,5"
+                    BackgroundColor="White"
+                    BorderColor="{StaticResource MainDarkColor}"
+                    BorderWidth="1"
+                    Clicked="BacKan_Clicked"
+                    Text="Bac Kan"
                     TextColor="{StaticResource MainDarkColor}" />
             </Grid>
         </Grid>

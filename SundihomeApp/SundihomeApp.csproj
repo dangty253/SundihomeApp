@@ -72,6 +72,8 @@
     <Compile Remove="Controls\Modal.xaml.cs" />
     <Compile Remove="Views\BankViews\FilterPage.xaml.cs" />
     <Compile Remove="Views\GiaDatViews\GiaDatHCMPage %28copy%29.xaml.cs" />
+    <Compile Remove="Views\GiaDatViews\GiaDatYenBaiPage %28copy%29.xaml.cs" />
+    <Compile Remove="Views\GiaDatBacKanPage.xaml.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Views\UserFollowPage.xaml.cs">
@@ -148,6 +150,13 @@
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\GiaDatViews\GiaDatSonLaPage.xaml.cs">
       <SubType>Code</SubType>
       <DependentUpon>GiaDatSonLaPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\GiaDatViews\GiaDatYenBaiPage %28copy%29.xaml.cs">
+      <DependentUpon>GiaDatYenBaiPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\GiaDatViews\GiaDatBacKanPage.xaml.cs">
+      <DependentUpon>GiaDatBacKanPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
