@@ -71,6 +71,7 @@
   <ItemGroup>
     <Compile Remove="Controls\Modal.xaml.cs" />
     <Compile Remove="Views\BankViews\FilterPage.xaml.cs" />
+    <Compile Remove="Views\GiaDatViews\GiaDatHCMPage %28copy%29.xaml.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Views\UserFollowPage.xaml.cs">
@@ -135,6 +136,18 @@
     </Compile>
     <Compile Update="Views\BankViews\CalculatorPage.xaml.cs">
       <DependentUpon>CalculatorPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\GiaDatViews\GiaDatHCMPage %28copy%29.xaml.cs">
+      <DependentUpon>GiaDatHCMPage %28copy%29.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\GiaDatViews\GiaDatYenBaiPage.xaml.cs">
+      <DependentUpon>GiaDatYenBaiPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\GiaDatViews\GiaDatSonLaPage.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>GiaDatSonLaPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

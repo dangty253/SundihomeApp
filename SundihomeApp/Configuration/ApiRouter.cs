@@ -188,6 +188,12 @@ namespace SundihomeApp.Configuration
         public const string GIADAT_BACNINH_KHUVUC_WARD = "api/giadat/bacninh/khuvuc/ward";//{WardId}"
         public const string GIADAT_BACNINH_STREETS_DISTANCES = "api/giadat/bacninh/street_distances";//{StreetId}"
         public const string GIADAT_BACNINH_KHUDANCU = "api/giadat/bacninh/khudancu";//{KhuDanCuId}"
+
+        public const string GIADAT_YENBAI_STREETS = "api/giadat/yenbai/streets";//{DistrictId}
+        public const string GIADAT_YENBAI_STREET_DISTANCES = "api/giadat/yenbai/street_distances";//{StreetId}
+
+        public const string GIADAT_SONLA_STREETS = "api/giadat/sonla/streets";//{DistrictId}
+        public const string GIADAT_SONLA_STREET_DISTANCES = "api/giadat/sonla/street_distances";//{StreetId}
     }
 
 }

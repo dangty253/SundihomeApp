@@ -28,6 +28,7 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Button
                     Grid.Column="0"
@@ -86,6 +87,26 @@
                     BorderWidth="1"
                     Clicked="BacNinh_Clicked"
                     Text="Bac Ninh"
+                    TextColor="{StaticResource MainDarkColor}" />
+                <Button
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    Padding="10,5"
+                    BackgroundColor="White"
+                    BorderColor="{StaticResource MainDarkColor}"
+                    BorderWidth="1"
+                    Clicked="YenBai_Clicked"
+                    Text="Yen Bai"
+                    TextColor="{StaticResource MainDarkColor}" />
+                <Button
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    Padding="10,5"
+                    BackgroundColor="White"
+                    BorderColor="{StaticResource MainDarkColor}"
+                    BorderWidth="1"
+                    Clicked="SonLa_Clicked"
+                    Text="Son La"
                     TextColor="{StaticResource MainDarkColor}" />
             </Grid>
         </Grid>

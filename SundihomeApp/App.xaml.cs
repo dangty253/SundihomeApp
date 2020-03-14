@@ -25,8 +25,9 @@ namespace SundihomeApp
     {
         public App()
         {
-            InitializeComponent();//
+            InitializeComponent();
             App.SetCultureInfo(LanguageSettings.Language);
+            //MainPage = new AppShell();
             MainPage = new NavigationPage(new GiaDatListPage());
             RegisterDependency();
         }
