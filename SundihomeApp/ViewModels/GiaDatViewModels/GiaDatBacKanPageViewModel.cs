@@ -39,7 +39,7 @@ namespace SundihomeApp.ViewModels.GiaDatViewModels
                 List<District> data = (List<District>)apiResponse.Content;
                 foreach (var item in data)
                 {
-                    Districts.Add(item);//
+                    Districts.Add(item);
                 }
             }
         }
