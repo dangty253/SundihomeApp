@@ -47,7 +47,7 @@ namespace SundihomeApp.Views.GiaDatViews
                 new PageOption(){Id=11,Name="Điện Biên" },
                 new PageOption(){Id=17,Name="Hòa Bình" },
                 new PageOption(){Id=14,Name="Sơn La",Type=typeof(GiaDatSonLaPage) },
-                new PageOption(){Id=6,Name="Bắc Kạn" },
+                new PageOption(){Id=6,Name="Bắc Kạn", Type=typeof(GiaDatBacKanPage) },
                 new PageOption(){Id=20,Name="Lạng Sơn" },
                 new PageOption(){Id=19,Name="Thái Nguyên" },
                 new PageOption(){Id=24,Name="Bắc Giang" },
