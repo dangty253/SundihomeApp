@@ -12,11 +12,11 @@ namespace SundihomeApp.Views.GiaDatViews
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class GiaDatBacKanPage : ContentPage
     {
-        public GiaDatYenBaiPageViewModel viewModel;
+        public GiaDatBacKanPageViewModel viewModel;
         public GiaDatBacKanPage()
         {
             InitializeComponent();
-            this.BindingContext = viewModel = new GiaDatYenBaiPageViewModel();
+            this.BindingContext = viewModel = new GiaDatBacKanPageViewModel();
             On<iOS>().SetUseSafeArea(true);
             Init();
 
