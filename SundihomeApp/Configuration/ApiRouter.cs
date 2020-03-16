@@ -194,6 +194,18 @@ namespace SundihomeApp.Configuration
 
         public const string GIADAT_SONLA_STREETS = "api/giadat/sonla/streets";//{DistrictId}
         public const string GIADAT_SONLA_STREET_DISTANCES = "api/giadat/sonla/street_distances";//{StreetId}
+
+        public const string GIADAT_BACKAN_STREETS = "api/giadat/backan/streets";//{DistrictId}
+        public const string GIADAT_BACKAN_STREET_DISTANCES = "api/giadat/backan/street_distances";//{StreetId}
+
+        public const string GIADAT_HATINH_STREETS = "api/giadat/hatinh/streets";//{DistrictId}
+        public const string GIADAT_HATINH_STREET_DISTANCES = "api/giadat/hatinh/street_distances";//{StreetId}
+
+        public const string GIADAT_THAINGUYEN_STREETS = "api/giadat/thainguyen/streets";//{DistrictId}
+        public const string GIADAT_THAINGUYEN_STREET_DISTANCES = "api/giadat/thainguyen/street_distances";//{StreetId}
+
+        public const string GIADAT_BARIAVUNGTAU_STREETS = "api/giadat/bariavungtau/streets";//{DistrictId}
+        public const string GIADAT_BARIAVUNGTAU_STREET_DISTANCES = "api/giadat/bariavungtau/street_distances";//{StreetId}
     }
 
 }

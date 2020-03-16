@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage
-    x:Class="SundihomeApp.Views.GiaDatViews.GiaDatBacKanPage"
+    x:Class="SundihomeApp.Views.GiaDatViews.GiaDatThaiNguyenPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:SundihomeApp.Controls"
     xmlns:converters="clr-namespace:SundihomeApp.Converters"
     xmlns:lang="clr-namespace:SundihomeApp.Resources"
-    Title="Giá đất Bắc Kạn">
+    Title="Giá đất Thái Nguyên">
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:GiaDatPriceConverter x:Key="GiaDatPriceConverter" />
@@ -33,13 +33,13 @@
                         SelectedItem="{Binding District}"
                         SelectedItemChange="District_Changed" />
 
-                    <controls:FormLabelRequired Margin="0,5,0,0" Text="Khu vực, đường" />
+                    <controls:FormLabelRequired Margin="0,5,0,0" Text="Trục đường giao thông" />
                     <controls:LookUpControl
                         x:Name="lookUpStreet"
                         BottomModal="{x:Reference lookUpModal}"
                         ItemsSource="{Binding Streets}"
                         NameDisplay="Name"
-                        Placeholder="Khu vực, đường"
+                        Placeholder="Trục đường giao thông"
                         SelectedItem="{Binding Street}"
                         SelectedItemChange="Street_Changed" />
 

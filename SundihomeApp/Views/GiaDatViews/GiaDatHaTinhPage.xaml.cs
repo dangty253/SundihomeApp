@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using SundihomeApp.Controls;
 using SundihomeApp.ViewModels.GiaDatViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration;
@@ -9,15 +10,16 @@ using Xamarin.Forms.Xaml;
 namespace SundihomeApp.Views.GiaDatViews
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class GiaDatBinhDuongPage : ContentPage
+    public partial class GiaDatHaTinhPage : ContentPage
     {
-        GiaDatBinhDuongPageViewModel viewModel;
-        public GiaDatBinhDuongPage()
+        public GiaDatHaTinhPageViewModel viewModel;
+        public GiaDatHaTinhPage()
         {
             InitializeComponent();
-            this.BindingContext = viewModel = new GiaDatBinhDuongPageViewModel();
+            this.BindingContext = viewModel = new GiaDatHaTinhPageViewModel();
             On<iOS>().SetUseSafeArea(true);
             Init();
+
         }
         public async void Init()
         {
@@ -30,7 +32,6 @@ namespace SundihomeApp.Views.GiaDatViews
             loadingPopup.IsVisible = true;
             this.viewModel.Street = null;
             this.viewModel.StreetDistance = null;
-            this.viewModel.StreetDistances.Clear();
             await this.viewModel.LoadStreets();
             loadingPopup.IsVisible = false;
         }
@@ -39,6 +40,7 @@ namespace SundihomeApp.Views.GiaDatViews
         private async void Street_Changed(object sender, EventArgs e)
         {
             loadingPopup.IsVisible = true;
+            this.viewModel.StreetDistances.Clear();
             await this.viewModel.LoadStreetDistances();
             if (this.viewModel.StreetDistances.Count > 0)
             {
@@ -48,6 +50,7 @@ namespace SundihomeApp.Views.GiaDatViews
             {
                 this.viewModel.StreetDistance = null;
             }
+            
             loadingPopup.IsVisible = false;
         }
     }

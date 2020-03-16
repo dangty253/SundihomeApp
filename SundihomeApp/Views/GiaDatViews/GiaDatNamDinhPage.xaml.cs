@@ -72,16 +72,7 @@ namespace SundihomeApp.Views.GiaDatViews
             {
                 this.viewModel.StreetDistance = null;
             }
-            if (viewModel.Street?.VT1 != null)
-            {
-                LabelStreetDistanc.IsVisible = false;
-                lookUpStreetDistance.IsVisible = false;
-            }
-            else
-            {
-                LabelStreetDistanc.IsVisible = true;
-                lookUpStreetDistance.IsVisible = true;
-            }
+            
             loadingPopup.IsVisible = false;
         }
     }

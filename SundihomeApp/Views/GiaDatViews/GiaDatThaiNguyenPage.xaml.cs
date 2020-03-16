@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using SundihomeApp.Helpers;
 using SundihomeApp.ViewModels.GiaDatViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration;
@@ -9,15 +10,16 @@ using Xamarin.Forms.Xaml;
 namespace SundihomeApp.Views.GiaDatViews
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class GiaDatBinhDuongPage : ContentPage
+    public partial class GiaDatThaiNguyenPage : ContentPage
     {
-        GiaDatBinhDuongPageViewModel viewModel;
-        public GiaDatBinhDuongPage()
+        public GiaDatThaiNguyenPageViewModel viewModel;
+        public GiaDatThaiNguyenPage()
         {
             InitializeComponent();
-            this.BindingContext = viewModel = new GiaDatBinhDuongPageViewModel();
+            this.BindingContext = viewModel = new GiaDatThaiNguyenPageViewModel();
             On<iOS>().SetUseSafeArea(true);
             Init();
+
         }
         public async void Init()
         {
@@ -30,7 +32,6 @@ namespace SundihomeApp.Views.GiaDatViews
             loadingPopup.IsVisible = true;
             this.viewModel.Street = null;
             this.viewModel.StreetDistance = null;
-            this.viewModel.StreetDistances.Clear();
             await this.viewModel.LoadStreets();
             loadingPopup.IsVisible = false;
         }
