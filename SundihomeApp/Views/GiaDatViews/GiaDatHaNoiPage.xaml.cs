@@ -28,6 +28,7 @@ namespace SundihomeApp.Views.GiaDatViews
             loadingPopup.IsVisible = true;
             this.viewModel.KhuDoThi = null;
             this.viewModel.GiaDatHaNoi = null;
+            this.viewModel.GiaDatList.Clear();
             await this.viewModel.LoadKhuDoThiList(chkKhuDoThi.IsChecked);
             loadingPopup.IsVisible = false;
 

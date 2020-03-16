@@ -1,67 +1,63 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:lang="clr-namespace:SundihomeApp.Resources"
+<Grid xmlns="http://xamarin.com/schemas/2014/forms" xmlns:lang="clr-namespace:SundihomeApp.Resources"
              xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives" xmlns:controls="clr-namespace:SundihomeApp.Controls" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SundihomeApp.Views.BankViews.AddLoanView">
-    <ContentView.Content>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <ScrollView Grid.Row="0">
-                <StackLayout Margin="10">
-                    <controls:FormLabelRequired Text="{x:Static lang:Language.ngan_hang}" Margin="0,5,0,0" />
-                    <Label x:Name="LblNganHang" FontSize="15" TextColor="Black" FontAttributes="Bold" />
+    <Grid.RowDefinitions>
+        <RowDefinition Height="*" />
+        <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+    <ScrollView Grid.Row="0">
+        <StackLayout Margin="10">
+            <controls:FormLabelRequired Text="{x:Static lang:Language.ngan_hang}" Margin="0,5,0,0" />
+            <Label x:Name="LblNganHang" FontSize="15" TextColor="Black" FontAttributes="Bold" />
 
-                    <controls:FormLabelRequired Text="{x:Static lang:Language.ten_goi_vay}" Margin="0,5,0,0" />
-                    <controls:ClearableEntry Text="{Binding GoiVayModel.Name}" Placeholder="{x:Static lang:Language.ten_goi_vay}" />
+            <controls:FormLabelRequired Text="{x:Static lang:Language.ten_goi_vay}" Margin="0,5,0,0" />
+            <controls:ClearableEntry Text="{Binding GoiVayModel.Name}" Placeholder="{x:Static lang:Language.ten_goi_vay}" />
 
-                    <controls:FormLabelRequired Text="{x:Static lang:Language.thoi_han_toi_da}" Margin="0,5,0,0" />
-                    <Grid ColumnSpacing="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-                        <controls:LookUpControl Grid.Column="0" x:Name="MaxTimeLookUp" SelectedItem="{Binding MaxTimeOption}" Placeholder="{x:Static lang:Language.thoi_han_toi_da}" NameDisplay="Id" />
-                        <controls:LookUpControl Grid.Column="1" x:Name="MaxTimeUnitLookUp" SelectedItem="{Binding MaxTimeUnitOption}" Placeholder="{x:Static lang:Language.don_vi}" NameDisplay="Name" />
-                    </Grid>
-
-                    <controls:FormLabelRequired Text="{Binding Source={x:Static lang:Language.lai_suat},StringFormat='{0} (%)'}" Margin="0,5,0,0" />
-                    <controls:DecimalEntry x:Name="EntryLaiSuat" Placeholder="{x:Static lang:Language.lai_suat}" Text="{Binding GoiVayModel.MaxPriceFormatText}" />
-
-                    <controls:FormLabelRequired Text="{Binding Source={x:Static lang:Language.muc_vay_toi_da},StringFormat='{0} (%)'}" Margin="0,5,0,0" />
-                    <controls:DecimalEntry x:Name="EntryMaxPrice" Placeholder="{x:Static lang:Language.muc_vay_toi_da}" Text="{Binding GoiVayModel.MaxPriceFormatText}" />
-
-                    <controls:FormLabelRequired Text="{x:Static lang:Language.dieu_kien_vay}" Margin="0,5,0,0" />
-                    <telerikPrimitives:RadBorder CornerRadius="4" BorderColor="#cbd0d4" BorderThickness="1">
-                        <Editor Text="{Binding GoiVayModel.Condition}" Placeholder="{x:Static lang:Language.dieu_kien_vay}" HeightRequest="60" />
-                    </telerikPrimitives:RadBorder>
-
-                    <controls:FormLabel Text="{x:Static lang:Language.mo_ta}" Margin="0,5,0,0" />
-                    <telerikPrimitives:RadBorder CornerRadius="4" BorderColor="#cbd0d4" BorderThickness="1">
-                        <Editor Text="{Binding GoiVayModel.Description}" Placeholder="{x:Static lang:Language.mo_ta}" HeightRequest="60" />
-                    </telerikPrimitives:RadBorder>
-
-                    <controls:FormLabel Text="{x:Static lang:Language.hinh_anh}" Margin="0,5,0,0" />
-
-                    <Grid x:Name="grImageGoiVay" IsVisible="false" >
-                        <Image x:Name="ImageGoiVay" />
-                        <Button x:Name="BtnRemoveImage" IsVisible="False" Text="&#xf2ed;" TextColor="#026294" FontSize="14" HorizontalOptions="End" VerticalOptions="Start" BorderWidth="0" BackgroundColor="White" WidthRequest="25" HeightRequest="25" Margin="0,5,5,0" Clicked="Remove_Image" Padding="0" FontFamily="{StaticResource FontAwesomeSolid}" />
-                    </Grid>
-                    <Button Text="{x:Static lang:Language.chon_hinh_anh}" Padding="10,0" Clicked="PickImage_Clicked" CornerRadius="5" BorderColor="{StaticResource MainDarkColor}" BorderWidth="1" BackgroundColor="White" TextColor="{StaticResource MainDarkColor}" HorizontalOptions="Start" />
-                </StackLayout>
-            </ScrollView>
-            <Grid Margin="5" Grid.Row="1" ColumnSpacing="3">
+            <controls:FormLabelRequired Text="{x:Static lang:Language.thoi_han_toi_da}" Margin="0,5,0,0" />
+            <Grid ColumnSpacing="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="35" />
-                </Grid.RowDefinitions>
-                <Button x:Name="btnCancel" Text="{x:Static lang:Language.huy}" Grid.Column="0" Grid.Row="0" BackgroundColor="White" CornerRadius="5" BorderWidth="1" BorderColor="{StaticResource MainDarkColor}" TextColor="{StaticResource MainDarkColor}" Clicked="Cancel_Clicked" />
-                <Button x:Name="btnAdd" Text="{x:Static lang:Language.luu}" Grid.Column="1" Grid.Row="0" BackgroundColor="{StaticResource MainDarkColor}" TextColor="White" CornerRadius="5" Clicked="Add_Clicked" />
+                <controls:LookUpControl Grid.Column="0" x:Name="MaxTimeLookUp" SelectedItem="{Binding MaxTimeOption}" Placeholder="{x:Static lang:Language.thoi_han_toi_da}" NameDisplay="Id" />
+                <controls:LookUpControl Grid.Column="1" x:Name="MaxTimeUnitLookUp" SelectedItem="{Binding MaxTimeUnitOption}" Placeholder="{x:Static lang:Language.don_vi}" NameDisplay="Name" />
             </Grid>
-            <controls:LoadingPopup x:Name="loadingPopup"/>
-        </Grid>
-    </ContentView.Content>
-</ContentView>
+
+            <controls:FormLabelRequired Text="{Binding Source={x:Static lang:Language.lai_suat},StringFormat='{0} (%)'}" Margin="0,5,0,0" />
+            <controls:DecimalEntry x:Name="EntryLaiSuat" Placeholder="{x:Static lang:Language.lai_suat}" Text="{Binding GoiVayModel.MaxPriceFormatText}" />
+
+            <controls:FormLabelRequired Text="{Binding Source={x:Static lang:Language.muc_vay_toi_da},StringFormat='{0} (%)'}" Margin="0,5,0,0" />
+            <controls:DecimalEntry x:Name="EntryMaxPrice" Placeholder="{x:Static lang:Language.muc_vay_toi_da}" Text="{Binding GoiVayModel.MaxPriceFormatText}" />
+
+            <controls:FormLabelRequired Text="{x:Static lang:Language.dieu_kien_vay}" Margin="0,5,0,0" />
+            <telerikPrimitives:RadBorder CornerRadius="4" BorderColor="#cbd0d4" BorderThickness="1">
+                <Editor Text="{Binding GoiVayModel.Condition}" Placeholder="{x:Static lang:Language.dieu_kien_vay}" HeightRequest="60" />
+            </telerikPrimitives:RadBorder>
+
+            <controls:FormLabel Text="{x:Static lang:Language.mo_ta}" Margin="0,5,0,0" />
+            <telerikPrimitives:RadBorder CornerRadius="4" BorderColor="#cbd0d4" BorderThickness="1">
+                <Editor Text="{Binding GoiVayModel.Description}" Placeholder="{x:Static lang:Language.mo_ta}" HeightRequest="60" />
+            </telerikPrimitives:RadBorder>
+
+            <controls:FormLabel Text="{x:Static lang:Language.hinh_anh}" Margin="0,5,0,0" />
+
+            <Grid x:Name="grImageGoiVay" IsVisible="false" >
+                <Image x:Name="ImageGoiVay" />
+                <Button x:Name="BtnRemoveImage" IsVisible="False" Text="&#xf2ed;" TextColor="#026294" FontSize="14" HorizontalOptions="End" VerticalOptions="Start" BorderWidth="0" BackgroundColor="White" WidthRequest="25" HeightRequest="25" Margin="0,5,5,0" Clicked="Remove_Image" Padding="0" FontFamily="{StaticResource FontAwesomeSolid}" />
+            </Grid>
+            <Button Text="{x:Static lang:Language.chon_hinh_anh}" Padding="10,0" Clicked="PickImage_Clicked" CornerRadius="5" BorderColor="{StaticResource MainDarkColor}" BorderWidth="1" BackgroundColor="White" TextColor="{StaticResource MainDarkColor}" HorizontalOptions="Start" />
+        </StackLayout>
+    </ScrollView>
+    <Grid Margin="5" Grid.Row="1" ColumnSpacing="3">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35" />
+        </Grid.RowDefinitions>
+        <Button x:Name="btnCancel" Text="{x:Static lang:Language.huy}" Grid.Column="0" Grid.Row="0" BackgroundColor="White" CornerRadius="5" BorderWidth="1" BorderColor="{StaticResource MainDarkColor}" TextColor="{StaticResource MainDarkColor}" Clicked="Cancel_Clicked" />
+        <Button x:Name="btnAdd" Text="{x:Static lang:Language.luu}" Grid.Column="1" Grid.Row="0" BackgroundColor="{StaticResource MainDarkColor}" TextColor="White" CornerRadius="5" Clicked="Add_Clicked" />
+    </Grid>
+    <controls:LoadingPopup x:Name="loadingPopup"/>
+</Grid>

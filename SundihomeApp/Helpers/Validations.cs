@@ -34,12 +34,12 @@ namespace SundihomeApp.Helpers
 
         public static bool IsValidPhone(string phone)
         {
-            if (string.IsNullOrEmpty(phone))
+            if (string.IsNullOrWhiteSpace(phone))
             {
                 return false;
             }
-            return Regex.Match(phone, @"^([0-9]{10})$").Success;
-        }
 
+            return Regex.Match(phone, @"^([-0-9]*)$").Success;
+        }
     }
 }

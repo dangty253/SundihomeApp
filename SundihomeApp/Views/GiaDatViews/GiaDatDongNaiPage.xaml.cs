@@ -32,6 +32,7 @@ namespace SundihomeApp.Views.GiaDatViews
             loadingPopup.IsVisible = true;
             this.viewModel.Street = null;
             this.viewModel.StreetDistance = null;
+            this.viewModel.StreetDistances.Clear();
             this.viewModel.Ward = null;
             if (viewModel.District?.Id == 731 || viewModel.District?.Id == 732)
             {

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" BackgroundColor="#eeeeee" xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" ios:Page.UseSafeArea="true" xmlns:converters="clr-namespace:SundihomeApp.Converters" xmlns:controls="clr-namespace:SundihomeApp.Controls" xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives" xmlns:lang="clr-namespace:SundihomeApp.Resources" Title="{Static lang:Language.cho_thanh_ly}" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SundihomeApp.Views.LiquidationViews.MarketPage">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" BackgroundColor="White" xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" ios:Page.UseSafeArea="true" xmlns:converters="clr-namespace:SundihomeApp.Converters" xmlns:controls="clr-namespace:SundihomeApp.Controls" xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives" xmlns:lang="clr-namespace:SundihomeApp.Resources" Title="{Static lang:Language.cho_thanh_ly}" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SundihomeApp.Views.LiquidationViews.MarketPage">
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:PostItemControlTemplateConverter x:Key="PostItemControlTemplateConverter" Folder="liquidation/post" />
@@ -10,27 +10,28 @@
     <ContentPage.Content>
         <AbsoluteLayout>
             <Grid AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
-                <controls:BsdListView x:Name="LV" BackgroundColor="Transparent">
-                    <ListView.Header>
-                        <StackLayout Padding="10,5" BackgroundColor="White">
-                            <Frame HeightRequest="35" CornerRadius="8" BorderColor="#aaaaaa" Padding="0" Margin="0" HasShadow="False">
-                                <SearchBar x:Name="searchBar" Placeholder="{Static lang:Language.nhap_tu_khoa_tim_kiem}" FontSize="14" BackgroundColor="{OnPlatform iOS='White'}" TextChanged="SearchText_Changed" SearchButtonPressed="Search_Clicked" />
-                            </Frame>
-                            <ScrollView x:Name="ScrollViewFilter" Orientation="Horizontal">
-                                <StackLayout Orientation="Horizontal" Spacing="5">
-                                    <telerikPrimitives:RadBorder x:Name="FilterAllRadborder" Padding="10,5" BorderColor="Gray" BorderThickness="1" CornerRadius="15" BackgroundColor="DarkGreen">
-                                        <Label Text="{Static lang:Language.see_all}" TextColor="White" FontSize="14" />
-                                    </telerikPrimitives:RadBorder>
-                                    <telerikPrimitives:RadBorder x:Name="FilterBanRadborder" Padding="10,5" BorderColor="Gray" BorderThickness="1" CornerRadius="15" BackgroundColor="White">
-                                        <Label Text="{Static lang:Language.can_thanh_ly}" TextColor="#444444" FontSize="14" />
-                                    </telerikPrimitives:RadBorder>
-                                    <telerikPrimitives:RadBorder x:Name="FilterCanMuaRadborder" Padding="10,5" BorderColor="Gray" BorderThickness="1" CornerRadius="15" BackgroundColor="White">
-                                        <Label Text="{Static lang:Language.can_mua}" TextColor="#444444" FontSize="14" />
-                                    </telerikPrimitives:RadBorder>
-                                </StackLayout>
-                            </ScrollView>
-                        </StackLayout>
-                    </ListView.Header>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <controls:SearchBarFrame Margin="5,5,5,0" Grid.Row="0">
+                    <controls:SearchBar x:Name="searchBar" TextChanged="SearchText_Changed" SearchButtonPressed="Search_Clicked" />
+                </controls:SearchBarFrame>
+                <ScrollView x:Name="ScrollViewFilter" Margin="5,0" Orientation="Horizontal" Grid.Row="1">
+                    <StackLayout Orientation="Horizontal" Spacing="5">
+                        <telerikPrimitives:RadBorder x:Name="FilterAllRadborder" Padding="10,5" BorderColor="Gray" BorderThickness="1" CornerRadius="15" BackgroundColor="DarkGreen">
+                            <Label Text="{Static lang:Language.see_all}" TextColor="White" FontSize="14" />
+                        </telerikPrimitives:RadBorder>
+                        <telerikPrimitives:RadBorder x:Name="FilterBanRadborder" Padding="10,5" BorderColor="Gray" BorderThickness="1" CornerRadius="15" BackgroundColor="White">
+                            <Label Text="{Static lang:Language.can_thanh_ly}" TextColor="#444444" FontSize="14" />
+                        </telerikPrimitives:RadBorder>
+                        <telerikPrimitives:RadBorder x:Name="FilterCanMuaRadborder" Padding="10,5" BorderColor="Gray" BorderThickness="1" CornerRadius="15" BackgroundColor="White">
+                            <Label Text="{Static lang:Language.can_mua}" TextColor="#444444" FontSize="14" />
+                        </telerikPrimitives:RadBorder>
+                    </StackLayout>
+                </ScrollView>
+                <controls:BsdListView x:Name="LV" BackgroundColor="#eeeeee" Grid.Row="2">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>

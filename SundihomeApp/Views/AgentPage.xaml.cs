@@ -32,7 +32,8 @@ namespace SundihomeApp.Views
             InitializeComponent();
             Segment.ItemsSource = new List<string>() { Language.moi_gioi, Language.goi_vay };
             Segment.SetActive(0);
-            this.ContentAgent.Content = new AgentContentView();
+            loadingPopup.IsVisible = true;
+            this.ContentAgent.Content = new AgentContentView(loadingPopup);
         }
 
         private void Segment_OnSelectedIndexChanged(object sender, EventArgs e)
@@ -45,7 +46,8 @@ namespace SundihomeApp.Views
             {
                 if (this.ContentAgent.Content == null)
                 {
-                    this.ContentAgent.Content = new AgentContentView();
+                    loadingPopup.IsVisible = true;
+                    this.ContentAgent.Content = new AgentContentView(loadingPopup);
                 }
 
                 ContentAgent.IsVisible = true;
@@ -54,7 +56,8 @@ namespace SundihomeApp.Views
             {
                 if (this.ContentLoans.Content == null)
                 {
-                    this.ContentLoans.Content = new LoanContentView();
+                    loadingPopup.IsVisible = true;
+                    this.ContentLoans.Content = new LoanContentView(loadingPopup);
                 }
                 ContentLoans.IsVisible = true;
             }

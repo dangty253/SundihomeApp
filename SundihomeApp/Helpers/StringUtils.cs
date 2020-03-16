@@ -25,7 +25,7 @@ namespace SundihomeApp.Helpers
         //send OTP
         public static async Task SendOTP(string phone, string content)
         {
-            var response = await ApiHelper.Get<SendSmsResponse>($"api/auth/sendotp?phone={phone}&content={content}");
+            var response = await ApiHelper.Get<SendSmsResponse>($"api/auth/sendotp?phone={phone.Replace("+", "%2B")}&content={content}");
             if (response.IsSuccess)
             {
                 var otpResponse = (SendSmsResponse)response.Content;

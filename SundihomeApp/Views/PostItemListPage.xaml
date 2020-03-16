@@ -8,17 +8,19 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <AbsoluteLayout>
-            <Grid AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" RowSpacing="0">
+            <Grid AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="0.5" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <controls:SearchBarFrame Margin="5,5,5,0">
                     <controls:SearchBar x:Name="searchBar" TextChanged="SearchText_Changed" SearchButtonPressed="Search_Clicked" />
                 </controls:SearchBarFrame>
                 <ScrollView x:Name="ScrollViewFilter" Grid.Row="1" Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
-                    <StackLayout Orientation="Horizontal" Spacing="5" Padding="5">
+                    <StackLayout Orientation="Horizontal" Spacing="5" Padding="5,0">
                         <telerikPrimitives:RadBorder x:Name="FilterAllRadborder" Padding="10,5" BorderColor="Gray" BorderThickness="1" CornerRadius="8" BackgroundColor="{StaticResource MainDarkColor}">
                             <Label Text="{x:Static lang:Language.tat_ca}" TextColor="White" FontSize="14" />
                         </telerikPrimitives:RadBorder>
@@ -36,7 +38,39 @@
                         </telerikPrimitives:RadBorder>
                     </StackLayout>
                 </ScrollView>
-                <controls:BsdListView x:Name="LV" Grid.Row="2">
+
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <controls:FilterPicker Grid.Column="0" NameDisplay="Name" Placeholder="{x:Static lang:Language.province}" ItemsSource="{Binding ProvinceList}" SelectedItem="{Binding Province}" BottomModal="{x:Reference bottomModal}" SelectedItemChange="FilterProvince_Changed" />
+                    <controls:FilterPicker Grid.Column="1" NameDisplay="Name" Placeholder="{x:Static lang:Language.district}" ItemsSource="{Binding DistrictList}" SelectedItem="{Binding District}" BottomModal="{x:Reference bottomModal}" SelectedItemChange="FilterDistrict_Changed" />
+                    <controls:FilterPicker Grid.Column="2" NameDisplay="Name" Placeholder="{x:Static lang:Language.ward}" ItemsSource="{Binding WardList}" SelectedItem="{Binding Ward}" BottomModal="{x:Reference bottomModal}" SelectedItemChange="FilterWard_Changed" />
+
+                    <Label
+                        Margin="0,0,10,0"
+                        Grid.Column="3"
+                        Text="&#xf021;"
+                        TextColor="#444444"
+                        FontSize="12"
+                        HorizontalOptions="End"
+                        VerticalOptions="FillAndExpand"
+                        VerticalTextAlignment="Center"
+                        IsVisible="{Binding ShowClearFilterButton}"
+                        FontFamily="{StaticResource FontAwesomeSolid}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Clear_Clicked"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Grid>
+
+                <BoxView HeightRequest="0.5" BackgroundColor="Gray" Grid.Row="3" />
+
+                <controls:BsdListView x:Name="LV" Grid.Row="4">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -162,9 +196,6 @@
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
-                    <ListView.Footer>
-                        <ActivityIndicator WidthRequest="20" Color="Gray" HorizontalOptions="Center" IsRunning="{Binding IsLoadingMore}" />
-                    </ListView.Footer>
                 </controls:BsdListView>
             </Grid>
 
@@ -173,6 +204,7 @@
                     <Button Text="&#xf067;" Style="{StaticResource FLoatButtonStyle}" FontFamily="{StaticResource FontAwesomeSolid}" Clicked="AddNewPost_Clicked" />
                 </Frame>
             </StackLayout>
+            <controls:BottomModal x:Name="bottomModal" />
             <controls:LoadingPopup x:Name="loadingPopup" />
         </AbsoluteLayout>
     </ContentPage.Content>

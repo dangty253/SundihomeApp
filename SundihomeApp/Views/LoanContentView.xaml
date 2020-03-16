@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+<AbsoluteLayout xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:converters="clr-namespace:SundihomeApp.Converters"
              xmlns:plugin="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
              xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives"
@@ -7,192 +7,113 @@
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              xmlns:controls="clr-namespace:SundihomeApp.Controls"
              x:Class="SundihomeApp.Views.LoanContentView">
-    <ContentView.Resources>
+    <AbsoluteLayout.Resources>
         <ResourceDictionary>
             <converters:GoiVayMaxTimeConveter x:Key="GoiVayMaxTimeConveter" />
-            <Style x:Key="LabelStyle"
-                   TargetType="Label">
-                <Setter Property="VerticalOptions"
-                        Value="Center" />
-                <Setter Property="VerticalTextAlignment"
-                        Value="Center" />
-                <Setter Property="HorizontalOptions"
-                        Value="Center" />
-                <Setter Property="HorizontalTextAlignment"
-                        Value="Center" />
-                <Setter Property="MaxLines"
-                        Value="1" />
-                <Setter Property="LineBreakMode"
-                        Value="TailTruncation" />
-                <Setter Property="FontSize"
-                        Value="14" />
-                <Setter Property="LineBreakMode"
-                        Value="TailTruncation" />
-            </Style>
-            <Style x:Key="LabelIconStyle"
-                   TargetType="Label">
-                <Setter Property="VerticalOptions"
-                        Value="Center" />
-                <Setter Property="VerticalTextAlignment"
-                        Value="Center" />
-                <Setter Property="Text"
-                        Value="&#xf107;" />
-                <Setter Property="FontFamily"
-                        Value="{StaticResource FontAwesomeSolid}" />
-                <Setter Property="FontSize"
-                        Value="14" />
-            </Style>
         </ResourceDictionary>
-    </ContentView.Resources>
-    <ContentView.Content>
-        <AbsoluteLayout>
-            <Grid AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-                <controls:SearchBarFrame Margin="5,5,5,0" Grid.Row="0">
-                    <controls:SearchBar x:Name="searchBar" SearchButtonPressed="Clicked_BtnSearch"
+    </AbsoluteLayout.Resources>
+    <Grid AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <controls:SearchBarFrame Margin="5,5,5,0" Grid.Row="0">
+            <controls:SearchBar x:Name="searchBar" SearchButtonPressed="Clicked_BtnSearch"
                                    TextChanged="Search_TextChaned"/>
-                </controls:SearchBarFrame>
+        </controls:SearchBarFrame>
 
-                <Grid Grid.Row="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
-                    <StackLayout Grid.Column="0"
-                                 Padding="10,5,5,5"
-                                 HorizontalOptions="Center"
-                                 Orientation="Horizontal">
-                        <Label x:Name="LabelProvince"
-                               Text="{Static lang:Language.tinh_thanh}"
-                               Grid.Column="0"
-                               Style="{StaticResource LabelStyle}">
-                        </Label>
-                        <Label Grid.Column="1"
-                               Style="{StaticResource LabelIconStyle}" />
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="FilterProvince_Click" />
-                        </StackLayout.GestureRecognizers>
-                    </StackLayout>
-                    <StackLayout Grid.Column="1"
-                                 Padding="5"
-                                 HorizontalOptions="Center"
-                                 Orientation="Horizontal">
-                        <Label  x:Name="LabelDistrict"
-                                Text="{Static lang:Language.quan_huyen}"
-                                Grid.Column="1"
-                                Style="{StaticResource LabelStyle}">
-
-                        </Label>
-                        <Label Grid.Column="1"
-                               Style="{StaticResource LabelIconStyle}" />
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="FilterDistric_Click" />
-                        </StackLayout.GestureRecognizers>
-                    </StackLayout>
-                    <StackLayout Grid.Column="2"
-                                 Padding="5,5,10,5"
-                                 HorizontalOptions="Center"
-                                 Orientation="Horizontal">
-                        <Label  x:Name="LabelType"
-                                Text="{Static lang:Language.ngan_hang}"
-                                Grid.Column="2"
-                                Style="{StaticResource LabelStyle}">
-                        </Label>
-                        <Label Grid.Column="1"
-                               Style="{StaticResource LabelIconStyle}" />
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="FilterBank_Click" />
-                        </StackLayout.GestureRecognizers>
-                    </StackLayout>
-                    <Label
-                        Padding="0,5,10,5"
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <controls:FilterPicker Grid.Column="0" NameDisplay="Name" Placeholder="{x:Static lang:Language.tinh_thanh}" ItemsSource="{Binding ProvinceList}" SelectedItem="{Binding Province}" BottomModal="{x:Reference LookUpModal}" SelectedItemChange="FilterProvince_Changed" />
+            <controls:FilterPicker Grid.Column="1" NameDisplay="Name" Placeholder="{x:Static lang:Language.quan_huyen}" ItemsSource="{Binding DistrictList}" SelectedItem="{Binding District}" BottomModal="{x:Reference LookUpModal}" SelectedItemChange="FilterDistrict_Changed" />
+            <controls:FilterPicker Grid.Column="2" NameDisplay="FullName" Placeholder="{x:Static lang:Language.ngan_hang}" ItemsSource="{Binding BankList}" SelectedItem="{Binding Bank}" BottomModal="{x:Reference LookUpModal}" SelectedItemChange="FilterBank_Changed" />
+            <Label
+                        Margin="0,0,10,0"
                         Grid.Column="3"
                         Text="&#xf021;"
                         TextColor="#444444"
                         FontSize="12"
                         HorizontalOptions="End"
-                        VerticalOptions="Center"
+                        VerticalOptions="FillAndExpand"
+                        VerticalTextAlignment="Center"
                         IsVisible="{Binding ShowClearFilterButton}"
                         FontFamily="{StaticResource FontAwesomeSolid}">
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="Clear_Clicked"/>
-                        </Label.GestureRecognizers>
-                    </Label>
-                </Grid>
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Clear_Clicked"/>
+                </Label.GestureRecognizers>
+            </Label>
+        </Grid>
 
-                <controls:BsdListView Grid.Row="2" BackgroundColor="#eeeeee" ItemTapped="ItemTapped">
-                    <controls:BsdListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <Grid BackgroundColor="White" Margin="0,2,0,1" Padding="10" ColumnSpacing="10">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto" />
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="100" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
+        <controls:BsdListView Grid.Row="2" BackgroundColor="#eeeeee" ItemTapped="ItemTapped">
+            <controls:BsdListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid BackgroundColor="White" Margin="5,5,5,0" Padding="10" ColumnSpacing="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
 
-                                    <telerikPrimitives:RadBorder Grid.Row="0" HeightRequest="100" CornerRadius="10" VerticalOptions="Start" BackgroundColor="#eeeeee" IsClippedToBounds="True" Grid.Column="0">
-                                        <ffimageloading:CachedImage DownsampleToViewSize="true" Source="{Binding ImageFullUrl}" Aspect="AspectFill" />
-                                    </telerikPrimitives:RadBorder>
+                            <telerikPrimitives:RadBorder Grid.Row="0" WidthRequest="100" CornerRadius="10" VerticalOptions="Start" BackgroundColor="#eeeeee" IsClippedToBounds="True" Grid.Column="0">
+                                <ffimageloading:CachedImage DownsampleToViewSize="true" Source="{Binding ImageFullUrl}" Aspect="AspectFill" />
+                            </telerikPrimitives:RadBorder>
 
-                                    <StackLayout Grid.Column="1" Grid.Row="0">
-                                        <Label FontAttributes="Bold" TextColor="{StaticResource MainDarkColor}" Text="{Binding Name}" FontSize="15" />
-                                        <Label Text="{Binding Bank.Name}" FontSize="14" FontAttributes="Bold" TextColor="Black" />
-                                        <Label FontSize="14" TextColor="#444444">
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span Text="{x:Static lang:Language.thoi_han_toi_da}" />
-                                                    <Span Text=" : " />
-                                                    <Span Text="{Binding MaxTime}" />
-                                                    <Span Text="{Binding MaxTimeUnit,Converter={x:StaticResource GoiVayMaxTimeConveter}}" />
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                        </Label>
-                                        <Label FontSize="14" TextColor="#444444">
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span Text="{x:Static lang:Language.lai_suat}" />
-                                                    <Span Text=" : " />
-                                                    <Span Text="{Binding LaiSuat,StringFormat='{0}%'}" />
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                        </Label>
-                                        <Label FontSize="14" Text="{Binding Employee.Address}" />
-                                        <StackLayout Orientation="Horizontal">
-                                            <StackLayout.GestureRecognizers>
-                                                <TapGestureRecognizer NumberOfTapsRequired="1" />
-                                            </StackLayout.GestureRecognizers>
-                                            <plugin:CircleImage HeightRequest="30" WidthRequest="30" Aspect="AspectFill" HorizontalOptions="Center" VerticalOptions="Center" Source="{Binding User.AvatarFullUrl}" />
-                                            <Label x:Name="labelTitle" Text="{Binding User.FullName}" FontAttributes="Bold" FontSize="15" TextColor="#444444" VerticalOptions="Center" />
-                                        </StackLayout>
-                                    </StackLayout>
-                                </Grid>
-                            </ViewCell>
-                        </DataTemplate>
-                    </controls:BsdListView.ItemTemplate>
-                </controls:BsdListView>
-            </Grid>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="End" Spacing="0" AbsoluteLayout.LayoutBounds="0,1,1,64" AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional" Margin="5">
-                <Frame Margin="5" Padding="0" CornerRadius="22">
-                    <Button Style="{StaticResource FLoatButtonStyle}" Text="&#xf1ec;" FontFamily="{StaticResource FontAwesomeSolid}" Clicked="Calculator_Clicked" />
-                </Frame>
-                <Frame Margin="5" Padding="0" CornerRadius="22">
-                    <Button Style="{StaticResource FLoatButtonStyle}" Text="&#xf067;" FontFamily="{StaticResource FontAwesomeSolid}" Clicked="AddLoan_Clicked" />
-                </Frame>
-            </StackLayout>
+                            <StackLayout Grid.Column="1" Grid.Row="0">
+                                <Label FontAttributes="Bold" TextColor="{StaticResource MainDarkColor}" Text="{Binding Name}" FontSize="15" />
+                                <Label Text="{Binding Bank.Name}" FontSize="14" FontAttributes="Bold" TextColor="Black" />
+                                <Label FontSize="14" TextColor="#444444">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static lang:Language.thoi_han_toi_da}" />
+                                            <Span Text=" : " />
+                                            <Span Text="{Binding MaxTime}" />
+                                            <Span Text="{Binding MaxTimeUnit,Converter={x:StaticResource GoiVayMaxTimeConveter}}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label FontSize="14" TextColor="#444444">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static lang:Language.lai_suat}" />
+                                            <Span Text=" : " />
+                                            <Span Text="{Binding LaiSuat,StringFormat='{0}%'}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label FontSize="14" Text="{Binding Employee.Address}" />
+                                <StackLayout Orientation="Horizontal">
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer NumberOfTapsRequired="1" />
+                                    </StackLayout.GestureRecognizers>
+                                    <plugin:CircleImage HeightRequest="30" WidthRequest="30" Aspect="AspectFill" HorizontalOptions="Center" VerticalOptions="Center" Source="{Binding User.AvatarFullUrl}" />
+                                    <Label x:Name="labelTitle" Text="{Binding User.FullName}" FontAttributes="Bold" FontSize="15" TextColor="#444444" VerticalOptions="Center" />
+                                </StackLayout>
+                            </StackLayout>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </controls:BsdListView.ItemTemplate>
+        </controls:BsdListView>
+    </Grid>
+    <StackLayout Orientation="Horizontal" HorizontalOptions="End" Spacing="0" AbsoluteLayout.LayoutBounds="0,1,1,64" AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional" Margin="5">
+        <Frame Margin="5" Padding="0" CornerRadius="22">
+            <Button Style="{StaticResource FLoatButtonStyle}" Text="&#xf1ec;" FontFamily="{StaticResource FontAwesomeSolid}" Clicked="Calculator_Clicked" />
+        </Frame>
+        <Frame Margin="5" Padding="0" CornerRadius="22">
+            <Button Style="{StaticResource FLoatButtonStyle}" Text="&#xf067;" FontFamily="{StaticResource FontAwesomeSolid}" Clicked="AddLoan_Clicked" />
+        </Frame>
+    </StackLayout>
 
-            <controls:CenterModal x:Name="MainCenterModal" />
-            <controls:CenterModal x:Name="ModalBankEmployeeRegister" Title="{x:Static lang:Language.dang_ky_nhan_vien_ngan_hang}" />
-            <controls:BottomModal x:Name="bottomModal" />
-            <controls:LoadingPopup x:Name="loadingPopup" />
-        </AbsoluteLayout>
-    </ContentView.Content>
-</ContentView>
+    <controls:CenterModal x:Name="MainCenterModal" />
+    <controls:CenterModal x:Name="ModalBankEmployeeRegister" Title="{x:Static lang:Language.dang_ky_nhan_vien_ngan_hang}" />
+    <controls:BottomModal x:Name="LookUpModal" />
+</AbsoluteLayout>

@@ -52,12 +52,6 @@ namespace SundihomeApp.Views.CompanyViews
             viewModel.Ward = null;
         }
 
-        //public async void CloseModal_Clicked(object sender, EventArgs e)
-        //{
-        //    await ModalPopup.TranslateTo(0, ModalPopup.Height, 50);
-        //    ModalPopup.IsVisible = false;
-        //}
-
         private void Remove_Image(object sender, EventArgs e)
         {
             var file = (sender as Button).CommandParameter as MediaFile;
@@ -170,6 +164,19 @@ namespace SundihomeApp.Views.CompanyViews
             };
             item.CreatedDate = DateTime.Now;
             item.HasImage = ImageList != null && ImageList.Count() > 0;
+
+            if (viewModel.Province != null)
+            {
+                item.ProvinceId = viewModel.Province.Id;
+                if (viewModel.District != null)
+                {
+                    item.DistrictId = viewModel.District.Id;
+                    if (viewModel.Ward != null)
+                    {
+                        item.WardId = viewModel.Ward.Id;
+                    }
+                }
+            }
 
             item.Address = Address;
             item.HasAddress = !string.IsNullOrWhiteSpace(Address);

@@ -202,7 +202,7 @@
         <value>Shop, Retail Spaces</value>
     </data>
     <data name="dat_nha_xuong_kho_bai">
-        <value>Land, factory ,warehouse</value>
+        <value>Land, factory, warehouse</value>
     </data>
     <data name="dat">
         <value>Land</value>
@@ -469,7 +469,7 @@
         <value>Registration failed, please try again!</value>
     </data>
     <data name="khong_tim_thay_tai_khoan">
-        <value>Incorect email/phone or password</value>
+        <value>User not found</value>
     </data>
     <!-- AccountPage-->
     <data name="lien_ket_facebook_thanh_cong">
@@ -677,10 +677,10 @@
         <value>Price range</value>
     </data>
     <data name="gia_tien_tu">
-        <value>Price to</value>
+        <value>Price from</value>
     </data>
     <data name="gia_tien_den">
-        <value>Price from</value>
+        <value>Price to</value>
     </data>
     <data name="tinh_thanh">
         <value>Province</value>

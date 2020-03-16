@@ -75,43 +75,10 @@
                     </ScrollView>
                 </StackLayout>
             </Grid>
+            <!--<StackLayout BackgroundColor="Green" AbsoluteLayout.LayoutBounds="0,0,1,50" AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional">
 
-            <ContentView x:Name="contentView"
-                         IsVisible="false"
-                         AbsoluteLayout.LayoutBounds="0,0,1,1"
-                         AbsoluteLayout.LayoutFlags="All">
-                <telerikPrimitives:RadBorder x:Name="PostDetailRadBorder"
-                                             RotationX="20"
-                                             RotationY="20"
-                                             Scale="0"
-                                             VerticalOptions="FillAndExpand"
-                                             HorizontalOptions="FillAndExpand"
-                                             CornerRadius="20"
-                                             IsClippedToBounds="False"
-                                             Margin="20">
-                    <Grid VerticalOptions="FillAndExpand"
-                          HorizontalOptions="FillAndExpand">
-                        <ContentView x:Name="PostDetailCV"
-                                     HorizontalOptions="FillAndExpand"
-                                     VerticalOptions="FillAndExpand" />
-                        <Button Text="&#xf00d;"
-                                FontSize="15"
-                                WidthRequest="30"
-                                HorizontalOptions="End"
-                                VerticalOptions="Start"
-                                Margin="0,5,5,0"
-                                HeightRequest="30"
-                                CornerRadius="15"
-                                FontFamily="{StaticResource FontAwesomeSolid}"
-                                BackgroundColor="White"
-                                TextColor="{StaticResource MainDarkColor}"
-                                Clicked="CloseDetail_Clicked" />
-                    </Grid>
-
-                </telerikPrimitives:RadBorder>
-            </ContentView>
-
-            <controls:LoadingPopup AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" x:Name="loadingPopup" />
+            </StackLayout>-->
+            <controls:LoadingPopup x:Name="loadingPopup" />
         </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

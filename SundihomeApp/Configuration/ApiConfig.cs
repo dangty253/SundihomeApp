@@ -3,12 +3,12 @@ namespace SundihomeApp.Configuration
 {
     public class ApiConfig
     {
-        //public const string IP = "https://sundiland.com/";
-        //public const string IP2 = "https://sundiland.com";
-        public const string IP = "https://sundiland.com:2121/";
-        public const string IP2 = "https://sundiland.com:2121";
-        //public const string IP = "http://127.0.0.1:2121/";
-        //public const string IP2 = "http://127.0.0.1:2121";
+        public const string IP = "https://sundiland.com/";
+        public const string IP2 = "https://sundiland.com";
+        //public const string IP = "https://sundiland.com:2121/";
+        //public const string IP2 = "https://sundiland.com:2121";
+        //public const string IP = "http://192.168.1.117:2121/";
+        //public const string IP2 = "http://192.168.1.117:2121";
 
         public const string CloudStorageApi = "https://sundiland.com:99";
 

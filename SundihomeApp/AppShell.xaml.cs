@@ -210,7 +210,6 @@ namespace SundihomeApp
 
         public async void Logout_Clicked(object sender, EventArgs e)
         {
-
             var result = await DisplayAlert(Language.thong_bao, Language.ban_co_chac_chan_muon_dang_xuat, Language.dong_y, Language.huy);
             if (!result) return;
 

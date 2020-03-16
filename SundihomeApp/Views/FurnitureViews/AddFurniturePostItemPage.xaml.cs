@@ -41,7 +41,7 @@ namespace SundihomeApp.Views.Furniture
         private async void Init()
         {
             await CrossMedia.Current.Initialize();
-            await LoadParentCategory();
+            await Task.WhenAll(LoadParentCategory(), viewModel.GetProvinceAsync());
             loadingPopup.IsVisible = false;
         }
 
@@ -52,7 +52,7 @@ namespace SundihomeApp.Views.Furniture
             {
                 Label lbl = new Label()
                 {
-                    Text = Language.ResourceManager.GetString(furnitureCategories[i].LanguageKey,Language.Culture),
+                    Text = Language.ResourceManager.GetString(furnitureCategories[i].LanguageKey, Language.Culture),
                     FontSize = 15,
                     TextColor = Color.FromHex("#444444")
                 };
@@ -190,6 +190,11 @@ namespace SundihomeApp.Views.Furniture
 
         private async void Save_Clicked(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(EntryTitle.Text))
+            {
+                await DisplayAlert("", Language.vui_long_nhap_tieu_de, Language.dong);
+                return;
+            }
             if (string.IsNullOrEmpty(editor.Text))
             {
                 await DisplayAlert("", Language.vui_long_nhap_mo_ta_bai_dang, Language.dong);
@@ -239,6 +244,7 @@ namespace SundihomeApp.Views.Furniture
             }
 
             FurniturePostItem item = new FurniturePostItem();
+            item.Title = EntryTitle.Text.Trim();
             item.Type = ControlSegment.GetCurrentIndex();
             item.Description = editor.Text;
             item.Images = imageList;
@@ -258,10 +264,23 @@ namespace SundihomeApp.Views.Furniture
                 item.Price = DecimalHelper.ToCurrency(EntryPrice.Text.Value) + " đ";
             }
 
-            if (!string.IsNullOrWhiteSpace(EntryAddress.Text))
+            if (viewModel.Province != null)
+            {
+                item.ProvinceId = viewModel.Province.Id;
+                if (viewModel.District != null)
+                {
+                    item.DistrictId = viewModel.District.Id;
+                    if (viewModel.Ward != null)
+                    {
+                        item.WardId = viewModel.Ward.Id;
+                    }
+                }
+            }
+
+            if (!string.IsNullOrWhiteSpace(viewModel.Address))
             {
                 item.HasAddress = true;
-                item.Address = EntryAddress.Text;
+                item.Address = viewModel.Address;
             }
 
             if (viewModel.ParentCategory != null)
@@ -281,6 +300,25 @@ namespace SundihomeApp.Views.Furniture
             MessagingCenter.Send<AddFurniturePostItemPage, FurniturePostItem>(this, "AddPostItemSuccess", item);
             loadingPopup.IsVisible = false;
             await Navigation.PopAsync();
+        }
+
+
+        public async void Province_Change(object sender, LookUpChangeEvent e)
+        {
+            loadingPopup.IsVisible = true;
+            await viewModel.GetDistrictAsync();
+            viewModel.WardList.Clear();
+            viewModel.District = null;
+            viewModel.Ward = null;
+            loadingPopup.IsVisible = false;
+        }
+
+        public async void District_Change(object sender, LookUpChangeEvent e)
+        {
+            loadingPopup.IsVisible = true;
+            await viewModel.GetWardAsync();
+            viewModel.Ward = null;
+            loadingPopup.IsVisible = false;
         }
     }
 }

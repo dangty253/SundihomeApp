@@ -7,6 +7,7 @@ using System.Windows.Input;
 using Plugin.Media;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
+using SundihomeApi.Entities;
 using SundihomeApi.Entities.Furniture;
 using SundihomeApi.Entities.Response;
 using SundihomeApp.Configuration;
@@ -20,6 +21,114 @@ namespace SundihomeApp.ViewModels.Furniture
 {
     public class AddFurniturePostItemPageViewModel : BaseViewModel
     {
+        #region Phan dia chi
+        public ObservableCollection<Province> ProvinceList { get; set; } = new ObservableCollection<Province>();
+        public ObservableCollection<District> DistrictList { get; set; } = new ObservableCollection<District>();
+        public ObservableCollection<Ward> WardList { get; set; } = new ObservableCollection<Ward>();
+
+        private Province _provice;
+        public Province Province { get => _provice; set { _provice = value; OnPropertyChanged(nameof(Province)); SetAddress(); } }
+
+        private District _district;
+        public District District { get => _district; set { _district = value; OnPropertyChanged(nameof(District)); SetAddress(); } }
+
+        private Ward _ward;
+        public Ward Ward { get => _ward; set { _ward = value; OnPropertyChanged(nameof(Ward)); SetAddress(); } }
+
+        private string _street;
+        public string Street
+        {
+            get => _street;
+            set
+            {
+                _street = value;
+                OnPropertyChanged(nameof(Street));
+                SetAddress();
+            }
+        }
+
+        private string _address;
+        public string Address
+        {
+            get => _address;
+            set
+            {
+                _address = value;
+                OnPropertyChanged(nameof(Address));
+            }
+        }
+
+        public async Task GetProvinceAsync()
+        {
+            ProvinceList.Clear();
+            ApiResponse apiResponse = await ApiHelper.Get<List<Province>>("api/provinces", false, false);
+            if (apiResponse.IsSuccess)
+            {
+                List<Province> data = (List<Province>)apiResponse.Content;
+                foreach (var item in data)
+                {
+                    ProvinceList.Add(item);
+                }
+            }
+        }
+
+        public async Task GetDistrictAsync()
+        {
+            this.DistrictList.Clear();
+            if (Province != null)
+            {
+                ApiResponse apiResponse = await ApiHelper.Get<List<District>>($"api/districts/{Province.Id}", false, false);
+                if (apiResponse.IsSuccess)
+                {
+                    List<District> data = (List<District>)apiResponse.Content;
+                    foreach (var item in data)
+                    {
+                        DistrictList.Add(item);
+                    }
+                }
+            }
+        }
+
+        public async Task GetWardAsync()
+        {
+            WardList.Clear();
+            if (District != null)
+            {
+                ApiResponse apiResponse = await ApiHelper.Get<List<Ward>>($"api/wards/{District.Id}", false, false);
+                if (apiResponse.IsSuccess)
+                {
+                    List<Ward> data = (List<Ward>)apiResponse.Content;
+                    foreach (var item in data)
+                    {
+                        WardList.Add(item);
+                    }
+                }
+            }
+        }
+
+        public void SetAddress()
+        {
+            List<string> list = new List<string>();
+            if (!string.IsNullOrWhiteSpace(this.Street))
+            {
+                list.Add(this.Street.Trim());
+            }
+            if (this.Ward != null)
+            {
+                list.Add(Ward.Name);
+            }
+            if (this.District != null)
+            {
+                list.Add(District.Name);
+            }
+            if (this.Province != null)
+            {
+                list.Add(Province.Name);
+            }
+
+            Address = string.Join(", ", list.ToArray());
+        }
+        #endregion
 
         public int CurrentTypeIndex { get; set; } = 0;
         public FurnitureCategory ParentCategory { get; set; }

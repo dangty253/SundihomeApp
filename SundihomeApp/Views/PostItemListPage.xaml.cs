@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using SundihomeApi.Entities;
 using SundihomeApi.Entities.Mongodb;
 using SundihomeApp.Configuration;
+using SundihomeApp.Controls;
 using SundihomeApp.IServices;
 using SundihomeApp.Resources;
 using SundihomeApp.Services;
@@ -38,7 +39,8 @@ namespace SundihomeApp.Views
         public async void Init()
         {
             LV.ItemTapped += LV_ItemTapped;
-            await viewModel.LoadData();
+
+            viewModel.LoadProvinceAsync();
             SubscribeEvent();
             SetColorFilter();
 
@@ -59,9 +61,11 @@ namespace SundihomeApp.Views
                 selectedPost.IsFollow = true;
             });
 
+            await Task.Delay(1);
+            await viewModel.LoadData();
             loadingPopup.IsVisible = false;
         }
-        private void SubscribeEvent()
+        private async Task SubscribeEvent()
         {
             MessagingCenter.Subscribe<AddPostItemPage, PostItem>(this, "AddPostItemSuccess", async (page, newPostItem) =>
             {
@@ -72,7 +76,7 @@ namespace SundihomeApp.Views
                 });
             });
         }
-        private void SetColorFilter()
+        private async Task SetColorFilter()
         {
             var stackLayoutFilter = ScrollViewFilter.Content as StackLayout;
             Color MainDarkColor = (Color)App.Current.Resources["MainDarkColor"];
@@ -224,5 +228,55 @@ namespace SundihomeApp.Views
                 await Navigation.PushAsync(new ChatPage(postItem.CreatedBy.UserId));
             }
         }
+
+        public async void FilterProvince_Changed(object sender, EventArgs e)
+        {
+            loadingPopup.IsVisible = true;
+            if (viewModel.Province.Id == -1)
+            {
+                viewModel.Province = null;
+            }
+
+            await viewModel.LoadDistrictAsync();
+            await viewModel.LoadWardAsync();
+            await viewModel.LoadOnRefreshCommandAsync();
+            loadingPopup.IsVisible = false;
+        }
+
+
+        public async void FilterDistrict_Changed(object sender, EventArgs e)
+        {
+            loadingPopup.IsVisible = true;
+            if (viewModel.District.Id == -1)
+            {
+                viewModel.District = null;
+            }
+            await viewModel.LoadWardAsync();
+            await viewModel.LoadOnRefreshCommandAsync();
+            loadingPopup.IsVisible = false;
+        }
+        public async void FilterWard_Changed(object sender, EventArgs e)
+        {
+            loadingPopup.IsVisible = true;
+            if (viewModel.Ward.Id == -1)
+            {
+                viewModel.Ward = null;
+            }
+            await viewModel.LoadOnRefreshCommandAsync();
+            loadingPopup.IsVisible = false;
+        }
+
+        public async void Clear_Clicked(object sender, EventArgs e)
+        {
+            loadingPopup.IsVisible = true;
+            viewModel.Province = null;
+            viewModel.District = null;
+            viewModel.Ward = null;
+            viewModel.DistrictList.Clear();
+            viewModel.WardList.Clear();
+            await viewModel.LoadOnRefreshCommandAsync();
+            loadingPopup.IsVisible = false;
+        }
+
     }
 }

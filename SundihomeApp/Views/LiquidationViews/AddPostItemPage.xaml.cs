@@ -41,6 +41,7 @@ namespace SundihomeApp.Views.LiquidationViews
         {
             await CrossMedia.Current.Initialize();
             LoadCategories();
+            await viewModel.GetProvinceAsync();
             loadingPopup.IsVisible = false;
         }
 
@@ -198,10 +199,23 @@ namespace SundihomeApp.Views.LiquidationViews
                 item.Price = DecimalHelper.ToCurrency(EntryPrice.Text.Value) + " đ";
             }
 
-            if (!string.IsNullOrWhiteSpace(EntryAddress.Text))
+            if (viewModel.Province != null)
+            {
+                item.ProvinceId = viewModel.Province.Id;
+                if (viewModel.District != null)
+                {
+                    item.DistrictId = viewModel.District.Id;
+                    if (viewModel.Ward != null)
+                    {
+                        item.WardId = viewModel.Ward.Id;
+                    }
+                }
+            }
+
+            if (!string.IsNullOrWhiteSpace(viewModel.Address))
             {
                 item.HasAddress = true;
-                item.Address = EntryAddress.Text;
+                item.Address = viewModel.Address;
             }
 
             if (viewModel.Category != null)
@@ -217,7 +231,7 @@ namespace SundihomeApp.Views.LiquidationViews
             await Navigation.PopAsync();
         }
 
-        private void CBMyAddress_Checked(object sender, EventArgs e)
+        private async void CBMyAddress_Checked(object sender, EventArgs e)
         {
             if (CheckBoxMyAddress.IsChecked.HasValue && CheckBoxMyAddress.IsChecked.Value)
             {
@@ -226,8 +240,48 @@ namespace SundihomeApp.Views.LiquidationViews
             else
             {
                 CheckBoxMyAddress.IsChecked = true;
-                this.EntryAddress.Text = UserLogged.Address;
+                if (UserLogged.ProvinceId > 0)
+                {
+                    this.viewModel.Province = viewModel.ProvinceList.Single(x => x.Id == UserLogged.ProvinceId);
+
+                    if (UserLogged.DistrictId > 0)
+                    {
+                        if (!this.viewModel.DistrictList.Any())
+                        {
+                            await this.viewModel.GetDistrictAsync();
+                            this.viewModel.District = this.viewModel.DistrictList.Single(x => x.Id == UserLogged.DistrictId);
+                        }
+
+                        if (UserLogged.WardId > 0)
+                        {
+                            if (!this.viewModel.WardList.Any())
+                            {
+                                await this.viewModel.GetWardAsync();
+                                this.viewModel.Ward = this.viewModel.WardList.Single(x => x.Id == UserLogged.WardId);
+                            }
+                        }
+                    }
+                }
+                viewModel.Street = UserLogged.Street;
             }
+        }
+
+        public async void Province_Change(object sender, LookUpChangeEvent e)
+        {
+            loadingPopup.IsVisible = true;
+            await viewModel.GetDistrictAsync();
+            viewModel.WardList.Clear();
+            viewModel.District = null;
+            viewModel.Ward = null;
+            loadingPopup.IsVisible = false;
+        }
+
+        public async void District_Change(object sender, LookUpChangeEvent e)
+        {
+            loadingPopup.IsVisible = true;
+            await viewModel.GetWardAsync();
+            viewModel.Ward = null;
+            loadingPopup.IsVisible = false;
         }
     }
 }

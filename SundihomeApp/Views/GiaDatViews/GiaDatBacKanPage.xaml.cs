@@ -30,6 +30,7 @@ namespace SundihomeApp.Views.GiaDatViews
         private async void District_Changed(object sender, EventArgs e)
         {
             loadingPopup.IsVisible = true;
+            this.viewModel.StreetDistances.Clear();
             this.viewModel.Street = null;
             this.viewModel.StreetDistance = null;
             await this.viewModel.LoadStreets();

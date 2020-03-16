@@ -36,6 +36,7 @@ namespace SundihomeApp.Views
             InitializeComponent();
             _user = user;
             BindingContext = viewModel = new ProfilePageViewModel(_user);
+            ChangePhonePopup.Body.BindingContext = viewModel;
             Init();
 
             ChangePasswordPopup.BackgroundColor = Color.FromRgba(0, 0, 0, 0.3);
@@ -216,7 +217,7 @@ namespace SundihomeApp.Views
             viewModel.IsLoading = false;
         }
 
-        public async void Gender_Change(object sender, LookUpChangeEvent e)
+        void Gender_Change(object sender, LookUpChangeEvent e)
         {
             if (viewModel.GenderSelected != null)
             {
@@ -348,13 +349,13 @@ namespace SundihomeApp.Views
             }
         }
 
-        void OnCleanOTPButtonClicked(object sender, EventArgs e)
+        public void OnCleanOTPButtonClicked(object sender, EventArgs e)
         {
             entryOTP1.Text = entryOTP2.Text = entryOTP3.Text = entryOTP4.Text = null;
             entryOTP1.Focus();
         }
 
-        void OnResetOTP(object sender, EventArgs e)
+        public void OnResetOTP(object sender, EventArgs e)
         {
             OnCleanOTPButtonClicked(sender, e);
             viewModel.ResetOTP();
@@ -428,6 +429,12 @@ namespace SundihomeApp.Views
             viewModel.UserProfile.Ward = null;
 
             loadingPopup.IsVisible = false;
+        }
+
+
+        public void OpenPickerMaQuocGia_Tapped(object sender, EventArgs e)
+        {
+            PickerMaQuocGia.Focus();
         }
     }
 }

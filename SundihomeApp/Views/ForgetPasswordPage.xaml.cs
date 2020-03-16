@@ -83,7 +83,10 @@ namespace SundihomeApp.Views
             entryOTP1.Text = entryOTP2.Text = entryOTP3.Text = entryOTP4.Text = null;
             entryOTP1.Focus();
         }
-
+        void OpenPickerMaQuocGia_Tapped(object sender, EventArgs e)
+        {
+            PickerMaQuocGia.Focus();
+        }
         void OnResetOTP(object sender, EventArgs e)
         {
             OnCleanOTPButtonClicked(sender, e);

@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using SundihomeApi.Entities;
 using SundihomeApi.Entities.Response;
 using SundihomeApp.Configuration;
 using SundihomeApp.Controls;
 using SundihomeApp.Helpers;
+using SundihomeApp.Models;
 using SundihomeApp.Resources;
 using SundihomeApp.Settings;
 using SundihomeApp.ViewModels.BankViewModel;
@@ -14,20 +16,32 @@ using Xamarin.Forms;
 
 namespace SundihomeApp.Views
 {
-    public partial class LoanContentView : ContentView
+    public partial class LoanContentView : AbsoluteLayout
     {
         public GoiVayFilterresultViewModel viewModel;
-
-        private LookUpControl LookUpControlProvince;
-        private LookUpControl LookUpControlDistrict;
-        private LookUpControl LookUpControlBank;
+        private LoadingPopup loadingPopup;
+        public LoanContentView(LoadingPopup LoadingPopup)
+        {
+            InitializeComponent();
+            this.loadingPopup = LoadingPopup;
+            this.BindingContext = viewModel = new GoiVayFilterresultViewModel();
+            Init();
+        }
 
         public LoanContentView()
         {
             InitializeComponent();
+
+            loadingPopup = new LoadingPopup()
+            {
+                IsVisible = true
+            };
+            Children.Add(loadingPopup);
+
             this.BindingContext = viewModel = new GoiVayFilterresultViewModel();
             Init();
         }
+
         public async void Init()
         {
             MessagingCenter.Subscribe<AddLoanView>(this, "OnSave", async (senser) =>
@@ -43,8 +57,11 @@ namespace SundihomeApp.Views
                 }
             });
             await viewModel.LoadData();
+            await viewModel.LoadProvinceAsync();
+            await viewModel.LoadBanksAsync();
             loadingPopup.IsVisible = false;
         }
+
         private async void ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var item = e.Item as GoiVay;
@@ -55,6 +72,7 @@ namespace SundihomeApp.Views
         {
             await Navigation.PushAsync(new CalculatorPage());
         }
+
         private async void AddLoan_Clicked(object sender, EventArgs e)
         {
             if (!UserLogged.IsLogged)
@@ -67,7 +85,7 @@ namespace SundihomeApp.Views
             var resonse = await ApiHelper.Get<BankEmployee>(ApiRouter.BANK_EMPLOYEE_DETAIL + UserLogged.Id);
             if (resonse.IsSuccess && resonse.Content != null)
             {
-                var view = new AddLoanView(bottomModal);
+                var view = new AddLoanView(LookUpModal);
                 view.OnCancel += async (sender1, e1) => await MainCenterModal.Hide();
                 view.OnSaved += async (sender1, e1) =>
                 {
@@ -83,7 +101,7 @@ namespace SundihomeApp.Views
             else
             {
                 await Shell.Current.DisplayAlert("", Language.dang_ky_nhan_vien_ngan_hang, Language.dong);
-                var dangKyNhanVienView = new DangKyNhanVienNganHangView(bottomModal);
+                var dangKyNhanVienView = new DangKyNhanVienNganHangView(LookUpModal);
                 dangKyNhanVienView.OnCancel += async (s, e2) => await ModalBankEmployeeRegister.Hide();
                 dangKyNhanVienView.OnSaved += async (s, e2) =>
                 {
@@ -101,6 +119,7 @@ namespace SundihomeApp.Views
             viewModel._filterModel.Keyword = searchBar.Text;
             viewModel.RefreshCommand.Execute(null);
         }
+
         public void Search_TextChaned(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(searchBar.Text))
@@ -113,124 +132,54 @@ namespace SundihomeApp.Views
             }
         }
 
-        public async void FilterProvince_Click(object sender, EventArgs e)
+        public async void FilterDistrict_Changed(object sender, LookUpChangeEvent e)
         {
-            if (LookUpControlProvince == null)
+            loadingPopup.IsVisible = true;
+            if (viewModel.District.Id == -1)
             {
-                await viewModel.LoadProvinceAsync();
-                LookUpControlProvince = new LookUpControl();
-                LookUpControlProvince.ItemsSource = viewModel.ProvinceList;
-                LookUpControlProvince.SelectedItemChange += async (s, e2) =>
-                {
-                    loadingPopup.IsVisible = true;
-                    if (viewModel.Province.Id == -1)
-                    {
-                        LabelProvince.Text = Language.tinh_thanh;
-                        LabelProvince.TextColor = Color.Black;
-                        viewModel.Province = null;
-                        viewModel._filterModel.ProvinceId = null;
-                    }
-                    else
-                    {
-                        viewModel._filterModel.ProvinceId = viewModel.Province.Id;
-                        LabelProvince.Text = viewModel.Province.Name;
-                        LabelProvince.TextColor = Color.FromHex("#026294");
-                    }
-
-                    LabelDistrict.Text = Language.quan_huyen;
-                    await viewModel.LoadDistrictAsync();
-                    viewModel.District = null;
-                    viewModel._filterModel.DistrictId = null;
-                    LabelDistrict.TextColor = Color.Black;
-                    await viewModel.LoadOnRefreshCommandAsync();
-                    loadingPopup.IsVisible = false;
-                };
-                LookUpControlProvince.BottomModal = bottomModal;
-                LookUpControlProvince.NameDisplay = "Name";
-                LookUpControlProvince.Placeholder = Language.tinh_thanh;
-                LookUpControlProvince.SetBinding(LookUpControl.SelectedItemProperty, new Binding("Province") { Source = viewModel });
+                viewModel.District = null;
+                viewModel._filterModel.DistrictId = null;
             }
+            else viewModel._filterModel.DistrictId = viewModel.District.Id;
 
-            await LookUpControlProvince.OpenModal();
+            await viewModel.LoadOnRefreshCommandAsync();
+            loadingPopup.IsVisible = false;
         }
-        public async void FilterDistric_Click(object sender, EventArgs e)
-        {
-            if (LookUpControlDistrict == null)
-            {
-                await viewModel.LoadDistrictAsync();
-                LookUpControlDistrict = new LookUpControl();
-                LookUpControlDistrict.ItemsSource = viewModel.DistrictList;
-                LookUpControlDistrict.SelectedItemChange += async (s, e2) =>
-                {
-                    if (viewModel.District.Id == -1)
-                    {
-                        LabelDistrict.Text = Language.quan_huyen;
-                        LabelDistrict.TextColor = Color.Black;
-                        viewModel.District = null;
-                        viewModel._filterModel.DistrictId = null;
-                    }
-                    else
-                    {
-                        viewModel._filterModel.DistrictId = viewModel.District.Id;
-                        LabelDistrict.Text = viewModel.District.Name;
-                        LabelDistrict.TextColor = Color.FromHex("#026294");
-                    }
-                    loadingPopup.IsVisible = true;
 
-                    await viewModel.LoadOnRefreshCommandAsync();
-                    loadingPopup.IsVisible = false;
-                };
-                LookUpControlDistrict.BottomModal = bottomModal;
-                LookUpControlDistrict.NameDisplay = "Name";
-                LookUpControlDistrict.Placeholder = Language.quan_huyen;
-                LookUpControlDistrict.SetBinding(LookUpControl.SelectedItemProperty, new Binding("District") { Source = viewModel });
-            }
-            await LookUpControlDistrict.OpenModal();
-        }
-        public async void FilterBank_Click(object sender, EventArgs e)
+        public async void FilterBank_Changed(object sender, LookUpChangeEvent e)
         {
-            if (LookUpControlBank == null)
+            if (viewModel.Bank.Id == -1)
             {
-                await viewModel.LoadBanksAsync();
-                LookUpControlBank = new LookUpControl();
-                LookUpControlBank.ItemsSource = viewModel.BankList;
-                LookUpControlBank.SelectedItemChange += async (s, e2) =>
-                {
-                    if (viewModel.Bank.Id == -1)
-                    {
-                        LabelType.Text = Language.loai_bat_dong_san;
-                        LabelType.TextColor = Color.Black;
-                        viewModel.Bank = null;
-                        viewModel._filterModel.BankId = null;
-                    }
-                    else
-                    {
-                        viewModel._filterModel.BankId = viewModel.Bank.Id;
-                        LabelType.Text = viewModel.Bank.Name;
-                        LabelType.TextColor = Color.FromHex("#026294");
-                    }
-                    loadingPopup.IsVisible = true;
-                    await viewModel.LoadOnRefreshCommandAsync();
-                    loadingPopup.IsVisible = false;
-                };
-                LookUpControlBank.BottomModal = bottomModal;
-                LookUpControlBank.NameDisplay = "FullName";
-                LookUpControlBank.Placeholder = Language.loai_bat_dong_san;
-                LookUpControlBank.SetBinding(LookUpControl.SelectedItemProperty, new Binding("Bank") { Source = viewModel });
+                viewModel.Bank = null;
+                viewModel._filterModel.BankId = null;
             }
-            await LookUpControlBank.OpenModal();
+            else viewModel._filterModel.BankId = viewModel.Bank.Id;
+
+            loadingPopup.IsVisible = true;
+            await viewModel.LoadOnRefreshCommandAsync();
+            loadingPopup.IsVisible = false;
+        }
+
+        public async void FilterProvince_Changed(object sender, EventArgs e)
+        {
+            loadingPopup.IsVisible = true;
+            if (viewModel.Province.Id == -1)
+            {
+                viewModel.Province = null;
+                viewModel._filterModel.ProvinceId = null;
+            }
+            else
+            {
+                viewModel._filterModel.ProvinceId = viewModel.Province.Id;
+            }
+            viewModel.District = null;
+            await Task.WhenAll(viewModel.LoadDistrictAsync(), viewModel.LoadOnRefreshCommandAsync());
+            loadingPopup.IsVisible = false;
         }
 
         public async void Clear_Clicked(object sender, EventArgs e)
         {
             loadingPopup.IsVisible = true;
-            LabelProvince.Text = Language.tinh_thanh;
-            LabelDistrict.Text = Language.quan_huyen;
-            LabelType.Text = Language.ngan_hang;
-
-            LabelProvince.TextColor = Color.Black;
-            LabelDistrict.TextColor = Color.Black;
-            LabelType.TextColor = Color.Black;
             viewModel.Province = null;
             viewModel._filterModel.ProvinceId = null;
             viewModel.District = null;

@@ -48,7 +48,7 @@ namespace SundihomeApp.ViewModels
                 return new Command(async () =>
                 {
                     IsRefreshing = true;
-                    await Task.WhenAll(this.LoadNewestBuyOrRentList(), this.LoadNewestNeedtoBuyOrRentList(), this.LoadProjectList(), this.LoadLiquidationList());
+                    await Task.WhenAll(this.LoadNewestBuyOrRentList(), this.LoadNewestNeedtoBuyOrRentList(), this.LoadProjectList(), this.LoadLiquidationList(), LoadNewFurnitureProducts());
                     IsRefreshing = false;
                 });
             }

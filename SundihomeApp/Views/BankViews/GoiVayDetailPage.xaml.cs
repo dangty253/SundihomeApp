@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using FFImageLoading.Forms;
 using SundihomeApi.Entities;
 using SundihomeApp.Configuration;
 using SundihomeApp.Helpers;
@@ -16,13 +17,16 @@ namespace SundihomeApp.Views.BankViews
     {
         private Guid _id;
         private GoiVay _goiVay;
+        public double heightImage;
+        public double widthImage = 1;
+        public double heightScreen = 1;
+        public double widthScreen;
         public GoiVayDetailPage(Guid Id)
         {
             InitializeComponent();
             _id = Id;
             Init();
         }
-
 
         public async Task SetForm()
         {
@@ -31,13 +35,14 @@ namespace SundihomeApp.Views.BankViews
             {
                 this._goiVay = response.Content as GoiVay;
                 this.Title = _goiVay.Name;
-                if (!_goiVay.Image.StartsWith("bank_logo"))
+
+                image.Success += (sender1, e1) =>
                 {
-                    image.Aspect = Aspect.AspectFill;
-                }
-
-                image.Source = _goiVay.ImageFullUrl;
-
+                    heightImage = e1.ImageInformation.OriginalHeight;
+                    widthImage = e1.ImageInformation.OriginalWidth;
+                    setSizeImage();
+                };
+                image.Source = ImageSource.FromUri(new Uri(_goiVay.ImageFullUrl));
 
                 lblNganHang.Text = _goiVay.Bank.Name;
                 lblGoiVayName.Text = _goiVay.Name;
@@ -50,16 +55,34 @@ namespace SundihomeApp.Views.BankViews
                 lblEmpName.Text = _goiVay.User.FullName;
                 lblPhone.Text = _goiVay.User.Phone;
 
-
                 imageAvatar.Source = _goiVay.User.AvatarFullUrl;
 
                 lblAddress.Text = _goiVay.Employee.Address;
             }
         }
+
+        public void Screen_SizeChanged(object sender, EventArgs e)
+        {
+            widthScreen = this.Width;
+            heightScreen = this.Height;
+            setSizeImage();
+        }
+
+        public void setSizeImage()
+        {
+            double x = widthScreen / widthImage; // chieu ngang cua hinh, nhan voi so x = thi chieu ngang man hinh.
+                                                 //double height = heightScreen * x;
+            double height = x * heightImage;
+
+            image.WidthRequest = widthScreen;
+            image.HeightRequest = height;
+        }
+
         public async void Init()
         {
             await SetForm();
             if (_goiVay == null) return;
+
 
 
             var ButtonCommandList = new List<FloatButtonItem>();

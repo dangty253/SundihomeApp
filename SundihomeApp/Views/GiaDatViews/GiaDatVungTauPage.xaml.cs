@@ -10,13 +10,13 @@ using Xamarin.Forms.Xaml;
 namespace SundihomeApp.Views.GiaDatViews
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class GiaDatHCMPage : ContentPage
+    public partial class GiaDatVungTauPage : ContentPage
     {
-        public GiaDatHCMPageViewModel viewModel;
-        public GiaDatHCMPage()
+        public GiaDatVungTauPageViewModel viewModel;
+        public GiaDatVungTauPage() 
         {
             InitializeComponent();
-            this.BindingContext = viewModel = new GiaDatHCMPageViewModel();
+            this.BindingContext = viewModel = new GiaDatVungTauPageViewModel();
             On<iOS>().SetUseSafeArea(true);
             Init();
 
@@ -36,7 +36,6 @@ namespace SundihomeApp.Views.GiaDatViews
             await this.viewModel.LoadStreets();
             loadingPopup.IsVisible = false;
         }
-
 
         private async void Street_Changed(object sender, EventArgs e)
         {

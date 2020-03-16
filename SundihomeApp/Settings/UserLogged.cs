@@ -181,7 +181,6 @@ namespace SundihomeApp.Settings
             Password = authResponse.Password;
             Address = authResponse.Address;
             RegisterDate = authResponse.RegisterDate.ToLocalTime();
-
             AvatarUrl = authResponse.AvatarUrl;
             Type = authResponse.Type;
             if (authResponse.RoleId.HasValue)

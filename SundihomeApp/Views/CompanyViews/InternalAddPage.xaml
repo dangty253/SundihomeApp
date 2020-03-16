@@ -32,6 +32,19 @@
                         </StackLayout>
                     </telerikPrimitives:RadBorder>
 
+                    <controls:FormLabel Margin="0,5,0,0" Text="{x:Static lang:Language.dia_chi}" />
+                    <!--Tỉnh/thành phố-->
+                    <controls:LookUpControl SelectedItem="{Binding Province}" ItemsSource="{Binding ProvinceList}" BottomModal="{x:Reference LookUpModal}" Placeholder="{x:Static lang:Language.tinh_thanh}" NameDisplay="Name" SelectedItemChange="Province_Change" />
+
+                    <!--Quận/huyện-->
+                    <controls:LookUpControl SelectedItem="{Binding District}" ItemsSource="{Binding DistrictList}" BottomModal="{x:Reference LookUpModal}" Placeholder="{x:Static lang:Language.quan_huyen}" NameDisplay="Name" SelectedItemChange="District_Change" />
+
+                    <!--Xã/phường-->
+                    <controls:LookUpControl SelectedItem="{Binding Ward}" ItemsSource="{Binding WardList}" BottomModal="{x:Reference LookUpModal}" Placeholder="{x:Static lang:Language.phuong_xa}" NameDisplay="Name" />
+
+                    <!--Dduong -->
+                    <controls:ClearableEntry Placeholder="{x:Static lang:Language.so_nha_duong}" Text="{Binding Street}" />
+
                     <StackLayout>
                         <controls:FormLabel Text="{x:Static lang:Language.hinh_anh}" />
                         <ScrollView Orientation="Horizontal">
@@ -97,6 +110,7 @@
                     </Grid>
                 </controls:BottomModal.ModalContent>
             </controls:BottomModal>
+            <controls:BottomModal x:Name="LookUpModal" />
             <controls:LoadingPopup x:Name="loadingPopup" />
         </AbsoluteLayout>
     </ContentPage.Content>

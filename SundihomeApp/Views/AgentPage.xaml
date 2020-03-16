@@ -17,6 +17,7 @@
                 <ContentView x:Name="ContentAgent" Grid.Row="1"/>
                 <ContentView x:Name="ContentLoans" Grid.Row="1" IsVisible="false"/>
             </Grid>
+            <controls:LoadingPopup IsVisible="false" x:Name="loadingPopup" />
         </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

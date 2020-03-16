@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
+             Padding="5"
+             Orientation="Horizontal"
+             HorizontalOptions="Center"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SundihomeApp.Controls.FilterPicker">
+    <Label x:Name="lblText" VerticalOptions="Center"  VerticalTextAlignment="Center"  HorizontalOptions="Center" HorizontalTextAlignment="Center" MaxLines="1" LineBreakMode="TailTruncation" FontSize="14"/>
+    <Label x:Name="lblIcon" VerticalOptions="Center" VerticalTextAlignment="Center" Text="&#xf107;" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="14"  />
+</StackLayout>

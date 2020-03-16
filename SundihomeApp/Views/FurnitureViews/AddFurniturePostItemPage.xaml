@@ -18,6 +18,10 @@
                 <StackLayout Margin="10,5,10,10">
                     <controls:Segment x:Name="ControlSegment" Margin="-2,0"/>
 
+                    <controls:FormLabelRequired Text="{Static lang:Language.tieu_de}" Margin="0,5,0,0"/>
+                    <controls:ClearableEntry x:Name="EntryTitle" Placeholder="{Static lang:Language.nhap_tieu_de}" />
+
+                    <controls:FormLabelRequired Text="{Static lang:Language.mo_ta}" Margin="0,5,0,0" />
                     <telerikPrimitives:RadBorder BorderColor="#eeeeee"
                                                  BorderThickness="1"
                                                  CornerRadius="0"
@@ -76,14 +80,25 @@
                     </ScrollView>
 
                     <StackLayout>
-                        <Label Text="{Static lang:Language.thong_tin_bo_sung}" />
+                        <controls:FormLabel Text="{Static lang:Language.gia}" />
                         <controls:CurrencyEntry x:Name="EntryPrice"
                                                 MaxValue="9000000000000"
                                                 HorizontalOptions="FillAndExpand"
                                                 Placeholder="{Static lang:Language.nhap_gia}" />
 
-                        <controls:ClearableEntry x:Name="EntryAddress"
-                                                 Placeholder="{Static lang:Language.nhap_dia_chi}" />
+                        <controls:FormLabel Margin="0,5,0,0" Text="{x:Static lang:Language.dia_chi}" />
+                        <!--Tỉnh/thành phố-->
+                        <controls:LookUpControl SelectedItem="{Binding Province}" ItemsSource="{Binding ProvinceList}" BottomModal="{x:Reference LookUpModal}" Placeholder="{x:Static lang:Language.tinh_thanh}" NameDisplay="Name" SelectedItemChange="Province_Change" />
+
+                        <!--Quận/huyện-->
+                        <controls:LookUpControl SelectedItem="{Binding District}" ItemsSource="{Binding DistrictList}" BottomModal="{x:Reference LookUpModal}" Placeholder="{x:Static lang:Language.quan_huyen}" NameDisplay="Name" SelectedItemChange="District_Change" />
+
+                        <!--Xã/phường-->
+                        <controls:LookUpControl SelectedItem="{Binding Ward}" ItemsSource="{Binding WardList}" BottomModal="{x:Reference LookUpModal}" Placeholder="{x:Static lang:Language.phuong_xa}" NameDisplay="Name" />
+
+                        <!--Dduong -->
+                        <controls:ClearableEntry Placeholder="{x:Static lang:Language.so_nha_duong}" Text="{Binding Street}" />
+
                         <!--danh muc cha -->
                         <controls:FormLabel Text="{Binding Source={x:Static lang:Language.nhom_danh_muc},StringFormat='{0} : '}"
                                             Margin="0,10,0,0" />
@@ -128,6 +143,7 @@
                             Clicked="Save_Clicked" />
                 </Frame>
             </StackLayout>
+            <controls:BottomModal x:Name="LookUpModal" />
             <controls:LoadingPopup x:Name="loadingPopup" />
         </AbsoluteLayout>
     </ContentPage.Content>

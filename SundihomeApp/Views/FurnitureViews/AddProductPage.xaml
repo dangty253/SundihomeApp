@@ -7,16 +7,14 @@
                 <Setter Property="FontSize" Value="15" />
                 <Setter Property="TextColor" Value="#444" />
                 <Setter Property="FontAttributes" Value="Bold" />
-            </Style> 
+            </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
         <AbsoluteLayout>
             <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" VerticalScrollBarVisibility="Never" Padding="0,0,0,70">
                 <StackLayout Spacing="0">
-                    <StackLayout BackgroundColor="{StaticResource MainDarkColor}">
-                        <Label Text="{Static lang:Language.thong_tin_chung}" Margin="10,5" TextColor="White" FontSize="15" />
-                    </StackLayout>
+                    <Label Text="{Static lang:Language.thong_tin_chung}" Padding="10,5" BackgroundColor="{StaticResource MainDarkColor}" TextColor="White" FontSize="15" />
                     <!--danh mục nội thất-->
 
                     <controls:FormLabelRequired Margin="10,10,10,0" Text="{Static lang:Language.nhom_noi_that}" />

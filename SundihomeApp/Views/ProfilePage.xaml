@@ -182,9 +182,26 @@
             <!-- Change Phone Popup -->
             <controls:CenterModal x:Name="ChangePhonePopup" Title="{x:Static lang:Language.doi_sdt}">
                 <controls:CenterModal.Body>
-                    <StackLayout Spacing="10" Padding="10">
-                        <controls:ClearableEntry HeightRequest="40" x:Name="entryPhone" Text="{Binding NewPhone}" Placeholder="{x:Static lang:Language.sdt_moi_required}" />
-                    </StackLayout>
+                    <Grid ColumnSpacing="5" Padding="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label FontSize="14" FontAttributes="Bold" Padding="10,0,0,0" TextColor="Black" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OpenPickerMaQuocGia_Tapped" />
+                            </Label.GestureRecognizers>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Binding MaQuocGia.SelectedItemDisplay}"/>
+                                    <Span Text=" "/>
+                                    <Span Text="&#xf078;" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="12" TextColor="Gray"  />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Picker x:Name="PickerMaQuocGia" IsVisible="false" ItemsSource="{Binding MaQuocGiaList}" ItemDisplayBinding="{Binding Display}" SelectedItem="{Binding MaQuocGia}" Grid.Column="0"/>
+                        <controls:ClearableEntry HeightRequest="40" Grid.Column="1" x:Name="entryPhone" Text="{Binding NewPhone}" Placeholder="{x:Static lang:Language.sdt_moi_required}" />
+                    </Grid>
                 </controls:CenterModal.Body>
                 <controls:CenterModal.Footer>
                     <Button Margin="10,0,10,10" Text="{x:Static lang:Language.xac_nhan}" FontSize="15" CornerRadius="5" Clicked="OnChangePhone_Clicked" BackgroundColor="{StaticResource MainDarkColor}" TextColor="#fff" />

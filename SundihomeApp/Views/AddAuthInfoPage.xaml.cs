@@ -108,5 +108,10 @@ namespace SundihomeApp.Views
             progressBar.Progress = 0;
             OnCleanOTPButtonClicked(sender, e);
         }
+
+        void OpenPickerMaQuocGia_Tapped(object sender, EventArgs e)
+        {
+            PickerMaQuocGia.Focus();
+        }
     }
 }

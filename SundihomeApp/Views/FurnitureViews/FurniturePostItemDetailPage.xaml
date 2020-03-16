@@ -90,11 +90,11 @@
                                         CommandParameter="{Binding}" />
                             </Grid>
 
-                            <Label FontSize="14"
-                                   Grid.Row="1"
-                                   Margin="10,5"
-                                   TextColor="#444444"
-                                   Text="{Binding PostItem.Description}" />
+                            <StackLayout Grid.Row="1" Margin="10,5">
+                                <Label FontSize="15" TextColor="Black" FontAttributes="Bold" Text="{Binding PostItem.Title}" />
+                                <Label FontSize="15" TextColor="#444444" MaxLines="5" LineBreakMode="TailTruncation" Text="{Binding PostItem.Description}" />
+                            </StackLayout>
+
 
                             <Label Margin="10,5"
                                    Grid.Row="2"

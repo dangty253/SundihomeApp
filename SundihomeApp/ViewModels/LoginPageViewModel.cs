@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net.Http;
 using System.Text;
@@ -21,7 +22,8 @@ namespace SundihomeApp.ViewModels
 {
     public class LoginPageViewModel : BaseViewModel
     {
-        private HttpClient _client;
+        public List<MaQuocGia> MaQuocGiaList { get; set; } = MaQuocGiaData.GetList();
+        public List<MaQuocGia> MaQuocGiaListRegister { get; set; } = MaQuocGiaData.GetList();
 
         private User _userLogin;
         public User UserLogin
@@ -73,16 +75,24 @@ namespace SundihomeApp.ViewModels
         public Command FacebookSignInCommand { get; set; }
         public Command OnConfirmOtpCommand { get; set; }
 
+        private MaQuocGia _maQuocGiaLogin;
+        public MaQuocGia MaQuocGiaLogin { get => _maQuocGiaLogin; set { _maQuocGiaLogin = value; OnPropertyChanged(nameof(MaQuocGiaLogin)); } }
+
+        private MaQuocGia _maQuocGiaRegister;
+        public MaQuocGia MaQuocGiaRegister { get => _maQuocGiaRegister; set { _maQuocGiaRegister = value; OnPropertyChanged(nameof(MaQuocGiaRegister)); } }
+
         public LoginPageViewModel()
         {
-            _client = BsdHttpClient.Instance();
-
             UserLogin = new User();
             UserRegister = new User();
             RegisterOtp = new OtpModel();
             GoogleSignInCommand = new Command(GoogleLogin);
             FacebookSignInCommand = new Command(async () => await FacebookLogin());
             OnConfirmOtpCommand = new Command(ConfirmOtp);
+
+            MaQuocGiaList.Insert(0, new MaQuocGia("- - -", ""));
+            MaQuocGiaLogin = this.MaQuocGiaList[0];
+            MaQuocGiaRegister = this.MaQuocGiaListRegister[0];
         }
 
         async Task FacebookLogin()
@@ -91,7 +101,6 @@ namespace SundihomeApp.ViewModels
 
             IFacebookClient _facebookService = CrossFacebookClient.Current;              try
             {
-
                 if (_facebookService.IsLoggedIn)
                 {
                     _facebookService.Logout();
@@ -295,7 +304,13 @@ namespace SundihomeApp.ViewModels
         public async void Login()
         {
             IsLoading = true;
-            ApiResponse response = await ApiHelper.Post(ApiRouter.USER_LOGIN, UserLogin, false);
+            var loginData = new
+            {
+                Email = UserLogin.Email,
+                Phone = this.MaQuocGiaLogin.Value + this.UserLogin.Phone,
+                Password = UserLogin.Password,
+            };
+            ApiResponse response = await ApiHelper.Post(ApiRouter.USER_LOGIN, loginData, false);
             if (response.IsSuccess)
             {
                 var login = JsonConvert.DeserializeObject<AuthenticateReponse>(response.Content.ToString());
@@ -324,19 +339,21 @@ namespace SundihomeApp.ViewModels
             IsLoading = true;
             try
             {
+                UserRegister.MaQuocGia = MaQuocGiaRegister.Value;
                 var response = await ApiHelper.Post(ApiRouter.USER_CHECKUSER, UserRegister);
                 if (response.IsSuccess)
                 {
-                    IsLoading = false;
-                    _otp = StringUtils.RandomString(4);
                     try
                     {
-                        await StringUtils.SendOTP(UserRegister.Phone, $"{_otp} {Language.la_ma_xac_thuc_cua_ban}");
+                        _otp = StringUtils.RandomString(4);
+                        IsLoading = false;
+                        await StringUtils.SendOTP(this.MaQuocGiaRegister.Value + this.UserRegister.Phone, $"{_otp} {Language.la_ma_xac_thuc_cua_ban}");
                         MessagingCenter.Send<LoginPageViewModel, bool>(this, "OtpPopup", true);
                     }
                     catch (Exception ex)
                     {
-
+                        IsLoading = false;
+                        await Shell.Current.DisplayAlert("", ex.Message, Language.dong);
                     }
                 }
                 else
@@ -360,7 +377,7 @@ namespace SundihomeApp.ViewModels
                     }
                 }
             }
-            catch (Exception ex)
+            catch
             {
                 IsLoading = false;
             }
@@ -369,7 +386,7 @@ namespace SundihomeApp.ViewModels
         public async void ConfirmOtp()
         {
             IsLoading = true;
-            bool Valid = _otp == RegisterOtp.Otp1 + RegisterOtp.Otp2 + RegisterOtp.Otp3 + RegisterOtp.Otp4 || _otp == "1234";
+            bool Valid = _otp == RegisterOtp.Otp1 + RegisterOtp.Otp2 + RegisterOtp.Otp3 + RegisterOtp.Otp4;
             if (!Valid)
             {
                 IsLoading = false;
@@ -378,7 +395,8 @@ namespace SundihomeApp.ViewModels
             }
 
             //create
-            var response = await ApiHelper.Post(ApiRouter.USER_CREATE, UserRegister);
+            this.UserRegister.MaQuocGia = this._maQuocGiaRegister.Value;
+            var response = await ApiHelper.Post(ApiRouter.USER_CREATE, this.UserRegister, false);
             if (response.IsSuccess)
             {
                 var loginResponse = JsonConvert.DeserializeObject<AuthenticateReponse>(response.Content.ToString());
@@ -401,7 +419,7 @@ namespace SundihomeApp.ViewModels
             _otp = StringUtils.RandomString(4);
             try
             {
-                await StringUtils.SendOTP(UserRegister.Phone, $"{_otp} {Language.la_ma_xac_thuc_cua_ban}");
+                await StringUtils.SendOTP(this.MaQuocGiaRegister.Value + UserRegister.Phone, $"{_otp} {Language.la_ma_xac_thuc_cua_ban}");
             }
             catch (Exception ex)
             {

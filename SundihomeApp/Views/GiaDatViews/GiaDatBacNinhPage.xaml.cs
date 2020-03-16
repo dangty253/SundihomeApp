@@ -27,6 +27,7 @@ namespace SundihomeApp.Views.GiaDatViews
         private async void District_Changed(object sender, EventArgs e)
         {
             loadingPopup.IsVisible = true;
+            this.viewModel.GiaDatList.Clear();
             this.viewModel.KhuDanCu = null;
             this.viewModel.GiaDat = null;
             this.viewModel.KhuVuc = null;

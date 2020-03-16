@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using SundihomeApp.Helpers;
+using SundihomeApp.Models;
+using SundihomeApp.Resources;
 using SundihomeApp.ViewModels;
 using Telerik.XamarinForms.Primitives;
 using Xamarin.Forms;
@@ -23,7 +25,6 @@ namespace SundihomeApp.Views
         {
             InitializeComponent();
             BindingContext = viewModel = new LoginPageViewModel();
-            //pickerLanguage.ItemsSource = AppShell.Languages.Values.ToList();
             OtpPopup.BackgroundColor = Color.FromRgba(0, 0, 0, 0.5);
 
             MessagingCenter.Subscribe<LoginPageViewModel, bool>(this, "OtpPopup", (sender, arg) =>
@@ -75,42 +76,57 @@ namespace SundihomeApp.Views
 
         public void OnLoginClicked(object sender, EventArgs e)
         {
-            if (!Validations.IsValidEmail(viewModel.UserLogin.Email) && !Validations.IsValidPhone(viewModel.UserLogin.Email))
+            string email = SignInEmail.Text;
+            bool hasError = false;
+            if (!Validations.IsValidEmail(email) && !Validations.IsValidPhone(email))
             {
-                //yeu cau nhap email hoac sdt
                 InvalidSignInEmail.IsVisible = true;
-                return;
-            }
-            else if (Validations.IsValidEmail(viewModel.UserLogin.Email))
-            {
-                //dang nhap = email
-                viewModel.UserLogin.Email = viewModel.UserLogin.Email;
-            }
-            else if (Validations.IsValidPhone(viewModel.UserLogin.Email))
-            {
-                //dang nhap = sdt
-                viewModel.UserLogin.Phone = viewModel.UserLogin.Email;
-                viewModel.UserLogin.Email = null;
+                hasError = true;
             }
 
             if (!Validations.IsValidPassword(viewModel.UserLogin.Password))
             {
-                if (!Validations.IsValidPassword(viewModel.UserLogin.Password))
-                    InvalidSignInPassword.IsVisible = true;
+                InvalidSignInPassword.IsVisible = true;
+                hasError = true;
             }
-            else
+            if (hasError) return;
+
+            InvalidSignInEmail.IsVisible = false;
+            InvalidSignInPassword.IsVisible = false;
+
+            if (Validations.IsValidEmail(email))
             {
-                viewModel.Login();
+                //dang nhap = email
+                viewModel.UserLogin.Email = email;
+                viewModel.UserLogin.Phone = null;
+            }
+            else if (Validations.IsValidPhone(email))
+            {
+                //dang nhap = sdt
+                viewModel.UserLogin.Phone = email;
+                viewModel.UserLogin.Email = null;
             }
 
+
+            viewModel.Login();
         }
 
         public void OnSignUpClicked(object sender, EventArgs e)
         {
-            //check valid
+
+            if (string.IsNullOrWhiteSpace(viewModel.UserRegister.FullName))
+            {
+                InvalidSignUpFullName.IsVisible = true;
+            }
+
+            if (viewModel.MaQuocGiaRegister.Code == "")
+            {
+                InvalidSignUpPhone.IsVisible = true;
+                return;
+            }
+
             if (!Validations.IsValidPhone(viewModel.UserRegister.Phone) || !Validations.IsValidEmail(viewModel.UserRegister.Email) || !Validations.IsValidPassword(viewModel.UserRegister.Password))
             {
-
                 if (!Validations.IsValidPhone(viewModel.UserRegister.Phone))
                     InvalidSignUpPhone.IsVisible = true;
                 if (!Validations.IsValidEmail(viewModel.UserRegister.Email))
@@ -227,5 +243,18 @@ namespace SundihomeApp.Views
             });
         }
 
+        void RegisterFullName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            InvalidSignUpFullName.IsVisible = false;
+        }
+
+        void OpenPickerMaQuocGiaLogin_Tapped(object sender, EventArgs e)
+        {
+            PickerMaQuocGiaLogin.Focus();
+        }
+        void OpenPickerMaQuocGiaRegister_Tapped(object sender, EventArgs e)
+        {
+            PickerMaQuocGiaRegister.Focus();
+        }
     }
 }

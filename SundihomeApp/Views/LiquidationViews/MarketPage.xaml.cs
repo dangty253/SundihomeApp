@@ -57,13 +57,9 @@ namespace SundihomeApp.Views.LiquidationViews
         }
         private void SubscribeEvent()
         {
-            MessagingCenter.Subscribe<AddPostItemPage, LiquidationPostItem>(this, "AddPostItemSuccess", (page, newPostItem) =>
+            MessagingCenter.Subscribe<AddPostItemPage, LiquidationPostItem>(this, "AddPostItemSuccess", async (page, newPostItem) =>
             {
-                // cung type moi insert
-                //if (newPostItem.Type == viewModel.Type || viewModel.Type == -1)
-                //{
-                viewModel.Data.Insert(0, newPostItem);
-                //}
+                await viewModel.LoadOnRefreshCommandAsync();
             });
         }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using Newtonsoft.Json;
@@ -14,6 +15,9 @@ namespace SundihomeApp.ViewModels
 {
     public class ForgetPasswordPageViewModel : BaseViewModel
     {
+        public List<MaQuocGia> MaQuocGiaList { get; set; } = MaQuocGiaData.GetList();
+        private MaQuocGia _maQuocGia;
+        public MaQuocGia MaQuocGia { get => _maQuocGia; set { _maQuocGia = value; OnPropertyChanged(nameof(MaQuocGia)); } }
 
         private string _otp;
 
@@ -118,6 +122,8 @@ namespace SundihomeApp.ViewModels
 
             OnSubmitCommand = new Command(Submit);
             OnConfirmOtpCommand = new Command(ConfirmOtp);
+
+            this.MaQuocGia = this.MaQuocGiaList[0];
         }
 
         async void Submit()
@@ -135,7 +141,7 @@ namespace SundihomeApp.ViewModels
 
                 try
                 {
-                    var response = await ApiHelper.Post("api/auth/checkphone", Phone);
+                    var response = await ApiHelper.Post(ApiRouter.USER_CHECKPHONE, MaQuocGia.Value + Phone);
                     if (response.IsSuccess)
                     {
                         throw new Exception(Language.khong_tim_thay_tai_khoan);
@@ -146,11 +152,11 @@ namespace SundihomeApp.ViewModels
                         User = JsonConvert.DeserializeObject<User>(response.Content.ToString());
 
                         //otp
-                        _otp = StringUtils.RandomString(4);
-                        var mess = $"{_otp} {Language.la_ma_xac_thuc_cua_ban}";
                         try
                         {
-                            await StringUtils.SendOTP(Phone, mess);
+                            _otp = StringUtils.RandomString(4);
+                            var mess = $"{_otp} {Language.la_ma_xac_thuc_cua_ban}";
+                            await StringUtils.SendOTP(MaQuocGia.Value + Phone, mess);
                             MessagingCenter.Send<ForgetPasswordPageViewModel, bool>(this, "OtpPopup", true);
                         }
                         catch (Exception ex)

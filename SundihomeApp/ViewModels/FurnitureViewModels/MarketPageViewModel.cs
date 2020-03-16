@@ -14,6 +14,7 @@ namespace SundihomeApp.ViewModels.Furniture
     public class MarketPageViewModel : ListViewPageViewModel2<FurniturePostItem>
     {
         public int Type { get; set; } = -1;
+        public string Keyword { get; set; }
         public MarketPageViewModel()
         {
             IUserService userService = DependencyService.Get<IUserService>();
@@ -27,7 +28,12 @@ namespace SundihomeApp.ViewModels.Furniture
             });
             PreLoadData = new Command(() =>
             {
-                ApiUrl = $"{Configuration.ApiRouter.FURNITUREPOSTITEM_GETALL}?page={Page}&type={Type}";
+                string url = $"{ApiRouter.FURNITUREPOSTITEM_GETALL}?page={Page}&type={Type}";
+                if (!string.IsNullOrWhiteSpace(this.Keyword))
+                {
+                    url += "&keyword=" + this.Keyword;
+                }
+                ApiUrl = url;
             });
         }
 

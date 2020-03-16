@@ -39,6 +39,7 @@
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
 
                             <Grid Grid.Row="0" ColumnSpacing="10" Margin="10,10,10,0">
@@ -67,9 +68,19 @@
                                 <Label FontSize="15" TextColor="#444444" MaxLines="5" LineBreakMode="TailTruncation" Text="{Binding PostItem.Description}" />
                             </StackLayout>
 
-                            <ContentView Grid.Row="2" IsVisible="{Binding PostItem.HasImage}" Margin="10,0,10,10" Content="{Binding PostItem.Images,Converter={StaticResource B2BPostItemControlTemplateConverter}}" />
+                            <Label Margin="10,5" Grid.Row="2" FontSize="14" TextColor="#333333" IsVisible="{Binding PostItem.HasAddress}">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="&#xf3c5;" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="Small"></Span>
+                                        <Span Text=" " />
+                                        <Span Text="{Binding PostItem.Address}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
 
-                            <controls:ExtendedFrame IsVisible="{Binding PostItem.HasPost}" Grid.Row="3" Margin="5" Padding="10">
+                            <ContentView Grid.Row="3" IsVisible="{Binding PostItem.HasImage}" Margin="10,0,10,10" Content="{Binding PostItem.Images,Converter={StaticResource B2BPostItemControlTemplateConverter}}" />
+
+                            <controls:ExtendedFrame IsVisible="{Binding PostItem.HasPost}" Grid.Row="4" Margin="5" Padding="10">
                                 <controls:ExtendedFrame.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="ViewPost_Clicked" CommandParameter="{Binding PostItem.Post.PostId}" />
                                 </controls:ExtendedFrame.GestureRecognizers>
@@ -90,7 +101,7 @@
                                 </Grid>
                             </controls:ExtendedFrame>
 
-                            <telerikPrimitives:RadBorder Grid.Row="4" BorderThickness="0,1,0,0" BorderColor="#eeeeee">
+                            <telerikPrimitives:RadBorder Grid.Row="5" BorderThickness="0,1,0,0" BorderColor="#eeeeee">
                                 <Grid Padding="5" RowSpacing="0" ColumnSpacing="0">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*" />

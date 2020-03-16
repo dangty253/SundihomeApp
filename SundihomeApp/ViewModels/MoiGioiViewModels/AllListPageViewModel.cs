@@ -94,27 +94,27 @@ namespace SundihomeApp.ViewModels.MoiGioiViewModels
             ProvinceList.Clear();
             ApiResponse apiResponse = await ApiHelper.Get<List<Province>>("api/provinces", false, false);
             List<Province> data = (List<Province>)apiResponse.Content;
+            ProvinceList.Add(new Province() { Id = -1, Name = Language.tat_ca, Sort = -1 });
             foreach (var item in data)
             {
                 ProvinceList.Add(item);
             }
-            ProvinceList.Insert(0, new Province() { Id = -1, Name = Language.tat_ca, Sort = -1 });
         }
 
         public async Task GetDistrictAsync()
         {
             this.DistrictList.Clear();
+            District = null;
             if (Province != null)
             {
                 ApiResponse apiResponse = await ApiHelper.Get<List<District>>($"api/districts/{Province.Id}", false, false);
                 List<District> data = (List<District>)apiResponse.Content;
+                DistrictList.Add(new District() { Id = -1, Name = Language.tat_ca, Pre = null, ProvinceId = -1 });
                 foreach (var item in data)
                 {
                     DistrictList.Add(item);
                 }
-                DistrictList.Insert(0, new District() { Id = -1, Name = Language.tat_ca, Pre = null, ProvinceId = -1 });
             }
-
         }
     }
 }

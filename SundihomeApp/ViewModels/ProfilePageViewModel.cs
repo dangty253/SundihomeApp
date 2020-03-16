@@ -20,6 +20,10 @@ namespace SundihomeApp.ViewModels
 {
     public class ProfilePageViewModel : BaseViewModel
     {
+        public List<MaQuocGia> MaQuocGiaList { get; set; } = MaQuocGiaData.GetList();
+        private MaQuocGia _maQuocGia;
+        public MaQuocGia MaQuocGia { get => _maQuocGia; set { _maQuocGia = value; OnPropertyChanged(nameof(MaQuocGia)); } }
+
         private UserProfileModel _userProfile;
         public UserProfileModel UserProfile
         {
@@ -197,12 +201,8 @@ namespace SundihomeApp.ViewModels
         public Command OnCancelCommand { get; set; }
         public Command OnConfirmOtpCommand { get; set; }
 
-        private HttpClient _client;
-
         public ProfilePageViewModel(User user)
         {
-            _client = BsdHttpClient.Instance();
-
             User = user;
             RegisterOtp = new OtpModel();
             ChangePassword = new ChangePasswordModel();
@@ -220,6 +220,8 @@ namespace SundihomeApp.ViewModels
             ProvinceList = new ObservableCollection<Province>();
             DistrictList = new ObservableCollection<District>();
             WardList = new ObservableCollection<Ward>();
+
+            MaQuocGia = this.MaQuocGiaList[0];
         }
 
         void GetUserSex()
@@ -326,27 +328,6 @@ namespace SundihomeApp.ViewModels
             IsLoading = false;
         }
 
-
-        bool CheckChangeProfile()
-        {
-            bool result = false;
-
-            if (User.FullName != UserLogged.FullName)
-                result = true;
-            if (User.Birthday.HasValue && User.Birthday.Value != UserLogged.Birthday)
-                result = true;
-            if (!User.Birthday.HasValue && UserLogged.Birthday != DateTime.MinValue)
-                result = true;
-            if (User.Sex.HasValue && User.Sex.Value != UserLogged.Sex)
-                result = true;
-            if ((!User.Sex.HasValue || User.Sex == null) && UserLogged.Sex != -1)
-                result = true;
-            if (User.Address != UserLogged.Address)
-                result = true;
-
-            return result;
-        }
-
         async void Cancel()
         {
             await Application.Current.MainPage.Navigation.PopAsync();
@@ -450,7 +431,7 @@ namespace SundihomeApp.ViewModels
 
         public async Task OnChangePhone()
         {
-            IsLoading = true;
+
             try
             {
                 if (string.IsNullOrWhiteSpace(NewPhone))
@@ -460,19 +441,21 @@ namespace SundihomeApp.ViewModels
                 if (!Validations.IsValidPhone(NewPhone))
                     throw new Exception(Language.sdt_khong_hop_le);
 
-                var response = await ApiHelper.Post(ApiRouter.USER_CHECKPHONE, NewPhone, true);
+                IsLoading = true;
+                var response = await ApiHelper.Post(ApiRouter.USER_CHECKPHONE, MaQuocGia.Value + NewPhone, true);
                 if (response.IsSuccess)
                 {
-                    IsLoading = false;
-                    _otp = StringUtils.RandomString(4);
                     try
                     {
-                        await StringUtils.SendOTP(NewPhone, $"{_otp} {Language.la_ma_xac_thuc_cua_ban}");
+                        _otp = StringUtils.RandomString(4);
+                        await StringUtils.SendOTP(MaQuocGia.Value + NewPhone, $"{_otp} {Language.la_ma_xac_thuc_cua_ban}");
+                        IsLoading = false;
                         MessagingCenter.Send<ProfilePageViewModel, bool>(this, "OtpPopup", true);
                     }
                     catch (Exception ex)
                     {
-                        await Application.Current.MainPage.DisplayAlert("", Language.loi_he_thong_vui_long_thu_lai, Language.dong);
+                        IsLoading = false;
+                        await Application.Current.MainPage.DisplayAlert("", ex.Message, Language.dong);
                     }
                 }
                 else
@@ -491,7 +474,6 @@ namespace SundihomeApp.ViewModels
             catch (Exception ex)
             {
                 await Application.Current.MainPage.DisplayAlert("", ex.Message, Language.dong);
-                IsLoading = false;
             }
         }
 
@@ -508,11 +490,11 @@ namespace SundihomeApp.ViewModels
             //change
             try
             {
-                var response = await ApiHelper.Put("api/user/changephone", NewPhone, true);
+                var response = await ApiHelper.Put("api/user/changephone", (this.MaQuocGia.Value + NewPhone), true);
                 if (response.IsSuccess)
                 {
-                    User.Phone = NewPhone;
-                    UserLogged.SavePhone(NewPhone);
+                    User.Phone = (this.MaQuocGia.Value + NewPhone);
+                    //UserLogged.SavePhone(NewPhone);
                     RegisterOtp = null;
                     MessagingCenter.Send<ProfilePageViewModel, User>(this, "UpdateProfile", User);
                     MessagingCenter.Send<ProfilePageViewModel, bool>(this, "ClosePopup", false);
@@ -523,7 +505,14 @@ namespace SundihomeApp.ViewModels
                 }
                 else
                 {
-                    throw new Exception(response.Message);
+                    if (response.Message != null && response.Message == "Số điện thoại đã tồn tại!")
+                    {
+                        throw new Exception(Language.sdt_da_ton_tai);
+                    }
+                    else
+                    {
+                        throw new Exception(response.Message);
+                    }
                 }
             }
             catch (Exception ex)
@@ -561,8 +550,6 @@ namespace SundihomeApp.ViewModels
                 await Shell.Current.DisplayAlert(Language.thong_bao, ex.Message, Language.dong);
             }
         }
-
-        //
 
         public async Task GetProvinceAsync()
         {
@@ -602,7 +589,5 @@ namespace SundihomeApp.ViewModels
                 }
             }
         }
-
-
     }
 }

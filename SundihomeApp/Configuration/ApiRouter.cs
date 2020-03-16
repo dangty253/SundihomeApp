@@ -207,5 +207,4 @@ namespace SundihomeApp.Configuration
         public const string GIADAT_BARIAVUNGTAU_STREETS = "api/giadat/bariavungtau/streets";//{DistrictId}
         public const string GIADAT_BARIAVUNGTAU_STREET_DISTANCES = "api/giadat/bariavungtau/street_distances";//{StreetId}
     }
-
 }

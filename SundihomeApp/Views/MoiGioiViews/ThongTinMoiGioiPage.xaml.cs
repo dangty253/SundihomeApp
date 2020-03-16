@@ -46,6 +46,8 @@ namespace SundihomeApp.Views.MoiGioiViews
         {
             viewModel.IsMoiGioi = _isMoiGioi;
             SetFloatingButtonGroup();
+            Segment.ItemsSource = new List<string> { Language.thong_tin,Language.bat_dong_san };
+            Segment.SetActive(0);
             await Task.WhenAll(viewModel.LoadThongTinMoiGioi(_moiGioiId),
                 viewModel.GetFollowers(_moiGioiId),
                 viewModel.LoadData());
@@ -72,23 +74,9 @@ namespace SundihomeApp.Views.MoiGioiViews
                 }
             }
         }
-
-        private void SegmentSelected_Tapped(object sender, EventArgs e)
+        public void SelectedIndexChanged_Tapped(object sender, EventArgs e)
         {
-            RadBorder radBorderSelected = sender as RadBorder;
-            TapGestureRecognizer tap = radBorderSelected.GestureRecognizers[0] as TapGestureRecognizer;
-            CurrentIndex = int.Parse(tap.CommandParameter.ToString());
-
-            int InactiveIndex = CurrentIndex == 1 ? 0 : 1;
-
-            radBorderSelected.BackgroundColor = (Color)App.Current.Resources["MainDarkColor"];
-            (radBorderSelected.Content as Label).TextColor = Color.White;
-
-            var radBorder = (Segment.Children[InactiveIndex] as RadBorder);
-            radBorder.BackgroundColor = Color.White;
-            (radBorder.Content as Label).TextColor = Color.FromHex("#333333");
-
-            if (CurrentIndex == 0)
+            if (Segment.GetCurrentIndex() == 0)
             {
                 Information.IsVisible = true;
                 BDSList.IsVisible = false;
@@ -99,6 +87,7 @@ namespace SundihomeApp.Views.MoiGioiViews
                 BDSList.IsVisible = true;
             }
         }
+
 
         private void Lv_ItemTapped(object sender, ItemTappedEventArgs e)
         {

@@ -50,24 +50,21 @@
                         <controls:FormLabel Text="{x:Static lang:Language.loai_bat_dong_san}" Margin="0,5,0,0" />
                         <controls:LookUpControl x:Name="LookUpType" BottomModal="{x:Reference LookUpModal}" NameDisplay="Name" Placeholder="{x:Static lang:Language.loai_bat_dong_san}" />
 
+                        <controls:FormLabel Margin="0,5,0,0" Text="{x:Static lang:Language.dia_chi}" />
                         <!--Tỉnh/thành phố-->
-                        <controls:FormLabelRequired Text="{x:Static lang:Language.tinh_thanh}" Margin="0,10,0,0" />
                         <controls:LookUpControl SelectedItem="{Binding Province}" ItemsSource="{Binding ProvinceList}" BottomModal="{x:Reference LookUpModal}" Placeholder="{x:Static lang:Language.tinh_thanh}" NameDisplay="Name" SelectedItemChange="Province_Change" />
 
                         <!--Quận/huyện-->
-                        <controls:FormLabelRequired Text="{x:Static lang:Language.quan_huyen}" Margin="0,10,0,0" />
                         <controls:LookUpControl SelectedItem="{Binding District}" ItemsSource="{Binding DistrictList}" BottomModal="{x:Reference LookUpModal}" Placeholder="{x:Static lang:Language.quan_huyen}" NameDisplay="Name" SelectedItemChange="District_Change" />
 
                         <!--Xã/phường-->
-                        <controls:FormLabelRequired Text="{x:Static lang:Language.phuong_xa}" Margin="0,10,0,0" />
                         <controls:LookUpControl SelectedItem="{Binding Ward}" ItemsSource="{Binding WardList}" BottomModal="{x:Reference LookUpModal}" Placeholder="{x:Static lang:Language.phuong_xa}" NameDisplay="Name" />
 
                         <!--Dduong -->
-                        <controls:FormLabel Text="{x:Static lang:Language.so_nha_duong}" Margin="0,10,0,0" />
                         <controls:ClearableEntry Placeholder="{x:Static lang:Language.so_nha_duong}" Text="{Binding Street}" />
 
                         <!--so phong ngu-->
-                        <controls:FormLabel Text="{x:Static lang:Language.so_phong_ngu}" Margin="0,5,0,0" />
+                        <controls:FormLabel Text="{x:Static lang:Language.so_phong_ngu}" Margin="0,10,0,0" />
                         <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
                             <StackLayout x:Name="StacklayoutSophongngu" Orientation="Horizontal" Spacing="15" />
                         </ScrollView>

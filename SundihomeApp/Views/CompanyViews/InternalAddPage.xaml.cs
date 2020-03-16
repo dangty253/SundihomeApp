@@ -115,6 +115,23 @@ namespace SundihomeApp.Views.CompanyViews
             return uploadResonse;
         }
 
+        public async void Province_Change(object sender, LookUpChangeEvent e)
+        {
+            loadingPopup.IsVisible = true;
+            await viewModel.GetDistrictAsync();
+            viewModel.WardList.Clear();
+            viewModel.District = null;
+            viewModel.Ward = null;
+            loadingPopup.IsVisible = false;
+        }
+
+        public async void District_Change(object sender, LookUpChangeEvent e)
+        {
+            loadingPopup.IsVisible = true;
+            await viewModel.GetWardAsync();
+            viewModel.Ward = null;
+            loadingPopup.IsVisible = false;
+        }
 
         private async void Save_Clicked(object sender, EventArgs e)
         {
@@ -193,6 +210,21 @@ namespace SundihomeApp.Views.CompanyViews
                     item.HasPost = true;
                     item.Post = viewModel.InternalPost;
                 }
+
+                if (viewModel.Province != null)
+                {
+                    item.ProvinceId = viewModel.Province.Id;
+                    if (viewModel.District != null)
+                    {
+                        item.DistrictId = viewModel.District.Id;
+                        if (viewModel.Ward != null)
+                        {
+                            item.WardId = viewModel.Ward.Id;
+                        }
+                    }
+                }
+
+                item.Address = viewModel.Address;
 
                 postItemService.AddPostItem(item);
 

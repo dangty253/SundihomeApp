@@ -59,7 +59,7 @@
 
             <Color x:Key="LightBlueLogoColor">#0089D1</Color>
             <Color x:Key="LightBlueBackgroundColor">#FAFDFE</Color>
-            <Color x:Key="LightGrayBorderColor">#E8EFF2</Color>
+            <Color x:Key="LightGrayBorderColor">#dee5e8</Color>
             <Color x:Key="BackGroundText">#fff</Color>
             <Color x:Key="ColorText">#404040</Color>
             <Color x:Key="TextColorBlack">Black</Color>

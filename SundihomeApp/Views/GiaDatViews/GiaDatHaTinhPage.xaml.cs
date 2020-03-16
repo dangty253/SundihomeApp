@@ -32,6 +32,7 @@ namespace SundihomeApp.Views.GiaDatViews
             loadingPopup.IsVisible = true;
             this.viewModel.Street = null;
             this.viewModel.StreetDistance = null;
+            this.viewModel.StreetDistances.Clear();
             await this.viewModel.LoadStreets();
             loadingPopup.IsVisible = false;
         }

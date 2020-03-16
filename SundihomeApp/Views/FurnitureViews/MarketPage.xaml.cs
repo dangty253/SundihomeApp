@@ -62,14 +62,10 @@ namespace SundihomeApp.Views.Furniture
         }
         private void SubscribeEvent()
         {
-            MessagingCenter.Subscribe<AddFurniturePostItemPage, FurniturePostItem>(this, "AddPostItemSuccess", (page, newPostItem) =>
-            {
-                // cung type moi insert
-                if (newPostItem.Type == viewModel.Type || viewModel.Type == -1)
-                {
-                    viewModel.Data.Insert(0, newPostItem);
-                }
-            });
+            MessagingCenter.Subscribe<AddFurniturePostItemPage, FurniturePostItem>(this, "AddPostItemSuccess", async (page, newPostItem) =>
+             {
+                 await viewModel.LoadOnRefreshCommandAsync();
+             });
         }
         private void SetColorFilter()
         {
@@ -117,6 +113,22 @@ namespace SundihomeApp.Views.Furniture
             }
             await Navigation.PushAsync(new AddFurniturePostItemPage());
             loadingPopup.IsVisible = false;
+        }
+
+        private async void Search_Clicked(object sender, EventArgs e)
+        {
+            viewModel.Keyword = searchBar.Text;
+            loadingPopup.IsVisible = true;
+            await viewModel.LoadOnRefreshCommandAsync();
+            loadingPopup.IsVisible = false;
+        }
+
+        private void SearchText_Changed(object sender, TextChangedEventArgs e)
+        {
+            if ((e.NewTextValue == null || e.NewTextValue == "") && !string.IsNullOrWhiteSpace(this.viewModel.Keyword))
+            {
+                Search_Clicked(null, EventArgs.Empty);
+            }
         }
 
         private async void FollowPost_Clicked(object sender, EventArgs e)

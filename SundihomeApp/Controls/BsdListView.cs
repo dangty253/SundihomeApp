@@ -29,7 +29,6 @@ namespace SundihomeApp.Controls
             InfiniteScrollBehavior behavior = new InfiniteScrollBehavior();
             behavior.SetBinding(InfiniteScrollBehavior.IsLoadingMoreProperty, new Binding("IsBusy"));
             this.Behaviors.Add(behavior);
-
         }
         public static readonly BindableProperty ItemAppearingCommandProperty =
             BindableProperty.Create(nameof(ItemAppearingCommand), typeof(ICommand), typeof(ExtendedListView), default(ICommand));

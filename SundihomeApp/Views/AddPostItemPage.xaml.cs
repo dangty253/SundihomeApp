@@ -36,6 +36,7 @@ namespace SundihomeApp.Views
         private Color SelectedTextColor = Color.White;
         private Color UnSelectedTextColor = Color.FromHex("#444444");
         private int[] NumberList = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
         public AddPostItemPage()
         {
             InitializeComponent();
@@ -44,15 +45,34 @@ namespace SundihomeApp.Views
             ControlSegment.ItemsSource = new List<string> { Language.can_ban, Language.cho_thue, Language.can_mua, Language.can_thue };
             ControlSegment.SetActive(0);
             ImageList = new List<string>();
-            Init();
+            InitAdd();
         }
 
         public AddPostItemPage(SundihomeApi.Entities.Post post)
         {
             InitializeComponent();
             this.BindingContext = viewModel = new AddPostItemPageViewModel();
-            Init();
+            InitFromPOst(post);
+        }
 
+
+        public async void Init()
+        {
+            await CrossMedia.Current.Initialize();
+            LoadLoaiBatDongSan();
+            LoadSoPhongNgu();
+            LoadSoPhongTam();
+        }
+        public async void InitAdd()
+        {
+            Init();
+            await viewModel.GetProvinceAsync();
+            loadingPopup.IsVisible = false;
+        }
+
+        public async void InitFromPOst(SundihomeApi.Entities.Post post)
+        {
+            Init();
             CheckLastPost = true;
             ControlSegment.ItemsSource = new List<string> { Language.can_ban, Language.cho_thue, Language.can_mua, Language.can_thue };
             ControlSegment.SetActive(post.PostType);
@@ -117,19 +137,17 @@ namespace SundihomeApp.Views
 
             EntryPrice.Text = post.PriceFrom;
 
-            //EntryAddress.Text = post.Address;
+            await viewModel.GetProvinceAsync();
+            viewModel.Province = viewModel.ProvinceList.Single(x => x.Id == post.ProvinceId);
+            await viewModel.GetDistrictAsync();
+            viewModel.District = viewModel.DistrictList.Single(x => x.Id == post.DistrictId);
 
-        }
+            await viewModel.GetWardAsync();
+            viewModel.Ward = viewModel.WardList.Single(x => x.Id == post.WardId);
+            viewModel.Street = post.Street;
 
-        public async void Init()
-        {
-            await CrossMedia.Current.Initialize();
-            LoadLoaiBatDongSan();
-            LoadSoPhongNgu();
-            LoadSoPhongTam();
             loadingPopup.IsVisible = false;
         }
-
         public void LoadLoaiBatDongSan()
         {
             loaiBatDongSans = LoaiBatDongSanModel.GetList(null);
@@ -302,11 +320,26 @@ namespace SundihomeApp.Views
                 item.Area = EntryArea.Text + "m2";
             }
 
-            //if (!string.IsNullOrWhiteSpace(EntryAddress.Text))
-            //{
-            //    item.HasAddress = true;
-            //    item.Address = EntryAddress.Text;
-            //}
+            if (!string.IsNullOrWhiteSpace(viewModel.Address))
+            {
+                item.HasAddress = true;
+                item.Address = viewModel.Address;
+            }
+
+            if (viewModel.Province != null)
+            {
+                item.ProvinceId = viewModel.Province.Id;
+
+                if (viewModel.District != null)
+                {
+                    item.DistrictId = viewModel.District.Id;
+
+                    if (viewModel.Ward != null)
+                    {
+                        item.WardId = viewModel.Ward.Id;
+                    }
+                }
+            }
 
             if (LookUpType.SelectedItem != null)
             {

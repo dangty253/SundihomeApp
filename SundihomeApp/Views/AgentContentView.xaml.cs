@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using SundihomeApi.Entities.MoiGioiEntities;
 using SundihomeApp.Controls;
 using SundihomeApp.Models;
@@ -11,24 +12,50 @@ using Xamarin.Forms;
 
 namespace SundihomeApp.Views
 {
-    public partial class AgentContentView : ContentView
+    public partial class AgentContentView : AbsoluteLayout
     {
+        private LoadingPopup loadingPopup;
         private readonly AllListPageViewModel viewModel;
-        private LookUpControl LookUpControlProvince;
-        private LookUpControl LookUpControlDistrict;
-        private LookUpControl LookUpControlType;
+        public AgentContentView(LoadingPopup LoadingPopup)
+        {
+            InitializeComponent();
+            this.loadingPopup = LoadingPopup;
+            this.BindingContext = viewModel = new AllListPageViewModel();
+            Init();
+        }
 
         public AgentContentView()
         {
             InitializeComponent();
+
+            loadingPopup = new LoadingPopup()
+            {
+                IsVisible = true
+            };
+
+            this.Children.Add(loadingPopup);
+
             this.BindingContext = viewModel = new AllListPageViewModel();
             Init();
         }
+
         public async void Init()
         {
             DataList.ItemTapped += DataList_ItemTapped;
-            await viewModel.LoadData();
+            await Task.WhenAll(viewModel.LoadData(),
+                viewModel.GetProvinceAsync());
+            ShowButtonDKMoiGioi();
             loadingPopup.IsVisible = false;
+        }
+
+        private void ShowButtonDKMoiGioi()
+        {
+            // chua dnag nhap hoac dang nhap roi ma chua phai la moi gioi
+            if (UserLogged.IsLogged == false || (UserLogged.IsLogged && UserLogged.Type == 0))
+            {
+                FrameBtnDangKyMoiGioi.IsVisible = true;
+                BtnDangKyMoiGioi.Clicked += DangKyMoiGioi_Clicked;
+            }
         }
 
         private async void DataList_ItemTapped(object sender, ItemTappedEventArgs e)
@@ -73,6 +100,7 @@ namespace SundihomeApp.Views
                     var dangKyMoiGioiContentView = new DangKyMoiGioiContentView(LookUpModal, Guid.Parse(UserLogged.Id));
                     dangKyMoiGioiContentView.OnSaved += async (object s, EventArgs e2) =>
                     {
+                        FrameBtnDangKyMoiGioi.IsVisible = false;
                         await ModalDangKyMoiGioi.Hide();
                         await Shell.Current.GoToAsync("//quanlymoigioi");
                     };
@@ -84,120 +112,45 @@ namespace SundihomeApp.Views
             }
         }
 
-        public async void Province_Change(object sender, LookUpChangeEvent e)
-        {
 
+        public async void FilterDistrict_Changed(object sender, LookUpChangeEvent e)
+        {
             loadingPopup.IsVisible = true;
-            if (viewModel.Province.Id == -1)
-            {
-                LabelProvince.Text = Language.tinh_thanh;
-                LabelProvince.TextColor = Color.Black;
-                viewModel.Province = null;
-            }
-            else
-            {
-                LabelProvince.Text = viewModel.Province.Name;
-                LabelProvince.TextColor = Color.FromHex("#026294");
-            }
-
-            LabelDistrict.Text = Language.quan_huyen;
-            await viewModel.GetDistrictAsync();
-            viewModel.District = null;
-            LabelDistrict.TextColor = Color.Black;
-            await viewModel.LoadOnRefreshCommandAsync();
-            loadingPopup.IsVisible = false;
-        }
-
-        public async void District_Change(object sender, LookUpChangeEvent e)
-        {
             if (viewModel.District.Id == -1)
             {
-                LabelDistrict.Text = Language.quan_huyen;
-                LabelDistrict.TextColor = Color.Black;
                 viewModel.District = null;
             }
-            else
-            {
-                LabelDistrict.Text = viewModel.District.Name;
-                LabelDistrict.TextColor = Color.FromHex("#026294");
-            }
-            loadingPopup.IsVisible = true;
-
             await viewModel.LoadOnRefreshCommandAsync();
             loadingPopup.IsVisible = false;
         }
-        public async void Type_Change(object sender, LookUpChangeEvent e)
+
+        public async void FilterType_Changed(object sender, LookUpChangeEvent e)
         {
             if (viewModel.Type.Id == -1)
             {
-                LabelType.Text = Language.loai_bat_dong_san;
-                LabelType.TextColor = Color.Black;
                 viewModel.Type = null;
-            }
-            else
-            {
-                LabelType.Text = viewModel.Type.Name;
-                LabelType.TextColor = Color.FromHex("#026294");
             }
             loadingPopup.IsVisible = true;
             await viewModel.LoadOnRefreshCommandAsync();
             loadingPopup.IsVisible = false;
         }
 
-        public async void FilterProvince_Click(object sender, EventArgs e)
+        public async void FilterProvince_Changed(object sender, EventArgs e)
         {
-            if (LookUpControlProvince == null)
+            loadingPopup.IsVisible = true;
+            if (viewModel.Province.Id == -1)
             {
-                await viewModel.GetProvinceAsync();
-                LookUpControlProvince = new LookUpControl();
-                LookUpControlProvince.ItemsSource = viewModel.ProvinceList;
-                LookUpControlProvince.SelectedItemChange += Province_Change;
-                LookUpControlProvince.BottomModal = LookUpModal;
-                LookUpControlProvince.NameDisplay = "Name";
-                LookUpControlProvince.Placeholder = Language.tinh_thanh;
-                LookUpControlProvince.SetBinding(LookUpControl.SelectedItemProperty, new Binding("Province") { Source = viewModel });
+                viewModel.Province = null;
             }
-
-            await LookUpControlProvince.OpenModal();
-        }
-        public async void FilterDistric_Click(object sender, EventArgs e)
-        {
-            if (LookUpControlDistrict == null)
-            {
-                LookUpControlDistrict = new LookUpControl();
-                LookUpControlDistrict.ItemsSource = viewModel.DistrictList;
-                LookUpControlDistrict.SelectedItemChange += District_Change;
-                LookUpControlDistrict.BottomModal = LookUpModal;
-                LookUpControlDistrict.NameDisplay = "Name";
-                LookUpControlDistrict.Placeholder = Language.quan_huyen;
-                LookUpControlDistrict.SetBinding(LookUpControl.SelectedItemProperty, new Binding("District") { Source = viewModel });
-            }
-            await LookUpControlDistrict.OpenModal();
-        }
-        public async void FilterType_Click(object sender, EventArgs e)
-        {
-            if (LookUpControlType == null)
-            {
-                LookUpControlType = new LookUpControl();
-                LookUpControlType.ItemsSource = viewModel.TypeList;
-                LookUpControlType.SelectedItemChange += Type_Change;
-                LookUpControlType.BottomModal = LookUpModal;
-                LookUpControlType.NameDisplay = "Name";
-                LookUpControlType.Placeholder = Language.loai_bat_dong_san;
-                LookUpControlType.SetBinding(LookUpControl.SelectedItemProperty, new Binding("Type") { Source = viewModel });
-            }
-            await LookUpControlType.OpenModal();
+            await viewModel.GetDistrictAsync();
+            viewModel.District = null;
+            await viewModel.LoadOnRefreshCommandAsync();
+            loadingPopup.IsVisible = false;
         }
 
         public async void Clear_Clicked(object sender, EventArgs e)
         {
             loadingPopup.IsVisible = true;
-            LabelProvince.Text = Language.tinh_thanh;
-            LabelDistrict.Text = Language.quan_huyen;
-            LabelType.Text = Language.loai_bat_dong_san;
-            LabelProvince.TextColor = Color.Black;
-            LabelDistrict.TextColor = Color.Black;
-            LabelType.TextColor = Color.Black;
             viewModel.Province = null;
             viewModel.District = null;
             viewModel.Type = null;

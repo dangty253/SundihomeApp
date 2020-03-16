@@ -92,11 +92,11 @@ namespace SundihomeApp.ViewModels.BankViewModel
             if (apiResponse.IsSuccess)
             {
                 List<Bank> data = (List<Bank>)apiResponse.Content;
+                BankList.Add(new Bank() { Id = -1, Name = Language.tat_ca });
                 foreach (var item in data)
                 {
                     BankList.Add(item);
                 }
-                BankList.Insert(0, new Bank() { Id = -1, Name = Language.tat_ca });
             }
         }
 

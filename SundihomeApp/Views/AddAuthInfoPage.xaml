@@ -7,7 +7,8 @@
     xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives"
     x:Class="SundihomeApp.Views.AddAuthInfoPage"
     Shell.TabBarIsVisible="False"
-    Title="Cập nhật thông tin" >
+    xmlns:lang="clr-namespace:SundihomeApp.Resources"
+    Title="{x:Static lang:Language.cap_nhat}" >
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -45,10 +46,31 @@
                         <!-- PHONE -->
                         <Frame Grid.Row="2"
                                Style="{StaticResource EntryFrame}"/>
-                        <control:BlankEntry Grid.Row="2"
-                                            Placeholder="Số điện thoại (*)"
+                        <Grid Grid.Row="2" ColumnSpacing="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label FontSize="14" FontAttributes="Bold" Padding="10,0,0,0" TextColor="Black" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OpenPickerMaQuocGia_Tapped" />
+                                </Label.GestureRecognizers>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding MaQuocGia.SelectedItemDisplay}"/>
+                                        <Span Text=" "/>
+                                        <Span Text="&#xf078;" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="12" TextColor="Gray"  />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Picker x:Name="PickerMaQuocGia" ItemsSource="{Binding MaQuocGiaList}" IsVisible="false" ItemDisplayBinding="{Binding Display}" SelectedItem="{Binding MaQuocGia}" Grid.Column="0"/>
+                            <control:BlankEntry
+                                            Grid.Column="1"
+                                            Placeholder="{x:Static lang:Language.sdt_rquired}"
                                             Text="{Binding User.Phone}"
                                             IsVisible="{Binding IsPhoneHasValue}"/>
+                        </Grid>
+
                         <!-- LABEL -->
                         <Label Grid.Row="3"
                                FontSize="13"
@@ -57,7 +79,7 @@
                                Margin="15,0"/>
                         <!-- SUBMIT BUTTON-->
                         <Button Grid.Row="4"
-                                Text="GỬI"
+                                Text="{x:Static lang:Language.gui}"
                                 Style="{StaticResource LightBlueButton}"
                                 Command="{Binding SubmitCommand}"/>
                     </Grid>
@@ -176,8 +198,8 @@
                                                FontSize="14">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="Chưa nhận được OTP? " />
-                                                    <Span Text="Gửi lại"
+                                                    <Span Text="{x:Static lang:Language.chua_nhan_duoc_otp}" />
+                                                    <Span Text="{x:Static lang:Language.gui_lai}"
                                                           TextColor="Gray"
                                                           TextDecorations="Underline"
                                                           x:Name="spReset">

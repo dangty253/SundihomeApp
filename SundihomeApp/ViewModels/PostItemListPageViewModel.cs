@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
@@ -6,7 +7,9 @@ using Plugin.Share;
 using SundihomeApi.Entities;
 using SundihomeApi.Entities.Mongodb;
 using SundihomeApi.Entities.Mongodb.Furniture;
+using SundihomeApi.Entities.Response;
 using SundihomeApp.Configuration;
+using SundihomeApp.Helpers;
 using SundihomeApp.IServices;
 using SundihomeApp.IServices.IFurniture;
 using SundihomeApp.Models;
@@ -19,6 +22,22 @@ namespace SundihomeApp.ViewModels
 {
     public class PostItemListPageViewModel : ListViewPageViewModel2<PostItem>
     {
+        public ObservableCollection<Province> ProvinceList { get; set; } = new ObservableCollection<Province>();
+        public ObservableCollection<District> DistrictList { get; set; } = new ObservableCollection<District>();
+        public ObservableCollection<Ward> WardList { get; set; } = new ObservableCollection<Ward>();
+
+        public bool ShowClearFilterButton => this.Province != null || this.District != null || this.Ward != null;
+
+        private Province _province;
+        public Province Province { get => _province; set { _province = value; OnPropertyChanged(nameof(Province)); OnPropertyChanged(nameof(ShowClearFilterButton)); } }
+
+        private District _district;
+        public District District { get => _district; set { _district = value; OnPropertyChanged(nameof(District)); OnPropertyChanged(nameof(ShowClearFilterButton)); } }
+
+        private Ward _ward;
+        public Ward Ward { get => _ward; set { _ward = value; OnPropertyChanged(nameof(Ward)); OnPropertyChanged(nameof(ShowClearFilterButton)); } }
+
+
         public string Keyword { get; set; }
         public int Type { get; set; } = -1;
         public PostItemListPageViewModel()
@@ -68,14 +87,24 @@ namespace SundihomeApp.ViewModels
             });
             PreLoadData = new Command(() =>
             {
-                if (string.IsNullOrWhiteSpace(this.Keyword))
+                string url = $"api/postitems?page={Page}&type={Type}";
+                if (!string.IsNullOrWhiteSpace(this.Keyword))
                 {
-                    ApiUrl = $"api/postitems?page={Page}&type={Type}";
+                    url += $"&keyword={ this.Keyword}";
                 }
-                else
+                if (Province != null)
                 {
-                    ApiUrl = $"api/postitems?page={Page}&type={Type}&keyword={this.Keyword}";
+                    url += $"&provinceId={Province.Id}";
+                    if (District != null)
+                    {
+                        url += $"&districtId={District.Id}";
+                        if (Ward != null)
+                        {
+                            url += $"&wardId={Ward.Id}";
+                        }
+                    }
                 }
+                ApiUrl = url;
             });
         }
 
@@ -89,6 +118,61 @@ namespace SundihomeApp.ViewModels
                 currentPost.IsFollow = isFollow;
             }
             return isFollow;
+        }
+
+        public async Task LoadProvinceAsync()
+        {
+            ProvinceList.Clear();
+            ApiResponse apiResponse = await ApiHelper.Get<List<Province>>("api/provinces", false, false);
+            if (apiResponse.IsSuccess)
+            {
+                ProvinceList.Add(new Province() { Id = -1, Name = Language.tat_ca, Sort = -1 });
+                List<Province> data = (List<Province>)apiResponse.Content;
+                foreach (var item in data)
+                {
+                    ProvinceList.Add(item);
+                }
+            }
+        }
+
+
+
+        public async Task LoadDistrictAsync()
+        {
+            DistrictList.Clear();
+            District = null;
+            if (Province != null)
+            {
+                ApiResponse apiResponse = await ApiHelper.Get<List<District>>($"api/districts/{Province.Id}", false, false);
+                if (apiResponse.IsSuccess)
+                {
+                    DistrictList.Add(new District() { Id = -1, Name = Language.tat_ca, Pre = null, ProvinceId = -1 });
+                    List<District> data = (List<District>)apiResponse.Content;
+                    foreach (var item in data)
+                    {
+                        DistrictList.Add(item);
+                    }
+                }
+            }
+        }
+
+        public async Task LoadWardAsync()
+        {
+            WardList.Clear();
+            Ward = null;
+            if (District != null)
+            {
+                ApiResponse apiResponse = await ApiHelper.Get<List<Ward>>($"api/wards/{District.Id}", false, false);
+                if (apiResponse.IsSuccess)
+                {
+                    WardList.Add(new Ward() { Id = -1, Name = Language.tat_ca });
+                    List<Ward> data = (List<Ward>)apiResponse.Content;
+                    foreach (var item in data)
+                    {
+                        WardList.Add(item);
+                    }
+                }
+            }
         }
 
         public void Share(string Id)

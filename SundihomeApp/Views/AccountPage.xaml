@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:lang="clr-namespace:SundihomeApp.Resources"
              xmlns:imgae="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             Shell.TabBarIsVisible="False"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" ios:Page.UseSafeArea="true" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives" xmlns:control="clr-namespace:SundihomeApp.Controls" Title="{x:Static lang:Language.account}" x:Class="SundihomeApp.Views.AccountPage">
 
     <ContentPage.Resources>

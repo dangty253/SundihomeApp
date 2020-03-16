@@ -23,7 +23,6 @@ namespace SundihomeApp.Views
         {
             InitializeComponent();
             this.BindingContext = viewModel = new MapPageViewModel(filterModel);
-            contentView.BackgroundColor = Color.FromRgba(0, 0, 0, 0.5);
             Init();
 
         }
@@ -93,16 +92,6 @@ namespace SundihomeApp.Views
 
 
             loadingPopup.IsVisible = false;
-        }
-
-        public async void CloseDetail_Clicked(object sender, EventArgs e)
-        {
-            await Task.WhenAll(
-            PostDetailRadBorder.ScaleTo(0.5, 100),
-            PostDetailRadBorder.ScaleTo(0, 200),
-            PostDetailRadBorder.RotateXTo(20, 200),
-            PostDetailRadBorder.RotateYTo(20, 200));
-            contentView.IsVisible = false;
         }
 
         public async void GoToDetail_Clicked(object sender, EventArgs e)

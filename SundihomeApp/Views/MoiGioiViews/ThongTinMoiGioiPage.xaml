@@ -26,25 +26,8 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                <Grid x:Name="Segment" Grid.Row="0" ColumnSpacing="0" Margin="10,10,10,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-
-                    <telerikPrimitives:RadBorder Grid.Column="0" BackgroundColor="{StaticResource MainDarkColor}" BorderColor="{StaticResource MainDarkColor}" CornerRadius="8,0,0,8">
-                        <telerikPrimitives:RadBorder.GestureRecognizers>
-                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="SegmentSelected_Tapped" CommandParameter="0" />
-                        </telerikPrimitives:RadBorder.GestureRecognizers>
-                        <Label Text="{Static lang:Language.thong_tin}" Margin="10,5" HorizontalTextAlignment="Center" TextColor="White" FontSize="15" LineBreakMode="TailTruncation" MaxLines="1" />
-                    </telerikPrimitives:RadBorder>
-                    <telerikPrimitives:RadBorder Grid.Column="1" BackgroundColor="White" BorderColor="{StaticResource MainDarkColor}" CornerRadius="0,8,8,0">
-                        <telerikPrimitives:RadBorder.GestureRecognizers>
-                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="SegmentSelected_Tapped" CommandParameter="1" />
-                        </telerikPrimitives:RadBorder.GestureRecognizers>
-                        <Label Text="{Static lang:Language.bat_dong_san}" Margin="10,5" HorizontalTextAlignment="Center" TextColor="#333333" FontSize="15" LineBreakMode="TailTruncation" MaxLines="1" />
-                    </telerikPrimitives:RadBorder>
-                </Grid>
+                <controls:Segment x:Name="Segment" OnSelectedIndexChanged="SelectedIndexChanged_Tapped"/>
+                
                 <!--Thong tin-->
                 <ScrollView VerticalScrollBarVisibility="Never" x:Name="Information" Grid.Row="1">
                     <StackLayout Margin="10" Spacing="0">

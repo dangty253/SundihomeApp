@@ -17,7 +17,6 @@ using System.Globalization;
 using System.Threading;
 using SundihomeApp.Settings;
 using SundihomeApp.Resources;
-using SundihomeApp.Views.GiaDatViews;
 
 namespace SundihomeApp
 {
@@ -27,8 +26,7 @@ namespace SundihomeApp
         {
             InitializeComponent();
             App.SetCultureInfo(LanguageSettings.Language);
-            //MainPage = new AppShell();
-            MainPage = new NavigationPage(new GiaDatListPage());
+            MainPage = new AppShell();
             RegisterDependency();
         }
 

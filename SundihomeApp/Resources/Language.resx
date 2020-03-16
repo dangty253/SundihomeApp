@@ -469,7 +469,7 @@
         <value>Đăng ký thât bại, vui lòng thử lại</value>
     </data>
     <data name="khong_tim_thay_tai_khoan">
-        <value>Tài khoản hoặc mật khẩu không đúng</value>
+        <value>Không tìm thấy tài khoản</value>
     </data>
     <!-- AccountPage-->
     <data name="lien_ket_facebook_thanh_cong">

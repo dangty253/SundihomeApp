@@ -19,11 +19,13 @@ namespace SundihomeApp.ViewModels
 {
     public class AddPostItemPageViewModel : BaseViewModel
     {
+
+
+        #region Phan dia chi
         public ObservableCollection<Province> ProvinceList { get; set; } = new ObservableCollection<Province>();
         public ObservableCollection<District> DistrictList { get; set; } = new ObservableCollection<District>();
         public ObservableCollection<Ward> WardList { get; set; } = new ObservableCollection<Ward>();
 
-        #region Province/District/Ward
         private Province _provice;
         public Province Province { get => _provice; set { _provice = value; OnPropertyChanged(nameof(Province)); SetAddress(); } }
 
@@ -54,24 +56,6 @@ namespace SundihomeApp.ViewModels
                 _address = value;
                 OnPropertyChanged(nameof(Address));
             }
-        }
-        #endregion
-
-        public ObservableCollection<PriceOption> PriceOptions { get; set; } = new ObservableCollection<PriceOption>(PriceOptionData.Get());
-        private IMultiMediaPickerService _multiMediaPickerService = null;
-        public ObservableCollection<MediaFile> Media { get; set; } = new ObservableCollection<MediaFile>();
-        public List<string> ImageUrlToDelete { get; set; } = new List<string>();// list hinh anh can xoa. 
-        public ICommand SelectImagesCommand { get; set; }
-
-        public AddPostItemPageViewModel()
-        {
-            SelectImagesCommand = new Command(SelectImages);
-            _multiMediaPickerService = DependencyService.Get<IMediaPickerService>().GetMultiMediaPickerService();
-            _multiMediaPickerService.OnMediaPicked += OnMediaPicked;
-            Task.Run(async () =>
-            {
-                await GetProvinceAsync();
-            });
         }
 
         public async Task GetProvinceAsync()
@@ -121,6 +105,45 @@ namespace SundihomeApp.ViewModels
                 }
             }
         }
+
+        public void SetAddress()
+        {
+            List<string> list = new List<string>();
+            if (!string.IsNullOrWhiteSpace(this.Street))
+            {
+                list.Add(this.Street.Trim());
+            }
+            if (this.Ward != null)
+            {
+                list.Add(Ward.Name);
+            }
+            if (this.District != null)
+            {
+                list.Add(District.Name);
+            }
+            if (this.Province != null)
+            {
+                list.Add(Province.Name);
+            }
+
+            Address = string.Join(", ", list.ToArray());
+        }
+        #endregion
+
+        public ObservableCollection<PriceOption> PriceOptions { get; set; } = new ObservableCollection<PriceOption>(PriceOptionData.Get());
+        private IMultiMediaPickerService _multiMediaPickerService = null;
+        public ObservableCollection<MediaFile> Media { get; set; } = new ObservableCollection<MediaFile>();
+        public List<string> ImageUrlToDelete { get; set; } = new List<string>();// list hinh anh can xoa. 
+        public ICommand SelectImagesCommand { get; set; }
+
+        public AddPostItemPageViewModel()
+        {
+            SelectImagesCommand = new Command(SelectImages);
+            _multiMediaPickerService = DependencyService.Get<IMediaPickerService>().GetMultiMediaPickerService();
+            _multiMediaPickerService.OnMediaPicked += OnMediaPicked;
+        }
+
+
 
         async void SelectImages()
         {
@@ -223,27 +246,6 @@ namespace SundihomeApp.ViewModels
             });
         }
 
-        public void SetAddress()
-        {
-            List<string> list = new List<string>();
-            if (!string.IsNullOrWhiteSpace(this.Street))
-            {
-                list.Add(this.Street.Trim());
-            }
-            if (this.Ward != null)
-            {
-                list.Add(Ward.Name);
-            }
-            if (this.District != null)
-            {
-                list.Add(District.Name);
-            }
-            if (this.Province != null)
-            {
-                list.Add(Province.Name);
-            }
 
-            Address = string.Join(", ", list.ToArray());
-        }
     }
 }

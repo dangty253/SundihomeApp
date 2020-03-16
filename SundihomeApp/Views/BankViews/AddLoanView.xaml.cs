@@ -22,7 +22,7 @@ using Xamarin.Forms;
 
 namespace SundihomeApp.Views.BankViews
 {
-    public partial class AddLoanView : ContentView
+    public partial class AddLoanView : Grid
     {
         public event EventHandler OnSaved;
         public event EventHandler OnCancel;
@@ -68,8 +68,6 @@ namespace SundihomeApp.Views.BankViews
         }
         public async void InitAdd()
         {
-            //EntryMaxPrice.SetPrice(0);
-            //EntryLaiSuat.SetPrice(0);
             viewModel.MaxTimeUnitOption = viewModel.MaxTimeUnitOptions[0];
             await LoadBank();
         }

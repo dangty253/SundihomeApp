@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:lang="clr-namespace:SundihomeApp.Resources"
+             Title="Giá đất Hà Nam"
+             xmlns:controls="clr-namespace:SundihomeApp.Controls"
+             x:Class="SundihomeApp.Views.GiaDatViews.GiaDatHaNamPage">
+    <ContentPage.Content>
+        <AbsoluteLayout >
+            <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Padding="0,0,0,20">
+                <StackLayout Margin="10">
+                    <controls:FormLabelRequired Text="{x:Static lang:Language.district}" />
+                    <controls:LookUpControl BottomModal="{x:Reference lookUpModal}" Placeholder="{x:Static lang:Language.district}" ItemsSource="{Binding Districts}" SelectedItem="{Binding District}" SelectedItemChange="District_Changed" NameDisplay="Name"/>
+
+                    <controls:FormLabelRequired Text="{x:Static lang:Language.ward}" />
+                    <controls:LookUpControl BottomModal="{x:Reference lookUpModal}" Placeholder="{x:Static lang:Language.ward}" ItemsSource="{Binding Wards}" SelectedItem="{Binding Ward}" NameDisplay="Name"/>
+
+                    <!--<controls:FormLabelRequired Text="Đoạn đường" />
+                    <controls:LookUpControl BottomModal="{x:Reference lookUpModal}" Placeholder="Đoạn đường" ItemsSource="{Binding DoanDuongList}" SelectedItem="{Binding Doan}" NameDisplay="Name"/>-->
+
+                    
+                </StackLayout>
+            </ScrollView>
+            <controls:BottomModal x:Name="lookUpModal"/>
+            <controls:LoadingPopup x:Name="loadingPopup"/>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

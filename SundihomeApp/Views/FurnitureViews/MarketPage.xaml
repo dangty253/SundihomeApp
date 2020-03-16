@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             BackgroundColor="#eeeeee"
+             BackgroundColor="White"
              xmlns:lang="clr-namespace:SundihomeApp.Resources"
              Title="{Static lang:Language.cho_noi_that}"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
@@ -20,17 +20,20 @@
     <ContentPage.Content>
         <AbsoluteLayout>
             <Grid AbsoluteLayout.LayoutBounds="0,0,1,1"
-                  AbsoluteLayout.LayoutFlags="All"
-                  RowSpacing="5">
+                  AbsoluteLayout.LayoutFlags="All">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                <ScrollView Grid.Row="0"
+                <controls:SearchBarFrame Margin="5,5,5,0" Grid.Row="0">
+                    <controls:SearchBar x:Name="searchBar" TextChanged="SearchText_Changed" SearchButtonPressed="Search_Clicked" />
+                </controls:SearchBarFrame>
+                <ScrollView Grid.Row="1"
                             x:Name="ScrollViewFilter"
                             Orientation="Horizontal"
                             BackgroundColor="White"
-                            Padding="5">
+                            Margin="5,0">
                     <StackLayout Orientation="Horizontal"
                                  Spacing="5">
                         <telerikPrimitives:RadBorder x:Name="FilterAllRadborder"
@@ -66,8 +69,8 @@
                     </StackLayout>
                 </ScrollView>
                 <controls:BsdListView x:Name="LV"
-                                      Grid.Row="1"
-                                      BackgroundColor="Transparent">
+                                      Grid.Row="2"
+                                      BackgroundColor="#eeeeee">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -130,13 +133,10 @@
                                                     CommandParameter="{Binding}" />
                                         </Grid>
 
-                                        <Label FontSize="15"
-                                               Grid.Row="1"
-                                               Margin="10,5"
-                                               TextColor="#444444"
-                                               MaxLines="5"
-                                               LineBreakMode="TailTruncation"
-                                               Text="{Binding Description}" />
+                                        <StackLayout Grid.Row="1" Margin="10,5">
+                                            <Label FontSize="15" TextColor="Black" FontAttributes="Bold" Text="{Binding Title}" />
+                                            <Label FontSize="15" TextColor="#444444" MaxLines="5" LineBreakMode="TailTruncation" Text="{Binding Description}" />
+                                        </StackLayout>
 
                                         <Label Margin="10,5"
                                                Grid.Row="2"
